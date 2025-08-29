@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高龄女性胃癌全切就医规划报告</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://unpkg.com/preline/dist/preline.css" />
+  <script src="https://unpkg.com/preline/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* 淡入动画 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: none;
+    }
+    /* 平滑过渡 */
+    body {
+      transition: background-color .3s, color .3s;
+    }
+    /* 卡片悬停效果 */
+    .card-hover:hover {
+      box-shadow: 0 8px 32px rgba(60,60,60,.12);
+      border-color: #6366f1;
+      transform: translateY(-4px) scale(1.02);
+      transition: all .25s cubic-bezier(.4,0,.2,1);
+    }
+    /* 按钮微交互 */
+    .btn-interactive:hover {
+      transform: scale(1.045);
+      filter: brightness(1.08);
+    }
+
+    /* 深色模式自定义 */
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #18181b; color:#e5e7eb; }
+      .bg-white { background-color:#232329 !important;}
+      .text-gray-900 { color:#e5e7eb !important;}
+      .border-gray-200 { border-color:#33343c !important;}
+      .shadow-lg { box-shadow:0 8px 32px rgba(20,20,30,.28)!important;}
+    }
+
+    /* 响应式优化字体 */
+    @media (max-width:640px){
+      h1 { font-size:1.5rem!important;}
+      h2 { font-size:1.15rem!important;}
+      h3 { font-size:.98rem!important;}
+      body { font-size:.98rem!important;}
+    }
+
+    /* 懒加载图片样式优化 */
+    img[data-src] { filter: blur(10px); transition:.5s filter; }
+    img[data-src].loaded { filter:none; }
+
+  </style>
+</head>
+<body class="antialiased bg-gray-50 text-gray-900 dark:bg-zinc-900 dark:text-gray-100 min-h-screen relative">
+n
+<!-- 深浅色切换按钮 -->
+n<div class="fixed z-40 top-5 right-5 flex items-center gap-2">
+n<button id="theme-toggle" aria-label="切换深浅色模式" class="btn-interactive rounded-full p-2 bg-white dark:bg-zinc-800 shadow-lg border border-gray-200 dark:border-zinc-700 hover:bg-indigo-50 hover:border-indigo-400 transition-colors duration-200">
+n<i id="theme-icon" class="fa-solid fa-moon text-indigo-500"></i>
+n</button>
+n</div>
+n
+<main class="container mx-auto max-w-3xl px-4 py-10">
+n<!-- 标题与摘要区块 -->
+n<section class="mb-8 fade-in">
+n<h1 class="text-3xl sm:text-4xl font-bold mb-2 flex items-center gap-x-3"><span class='material-icons text-indigo-500'>assignment</span>高龄女性胃癌全切就医规划报告</h1>
+n<p class="text-lg text-gray-600 dark:text-gray-400 mt-2">为70岁女性中低分化胃癌患者定制的多中心手术就诊推荐、准备及行动指南。</p>
+n</section>
+n
+<!-- 患者情况摘要 -->
+n<section class="mb-8 fade-in">
+n<div class="bg-white dark:bg-zinc-800 rounded-xl shadow-lg border border-gray-200 dark:border-zinc-700 p-6 card-hover">
+n<h2 class="text-xl font-semibold mb-4 flex items-center gap-x-2"><span class='material-icons text-blue-500'>person</span>一、患者情况摘要</h2>
+n<ul class='list-none grid gap-y-[10px]'>
+n<li><i class='fa-solid fa-user-circle text-purple-500 mr-[6px]'></i> <strong>性别/年龄：</strong>70岁 女性</li>
+n<li><i class='fa-solid fa-location-dot text-pink-500 mr-[6px]'></i> <strong>常住地：</strong>北京</li>
+n<li><i class='fa-solid fa-disease text-red-500 mr-[6px]'></i> <strong>诊断：</strong>中低分化胃癌（发现半年余）</li>
+n<li><i class='fa-solid fa-syringe text-cyan-600 mr-[6px]'></i> <strong>既往治疗：</strong>已行化疗3期</li>
+n<li><i class='fa-solid fa-brain text-orange-400 mr-[6px]'></i> <strong>既往病史：</strong>脑梗塞</li>
+n<li><i class='fa-solid fa-hospital-user text-green-600 mr-[6px]'></i> <strong>医保类型：</strong>河北医保（需异地结算）</li>
+n<li><i class='fa-solid fa-stethoscope text-blue-600 mr-[6px]'></i><strong>本次核心诉求：</strong> 胃全切手术，首选北京协和医院</li></ul></div></section>
+n
+<!-- 核心就医建议（多卡片展示） -->
+n<section id='recommendation' class='mb-[40px] fade-in'>
+h2(className='text-xl font-semibold mb-[18px] flex items-center gap-x-[7px]')<h2 class='text-xl font-semibold mb-[18px] flex items-center gap-x-[7px]'><span class='material-icons text-teal-600'>local_hospital</span>二、核心就医建议</h2>
+div(className='grid gap-y-[24px]')<div class='grid gap-y-[24px]'>
+div(className='bg-white dark:bg-zinc-800 rounded-xl shadow-lg border border-teal-300/40 dark:border-teal-800 p-[22px] card-hover transition-all')<div class='bg-white dark:bg-zinc-800 rounded-xl shadow-lg border border-teal-300/40 dark:border-teal-800 p-[22px] card-hover transition-all'>
+h3(className='font-bold text-lg flex items-center gap-x-[5px] mb-[7px]')<h3 class='font-bold text-lg flex items-center gap-x-[5px] mb-[7px]'>&#x2460;&nbsp;中国医学科学院北京协和医院<span class='ml-auto px-[10px] py-px rounded bg-green-100 dark:bg-green-900/70 text-green-700 dark:text-green-300 font-normal text-xs tracking-wider'>高度匹配</span></h3>
+div(className='text-sm sm:text-base leading-relaxed space-y-[9.5px]')<div class='text-sm sm:text-base leading-relaxed space-y-[9.5px]'>
+div(className='flex items-start gap-x-[9.5px]')<div class='flex items-start gap-x-[9.5px]'>
+i(className='fa-solid fa-circle-info mt-px text-indigo-500')<i class='fa-solid fa-circle-info mt-px text-indigo-500'></i><span><b>推荐理由：</b>全国三甲综合排名第一，消化系统肿瘤外科权威，胃癌根治性手术经验丰富。</span></div>
+div(className='flex items-start gap-x-[9.5px]')<div class='flex items-start gap-x-[9.5px]' style="align-items:flex-start"><i className='fa-solid fa-triangle-exclamation mt-px text-yellow-500'></i><span><b style="color:#f59e42">特别注意：</b>&nbsp;床位紧张、门诊号源稀缺，请务必提前预约。河北医保需办理异地备案。</span></div>
+div(className='flex items-start gap-x-[9.5px]')<div style="align-items:flex-start"className='flex items-start gap-x-[9.5px]' ><i style=''className= 'fa-solid fa-notes-medical mt-px text-blue -500'></i><span><b >就诊须知：</b>&nbsp;<br/>支持异地医保结算，需提前通过国家医保服务平台或本地医保局备案。主要院区：东院（帅府园1号），基本外科在东院。</span></div>
+div(className ='flex items-start gap-x-[9.5 px ]')<div style ='align-items:flex-start'   ><i style=''class = 'fa-solid fa-mobile-alt mt-px text-violet -600'></i>&nbsp;<b >挂号方式：</b>&nbsp;官方APP“北京协和医院”、北京市统一挂号平台、电话010–114/116114、微信公众号“北京114预约挂号”。放号一般每日早晨6:30起。</div > 
+div ><b >推荐医生：</b></div > 
+ul(class = 'list-disc ml -7 space-y -[4 px ]' )<ul style ='margin-left :16 px ;margin-bottom :12 px ;font-size :.98em'><li ><b >康维明（主任医师/教授）：</b>&nbsp;<span style ='color :#64748b '>擅长胃肠道肿瘤微创与开腹手术，包括全胃切除等复杂操作，是国内公认的胃癌外科权威。</span>&nbsp;<br/>出诊：东院 普通门诊 周二上午/下午(100元)，国际医疗部门诊 周三上午<br/></li ><li ><b >丛林（主任医师）：</b>&nbsp;<span style ='color :#64748b '>专攻普外腔镜微创治疗，对中晚期胃癌的腔镜全切有丰富经验。</span>&nbsp;<br/>出诊：东院 特需门诊 周一上午，普通门诊 周三上午/周一下午，国际医疗部门诊 周三下午<br/></li ></ul ></div ></div > 
+div(class ='bg-white dark:bg-zinc -800 rounded-xl shadow-lg border border-blue -300 /40 dark:border-blue -800 p -[22 px ] card-hover transition-all ')<div style ='margin-top :13 px 'class ='bg-white dark:bg-zinc -800 rounded-xl shadow-lg border border-blue -300 /40 dark:border-blue -800 p -[22 px ] card-hover transition-all '><h3 style ='margin-bottom :7 px 'class ='font-bold text-lg flex items-center gap-x -[5 px ]'>&#x2461;&nbsp;北京大学第一医院<span style ='margin-left :auto ;padding :0 10 px ;border-radius :8 px ;background :#dcfce7 ;color :#059669 ;font-weight :normal ;font-size :.85em '>高度匹配 </span ></h3 ><div style ='font-size :.99em 'class ='space-y -[9.5 px ]'><div style ='display:flex ;gap :8 px ;align-items:flex-start'><i style ='margin-top :.15em ;color:#2563eb'class ='fa-solid fa-circle-info'></i ><span ><b >推荐理由 ： </b >北大医院消化道恶性肿瘤手术实力强，高龄及复杂病例处理经验丰富，多位专家长期从事相关临床与科研。</span ></div ><div style ='display:flex ;gap :8 px ;align-items:flex-start'><i style ='margin-top :.15em ;color:#f59e42'class ='fa-solid fa-triangle-exclamation'></i ><span ><b style ="color:#f59e42">就诊须知 ： </b >支持异地医保结算，需提前备案；主院区在西城区西什库大街8号。</span ></div ><div style ='display:flex ;gap :8 px ;align-items:flex-start'><i style ='margin-top :.15em ;color:#a21caf'class ='fa-solid fa-mobile-alt'></i >&nbsp;<b >挂号方式 ： </b >&nbsp;微信公众号“北京大学第一医院服务号”、北京市统一挂号平台、电话010–114等渠道；放号时间以官方公告为准。</div ><ul style ="margin-left :16 px;margin-bottom :12 px;font-size :.98em"><li ><b >王鹏远（主任医师/教授）： </b >&nbsp;<span style ="color:#64748B">精于各类胃癌手术，包括机器人辅助下的全胃切除，是该领域领军人物之一。 </span >&nbsp;<br />出诊：西城厂桥院区 专家门诊 周五上午(100元)、特需门诊 周六上午<br /></li ><li ><b >武颖超（主任医师）： </b >&nbsp;<span style ="color:#64748B">擅长高龄及合并基础疾病患者的微创及开腹全胃切除。 </span >&nbsp;<br />出诊：西城厂桥院区 专家门诊 周二上午/下午(60元)<br /></li ><li ><b >万远廉（主任医师/教授）： </b >&nbsp;<span style ="color:#64748B">中国最早开展扩大根治性手术之一，对复杂病例处理经验丰富。 </span >&nbsp;<br />具体出诊时间与费用信息请关注医院公告<br /></li ></ul ></div ></div > 
+div(style ="margin-top:.85em",class ="bg-white dark:bg-zinc -800 rounded-xl shadow-lg border border-cyan -300 /40 dark:border-cyan -800 p -[22 px ] card-hover transition-all ")<h3 style ="margin-bottom:.45em",class ="font-bold text-base flex items-center gap-x -[5 px ]">&#x2462;&nbsp;首都医科大学附属北京友谊医院<span style ="margin-left:auto;padding:0 10 px;border-radius:8 px;background:#fef08a;color:#92400e;font-weight:normal;font-size:.83em">部分匹配 </span ></h3 ><p >消化疾病中心规范化综合治疗国内领先，但缺乏针对具体医生的信息。如无法约到前述两家重点专家，可作为备选方案考虑普外科或消化内科专家咨询后转入相关专病组进一步评估与安排手术。</p ></div > 
+div(style = "margin-top:.85em",class = "bg-white dark:bg-zinc -800 rounded-xl shadow-lg border border-fuchsia -300 /40 dark:border-fuchsia -900 p -[22 px ] card-hover transition-all ")<h3 style = "margin-bottom:.45em",class = "font-bold text-base flex items-center gap-x -[5 px ]">&#x2463;&nbsp;中国人民解放军总医院第一医学中心<span style = "margin-left:auto;padding:0 10 px;border-radius:8 px;background:#fef08a;color:#92400e;font-weight:normal;font-size:.83em">部分匹配 </span ></h3 ><p >技术力量雄厚，在老年人复杂重症管理突出，但重点医生以肿瘤内科学者居多。建议先行多学科会诊后决定下一步方案。如因基础疾病或年龄因素不适宜直接手术，该中心亦能提供优质非手术综合管理建议。</p ></div > 
+div(style = "margin-top:.85em",class = "bg-white dark:bg-zinc -800 rounded-xl shadow-lg border border-sky -300 /40 dark:border-sky -900 p -[22 px ] card-hover transition-all ")<h3 style = "margin-bottom:.45em",class = "font-bold text-base flex items-center gap-x -[5 px ]">&#x2464;&nbsp;其他三甲名院<span style = "margin-left:auto;padding:0 10 px;border-radius:8 px;background:#fef08a;color:#92400e;font-weight:normal;font-size:.83em">部分匹配~谨慎评估 </span ></h3 ><p >中国医学科学院肿瘤医院、北大肿瘤医院、中日友好医院、北大人民医院均具备强大的消化道恶性肿瘤MDT能力，但未检索到明确针对高龄女性中低分化进展期病例进行全胃切除的权威个人信息。如前述优选路径受阻，可尝试通过这些机构普外或相关专病组渠道进一步咨询。<br/><u>[北大人民医院补充]</u>: 高杰主任医师主要方向为腹部实体恶性肿瘤微创与综合治疗，更偏向于肝胆胰脾领域，可先行咨询其团队意见。</p ></div > 
+div(style = "margin-top:.85em",class = "bg-white dark:bg-zinc -800 rounded-xl shadow-lg border border-orange -300 /40 dark:border-orange -900 p -[22 px ] card-hover transition-all ")<h3 style = "margin-bottom:.45em",class = "font-bold text-base flex items-center gap-x -[5 px ]">&#x2465;&nbsp;天津医科大学肿瘤医院<span style = "margin-left:auto;padding:0 10 px;border-radius:8 px;background:#fee2e2;color:#dc2626;font-weight:bold;font-size:.83em">谨慎评估 </span ></h3 ><p >天津顶级专科，如京津冀区域转介困难时可考虑。但河北医保跨省报销流程繁琐且比例有限，不建议首选。如确实需要，也可参考刘宁、王晓娜、张高嘉等主任医师团队，均有丰富全胃切除经验。</p ></div ></section >
+n<!-- 特别注意事项 -->
+div(className= 'fade-in mb [38 x]' )<section id= 'notes'   class= 'fade-in mb [38 x]'   >   < div   class= 'bg-yellow   –50   dark:bg-yellow   –900 /30   rounded-xl   shadow-md   border-l –4   border-yellow –400   pl –6 pr –4 py –4'     role= 'alert'     aria-label= '特别注意'     >     < div     class= 'flex align-middle mb –1'     >< span     class= 'material-icons   mr –2   align-middle   !text-yellow–600'     aria-hidden= 'true'     > warning_amber </ span >& nbsp;< b     > 特别注意& nbsp;</ b ></ div >       < ul     class= 'list-disc ml –7 space-y–1 pl–1 pt–1 pb–0 pr–0 leading-relaxed'     >         < li     > 各大三甲名院对70岁以上合并脑梗塞既往史患者实施重大手术时要求严格，请务必携带全部心脑血管病历资料，并准备接受麻醉风险、多学科联合会商等额外流程审核；         </ li >         < li     > 国际部、特需门急费用极高且多数不支持河北医保报销，请务必提前核实收费标准与报销政策；         </ li >         < li     > 所有涉及异地就医结算事项必须由本人或家属主动联系当地社保局确认细则，以免产生不可预见经济负担；         </ li >         < li     > 如遇突发健康状况变化，应及时选择急救绿色通道，不要延误最佳救治时机。         </ li ></ ul ></ div ></section><!-- end特别注意事项-->
+n<!-- 就医准备清单 -->
+s ection(id= 'checklist',class= 'fade-in mb–10 ')<section id= 'checklist'   c lass= 'fade-in mb–10 '>   < d iv c lass= 'bg-white d ark:bg-zinc–800 roun ded-xl s hadow-lg b order b order-gra y–200 d ark:borde r-zinc–700 p–6 c ard-hover'   s tyle= ''        >< h2 c lass= 'text-xl f ont-semibold m b–4 f lex i tems-ce nter g ap-x–2'>< span c lass= 'material-icons t ext-lime–600'>check_circle_outline</ span>& nbsp;三 、诊前准备清单 & nbsp;</ h2>< div c lass= '' s tyle=''        >>           < h3 c lass= 'font-medium t ext-base m t–4 m b–1 t ext-lime–700 d ark:t ext-lime–400 f lex i tems-ce nter g ap-x–1'>< i c lass= 'fas f a-file-medical-alt t ext-lime–400'></ i>& nbsp;病历资料准备 & nbsp;</ h3>< ul c lass= '' s tyle=''        >>               < l i s tyle=''        >>身份证 、河北医保卡原件；                </ l i>>               < l i s tyle=''        >>所有既往检查报告单，包括血常规、生化指标、影像学CT/MRI/PET报告以及所有病理结果；                </ l i>>               < l i s tyle=''        >>化疗期间详细记录、本次拟行手术所需心电图、胸片等辅助检查材料；                </ l i>>               < l i s tyle=''        >>脑梗塞相关既往住院小结及用药清单；                </ l i>>               < l i s tyle=''        >>【特别建议】按时间顺序整理所有资料，并制作复印件备用。                </ l i></ ul>< h3 c lass= 'font-medium t ext-base m t–4 m b–1 t ext-cyan–700 d ark:t ext-cyan–400 f lex i tems-ce nter g ap-x–1'>< i c lass= 'fas f a-shield-alt t ext-cyan–400'></ i>& nbsp;医保与费用准备 & nbsp;</ h3>< ul>>               < l i>>提前通过国家医保服务平台APP、小程序办理异地就医备案手续，并保存电子凭证截图；                </ l i>>               < l i>>咨询河北当地社保局确认京津冀范围内指定医疗机构是否纳入直付范围，以及实际报销比例和自费项目清单；                </ l i>>               < l i>>准备充足资金，包括现金、银行卡及手机支付工具，用于应对挂号费、高额检查费、自费药品以及食宿交通支出；                </ l i>>               < l i>>【特别建议】如选择国际部或特需门诊，就业人员医保通常无法覆盖全部费用，请务必提前了解价格体系并做好预算。                </ l i></ ul>< h3 c lass= 'font-medium t ext-base m t–4 m b–1 t ext-orange–700 d ark:t ext-orange–400 f lex i tems-ce nter g ap-x–1'>< i c lass= 'fas f a-list-ul t ext-orange–400'></ i>& nbsp;其他通用准备 & nbsp;</ h3>< ul>>               < l i>>列出希望向主刀医生详细咨询的问题清单，例如：“我的基础疾病是否影响麻醉安全？”、“预计住院周期多久？”、“围手术期营养如何保障？”等；                </ l i>>               < l i>>携带充电宝、水杯、防滑鞋等生活用品，就近住宿可参考各大平台预订附近宾馆民宿，以便随时应对住院通知；                </ l i>>               < l i>>就医当天穿着宽松方便衣物，以利查体和活动；                </ l i></ ul></ div></ d iv></ section><!-- end checklist-->
+n<!-- 行动指南与局限性说明 -->
+s ection(id= 'action',c lass= 'fade-in ')<section id= 'action'class= 'fade-in '>       	<div cla ss=	'bg-white da rk:bg-z inc-	800 round ed-	xl shado w-	lg bord er bor der-gra y-	200 da rk:borde r-	zinc-	700 p-	6 ca rd-hov er'																							>s pan cla ss=	'text-	xl fon t-semi bold mb-	4 fle x ite ms-cent er ga p-x-	2'>< span cla ss=	'material-icons tex t-ro se-	600'>directions_walk</ span >& nbsp;	四 、行动指南与局限性说明 & nbsp;</ spa n>< div cla ss=	'my-	4 pt-	2 pb-	0 tex t-sm leadi ng-re laxed spa ce-y-	4'>           	<b clas s=	'text-ro se-	700 dar k:text-r ose-	300 fon t-mediu m block my-	2'>优先行动建议：</ b>           	<ul clas s=	'ml-	7 list-decimal spa ce-y-	1 pb-	0'>             	<li clas s=	'my-	p x'>基于您的核心诉求，优先考虑<strong>[中国医学科学院北京协和医院]</strong>基本外科康维明教授团队，由其进行全面评估后制定个体化全胃切除方案，同时关注合并脑梗塞后的围麻醉风险控制措施。</ li>             	<li clas s=	'my-	p x'>如协和预约受阻，可同步尝试<strong>[北京大学第一医院]</strong>王鹏远教授团队，通过其微创与传统开腹技术结合，为高龄合并基础疾病患者争取最佳安全窗口。</ li></ ul>           	b clas s=	'text-ro se-	700 dar k:text-r ose-	300 fon t-mediu m block my-	p x mt-	p x pt-	p x pb-	p x '>二次确认清单：</ b>           	u clas s=	m list-disc ml-	m spa ce-y-m pb-m pt-m tex t-xs tex t-gra y-m dar k:text-gra y-m '>             	l iclas s=m my-m pb-m '>就异地医保结算问题，请务必致电本地社保局核实京津冀定点直付名单，并获取最新政策文件编号以便现场使用；             	l iclas s=m my-m pb-m '>对于70岁以上合并脑血管病史的大型腔镜或开腹根治性手术，各中心可能要求额外心内/神经内会商——请提前电话沟通目标专科护士站或行政办公室：                 北京协和东院基本外科护士站电话：（详见官网）；                 北大第一医院普外办电话：（详见官网）             	l iclas s=m my-m pb-m '>国际部/特需门急费用请直接拨打对应窗口查询：                 协和国际部门急热线010‑69156699                 北大一院特需服务热线010‑83572211             	l iclas s=m my-m pb-m '>如遇突发健康变化，应立即拨打120急救，不要自行等待常规预约流程！             </ u l>b clas s=	t ex t-ro se‑700 da rk:t ex t-r os e‑30 0 fo nt-me diu m bl ock my‑p x mt‑p x pt‑p x pb‑p x '>局限性声明：</ b>< di v cla ss='	t ex t-xs te xt-gr ay‑50 0 da rk:t ex t-gr ay‑40 0 le ad ing-re lax ed mt‑p x mb‑p x pt‑p x pb‑p x sp ace-y‑m '>本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面（如部分专病组最新出停班动态、中青年骨干名单缺失）的情况，仅供参考。	b clas s='	t ex t-ro se‑70 0 da rk:t ex t-r os e‑30 0 fo nt-me diu m bl ock my‑p x mt‑p x pt‑p x pb‑p x '>最终免责说明：</ b>< di v cla ss='	t ex t-xs te xt-gr ay‑50 0 da rk:t ex t-gr ay‑40 0 le ad ing-re lax ed mt‑m sp ace-y-m '>最终就诊决策请务必以各目标医疗机构官方发布信息以及临床主刀医生意见为准。本报告仅作辅助决策用途，不构成任何法律责任承诺。	b clas s='	t ex t-gra y‑90 0 da rk:t ex t-gra y‑20 0 fo nt-me diu m bl ock my‑m mt‑m pt‑m pb‑m sp ace-y-m hidden md:block italic op ac ity-​80 te xt-ri ght '>— End —          	n
+<script>// 深浅色模式 toggle
+const themeToggleBtn=document.getElementById('theme-toggle');const themeIcon=document.getElementById('theme-icon');function setTheme(mode){if(mode==='dark'){document.documentElement.classList.add('dark');themeIcon.classList.remove('fa-sun');themeIcon.classList.add('fa-moon');}else{document.documentElement.classList.remove('dark');themeIcon.classList.remove('fa-moon');themeIcon.classList.add('fa-sun');}}function getSystemTheme(){return window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}function getStoredTheme(){return localStorage.getItem('theme-preference');}function storeTheme(mode){localStorage.setItem('theme-preference',mode);}function applyTheme(){const stored=getStoredTheme();if(stored)setTheme(stored);else setTheme(getSystemTheme());}applyTheme();themeToggleBtn.addEventListener('click',()=>{const curr=document.documentElement.classList.contains('dark')?'dark':'light';const newMode=(curr==='dark')?'light':'dark';setTheme(newMode);storeTheme(newMode);});window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{if(!getStoredTheme())applyTheme();});/* 区块淡入动画 */document.querySelectorAll('.fade-in').forEach((el,i)=>{setTimeout(()=>el.classList.add('show'),350+160*i);});/* 懒加载图片 */window.addEventListener('DOMContentLoaded',()=>{const imgs=[...document.querySelectorAll('img[data-src]:not(.loaded)')];if(imgs.length===0)return;if("IntersectionObserver"in window){let io=new IntersectionObserver((entries,o)=>{entries.forEach(e=>{if(e.isIntersecting){let img=e.target;if(img.dataset.src){img.srcset?img.srcset=(img.dataset.srcset):null,img.src=(img.dataset.src),img.onload=_=>img.classList.add("loaded")}}})});imgs.forEach(img=>io.observe(img));}else{imgs.forEach(img=>{img.srcset?img.srcset=(img.dataset.srcset):null,img.src=(img.dataset.src),img.onload=_=>img.classList.add("loaded")})}});/* 平滑滚动优化已由html实现 */</script></main></body></html>
