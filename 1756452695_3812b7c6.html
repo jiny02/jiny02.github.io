@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <style>
+    :root {
+      --primary: #4A90E2;
+      --text-main: #333;
+      --bg-light: #f4f7f9;
+      --card-bg: #fff;
+      --card-radius: 16px;
+      --card-shadow: 0 2px 12px rgba(74,144,226,0.08), 0 1.5px 6px rgba(51,51,51,0.04);
+      --divider: #e3e8ee;
+    }
+    html {
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    body {
+      margin: 0;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+      min-height: 100vh;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto 40px auto;
+      background: transparent;
+      padding: 0 16px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.3rem;
+      margin-bottom: .5em;
+      letter-spacing: .03em;
+    }
+    hr {
+      border:none; border-bottom:1.5px solid var(--divider); margin-bottom:.5em;margin-top:.5em
+    }
+    h2 {
+      font-size:1.35rem; 
+      margin-top:2.3em; 
+      margin-bottom:.7em; 
+      padding-bottom:.25em; 
+      border-bottom:2.5px solid var(--primary); 
+      font-weight:bold
+    }
+    h3 {
+      font-size:1.08rem; 
+      color:var(--primary); 
+      margin-top:.9em; 
+      margin-bottom:.45em; 
+    }
+    p, ul, ol {
+      line-height:1.72; 
+      font-size:.97rem; 
+    }
+    ul, ol { padding-left:1.4em;}
+p {margin-top:.7em;margin-bottom:.7em}
+dt {font-weight:bold}
+dd {margin-left:.8em;margin-bottom:.3em}
+a {color:#2566b8;text-decoration:none}
+a:hover {text-decoration:underline}
+div.card-list {display:flex;flex-direction:column;gap:28px;margin-top:.6em;margin-bottom:.6em}
+div.hospital-card {
+border-radius:var(--card-radius);
+padding:30px 24px 20px 24px;background-color:#fff;box-shadow:var(--card-shadow);
+border:none;position:relative
+}
+div.hospital-card:not(:last-child) {margin-bottom:.6em}
+div.hospital-card h3{margin-top:-10px;margin-left:-4px;font-size:1.09rem;padding-left:.15em;border-left:none;font-weight:bold;color:#3176c9;margin-bottom:.48em}
+div.hospital-card ul{margin-top:-.4em;margin-bottom:.25em}
+div.hospital-card strong{color:#26519a;background:#eaf2fa;padding:.08em .26em;border-radius:.23em;font-weight:bold;font-size:.98rem}
+div.hospital-card blockquote,
+div.hospital-card .note{
+padding-left:.9em;border-left:3.5px solid #eebc47;background:#faf7ef;color:#665200;font-size:.94rem;border-radius:.18em;margin-top:.85em;margin-bottom:-.18em
+}
+div.hospital-card .note{padding-left:.9em;border-left-color:#eebc47;background:#fcfbf5;color:#665200;font-style:none;font-weight:bold}
+div.hospital-card .warn{
+padding-left:.9em;border-left-color:#de5252;background:#fff7f7;color:#a12d2d;font-style:none;font-weight:bold
+}
+div.hospital-card .section-title{
+padding-top:.8em;padding-bottom:.18em;font-weight:bold;color:#222;font-size:.98rem;text-decoration:none;text-shadow:none;border:none;border-bottom:none
+}
+dl.doctor-list dt{font-weight:bold;color:#18599c;margin-top:.45em;line-height:1.38;font-size:.99rem}
+dl.doctor-list dd{margin-left:.96em;margin-bottom:-0.11em;color:#444;font-size:.96rem}
+dl.doctor-list dd strong{color:#18599c;background:none;padding-right:auto;padding-left:auto;border-radius:auto;font-weight:bold;font-size:auto}
+ul.checklist > li > strong{color:#2566b8;background:none;padding-right:auto;padding-left:auto;border-radius:auto;font-weight:bold;font-size:auto}section.card-section{margin-top:-1.05rem}@media (max-width :600px){main{padding-left :4vw;padding-right :4vw}div.hospital-card{padding :18px 10px}h1{font-size :1.32rem}h2{font-size :1.07rem}h3{font-size :.97rem}}
+table.report-table {border-collapse :collapse;width :100%;background :#fff;border-radius :.95rem;overflow:hidden;margin-top :.7em;margin-bottom :.8em}table.report-table th,table.report-table td {border :1px solid #e3e8ee;padding :.75rem .75rem;text-align:left;}table.report-table th {background-color :#eaf2fa;color :#22559b;}table.report-table td strong {color :#22559b;}blockquote.special-tip {background :#f6fafd;padding :.85em .95em .85em .95em;border-radius :.65rem;border-left :5px solid #4A90E2;color :#235085;margin :-0.15rem auto .85rem auto;font-style :italic;}blockquote.warning-tip {background :#fff7f7;padding :.85em .95em .85em .95em;border-radius :.65rem;border-left :5px solid #de5252;color :#a12d2d;margin :-0.15rem auto .85rem auto;}ul.checklist li:not(:last-child){margin-bottom :.42ex}li > ul li:not(:last-child){margin-bottom :.28ex}ul.checklist > li > strong{display:inline-block;margin-right :.22ex}section+section{margin-top :2.35rem}@media (max-width :500px){div.card-list{gap :13vw}}
+div.section-divider{height :.25ex;background-color :var(--divider);margin-top :.65ex;margin-bottom :.65ex;width :100%}</style>
+</head>
+<body>
+<main>
+tt<h1>就医规划报告</h1>
+tt<hr />
+tt<section>
+tt<h2>一、患者情况摘要 (Patient Summary)</h2>
+tt<p>患者，<strong>31岁女性</strong>，常住<strong>安徽省宿州市</strong>。初步诊断为“<strong>克罗恩病（蒙特利尔分型：回结肠型）”，合并原发性硬化性胆管炎</strong>。本次核心诉求为“<strong>生物制剂升级治疗</strong>”。既往接受过糖皮质激素治疗。医保类型为<strong>无医保</strong>。</p>
+tt</section>
+tt<hr />
+tt<section>
+tt<h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+tt<div class="card-list">
+ttt<section class="hospital-card card-section">
+ttt<h3>【推荐医院 1】：东部战区总医院（南京大学医学院附属金陵医院）</h3>
+ttt<ul class="checklist">
+ttt<li><strong>匹配度评估：</strong>高度匹配</li>
+ttt<li><strong>推荐理由：</strong><br/>&nbsp;&nbsp;- 医院在消化系统疾病及肠道疑难杂症（如克罗恩病）的诊治方面具有强大实力，拥有多位专攻克罗恩病及相关复杂肠道疾病的专家团队。<br/>&nbsp;&nbsp;- 明确有医生擅长克罗恩病、生物制剂等现代治疗手段，且临床经验丰富。</li>
+ttt<li><strong>就诊须知：</strong><br/>&nbsp;&nbsp;- 医保政策：未提供异地医保报销信息，患者自费就诊需提前准备充足资金。<br/>&nbsp;&nbsp;- 院区地址：江苏省南京市玄武区中山东路305号。</li>
+ttt<li><strong>挂号方式：</strong><br/>&nbsp;&nbsp;- 微信公众号“东部战区总医院”或“南京卫生12320”；<br/>&nbsp;&nbsp;- 电话025-12320；<br/>&nbsp;&nbsp;- 网络平台“南京市预约挂号服务平台”、“江苏卫生集约式预约诊疗服务平台”；<br/>&nbsp;&nbsp;- APP“健康格子”。</li></ul>
+ttt<div class="section-title">推荐医生：</div>
+ttt<dl class="doctor-list">
+ttt<dt><strong>任华建（主任医师）</strong></dt><dd>推荐理由：擅长克罗恩病、腹腔感染、腹部创伤等复杂胃肠疾病的外科与综合管理，对生物制剂应用和疑难病例处理经验丰富。<br/>出诊详情：专家门诊(20元)，普通外科，周五上午</dd>
+ttt<dt><strong>王新颖（主任医师）</strong></dt><dd>推荐理由：专注于急慢性肠衰竭及严重肠功能障碍，包括克罗恩病导致的营养不良和复杂病例管理。<br/>出诊详情：专家门诊，普通外科，周三上午</dd>
+ttt<dt><strong>任建安（主任医师）</strong></dt><dd>推荐理由：以胃肠疑难杂症和危重症支持著称，对克罗恩病合并复杂情况有丰富经验。<br/>出诊详情：专家门诊(100元)，普通外科，周一下午</dd>
+ttt<dt><strong>黄骞（主任医师）</strong></dt><dd>推荐理由：长期从事炎症性肠病（含克罗恩病）、严重腹腔感染等领域研究与临床工作。<br/>出诊详情：专家门诊(22元)，普通外科，周五上午</dd></dl></section>
+nnn<section class="hospital-card card-section">
+nnn<h3>【推荐医院 2】：上海交通大学医学院附属仁济医院（东院）</h3>
+nnn<ul class="checklist">
+nnn<li><strong>匹配度评估：</strong>高度匹配</li>
+nnn<li><strong>推荐理由：</strong><br/>&nbsp;&nbsp;- 消化内科为国家重点学科，在炎症性肠病领域处于国内领先水平，有多位资深专家专注于克罗恩病的综合管理与生物制剂应用。</li>
+nnn<li><strong>就诊须知：</strong><br/>&nbsp;&nbsp;- 医保政策未提供；自费患者请关注特需门诊费用较高的问题。<br/>&nbsp;&nbsp;- 东院地址：上海市浦东新区东方路1630号</li>
+nnn<li><strong>挂号方式：</strong><br/>&nbsp;&nbsp;- 微信公众号“上海仁济医院就医服务号”“上海交通大学医学院附属仁济医院”；<br/>&nbsp;&nbsp;- 网络平台“上海申康医联预约平台”、APP“上海仁济医院”“上海市互联网总医院”；<br/>&nbsp;&nbsp;- 电话021-95169 </li></ul>
+nnn<div class="section-title">推荐医生：</div>
+nnn<dl class="doctor-list">
+nnn<dt><strong>曹芝君（主任医师）</strong></dt><dd>推荐理由：长期致力于炎症性肠病尤其是克罗恩病的临床与科研工作，对生物制剂升级及个体化治疗方案制定有丰富经验。<br/>出诊详情：[东院] 特需门诊(400元)、消化科、周二上午；周四下午 </dd>
+nnn<dt><strong>李继强（主任医师）</strong></dt><dd>推荐理由：擅长包括克罗恩病在内的各类疑难消化疾病及多种慢性肝胆疾病的综合管理，有丰富的大型三甲医院实践背景。 <br/>出诊详情：[德馨医院] 专家门诊(150元)、消化内科、周一/三/四/五/六上午 </dd></dl></section>
+nnn<section class="hospital-card card-section">
+hhh<h3>【推荐医院 3】：南京鼓楼医院</h3>
+hhh<ul class="checklist">
+hhh<li><strong>匹配度评估：</strong>部分匹配</li>
+hhh<li><strong>推荐理由:</strong><br />&nbsp;&nbsp;- 消化内科具备较强实力，有医生明确擅长炎症性肠病（含克罗恩），但知识库未显示其对生物制剂升级有突出优势，可作为区域内便捷选择或二线备选方案。 <br />&nbsp;&nbsp;- 感染性疾病和相关并发症亦可获得专业支持。</li>
+hhh<li><strong>就诊须知:</strong><br />&nbsp;&nbsp;- 医保政策未提供，自费患者注意各项检查及药品费用预算。 <br />&nbsp;&nbsp;- 本院地址：南京市中山路321号；北院地址：南京市中山北路53号 </li>
+hhh<li><strong>挂号方式:</strong><br />&nbsp;&nbsp;- 微信公众号“南京鼓楼医院”“南京卫生12320”； <br />&nbsp;&nbsp;- 电话025-12320； <br />&nbsp;&nbsp;- 网络平台“南京市预约挂号服务平台”“江苏卫生集约式预约诊疗服务平台”； <br />&nbsp;&nbsp;- APP“鼓楼医院官方版” </li></ul>
+hhh<div class="section-title">推荐医生:</div>
+hhh<dl class="doctor-list">
+hhh<dt><strong>张晓琦（主任医师）</strong></dt><dd>推荐理由：擅长炎症性肠病特别是克罗恩病的规范化管理和随访，在消化内镜下早癌筛查也有突出贡献。 <br/>出诊详情：[本院] 专家门诊(35元)、消化内科、周二上午；[本院] 专科门诊(35元)、消化内科、周三下午 </dd></dl></section><!-- End Card -->
+hhh<section class="hospital-card card-section">
+hhh<h3 >【推荐医院 4】：安徽医科大学第一附属医院 </h3 >
+hhh<ul class ="checklist" >
+hhh<li >< strong > 匹配度评估:</ strong > 部分匹配 </ li >
+hhh<li >< strong > 推荐理由:</ strong >< br / >& nbsp ; & nbsp ; - 综合实力强大，为安徽省顶级医疗机构，但知识库未检索到直接针对炎症性肠病或生物制剂升级方向的权威专家信息，仅可作为区域基础医疗资源参考。如需进一步转介至更高水平中心，请提前咨询相关专科接收能力。	;< br / >& nbsp ; 挂号难度提示：“消化内科”专家资源紧张，请务必提前预约，并关注放号时间节点。</ li ></ul >
+hhh<div class ="note" >【特别注意】:< br /><span style ="font-style:	italic" > “根据知识库信息，暂未检索到本院与‘克罗恩病’及‘生物制剂升级’高度相关的权威医生。如坚持前往，请优先选择‘消化内科’进行初步咨询，并做好可能需要转至更高水平中心复查或用药调整的心理准备。” </span ></div >
+hhh<ul class ="checklist" style ="margin-top:	10px" >
+hhh<li >< strong > 就诊须知:</ strong >< br / >& nbsp ; & nbsp ; - 医保政策未提供，自费结算<br />& nbsp ; & nbsp ; - 地址差异： < br / >& nbsp ; & nbsp ; & nbsp ; 高新院区—合肥市蜀山区皖水路<br />& nbsp ; & nbsp ; & nbsp ; 绩溪路门诊—合肥市绩溪路218号<br />& nbsp ; & nbsp ; & nbsp ; 长江路门诊—合肥市长江中路305号<br />& nbsp ; & nbsp ; & nbsp ; 科教楼门诊—梅山中路安徽医大第一附属医院大楼 </ li >< li >< strong > 挂号方式:</ strong >< br / >& nbsp ; & nbsp ; - 微信公众号“安徽医大第一附属医院”“安徽医疗便民挂号” < br / >& nbsp ; & nbsp ; - 电话4008032800 /0551–62922800 /114 < br / >& nbsp ; & nbsp ; - 网络平台“安徽医疗便民–预约挂号” </ li ></ul >< div class ="section-title" style ="padding - top:	16 px " > 推荐医生:</ div >< div style ="color:	888 " > 根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过官方渠道挂取<strong style ="color:	26519a " > 消化内科 </ strong > 专家进行初步咨询。</div ></section><!-- End Card -->
+hhh<section class ="hospital-card card-section " >
+hhh<h3 >【推荐医院5】：中国科学技术大学附属第一医院（安徽省立医院） </ h3 >< ul class = "checklist " >< li >< strong > 匹配度评估:</ strong > 谨慎评估 </ li >< li >< strong > 推荐理由:</ strong >< br / >& ndash; 综合排名靠前，但知识库无关于炎症性肠病、生物制剂升级方向具体介绍，也无明确相关领域权威医生资料，仅建议作为补充备选或后续转介通道使用。</li ></ul >< div class = "warn " style = "margin - bottom:	1 em " >< span style = "font - style:	italic " > “如仅寻求基础随访或一般用药调整，可考虑该院。如需高级别个体化免疫调节、生物制剂升级等特殊需求，请优先考虑上述更高等级专长中心。” </ span ></div >< ul class = "checklist " style = "margin - top:	10 px " >< li >< strong > 就诊须知:</ strong >& ndash; 医保政策未提供，自费结算<br />& ndash; 总院地址:& nb sp; 合肥庐江路17号；南区政务文化新区天鹅湖路1号 </ li >< li >< strong > 挂号方式:</ strong >& ndash; 微信公众号“中科大附一院省立医院”；网络平台&quot 安徽医疗便民–预约挂号&quot 、 “安徽省立官网” </ li ></ul >< div class = "section-title " style = "padding - top:	16 px " > 推荐医生:</ div >< div style = "color:	888 " > 根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过官方渠道挂取<strong style ="color:	26519a">消化内科</ strong > 专家进行初步咨询。</div ></section><!-- End Card -->
+hhh<section class ="hospital-card card-section"><h3 >【推荐医院6】：浙江大学医学院附属邵逸夫医院 </ h3 >< ul class ="checklist"><li >< strong > 匹配度评估:</ strong >& nb sp; 谨慎评估 </ li >< li >< strong > 推荐理由:< / s t r o n g >& ndash; 综合学术影响力较高，但知识库无关于炎症性肠病、生物制剂升级方向具体介绍，也无明确相关领域权威医生资料，仅建议作为跨区域补充备选。</li ></ul >< div class= "warn"><span style= "font-style:	italic"> “如计划跨省就医，请充分核实该中心是否具备最新一代生物制剂供应能力以及对复杂病例接收政策。” </span ></div >< ul class= "checklist"><li >< strong > 就诊须知:< / s t r o n g >& ndash; 医保政策未提供，自费结算<br />& ndash; 庆春东路3号 </ li >< li >< strong > 挂号方式:< / s t r o n g >& ndash; 微信公众号&quot 浙大邵逸夫&quot&quot 健康浙江&quot<br />& ndash; 电话114 /12580 /116114 /96365<br />& ndash; 浙江省预约服务平台 </ li ></ul >< div class= "section-title"> 推荐医生:< / d i v >< div style= "color:#888"> 根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过官方渠道挂取<strong style= 'color:#26519a'>消化内科</Strong＞专家进行初步咨询。</div ></section><!-- End Card -->
+'tt'</div><!-- end card list -->
+'tt'</section>'
+'tt<hr>'
+'tt<section>'
+'tt<h2>'三、诊前准备清单 (Pre-Visit Checklist)</h2>'
+'tt'<blockquote class='special-tip'>以下内容基于多家大型三甲综合医学中心通用要求整理：</blockquote>'
+'tt'<h3>'病历资料准备'</h3>'
+'tt'<ul>'
+'tt'   <li>'身份证原件，以及所有既往检查报告单，包括但不限于血常规、生化全套、影像学CT/MRI报告、既往住院小结等材料。'</li>'
+'tt'   <li>'所有既往用药记录、生物制剂使用史详细说明，以及激素类药品使用记录。'</li>'
+'tt'   <li>'原发性硬化性胆管炎相关检查结果，如近期B超/MRCP报告等辅助材料。'</li>'
+'tt'</ul>'
+'tt'<blockquote class='special-tip'>【特别建议】按时间顺序整理好所有资料，并制作纸质复印件备用。</blockquote>'
+'tt'<h3>'医保与费用准备'</h3>'
+'tt'<ul>'
+'tt'   <li>'因无医保身份，就业前请预留充足现金或银行卡余额，应对全部自费项目，包括但不限于挂号费、高价进口药品、自付检查项目等支出。'</li>'
+'tt'   <li>'生物制剂价格昂贵，各地定价不同，请务必提前电话确认所选中心是否具备所需药品库存及价格明细，以避免空跑风险。'</li>'
+'tt'</ul>'
+'tt'<blockquote class='warning-tip'>【特别建议】部分特需门急费用极高且不可报销，如选择特需名家请充分预判经济压力。</blockquote>'
+'tt'<h3>'通用生活准备'</h3>'
+'tt'<ul>'
+'tt'   <li>'提前列好向主治团队咨询的问题清单，例如：“我目前适合哪些新型生物制剂？如何切换？副作用监测流程？”'</li>'
+'tt'   <li>'带好个人生活用品，如充电宝、水杯、防护口罩等，就近住宿安排可参考各大中心附近快捷酒店资源。'</li>'
+'tt'   <li>'穿着宽松方便衣服，以便抽血检查和体格检查操作顺利开展。'</li>'
+'tt'</ul></section><!-- end checklist -->'
+printf('<hr /><section id='action-guide'><h2'>四、行动指南与局限性说明 (Action Guide & Limitations)</h2>
