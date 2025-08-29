@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>南京胆红素过高就医规划报告</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI -->
+  <script src="https://unpkg.com/preline@1.8.0/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+    img.lazy {
+      filter: blur(8px);
+      transition: filter .5s;
+    }
+    img.lazy.loaded {
+      filter: blur(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen font-sans">
+
+<!-- Header -->
+<header class="sticky top-0 z-30 bg-white/90 backdrop-blur shadow-sm border-b border-gray-100">
+  <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="material-icons text-blue-600 text-2xl">local_hospital</span>
+      <span class="font-semibold text-xl tracking-tight">南京胆红素过高就医规划报告</span>
+    </div>
+    <div class="flex gap-2">
+      <a href="#医院推荐" class="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors">推荐医院</a>
+      <a href="#诊前准备" class="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors">诊前准备</a>
+      <a href="#行动指南" class="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors">行动指南</a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 pt-8 pb-16">
+
+<!-- 患者摘要 -->
+<section id="患者摘要" class="mb-10 fade-in">
+  <h2 class="flex items-center gap-2 text-lg md:text-xl font-bold mb-3"><span class="fa-solid fa-user-circle text-blue-500"></span> 患者情况摘要</h2>
+  <div class="bg-white rounded-xl shadow p-6 flex flex-col md:flex-row gap-y-6 gap-x-10 items-start md:items-center fade-in group hover:shadow-lg hover:border-blue-200 border border-transparent transition-all duration-300">
+    <ul class="space-y-3 flex-grow min-w-[180px]">
+      <li><i class="fa-solid fa-mars-stroke me-2 text-gray-400"></i>性别：<b>男</b></li>
+      <li><i class="fa-solid fa-cake-candles me-2 text-gray-400"></i>年龄：<b>35岁</b></li>
+      <li><i class="fa-solid fa-location-dot me-2 text-gray-400"></i>常住地：<b>南京</b></li>
+      <li><i class="fa-solid fa-shield-heart me-2 text-gray-400"></i>医保类型：<b>南京医保</b></li>
+    </ul>
+    <ul class="space-y-3 flex-grow min-w-[180px]">
+      <li><i class="fa-solid fa-vial-circle-check me-2 text-yellow-500"></i>现状：<b>胆红素值过高</b></li>
+      <li><i class="fa-solid fa-notes-medical me-2 text-gray-400"></i>既往病史：<b>胆囊切除术（已做）</b></li>
+      <li><i class="fa-solid fa-check-double me-2 text-green-500"></i>其他重大疾病/手术史：<b>无</b></li>
+      <li><i class="fa-solid fa-bullseye-pointer me-2 text-blue-500"></i>本次诉求：<b>确定治疗方案</b></li>
+    </ul>	
+  </div>	
+</section>	
+
+<!-- 核心就医建议 -->	
+<section id="医院推荐" class="mb-12 fade-in">	
+  <h2 class="flex items-center gap-x-2 text-lg md:text-xl font-bold mb-[18px]"><span class='material-icons text-green-500'>recommend</span>核心就医建议与推荐医院</h2>		
+	<div class='grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-x-[30px] gap-y-[32px]'>			
+		<!-- 医院卡片1 -->			
+		<div class='group bg-white rounded-xl border border-transparent shadow p-[26px] flex flex-col justify-between hover:border-blue-300 hover:shadow-xl transition-all duration-[250ms] fade-in'>				
+        <!-- 标题与匹配度 -->				
+        <div class='flex items-center justify-between mb-[9px]'>					
+          <span><span class='font-semibold'>江苏省人民医院</span></span><span title='高度匹配' "><span style='font-size:.85em' class='inline-flex items-center px-[7px] py-[1.5px] rounded-full bg-green-100/80 text-green-700'><i style='font-size:.95em' class='fa-solid fa-circle-check mr-[5px]'></i>高度匹配</span></span></div><!-- 推荐理由 -->				
+        <p class='text-sm leading-relaxed mb-[11px]'><strong>[优势]</strong>&nbsp;三甲综合性医院，肝胆外科为省重点学科，擅长肝胆疾病诊治及个体化治疗。</p><!-- 就诊须知 -->				
+        <ul style='font-size:.95em' class='mb-[9px] space-y-[5px] pl-[17px] list-disc list-inside'>	<li><strong>医保：</strong>支持南京本地医保结算。</li><li><strong>院区：</strong>主院区（广州路300号）。</li></ul><!-- 挂号方式 -->	<ul style='font-size:.95em' class='mb-[9px] pl-[17px] list-disc list-inside'><li><strong>挂号：</strong>&nbsp;微信公众号“江苏省人民医院”或“南京卫生12320”；电话025‑12320/96100；官网、APP、健康格子等平台。</li><li><strong>放号时间：</strong>&nbsp;普通号7:00–17:00，专家号7:10–11:00、13:30–16:30。</li></ul><!-- 推荐医生表格 -->	<div data-hs-tooltip-show-on-hover data-hs-tooltip-content='<b style=color:#2563eb;display:block;font-weight:bold;margin-bottom:.25em;'>王平 主任医师、副教授</b><small style=color:#222;font-weight:bold;display:block;margin-bottom:.25em;'>出诊：</small>[本部 专家门诊 周四上午；周五下午]<br>[专科门诊 周六上午]<br>' data-hs-tooltip-placement='top'>	<table style='font-size:.93em' aria-label='医生推荐列表' title=''class='w-full mt-[6px]' >	<thead><tr style='color:#64748B;font-weight:bold'><th align=left scope=col style='padding-right:.8em;'>医生姓名</th><th align=left scope=col style='padding-right:.8em;'>专长领域/推荐理由</th></tr></thead><tbody><tr title=''class='hover:bg-slate‑50 cursor-pointer'><td style='padding-right:.8em;'>王平 (主任医师)</td><td >肝胆外科常见病、多发病及肝胆系统肿瘤、终末期肝病等诊治经验丰富。<br/><small>[专家门诊 周四上午/周五下午]</small></td></tr><tr title=''class='hover:bg-slate‑50 cursor-pointer'><td style='padding-right:.8em;'>吴晓峰 (主任医师)</td><td >专长于肝移植及各类肝胆疾病手术治疗。<br/><small>[专家门诊 周四上午/周三下午]</small></td></tr><tr title=''class='hover:bg-slate‑50 cursor-pointer'><td style='padding-right:.8em;'>戴新征 (主任医师)</td><td >复杂肝脏良恶性肿瘤、胆道疾病及精准外科治疗。<br/><small>[专家门诊 周二下午/周五下午]</small></td></tr></tbody></table></div><!-- End 医生表格 -->	   </div><!-- End 医院卡片1 -->	   	   	   	   	   	   	   	   	   	   	   	   	   	   	   	   	     <!-- 医院卡片2 -->       	<div class='group bg-white rounded-xl border border-transparent shadow p-[26px] flex flex-col justify-between hover:border-blue‑300 hover:shadow-xl transition-all duration‑[250ms] fade-in'>       <!-- 标题与匹配度 -->       	<div class='flex items-center justify-between mb‑[9px]'>         	<span><span class='font-semibold'>东南大学附属中大医院</span></span><span title='高度匹配'><span style='font-size:.85em' class='inline-flex items-center px‑[7px] py‑[1.5px] rounded-full bg-green‑100/80 text-green‑700'><i style='font-size:.95em' class='fa-solid fa-circle-check mr‑[5px]'></i>高度匹配</span></span></div><!-- 推荐理由 -->       	<p class='text-sm leading-relaxed mb‑[11px]'><strong>[优势]</strong>&nbsp;三甲综合性教学医院，普外和消化内科多学科协作，擅长黄疸/高胆红素精准分型和会诊。</p><!-- 就诊须知 --><ul style='font-size:.95em'class=mb‑[9px] space-y‑[5px] pl‑[17px] list-disc list-inside ><li ><strong >医保：</strong >支持南京医保结算。</li ><li ><strong >院区：</strong >本部（湖南路丁家桥87号）、江北院区（健民路211号），建议优先本部或交通便利选择。</li ></ul ><ul style = 'font-size:.95em'class = 'mb‑[9px]'pl = '[17px]'list-disc list-inside ><li ><strong >挂号：</strong >微信公众号“东南大学附属中大医院”或“南京卫生12320”；电话025‑83272114；APP“健康格子”等平台。</li ></ul><!-- 推荐医生表格 --><table aria-label = '医生推荐列表'style = 'font-size:.93em'class = 'w-full mt‑[6px]' ><thead ><tr style = 'color:#64748B;font-weight:bold'><th align=left scope=col style ='padding-right:.8em;'>医生姓名</th ><th align=left scope=col style ='padding-right:.8em;'>专长领域/推荐理由</th ></tr ></thead ><tbody ><tr title=''class ='hover:bg-slate‑50 cursor-pointer'><td style ='padding-right:.8em;'>吴永丰 (普通外科)</td ><td >胃肠道及肝胆疾病微创手术，腹腔镜操作丰富经验。<br /><small >[江北院区 专家门诊 周二上午]</small ></td ></tr ><tr title=''class ='hover:bg-slate‑50 cursor-pointer'><td style ='padding-right:.8em;'>陆枫林 (消化内科)</td ><td >消化系统疑难重症、不明原因黄疸等。<br /><small >[本部 专家门诊 暂无具体时间]</small ></td ></tr ></tbody ></table ></div><!-- End 医院卡片2 -->     <!-- 医院卡片3 --><divclass ='group bg-white rounded-xl border border-transparent shadow p‑[26px]'style ='transition-all .25s;'onmouseover = "this.classList.add('border-blue‑300','shadow-xl')"onmouseout = "this.classList.remove('border-blue‑300','shadow-xl')"><!-- 标题与匹配度 --><divclass ='flex items-center justify-between mb‑[9px]' ><spanspanclass ='font-semibold'>东部战区总医院（原南京军区总医院）</spanspan ><spantitle ='高度匹配'><spansytle ='font-size:.85em'data-hs-tooltip-content='<bstyle=color:#2563eb;display:block;font-weight:bold;margin-bottom:.25em;'>王新波 主任医师 普通外科·胰腺/胆道方向<b/><samllstyle=color:#222;font-weight:bold;display:block;margin-bottom:.25em;'>出诊：</samll>[专家门诊(35元) 周二上午；特需门诊(79元) 周三下午 ]'data-hs-tooltip-placement ='top'class ='inline-flex items-center px‑[7px] py‑[1.5x]'rounded-full bg-green‑100/80text-green700'><istyle ='font-size:.95e'class ='fa-solid fa-circle-check mr-'5x'></ispan高度匹配/span/span/div><!-- 推荐理由 --><pclass ='text-sm leading-relaxed mb-'11x'><strong>[优势]</strong>&nbsp;大型三甲综合医疗中心，普外&消化内多学科协作，复杂黄疸、高胆红素具备丰富处理经验。</p><!-- 就诊须知 --><ulstyle ='font-size:.95e'class ='mb-'9x'space-y-'5x'pl-'17x'list-disc list-inside'><listrong医保：/strong支持南京医保结算。</lilistrong地址：/strong主院区玄武区中山东路305号。</lilistrong挂号：/strong微信公众号“东部战区总医院”、电话025–80860144等、APP健康格子等平台。</lilistrong放号时间：/stron未明确，请实际查询为准。</liu>/ul><!-- 推荐医生表格 --><tablearia-label ='医生推荐列表'style ='font-size:.93e'class ='w-full mt-'6x''thead'trstylecolor:'#64748B';font-weight:'bold''thalignleftscopecolstylingright'.8e>'医生姓名'/th'thalignleftscopecolstylingright'.8e>'专长领域/推荐理由'/th'/tr''thead''tbody'trtitle''classhoverbgslate50cursorpointer'tdstylepaddingright'.8e>'王新波 (主任医师)'/'td'td胰腺癌、慢性胰腺炎、疑难复杂胰腺和胆道疾病手术经验丰富。/<br /><smallexpert门诊(35元)周二上午特需门诊(79元)周三下午/small/'td'/tr'trtitle''classhoverbgslate50cursorpointer'tdstylepaddingright'.8e>'黄骞 (主任医师)'/'td'td复杂胃肠道疾病与营养支持，严重腹腔感染和复杂黄疸病例经验。/<br /><smallexpert门诊(22元)周五上午/small/'td'/tr'trtitle''classhoverbgslate50cursorpointer'tdstylepaddingright'.8e>'张晓华 (主任医师)'/'td'td不明原因腹水、高转氨酶、高黄疸鉴别处理。/<br /><smallexpert门诊(50元)消化内科 周二上午；周四上午；周二下午/small/'td'/tr'/tbody'/table'</div><!-- End 医院卡片3 --> <!-- 医院卡片4---><divclassgroupbgwhiteroundedxlborderbordertransparentshadowp26xflexflexcoljustifybetweenhoverbordergray200hovershadowxltransitionallduration250msfadein---><!--标题与匹配度---><divclassflexitemscenterjustifybetweenmb9x---><spanspanclassfontsemibold--->南京鼓楼医院/span---><spantitle部分匹配---><spansytlefontsize85eminflexitemscenterp7xp15xroundedfullbggray10080textgray700---><istylefontsize95emaSolidfacirclequestionmr5x--->部分匹配/i/span/span/div---><!--推荐理由---><pclasstextsmleadingrelaxedmb11x---->[补充选择]&nbsp;老牌三甲综合性医疗机构，有普外&消化内等重点专科学组，但未检索到直接关联高胆红素权威专家，仅供补充参考。</p---><!--就诊须知---><ulstylefontsize95emb9xspacey5xpl17xlistdisclistinside---><listrong医保:/stron支持南京医保结算。</lilistrong地址:/stron中山路321号，北院中山北路53号，请分辨院区。</liu>/ul---><!--挂号方式---><ulstylefontsize95empl17xlistdisclistinside---><listrong挂号:/stron微信公众号“南京鼓楼医院”、电话025—83105555、“健康格子”等官方渠道均可预约。</liu>/ul---/> <!--暂无权威医生信息提示-->         </div><!-- End 医院卡片4-->     </div><!-- End grid-->     <!-- 特别注意提示框-->     <div role = 'alert'class = 'mt - [28 px ] p - [18 px ] rounded - xl bg - yellow - 50 border - l - [4 px ] border - yellow - 400 flex gap - x - [18 px ] fade - in '>         < spanclass = 'material-icons self-start shrink -0text-yellow -600 mr - [10 px ] '> info           </ span >         < div >             本报告所有医生均面向成人患者，无年龄冲突风险。如需进一步分型排查，可首选三级甲等综合性大院的<strong >【普外 / 肝胆外科】或【消化内科】进行初步筛查，再由专业团队制定后续方案 。                 部分特需费用较高，请提前确认能否使用医保支付。                 外地优秀资源因地域远离，不做优先建议 。         </ div >     </ div > </ section > <!--End 核心就医建议-->     <!--诊前准备清单-->     < section id = "诊前准备 "class = "mt -14 mb -12 fade-in " >         < h2class = "flex items-center gap-x -2 text-lg md :text-xl font-bold mb - [18 px ] " >             < spancass = 'material-icons text-orange -500 ' > checklist_rtl             </ span >             就医前准备清单         </ h2 >         <!--内容块-->         < divclass = 'grid grid-cols ‑ [repeat(auto-fit,minmax(260 px ,1fr)) ] gap-x ‑ [22 px ] gap-y ‑ [15 px ] mt ‑ [10 px ] '>             <!--资料准备卡片-->             < divclass = 'rounded-lg bg-white p ‑ [19 px ] shadow group hover :shadow-lg hover :border-orange ‑200 border border-transparent transition-all duration ‑200ms fade-in '>                 < divclass = 'flex items-center gap-x ‑3 mb ‑ [10 px ] '>                     < spanclas s= 'material-icons-outlined text-orange ‑500 '>folder_open                    </ span >                     病历资料准备                 </ div >                 < ulclas s= 'mt ‑ [6 px ] space-y ‑ [6 px ] pl ‑ [14 px ] list-disc list-inside '>                     < li >身份证、医保卡原件；                     </ li >                     < li >既往所有检查报告单（血常规、生化全套尤其是近期血清总 /直接间接胆红素结果）、影像学 CT/MRI/B 超报告；                     </ li >                     < li >胆囊切除手术记录或出院小结；                     </ li >                     < li >病历本或有关“黄疸”、“转氨酶异常”证明材料；                     </ li >                     < li >< strongstyle = "color : #f59e42 ;">特别建议：</ strong >&nbsp;按时间顺序整理好所有资料，并用文件夹分类携带 。                    </ li ></ ul ></ div >
