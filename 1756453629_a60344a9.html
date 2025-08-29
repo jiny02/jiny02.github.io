@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>患者的就医规划报告</title>
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Preline UI -->
+  <script src="https://unpkg.com/preline@2.0.3/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .fade-in { animation: fadeIn .7s ease; }
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(16px); }
+      to   { opacity:1; transform: none; }
+    }
+    /* 深色模式支持 */
+    [data-theme='dark'] {
+      --tw-bg-opacity:1;
+      background-color: rgb(17,24,39);
+      color: #e5e7eb;
+    }
+    [data-theme='dark'] .bg-white {
+      background-color: #23272f !important;
+    }
+    [data-theme='dark'] .text-gray-900 {
+      color:#e5e7eb !important;
+    }
+    [data-theme='dark'] .text-gray-700 {
+      color:#d1d5db !important;
+    }
+    [data-theme='dark'] .border-gray-200 {
+      border-color:#374151 !important;
+    }
+    [data-theme='dark'] .bg-gray-50 {
+      background-color:#181c23 !important;
+    }	
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="mainBody">
+<div class="max-w-3xl mx-auto px-4 py-6 fade-in">
+
+<!-- 顶部深浅色切换按钮 -->
+<div class="flex justify-end mb-2">
+<button id="themeToggleBtn" class="inline-flex items-center px-3 py-1 rounded-md text-sm font-medium border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"><i class="fa-solid fa-circle-half-stroke mr-2"></i><span id="themeText">深浅切换</span></button>
+</div>
+
+<h1 class="text-center text-xl sm:text-2xl md:text-[28px] font-bold tracking-tight text-gray-900 dark:text-white mb-6">患者的就医规划报告</h1>
+
+<!-- 一、患者情况摘要 -->
+<section aria-label="患者情况摘要" class="mb-8">
+<div class="rounded-lg border-l-[6px] border-blue-500 bg-white dark:bg-[#23272f] shadow p-5 flex items-start gap-x-4 fade-in">
+<i class="fa-solid fa-user-doctor text-blue-500 text-xl mt-[2px]"></i>
+<div>
+<h2 class="font-semibold text-lg mb-[6px]">患者情况摘要 (Patient Summary)</h2>
+<p class="text-base leading-relaxed text-gray-700 dark:text-gray-200">患者，31岁女性，常住宿州，初步诊断为“克罗恩病”。本次核心诉求为生物制剂升级。医保类型为无医保。既往病史包括蒙特利尔分型：回结肠型，曾接受糖皮质激素治疗，并伴有原发性硬化性胆管炎。</p>
+</div></div></section>
+
+<!-- 二、核心就医建议 -->
+<section aria-label="核心就医建议" class="mb-10 fade-in">
+<h2 class="font-semibold text-lg mb-[10px] flex items-center"><i class='fa-solid fa-hospital-user mr-[8px]'></i>核心就医建议 (Core Medical Recommendation)</h2>
+<div class='space-y-[22px]'>
+
+<!-- 安徽医科大学第一附属医院卡片 -->
+<div class='bg-white dark:bg-[#23272f] rounded-xl shadow hover:ring ring-blue-100/70 hover:ring-blue-400/30 transition-all border border-gray-200 dark:border-[#374151] p-[22px] group'>
+<div class='flex flex-wrap items-center gap-x-[12px] gap-y-[8px] mb-[9px]'>
+<span class='inline-flex items-center px-[10px] py-px rounded-full bg-green-100 text-green-800 text-xs font-semibold'><i class='fa-solid fa-circle-check mr-[4px]'/>高度匹配</span> 
+<span class='text-base font-bold ml-auto'>安徽医科大学第一附属医院（合肥）</span></div> 
+<p class='mb-[7px] text-sm leading-relaxed'>推荐理由：该院为安徽省顶级三甲综合医院，在消化内科及相关专科具备较强实力。消化内科号源紧张，但具备炎症性肠病（如克罗恩病）诊治能力，可开展生物制剂等新型药物治疗。地理位置距离宿州较近，就诊便利性高。</p> 
+<ul role='list' class='list-disc pl-[18px] space-y-px mb-[7px]' style='font-size:.97rem;'>	<li><b>医保政策：</b>无医保患者可自费就诊，费用需自理。</li><li><b>不同院区地址：</b>高新院区：合肥市蜀山区皖水路；绩溪路门诊：合肥市绩溪路218号；长江路门诊：合肥市长江中路305号；科教楼门诊：梅山中路安徽医科大学第一附属医院科教大楼。</li></ul> 
+<p><b>挂号方式：</b><br/>① 微信公众号“安徽医科大学第一附属医院”<br/>② 电话400‑8032‑800 / 0551‑62922800 /114<br/>③ 微信公众号“安徽医疗便民挂号”<br/>④ 网络平台“安徽医疗便民预约挂号”<br/><span style='color:#888;'>放号时间以各平台实时更新为准，建议提前关注。</span></p>	<ul role=list style='margin-top:.7em;'class=pl-[14px]> 	<li>- 卢文 （主任医师、副教授） · <b>推荐理由：</b>擅长疑难肾脏疾病及继发性肾损害，对复杂病例有丰富经验 · <b>出诊详情：</b>绩溪路门诊 专家门诊 周二上午/周一下午；长江路门诊 专家门诊 周三上午 挂号费暂无信息元</li><li>- 苏倩 （主任医师） · <b>推荐理由：</b>擅长自身免疫性肝病、重症肝炎等，与原发性硬化性胆管炎相关病例经验丰富 · <b>出诊详情：</b>感染病科 出诊详情暂无信息 挂号费暂无信息元</li><li>- 范星 （主任医师） · <b>推荐理由：</b>主要研究方向为遗传及自身免疫疾病，在复杂病例协作方面有一定经验 · <b>出诊详情：</b>皮肤性病科 出诊详情暂无信息 挂号费暂无信息元</li><li>- 许敏 （主任医师） · <b>推荐理由：</b>擅长内分泌代谢系统疾病，对多系统慢病管理有经验 · <b>出诊详情：</b>长江路门诊 专家门诊 内分泌科 周一上午；绩溪路门诊 专家门诊 内分泌科 周三上午；高新院区 专家门诊 内分泌科 周二下午/周五下午 挂号费暂无信息元</li></ul></div><!-- END 安徽医大一附院卡片 -->											<!-- 中国科学技术大学附属第一医院卡片 -->	<div class='bg-white dark:bg-[#23272f] rounded-xl shadow hover:ring ring-blue/20 hover:ring-blue/40 transition-all border border-gray‑200 dark:border-[#374151] p‑[22px]' > 	<div class= 'flex flex-wrap items-center gap-x‑[12px] gap-y‑[8px] mb‑[9px]' > 	<span class= 'inline-flex items-center px‑[10px ] py-px rounded-full bg-yellow -100 text-yellow -800 text-xs font-semibold'><i class= 'fa-solid fa-circle-half-stroke mr -[4 px ]'/ >部分匹配 </span > <span class ='text-base font-bold ml-auto'>中国科学技术大学附属第一医院（合肥） </span ></div ><p class ='mb -[7 px ] text-sm leading-relaxed '> 推荐理由 ：该院为省级大型三甲综合医院 ，消化内 科具备一定炎症 性 肠 病管理 能力 ，但知识库未检索到与生物制剂升级直接相关的医生或专病团队 。如在安 医大一 附 院无法满足需求时可作为补充选择 。 </p ><ul role = list style = 'font-size:.97rem;'class = 'list-disc pl -[18 px ] space-y-px mb -[7 px ]' >< li >< b > 医保政策 ： </ b > 无医保患者可自费 就 医 ，费用需自理 。 </ li >< li >< b > 不同院区地址 ： </ b > 总院 ： 合肥市庐江 路17号；南区 ： 合肥市政务文化新区天鹅湖 路1号；滨湖医疗保健中心 ： 包河 区徽富 路与迎淮 路交叉口；生殖与遗传分院 ： 庐阳 区北含山 路168号 。 </ li ></ul ><p >< b > 挂号方式 ： </ b >< br />① 微信公众号 “中 科 大 附 一 院省立 医 院 ”<br />② 网络平台 “ 安徽医疗便民预约挂号 ”<br />③ 网络平台 “ 安徽省立 医 院官网 ”<br />< span style ='color :#888;'> 放号时间以各平台实时更新为准 ，建议提前关注 。 </ span ></p >根据知识库信息 ，暂未检索到本院与患者疾病高度相关的推荐医生 。您仍可尝试通过医院官方渠道 ，挂取<strong > 消化内 科 </strong > 的专家 门 诊进行咨询 。 </ div><!-- END 中 科 大 附 一 卡片--->                                                                                                                                                                                                                                                                                                                                                                                                                                                           	                                         	<!-- 东部战区总医院卡片 -->	<div class ='bg-white dark:bg-[#23272f ] rounded-xl shadow hover:ring ring-blue /20 hover:ring-orange /40 transition-all border border -gray -200 dark:border-[#374151 ] p -[22 px ] group mt -3' > 	<div class ='flex flex-wrap items-center gap-x -[12 px ] gap-y -[8 px ] mb -[9 px ]' > 	<span class ='inline-flex items-center px -[10 px ] py-px rounded-full bg-green -100 text-green -800 text-xs font-semibold'>< i clas s ='fa-solid fa-circle-check mr – [4 px]' />高度匹配</span><span class ='text-base font-bold ml-auto'>东部战区总医院（南京）</span ></div ><p class ='mb – [7 px ] text-sm leading-relaxed '> 推荐理由 ：该院在克罗恩 病 、肠外瘘 、腹腔感染等胃 肠 疑难杂症领域全国领先 ，拥有多位长期从事炎症 性 肠 病和营养支持治疗的权威专家团队 ，对复杂病例和生物制剂应用具有丰富临床经验 。适用于需高级别专病管理或跨区域转介者 。 </p ><ul role = list style = 'font-size:.97rem;'class = 'list-disc pl – [18 px ] space-y-px mb – [7 px]' >< li >< b > 医保政策 ： </ b > 无医保患者可自费 就 医 ，费用需自理 。 </ li >< li >< b > 不同院区地址 ： </ b > 江苏省南京市玄武区中山东 路305号。 </ li ></ul ><p >< b > 挂号方式 ： </ b >< br />① 微信公众号 “东部战区总医院”<br />② 微信公众号 “南京卫生12320”<br />③ 电话025–12320<br />④ 南京市预约挂号服务平台<br />⑤ 江苏卫生集约式预约服务平台<br />⑥ APP健康格子<br />< span style ='color :#888;'> 放号时间以各平台实时更新为准 ，建议提前关注 。 </ span ></p><ul role=list style=margin-top:.7em;class=pl–[14px]> 	<li>- 任华建 （主任医师、博士、硕导）·<strong>推荐理由:</strong>&nbsp;擅长克罗恩病、腹腔感染及复杂胃肠道疾病外科治疗，对疑难病例处理和营养支持有丰富经验&nbsp;·&nbsp;<strong>出诊详情:</strong>&nbsp;专家门诊(20元) 普通外科 周五上午&nbsp;</li><li>- 王新颖 （主任医师、博士生导师）·<strong>推荐理由:</strong>&nbsp;精于急慢性肠衰竭及克罗恩病并发症营养支持，多项国家课题负责人&nbsp;·&nbsp;<strong>出诊详情:</strong>&nbsp;专家门诊 普通外科 周三上午&nbsp;</li><li>- 任建安 （主任医师、教授、博导）·<strong>推荐理由:</strong>&nbsp;普外领域权威，长期致力于胃肠疑难杂症和克罗恩病研究&nbsp;·&nbsp;<strong>出诊详情:</strong>&nbsp;专家门诊(100元) 普通外科 周一下午&nbsp;</li><li>- 黄骞 （主任医师、博士生导师）·<strong>推荐理由:</strong>&nbsp;主攻炎症性肠病（含克罗恩）、严重腹腔感染等危重病例救治&nbsp;·&nbsp;<strong>出诊详情:</strong>&nbsp;专家门诊(22元) 普通外科 周五上午&nbsp;</li></ul></div><!-- END 东部战区总医院卡片--->           	        	        	        	        	        	        	        	        \u000a\u000a<!-- 南京鼓楼医院卡片 -->\u000a<div\u0020class=\'bg-white\u0020dark:bg-[#23272f]\u0020rounded-xl\u0020shadow\u0020hover:ring\u0020ring-yellow/30\u0020hover:ring-yellow/60\u0020transition-all\u0020border\u0020border-gray20020020020020020020020174E51]\u0020p-22pz]\'>\u000a<div\u0020class=\'flex flex-wrap items-center gap-x-12pz]\gap-y-8pz]\mb-9pz]\'> \u000a<span\u0020class=\'inline-flex items-center px-10pz]\py-px rounded-full bg-yellow-100100100800xs font-semibold'><i&#32;&#99;&#108;&#97;&#115;&#115;&#61;&#39;&#102;&#97;&#45;&#115;&#111;&#108;&#105;&#100;&#32;&#102;&#97;&#45;&#99;&#105;&#114;&#99;&#108;&#101;-half-stroke&#32;m&#114;-&#91;4&#112;x&#93;&apos;/&gt;&amp#160;&part;&amp#160;&109;&97;&116;&99;&104;&105;&110;&103;</span>&#32;<span&#32;c&#108;a&#115;s=&apos;text-base font-bold ml-auto&apos;&gt;南京鼓楼医院（南京）&lt;/span&gt;</div&gt;
+p&lt;c&#108;a&#115;s=&apos;m&#98;-&lbrack;7&amp;x&amp;lbrace;p&amp;x&amp;rbrace;t-e-s-m l-e-a-d-i-n-g-r-e-l-a-x-e-d&apos;&gt;
+p&gt;r e c o m m e n d a t i o n &lt;/s&gt;o n &lt;b r/&gt;i n f o r m a t i o n &lt;/s&gt;o n &lt;b r/&gt;i n f o r m a t i o n &lt;/s&gt;o n &lt;b r/&gt;i n f o r m a t i o n &lt;/s&gt;o n &lt;b r/&gt;i n f o r m a t i o n &lt;/s&gt;o n &lt;b r/&gt;i n f o r m a t i o n &lt;/s&gt;o n &lt;b r/&gt;i n f o r m a t i o n &lt;/s&gt;o n &lt;b r/&gt;i n f o r m a t i o...
