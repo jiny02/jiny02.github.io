@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>胃癌综合就医规划报告</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <!-- Preline UI CDN -->
+  <script src="https://unpkg.com/preline@1.8.0/dist/preline.js"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- Material Icons CDN -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity:0; transform: translateY(32px); }
+      to { opacity:1; transform: none; }
+    }
+    /* 图片懒加载效果 */
+    img[data-src] { opacity:0; transition:opacity .5s; }
+    img.loaded { opacity:1; }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-neutral-900 text-gray-800 dark:text-gray-100 min-h-screen transition-colors duration-300">
+<div class="min-h-screen flex flex-col">
+
+<!-- 顶部导航栏 -->
+<header class="sticky top-0 z-30 bg-white/80 dark:bg-neutral-900/80 backdrop-blur shadow-sm transition-colors duration-300">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="material-icons text-blue-600 dark:text-blue-400 text-xl">local_hospital</span>
+      <span class="font-semibold text-lg tracking-tight">胃癌综合就医规划报告</span>
+    </div>
+    <!-- 深色模式切换按钮 -->
+    <button id="theme-toggle" aria-label="切换深色/浅色模式"
+      class="rounded-full p-2 hover:bg-blue-50 dark:hover:bg-neutral-800 transition-all border border-transparent focus:outline-none focus:ring focus:ring-blue-200 dark:focus:ring-blue-700">
+      <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+    </button>
+  </div>
+</header>
+
+<main class="flex-grow max-w-5xl mx-auto w-full px-4 py-6 md:py-10 fade-in">
+
+<!-- 患者摘要卡片 -->
+<section class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-8">
+  <div class="bg-white dark:bg-neutral-800 rounded-xl shadow-md p-6 flex flex-col gap-y-3 border border-gray-100 dark:border-neutral-700 group hover:shadow-lg hover:border-blue-400 transition-all duration-200">
+    <div class="flex items-center gap-x-3 mb-2">
+      <span class="material-icons text-blue-500 dark:text-blue-400">person</span>
+      <span class="text-lg font-semibold">患者信息摘要</span>
+    </div>
+    <ul class="text-base leading-relaxed space-y-[2px] ml-[2px]">
+      <li><i class="fa-solid fa-user mr-[7px] text-gray-400"></i>性别：<b>男</b></li>
+      <li><i class="fa-solid fa-cake-candles mr-[7px] text-gray-400"></i>年龄：<b>70岁</b></li>
+      <li><i class="fa-solid fa-location-dot mr-[7px] text-gray-400"></i>常住地：<b>北京</b></li>
+      <li><i class="fa-solid fa-disease mr-[7px] text-gray-400"></i>诊断：<b>胃癌（中低分化腺癌）</b></li>
+      <li><i class="fa-solid fa-stethoscope mr-[7px] text-gray-400"></i>既往病史：<b>高血压，脑膜瘤</b></li>
+      <li><i class="fa-solid fa-file-medical mr-[7px] text-gray-400"></i>医保类型：<b>北京医保</b></li>
+      <li><i class="fa-solid fa-bullseye mr-[7px] text-gray-400"></i>本次诉求：<b>综合治疗（手术、化疗等多学科管理）</b></li>
+    </ul>
+  </div>
+l
+<!-- 插图区块（懒加载） -->
+l<div
+   class='relative rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 via-white to-transparent dark:from-[#222e41] dark:via-neutral-800 h-[230px] flex items-center justify-center shadow-md border border-gray-100 dark:border-neutral-700'>
+l   <!-- 插图采用WebP格式，懒加载实现 -->
+l   <img data-src='https://images.unsplash.com/photo-1506744038136–46273834b3fb?auto=format&fit=crop&w=480&q=60&fm=webp' alt='医院插图' width='320' height='200'
+l     loading='lazy' style='max-width:320px;max-height:200px;border-radius:.75rem;' />
+l   <!-- 遮罩与说明文字 -->
+l   <div
+     class='absolute inset-x-[12%] bottom-[15%] bg-white/90 dark:bg-neutral–900/80 rounded-lg px–3 py–1 shadow backdrop-blur-sm'>
+l     <span class='text-xs font-medium text-blue–700 dark:text-blue–300'>医院环境示意图</span></div></l/div></section><!-- 推荐医院列表 --><section id='hospital-list' aria-label='核心就医建议'><h2
+class='text-xl md:text–2xl font-bold mb–5 flex items-center gap-x–2'><span
+class='material-icons text-green–600 dark:text-green–400'>local_offer</span>核心就医建议</h2><!-- 医院卡片列表 --><div
+class='grid grid-cols–1 md:grid-cols–2 gap–6'><!-- 医院1 --><div
+class='bg-white dark:bg-neutral–800 rounded-xl shadow-md p–6 mb–2 border border-gray–100 dark:border-neutral–700 group hover:shadow-lg hover:border-green–500 transition-all duration–200 fade-in'><div
+class='flex items-center gap-x–3 mb–1'><span
+class='material-icons text-green–500 dark:text-green–300'>medical_services</span><span
+class='font-semibold text-base'>中国医学科学院北京协和医院</span><span
+class='ml-auto px-[9px] py-px bg-green–100 dark:bg-green–900 rounded-full text-xs font-medium text-green–700 dark:text-green–300'>高度匹配</span></div><ul
+class='text-sm mt-[4px] space-y-px'><li><strong>推荐理由：</strong>消化系统肿瘤及胃癌外科与综合治疗全国领先，多学科协作能力突出，适合复杂病例的个体化治疗。</li><li><strong>医保政策：</strong>支持北京医保直接结算。</li><li><strong>地址：</strong>东院（东城区东单帅府园1号），西院（西城区大木仓胡同41号）。部分专家出诊院区不同，请留意挂号信息。</li></ul><!-- 医生推荐 --><details open
+class='mt-[10px]'><summary
+class='cursor-pointer select-none font-medium flex items-center gap-x-px hover:text-blue–600 transition'><i
+class='fa-solid fa-user-md mr-px'></i>&nbsp;推荐医生及出诊时间<i
+class='fa-solid fa-chevron-down ml-auto'></i></summary><ul
+class='pl-px mt-px space-y-px'><li><strong>丛林 主任医师：</strong>&nbsp;<em>腔镜微创外科经验丰富，适合高龄及复杂病例。</em>&nbsp;<br/><small>东院 特需门诊 周一上午；普通门诊 周三上午/周一下午；国际医疗部门诊 周三下午。</small></li><li><strong>李小毅 主任医师：</strong>&nbsp;<em>规范胃癌手术及综合治疗，对晚期复杂病例有独到见解。</em>&nbsp;<br/><small>东院 普通门诊 周三上午/下午；特需门诊 周四上午；西院 国际医疗部门诊 周一下午。</small></li><li><strong>白春梅 主任医师：</strong>&nbsp;<em>消化肿瘤个体化与综合治疗权威。</em>&nbsp;<br/><small>西院 专家门诊(100元) 肿瘤内科 周一上午；东院国际医疗部门诊(900元) 周二上午；西院国际医疗部门诊(900元) 周五上午。</small></li></ul></details><!-- 挂号方式 --><div
+class='mt-[10px] flex flex-wrap gap-x-[12px] gap-y-[6px]'><a href='#'
+target='_blank'
+avia-label='协和医院预约挂号'
+avia-describedby='' 
+avia-current='' 
+avia-selected='' 
+avia-disabled='' 
+avaria-busy='' 
+avaria-live='' 
+avaria-relevant='' 
+avaria-roledescription='' 
+avaria-valuenow='' 
+avaria-valuetext='' 
+avaria-valuemin='' 
+avaria-valuemax='' 
+avtabindex='' 
+avrole='' 
+avrel='' 
+avdownload='' 
+title='点击查看官方挂号渠道' style='text-decoration:none;'><iclass='fa-solidfa-calendar-checkmr-[5px]' ></i >预约挂号：APP、微信“北京114”、北京市统一平台、电话010‑114等多渠道可约，一般提前7天放号，热门专科需尽早抢号。</a ></div ></div><!-- 医院2 -- ><divclass = 'bg-whitedark:bg-neutral‑800rounded-xlshadow-mdp‑6mb‑2borderborder‑gray‑100dark:border‑neutral‑700grouphover:shadow-lghover:border‑green‑500transition-allduration‑200fade-in' ><divclass = 'flex items-center gap-x‑3 mb‑1' ><spanclass = 'material-icons text-green‑500 dark:text-green‑300' >medical_services </ span ><spanclass = 'font-semibold text-base' >中国医学科学院肿瘤医院 </ span ><spanclass = 'ml-auto px-[9px]pi-px bg-green‑100 dark:bg-green‑900 rounded-full text-xs font-medium text-green‑700 dark:text-green‑300' >高度匹配 </ span ></ div >< ul class = 'text-sm mt-[4px]s pace-y-px' >< li >< strong >推荐理由 ： </ strong >国内顶尖肿瘤专科医院，胃癌多学科会诊与规范化综合治疗实力强，是疑难重症患者重要选择。 </ li >< li >< strong >医保政策 ： </ strong >支持北京医保直接结算。 </ li >< li >< strong >地址 ： </ strong >朝阳区潘家园南里17号，无多院区混淆风险。 </ li ></ ul ><!-- 医生推荐 -- >< details open class = 'mt-[10px]' >< summary cursor-pointer select-none font-medium flex items-center gap-x-px hover:text-blue‑600 transition' >< i dfa-solid fa-user-md mr-px'></ i >&nbsp;暂无指定医生，建议通过普外科或消化内科专家门诊初步咨询。< i dfa-solid fa-chevron-down ml-auto'></ i ></ summary ></ details ><!-- 挂号方式 -- >< div dm t- d [10 px ] fle x fle x -w rap ga p - x - [12 px ] ga p - y - [6 px ] ' >< a href ='# '
+target='_blank'
+title ='点击查看官方挂号渠道 '>预约挂号 ：微信公众号“中国医学科学院肿瘤医院”“北京114”、北京市统一挂号平台、电话010‑114等多渠道可约。 </ a ></ div ></ div ><!-- 医院3-- >< div c lass ='bg-white da rk :bg-neut ral –800 ro unded-xl s hadow-md p –6 mb –2 bor der bor der-g ray –100 d ark :border-n eut ral –700 group ho ver :shadow-lg ho ver :border-g reen –500 t ransition-al l dura tion –200 f ade-in' >< div c lass ='flex ite ms-cent er g ap-x –3 mb –1' >< span c lass ='mater ial-icons t ext-gr een –500 d ark :text-gre en –300 '>medical_services </ span >< span c lass ='font-sem ibold t ext-base '>中国人民解放军总医院第一医学中心 </ span >< span c lass ='ml-auto px -[9 px ] py -p x b g-gre en –100 da rk :bg-gr een –900 roun ded-f ull tex t-xs fo nt-me dium tex t-gr een –700 da rk :tex t-gre en –30 0 '>高度匹配 </ span ></ div >< ul cl ass ='t ext-s m mt -[4p x ] spa ce-y -p x ' >< li >< str ong >推荐理由 ： </ str ong >全国排名前三大型三甲医院，高龄消化道恶性肿瘤管理经验丰富，有特殊照护体系。 </ li >< li >< str ong >医保政策 ： </ str ong >支持北京医保直接结算。非现役军人无需特别手续，但建议携带身份证明材料登记。 </ li >< li >< str ong >地址 ： </ str ong >海淀区复兴路28号，仅此一家主院区，无混淆风险。 </ li ></ ul ><!-- 医生推荐 -- >< details open cl ass ='m t -[10p x ] ' >< su mmary cu rsor-po inter se lect-no ne fo nt-me di um fl ex it ems-c enter ga p-x-p x ho ver :te xt-bl ue –60 0 tr ansit ion ' >< i cl ass ='f a-so lid f a-us er-m d m r-p x ' ></ i >&nbsp ;王刚石主任医师：擅长老年人上胃肠道疾病及复杂疑难重症处理，有丰富临床经验。消化内科，暂无具体出诊时间及费用信息。<br/>胡毅主任医师：实体肿瘤全程综合治疗策略制定专家，可参与MDT讨论，肿瘤内科专家门诊周二下午。	<i class='fa-solid fa-chevron-down ml-auto'></i></summary></details><!-- 挂号方式 --><div class='mt-[10px] flex flex-wrap gap-x-[12px] gap-y-[6px]'><a href='#' target='_blank' title='点击查看官方挂号渠道'>预约挂号：微信公众号“解放军总医院301医院”、北京114、北京市统一平台、电话010‑114等多渠道可约。</a></div></div><!-- 医院4--><div class='bg-white dark:bg-neutral‑800 rounded-xl shadow-md p‑6 mb‑2 border border-gray‑100 dark:border-neutral‑700 group hover:shadow-lg hover:border-yellow‑500 transition-all duration‑200 fade-in'><div class='flex items-center gap-x‑3 mb‑1'><span class='material-icons text-yellow‑600 dark:text-yellow‑300'>medical_services</span><span class='font-semibold text-base'>首都医科大学附属北京友谊医院</span><span class='ml-auto px-[9px] py-px bg-yellow‑50 dark:bg-yellow‑900 rounded-full text-xs font-medium text-yellow‑700 dark:text-yellow‑300'>部分匹配</span></div><ul class='text-sm mt-[4px] space-y-px'><li><strong>推荐理由：</strong>市级重点专科，常规病例优势明显，极其复杂或高龄合并基础病者建议优先更高级别中心。</li><li><strong>医保政策：</strong>支持北京医保直接结算。</li><li><strong>地址：</strong>西城区永安路95号，仅此一家主院区，无混淆风险。</li></ul><!-- 医生推荐 --><!-- 挂号方式 --><details open class='mt-[10px]'><summary cursor-pointer select-none font-medium flex items-center gap-x-px hover:text-blue‐600 transition'><i class=
