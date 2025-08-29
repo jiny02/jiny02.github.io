@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>克罗恩病生物制剂升级就医规划报告</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+  <!-- Preline UI CDN -->
+  <script src="https://unpkg.com/preline@2.0.4/dist/preline.js"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-wxM7rA5Tj+qP1dD4Z9t7U8xk1w1XQy+S4qXKZy9wJz2eR5Fv6l6n5mQpFQdVb+6xkFJz9o6P8iR9vHhYgVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Material Icons CDN -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* 淡入动画 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeInUp .8s cubic-bezier(.39,.575,.565,1) forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    /* 深色模式适配图片 */
+    img[data-dark] {
+      display: block;
+    }
+    @media (prefers-color-scheme: dark) {
+      img[data-dark] { filter: brightness(0.85) contrast(1.05); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-neutral-900 dark:text-gray-100 transition-colors duration-300">
+<!-- 深浅色模式切换按钮 -->
+<header class="sticky top-0 z-30 bg-white/80 dark:bg-neutral-900/80 backdrop-blur shadow-sm">
+  <div class="max-w-4xl mx-auto flex items-center justify-between px-4 py-3">
+    <div class="flex items-center gap-2">
+      <span class="material-icons text-blue-600 dark:text-blue-400">local_hospital</span>
+      <span class="font-bold text-lg tracking-wide">克罗恩病生物制剂升级就医规划报告</span>
+    </div>
+    <button id="theme-toggle" type="button" aria-label="切换深浅色模式"
+            class="transition hover:scale-[1.08] active:scale-[0.97] rounded-full p-2 bg-gray-200 dark:bg-neutral-800 text-gray-600 dark:text-gray-200 shadow hover:bg-blue-100 dark:hover:bg-blue-800 focus:outline-none">
+      <i id="theme-toggle-icon" class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 pb-12 pt-8 space-y-10 fade-in">
+
+<!-- 一、患者情况摘要 -->
+<section id="summary" class="bg-white dark:bg-neutral-800 rounded-xl shadow-md p-6 space-y-3 animate-fade-in transition-all duration-500">
+  <div class="flex items-center gap-3 mb-2">
+    <span class="material-icons text-blue-500">person</span><h2 class="text-xl font-semibold">患者情况摘要</h2>
+  </div>
+  <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-base md:text-lg">
+    <span class="font-medium text-gray-600 dark:text-gray-300">性别/年龄：</span><span>女 / 31岁</span>
+    <span class="font-medium text-gray-600 dark:text-gray-300">常住地：</span><span>安徽省宿州市</span>
+    <span class="font-medium text-gray-600 dark:text-gray-300">诊断：</span><span>克罗恩病（蒙特利尔分型：回结肠型）</span>
+    <span class="font-medium text-gray-600 dark:text-gray-300">核心诉求：</span><span>生物制剂升级治疗</span>
+    <span class="font-medium text-gray-600 dark:text-gray-300">过往治疗：</span><span>糖皮质激素治疗史</span>
+    <span class="font-medium text-gray-600 dark:text-gray-300">并发症：</span><span>原发性硬化性胆管炎</span>
+    <span class="font-medium text-red-500 dark:text-red-400">医保类型：</span><span>无医保（全自费）</span>
+  </div>	
+</section>	
+
+<!-- 二、核心就医建议 -->	
+<section id='recommendation' class='space-y-7'>	
+<div class='flex items-center gap-x-3 mb-3'>	
+<span class='material-icons text-green-500'>medical_services</span><h2 class='text-xl font-semibold'>核心就医建议</h2></div> 	
+<!-- 医院卡片列表 -->	
+<div class='grid md:grid-cols-[repeat(2,minmax(0,1fr))] gap-x-[32px] gap-y-[28px]'>	
+<!-- 医院卡片模板：高度匹配推荐医院 -->	
+<article class='group relative bg-white dark:bg-neutral-800 rounded-xl border border-transparent hover:border-blue-400 shadow transition hover:shadow-lg p-[24px] flex flex-col justify-between min-h-[340px] cursor-pointer duration-[250ms] animate-fade-in'>	
+<div class='flex items-center gap-x-[10px] mb-[14px]'>	
+<span class='fa-solid fa-hospital-user text-blue-500'></span><h3 class='text-lg font-bold tracking-wide'>东部战区总医院（南京大学医学院附属金陵医院）</h3></div> 	
+<p><strong>匹配度评估：</strong><mark style='background:none;color:#16a34a;font-weight:bold;'>高度匹配</mark></p> 	
+<p><strong>推荐理由：</strong>消化系统疾病及炎症性肠病诊治经验丰富，擅长复杂病例管理，具备生物制剂升级能力。</p> 	
+<ul class='mt-[10px] space-y-[6px] list-disc pl-[20px] text-sm md:text-base'>	<li><strong>医保政策：</strong>无医保患者可直接自费就诊。</li><li><strong>地址：</strong>江苏省南京市玄武区中山东路305号。</li></ul> 	
+<div class='mt-auto pt-[18px] border-t border-dashed border-slate/30'>	<h4 class='font-semibold mb-[6px] flex items-center gap-x-[6px]'><i class='fa-solid fa-user-md'></i>&nbsp;推荐医生（按热度排序）：</h4> 	<ul class='space-y-[2px]'><!-- 医生信息 --><li><b>任华建 主任医师：</b>&nbsp;<em style='color:#2563eb;'>擅长克罗恩病复杂管理与多学科协作，适合生物制剂升级。</em>&nbsp;<br/><small>[专家门诊]&nbsp;普通外科&nbsp;周五上午&nbsp;20元</small></li><li><b>王新颖 主任医师：</b>&nbsp;急慢性肠衰竭及营养不良，围手术期药物调整。<br/><small>[专家门诊]&nbsp;普通外科&nbsp;周三上午&nbsp;挂号费待查</small></li><li><b>任建安 主任医师：</b>&nbsp;胃肠疑难杂症和危重病例管理。<br/><small>[专家门诊]&nbsp;普通外科&nbsp;周一下午&nbsp;100元</small></li><li><b>黄骞 主任医师：</b>&nbsp;炎症性肠病、腹腔感染等复杂病例。<br/><small>[专家门诊]&nbsp;普通外科&nbsp;周五上午&nbsp;22元</small></li></ul></div></article><!-- 第二家医院卡片---><article class='group relative bg-white dark:bg-neutral-800 rounded-xl border border-transparent hover:border-blue-400 shadow transition hover:shadow-lg p-[24px] flex flex-col justify-between min-h-[340px] cursor-pointer duration-[250ms] animate-fade-in'>	<div class='flex items-center gap-x-[10px] mb-[14px]'><i class='fa-solid fa-hospital'></i>&nbsp;<h3 class='text-lg font-bold tracking-wide'>上海交通大学医学院附属仁济医院（东院）</h3></div> 	<p><strong>匹配度评估：</strong><mark style='background:none;color:#16a34a;font-weight:bold;'>高度匹配</mark></p> 	<p><strong>推荐理由：</strong>消化内科为国家重点专科，IBD领域权威，多名专家长期专注克罗恩病及生物制剂应用。</p> 	<ul class='mt-[10px] space-y-[6px] list-disc pl-[20px] text-sm md:text-base'><li><strong>医保政策：</strong>无医保患者可直接自费就诊。</li><li><strong>地址：</strong>上海市浦东新区东方路1630号（东院）。</li></ul>	<div class='mt-auto pt-[18px] border-t border-dashed border-slate/30'><h4 class='font-semibold mb-[6px]' ><i class='fa-solid fa-user-md'></i>&nbsp;推荐医生（按热度排序）： </h4 ><ul ><li ><b >曹芝君 主任医师：</b >&nbsp;<em style = 'color:#2563eb;' >IBD领域权威，擅长生物制剂升级。</em ><br /><small >[特需门诊]&nbsp;消化科 周二上午/周四下午 东院 特需400元 </small ></li ><li ><b >李继强 主任医师/教授/博士生导师：</b >&nbsp;疑难消化疾病及肝胆疾病，中西结合治疗。<br /><small >（德馨医院出诊，需进一步确认本院出诊安排） </small ></li ><li ><b >王琴 主任医师/博士/Mayo Clinic访问学者：</b >&nbsp;主要慢性肾脏疾病，药物副作用联合会诊参考。<br /><small >[特需门诊]&nbsp;肾脏科 周一下午 东院 特需300元；[专家门诊]&nbsp;肾脏科 周三下午 东院 </small ></li ></ul ></div ></article><!-- 第三家医院卡片---><article	class = 'group relative bg-white dark:bg-neutral -800 rounded -xl border border -transparent hover :border -blue -400 shadow transition hover :shadow -lg p -[24 px ] flex flex -col justify -between min -h -[340 px ] cursor -pointer duration -[250 ms ] animate -fade -in ' >	<div	class = 'flex items -center gap -x -[10 px ] mb -[14 px ] ' ><i	class = 'fa-solid fa-hospital'></i>&nbsp;<h3	class = 'text-lg font-bold tracking-wide' >南京鼓楼医院 </h3 ></div > 	<p ><strong >匹配度评估 ： </strong ><mark style = 'background :none ;color :#f59e42 ;font-weight :bold ;' >部分匹配 </mark ></p > 	<p ><strong >推荐理由 ： </strong >消化内科综合实力强，有IBD专业组成员参与全国学术交流，部分医生明确擅长IBD。 </p > 	<ul	class = 'mt -[10 px ] space-y -[6 px ] list-disc pl -[20 px ] text-sm md :text-base' ><li ><strong >医保政策 ： </strong >无医保患者可直接自费就診。 </li ><li ><strong >地址 ： </strong >南京市中山路321号（本部）；中山北路53号（北院） </li ></ul > 	<div	class = 'mt-auto pt -[18 px ] border-t border-dashed border-slate /30' ><h4	class = 'font-semibold mb -[6 px ]' ><i	class = 'fa-solid fa-user-md'></i>&nbsp ;推荐医生 （按热度排序）： </h4 ><ul ><li ><b >张晓琦 主任医师 /医学博士 ： </b >&nbsp ;中国医学会消化分会IBD学组委员，擅长规范管理与新型药物应用。<br /><small >本院 专家门诊(35元) 消化内科 周二上午<br />本院 专科门诊(35元) 消化内科 周三下午<br />南京市中心医院 专家门诊 消化内科 周四下午<br /></small ></li ></ul ></div ></article><!-- 第四家医院卡片---><article	class = 'group relative bg-white dark:bg-neutral -800 rounded -xl border border -transparent hover :border -blue -400 shadow transition hover :shadow -lg p -[24 px ] flex flex -col justify -between min-h [340 px ] cursor-pointer duration [250 ms ] animate-fade-in' >	<div	class = 'flex items-center gap-x [10 px ] mb [14 px ]' ><i	class = 'fa-solid fa-building-medical'></i >&nbsp ;<h3	class = 'text-lg font-bold tracking-wide' >安徽医科大学第一附属医院 </h3 ></div > 	<p ><strong >匹配度评估 ： </strong ><mark style = 'background :none ;color :#f87171 ;font-weight :bold ;' >谨慎评估 </mark ></p > 	<p ><strong >推荐理由 ： </strong >消化内科为省级重点专科，但缺乏明确IBD团队、生物制剂应用特色或相关权威医生信息。如确需前往，请提前电话确认是否满足需求。 </p > 	<ul	class = 'mt [10 px ] space-y [6 px ] list-disc pl [20 px ] text-sm md :text-base' ><li ><strong >联系方式 ： </strong >(绩溪路门诊)0551–62922406；(长江路门诊)0551–62922180；总台0551–62922114 。如需挂号请优先选择【消化内科】专家门诊，并提前电话核实能否开展所需治疗项目。</li></ul></article></div><!-- 特别注意事项 -->	<div	class ='bg-yellow –50 dark:bg-yellow –900/60 rounded –lg mt –7 p –5 mt –5'><div	class ='flex items –center gap –x –2 mb –1'><i	class ='fa-solid fa-circle-exclamation text-yellow–700'></i>&ensp;<b style ='color:#d97706;'>特别注意事项:</b></div><ol	class ='list-decimal pl–5 space-y–1 mt–2'><li>全程自费，高等级大城市三甲医疗机构费用较高，请做好经济预算准备；优先选择普通或专家门急咨询再决定后续操作。</li><li>跨省就医请关注住宿交通成本；部分特需/国际部费用极高且不可报销。</li><li style ='color:#dc2626;'>生物制剂属于高价特殊药品，各中心供药情况不同，请务必提前电话确认所需药品库存及用药资质！</li></ol></div></section><!-- 三、诊前准备清单 --><section id ='previsit'class ='bg-white dark:bg-neutral–800 rounded-xl shadow-md p–6 space-y–3 animate-fade-in transition-all duration–500'><div class ='flex items-center gap–x–3 mb–2'><i class ='fa-solid fa-list-check text-indigo–500'></i >&ensp;<h2 class ='text-xl font-semibold'>诊前准备清单</h2 ></div ><!-- 清单内容 --><ol class ='list-decimal pl–7 space-y–1 mt–2'><li class ='mb–1'><b style ='color:#2563eb;'>病历资料准备:</b >&ensp;<ul class ='list-disc pl–5 mt–1 space-y–0.5'><li >ID证件原件、所有既往检查报告单、影像学结果、用药记录、生物制剂使用史证明材料、病历本或出入院小结、原发硬化性胆管炎相关资料；建议按时间顺序整理归档。</li ></ul ></li <li class ='mb–1'><b style ='color:#2563eb;'>医保与费用准备:</b >&ensp;<ul class ='list-disc pl–5 mt–1 space-y–0.5'><li >No医保，全程自理所有医疗费用，包括挂号、高价检查、生物制剂购置、自费住院押金等；携带充足现金或支付工具，应对大额支出。</li <li style ='color:#f59e42;'>部分特需/国际部收费标准远超普通窗口，如经济压力大请优先选择普通或普通专家门急。</li ></ul ></li <li class ='mb–1'><b style ='color:#2563eb;'>通用准备事项:</b >&ensp;<ul class ='list-disc pl–5 mt–1 space-y–0.5'><li >列好向医生详细咨询的问题清单，如“我目前适合哪些种类的新型生物制剂？如何切换？有哪些风险？”等。</li <li>C携带充电宝、水杯等生活用品；穿着宽松衣服方便检查。</li></ul></ol></section><!-- 四、行动指南与局限性说明 --><section id=actionguide'class=space-y7 fade-in'><div'class=flex items-center gap-x3 mb2'><i'class=fa-solid fa-lightbulb-on text-purple500'></i>&ensp;<h2'class=text-xl font-semibold'>行动指南与局限性说明</h2></div><!-- 优先行动建议 --><article'class=bg-white dark:bg-neutral800 rounded-xl shadow-md p5 animate-fade-in transition-all duration500 mt4'><ol'class=list-decimal pl7 space-y1 mt2'><lh'class=mb12 font-bold style=color:#6366f1;'>优先行动建议:</lh>'+'\u003cli\u003e基于您的核心诉求——生物制剂升级，建议优先考虑【东部战区总医院】任华建主任团队，以及【上海交通大学医学院附属仁济医院】曹芝君教授团队，两者均为国内IBD权威，可实现规范且安全的新型药品切换和后续随访管理。\u003c/li\u003e'+ '\u003cli\u003e如希望兼顾距离便利，可选择【南京鼓楼医院】张晓琦主任进行初步面谈，再根据其意见决定是否转至更高层级中心进一步优化方案。\u003c/li\u003e'+ '</ol>'+'<lh'class=mb12 font-bold style=color:#6366f1;'>二次确认清单:</lh>'+'\u003col\u003e'+ '\u003cli\u003e正式出行前，请务必致电目标机构消化内科学组或IBD护士站，确认是否有新型生物制剂库存、是否接受全自费患者、初次面谈当日能否安排实验室检查等关键要点。\u003c/li\u003e'+ '\u003cli\u003e核实具体出行目的地（如仁济东院浦东新区东方路1630号，东部战区总医院玄武区中山东路305号等）。\u003c/li\u003e'+ '</ol>'+'</article>'+ '<!-- 联系方式表格 -->'+ '<section>'+ '<table'+ 'class=table-auto w-full my4 bg-transparent overflow-hidden rounded-lg shadow-sm>'+ '<thead>'+ '<tr>'+ '<th'+ 'scope=col'+ 'class=text-left py2 px4 bg-indigo50 dark:bg-indigo900/40 font-semibold tracking-wide>'+ '<i'+ 'class=fa-solid fa-phone-volume mr15'></i>'+ '医疗机构'+ '</th>'+ '<th scope=col'+ 'class=text-left py2 px4 bg-indigo50 dark:bg-indigo900/40 font-semibold tracking-wide>'+'咨询电话'+'</th>'+'</tr>'+'</thead>'+'<tbody>'+'<tr>'+'<td scope=row py15 px45>'+'东部战区总医院'+'</td>'+'<td py15 px45>'+'总机025−80860114 / 挂号025−80861062'+'</td>'+'</tr>'+'<tr>'+'<td scope=row py15 px45>'+'上海仁济东院'+'</td>'+'<td py15 px45>'+'总机021−58752345 / 门办021−68383204'+'</td>'+'</tr>'+'<tr>'+'<td scope=row py15 px45>'+'南京鼓楼本部'+'</td>'+'<td py15 px45>'+'总机025−83304616 / 专家预约025−83105555'+'</td>'+'</tr>'+ '</tbody>'+ '</table>'+ '</section>'+ '<!-- 局限性声明 --><article'+ 'class=bg-orange50 dark:bg-orange900/60 rounded-lg p5 my8 animate-fade-in transition-all duration500>'+ '<lh'+ 'style=color:#ea580c;font-weight:bold;'+'局限性声明:</lh>'+ '<p'+ '>本报告依据当前知识库生成，由于数据库覆盖有限，部分地区最新开设的IBD亚专科学组、新上市生物制剂供应情况可能尚未收录。如遇关键决策节点，请以目标医疗机构官方网站公告和现场工作人员答复为准。</p>'+ '</article>'+ '<!-- 最终免责 --><footer'+ 'class=text-xs italic opacity70 my8 mx-auto max-w-prose leading-relaxed py8 pb12>'+ '<hr '+ '/>'+ '<p '+ '>最终就医决策请以各大三甲公立医疗机构官方发布的信息以及临床接待医生面对面沟通结果为准。本报告仅供参考，不构成最终医学判断依据，也不承担由此产生的一切法律责任。</p>'+ '</footer>'+ '</section>'+ '</main>'+ '"><script>// 深浅色模式切换逻辑(function(){const btn=document.getElementById('theme-toggle');const icon=document.getElementById('theme-toggle-icon');function setTheme(mode){if(mode==='dark'){document.documentElement.classList.add('dark');icon.classList.remove('fa-moon');icon.classList.add('fa-sun');}else{document.documentElement.classList.remove('dark');icon.classList.remove('fa-sun');icon.classList.add('fa-moon');}}function getSystemTheme(){return window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}function getSavedTheme(){return localStorage.getItem('theme-mode')||null;}function saveTheme(mode){localStorage.setItem('theme-mode',mode);}function syncTheme(){const saved=getSavedTheme();if(saved){setTheme(saved);}else{setTheme(getSystemTheme());}}syncTheme();btn.addEventListener('click',()=>{const current=document.documentElement.classList.contains('dark')?'dark':'light';const next=current==='dark'?'light':'dark';setTheme(next);saveTheme(next);});window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',()=>{if(!getSavedTheme()){setTheme(getSystemTheme());}});})(); // 内容块淡入动画window.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.fade-in').forEach((el,i)=>{el.style.animationDelay=`${0.08*i}s`;});}); // 平滑滚动document.querySelectorAll("a[href^='#']").forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();let t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});}); // 卡片懒加载图片// (略，本页暂无图片) // 卡片微交互Array.from(document.querySelectorAll('.group')).forEach(card=>{card.addEventListener('mouseenter',()=>{card.classList.add('ring','ring-blue-200','ring-offset-background','shadow-xl','scale-[101%]');});card.addEventListener('mouseleave',()=>{card.classList.remove('ring','ring-blue-200','ring-offset-background','shadow-xl','scale-[101%]');});}); // 按钮悬停微交互Array.from(document.querySelectorAll("button,[role=button],.btn,.pl-btn,input[type=submit],input[type=button]")).forEach(btn=>{btn.addEventListener("mouseenter",()=>btn.classList.add("scale-[103%]","shadow-md","bg-opacity90"));btn.addEventListener("mouseleave",()=>btn.classList.remove("scale-[103%]","shadow-md","bg-opacity90"));}); });<'+'/script>';
