@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>克罗恩病生物制剂升级 就医规划报告</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI CDN -->
+  <script src="https://unpkg.com/preline@latest/dist/preline.js"></script>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #f6f7fa;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp .8s cubic-bezier(.43,.13,.23,.96) forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity:1; transform:none; }
+    }
+    ::selection { background: #dbeafe; }
+    .card-hover:hover { box-shadow:0 8px 32px rgba(30,41,59,0.10),0 1.5px 4px rgba(30,41,59,0.06); border-color:#2563eb; }
+    .btn-hover:hover { transform: scale(1.045); background-color:#2563eb !important; color:#fff !important; }
+    .smooth-scrollbar::-webkit-scrollbar { width:6px; background:#e5e7eb; border-radius:3px;}
+    .smooth-scrollbar::-webkit-scrollbar-thumb {background:#cbd5e1;border-radius:3px;}
+  </style>
+</head>
+<body class="text-slate-800">
+
+<div class="min-h-screen flex flex-col items-center bg-[#f6f7fa]">
+
+<!-- Header -->
+<header class="w-full bg-white shadow-sm sticky top-0 z-20 fade-in">
+  <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="material-icons text-blue-600 text-2xl">medical_services</span>
+      <span class="font-bold text-lg tracking-tight text-blue-900">就医规划报告</span>
+    </div>
+    <a href="#prechecklist" class="btn-hover transition px-4 py-1 rounded-md bg-blue-50 text-blue-700 font-medium border border-blue-200 hover:bg-blue-600 hover:text-white">诊前准备</a>
+  </div>
+</header>
+
+<main class="w-full max-w-4xl mx-auto px-2 md:px-6 py-6 fade-in">
+
+<!-- Patient Summary -->
+<section id="summary" class="mb-8">
+  <h2 class="text-xl md:text-2xl font-semibold mb-4 flex items-center gap-2"><i class="fas fa-user-md text-blue-500"></i> 患者情况摘要</h2>
+  <div class="bg-white rounded-xl shadow p-5 grid md:grid-cols-[140px_1fr] gap-x-8 gap-y-4 card-hover transition border border-transparent fade-in">
+    <div class="flex flex-col gap-y-3 text-slate-600 text-sm min-w-[120px]">
+      <div><i class='fas fa-female mr-2'></i><b>性别：</b>女</div>
+      <div><i class='fas fa-birthday-cake mr-2'></i><b>年龄：</b>31岁</div>
+      <div><i class='fas fa-map-marker-alt mr-2'></i><b>常住地：</b>宿州</div>
+      <div><i class='fas fa-id-card mr-2'></i><b>医保类型：</b><span class='text-red-500'>无医保</span></div>
+    </div>
+    <ul class='flex flex-col gap-y-[10px] text-base'>
+      <li><span class='font-medium text-slate-700'>主要诊断：</span>克罗恩病（蒙特利尔分型：回结肠型）</li>
+      <li><span class='font-medium text-slate-700'>既往病史：</span>原发性硬化性胆管炎，曾用糖皮质激素治疗</li>
+      <li><span class='font-medium text-slate-700'>本次就诊目标：</span><span class='text-blue-600 font-bold'>生物制剂升级治疗</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Medical Recommendation -->
+<section id="recommendation" class="mb-10">
+<h2 class="text-xl md:text-2xl font-semibold mb-[18px] flex items-center gap-x-[10px]"><i class="fas fa-hospital-user text-teal-500"></i> 核心就医建议</h2>
+div id='hospital-list'><!-- 医院推荐卡片 --></div></section><script>// 医院数据const hospitals=[{name:"东部战区总医院（南京大学医学院附属金陵医院）",match:"高度匹配",reason:"全国综合百强三甲医院，在消化系统疾病及疑难重症诊治方面具有较强实力。对克罗恩病等炎症性肠病的诊治经验丰富，多位普外科专家专注于克罗恩病、肠瘘等复杂胃肠道疾病。具备多学科协作和先进药物管理能力。",address:"江苏省南京市玄武区中山东路305号",register:["微信公众号：“东部战区总医院”“南京卫生12320”","电话预约：025–12320","网络平台：“南京市预约挂号服务平台”“江苏卫生集约式预约诊疗服务平台”","APP：“健康格子”","放号时间：请关注官方渠道实时信息。"],doctors:[{name:"任建安",title:"主任医师/教授/博士生导师",desc:"擅长克罗恩病、肠瘘及腹腔感染等复杂胃肠道疾病的诊治，临床经验丰富",schedule:"[专家门诊] 周一下午",fee:"100元"},{name:"王新颖",title:"主任医师/博士生导师",desc:"专长于急慢性肠衰竭及炎症性肠病营养支持，对克罗恩病围手术期及药物管理有深入研究",schedule:"[专家门诊] 周三上午",fee:"挂号费暂未提供"},{name:"黄骞",title:"主任医师/博士生导师",desc:"主攻方向包括炎症性肠病（克罗恩病）、腹腔感染等，发表大量相关论文",schedule:"[专家门诊] 周五上午",fee:"22元"},{name:"任华建",title:"主任医师/博士/硕士生导师",desc:"擅长克罗恩病、腹腔感染及营养支持，有丰富外科与内科协作经验",schedule:"[专家门诊] 周五上午",fee:"20元"}],insurance:'无医保患者请提前准备全额自费资金。'},
+{name:'上海交通大学医学院附属仁济医院（东院）',match:'高度匹配',reason:'消化内科为国家临床重点专科，在炎症性肠病尤其是克罗恩病领域处于国内领先水平，多名专家长期从事相关疾病的临床与科研工作，对“生物制剂升级”有成熟方案和丰富经验。',address:'上海市浦东新区东方路1630号（建议优先选择东院消化内科）',register:['微信公众号：“上海仁济医院就医服务号”“上海交通大学医学院附属仁济医院”','网络平台：“上海申康医联预约平台”“上海市互联网总医院”','APP：“上海仁济医院”','电话预约：021–95169','放号时间：请关注官方渠道实时信息。'],doctors:[{name:'曹芝君',title:'主任医师/硕士研究生导师',desc:'长期致力于炎症性肠病特别是克罗恩病的临床与科研，有丰富“生物制剂”应用管理经验',schedule:'[特需门诊] 周二上午、周四下午 消化科',fee:'400元'},{name:'李继强',title:'主任医师/教授/博士生导师',desc:'擅长疑难消化疾病及多种炎症性肠病，包括克罗恩病；对药物治疗和中西结合治疗均有深入实践',schedule:'出诊仅在合作民营机构，不建议首选，如需可补充咨询。',fee:''}],insurance:'无医保患者请准备全额费用。特需门诊费用较高且一般不报销。'},
+{name:'南京鼓楼医院',match:'高度匹配',reason:'消化内科为江苏省重点专科，多位医生在炎症性肠病领域具有深厚积累，对于需要“生物制剂升级”的患者能给予规范指导和个体化用药调整。',address:'本院：南京市中山路321号；北院：南京市中山北路53号（建议优先选择本部消化内科）',register:['微信公众号：“南京鼓楼医院”“南京卫生12320”','电话预约：025–12320','网络平台:“南京市预约挂号服务平台”“江苏卫生集约式预约诊疗服务平台”','APP:“鼓楼医院官方版”','放号时间：请关注官方渠道实时信息。'],doctors:[{name:'张晓琦',title:'主任医师/医学博士',desc:'擅长炎症性肠病(包括克罗恩)，参与多项IBD学组工作，对新型药物应用有前沿视野',schedule:'[专家门诊] 周二上午；[专科门诊] 周三下午 消化内科 ',fee:'各35元'}],insurance:'无医保患者请准备全额费用。'},
+{name:'安徽医科大学第一附属医院',match:'部分匹配',reason:'安徽省最大三甲综合教学医疗中心，设有消化内科，但知识库并无直接提及IBD或“生物制剂升级”特色团队，仅能作为区域级备选。如合肥就近便利，可尝试咨询，但如需高级别IBD管理建议优先考虑上述其他中心。',address:`高新院区: 合肥蜀山区皖水路\u003cbr\u003e绩溪路门诊: 合肥绩溪路218号\u003cbr\u003e长江路门诊: 合肥长江中路305号\u003cbr\u003e科教楼门诊: 梅山中路安徽医大第一附属医院大楼`,register:['微信公众号:“安徽医大一附院”“安徽医疗便民挂号”','电话预约:4008032800,0551–62922800,114 ','网络平台:“安徽医疗便民–预约挂号”等 ','放号时间：请关注官方渠道实时信息。'],doctors:[{name:null,title:null,desc:null,schedule:null,fee:null}],insurance:'无医保请准备全额费用'}];function renderHospitals(){const container=document.getElementById('hospital-list');container.innerHTML=hospitals.map((hosp,i)=>`<article class='bg-white rounded-xl shadow border border-transparent card-hover transition mb-[30px] overflow-hidden fade-in' style='animation-delay:${80*i}ms'><header class='flex justify-between items-center p-[18px_24px_12px_24px]' aria-label='推荐等级'><div><h3 class='text-lg font-semibold mb-px leading-tight flex items-center gap-x-[8px]'><i class='fas fa-hospital-alt text-indigo-${hosp.match==='高度匹配'?600:hosp.match==='部分匹配'?400:300}'></i>${hosp.name}</h3><p class='text-xs inline-flex items-center mt-px'><span title='匹配度评估' aria-label='匹配度'><i class='fas fa-check-circle mr-[4px]' style='color:${hosp.match==='高度匹配'?'#059669':hosp.match==='部分匹配'?'#f59e42':'#64748b'}'></i>${hosp.match}</span></p></div></header><hr/><section aria-label='推荐理由与地址' ><p class='p-[14px_24px_0_24px] text-slate-600 leading-relaxed pb-[10px]' style='min-height:40px'><strong>推荐理由：</strong>${hosp.reason}</p><p class='pl-[24px] pb-[12px] pt-[3px] flex items-center gap-x-[7px]'><i class='fas fa-map-marker-alt text-blue-${hosp.match==='高度匹配'?500:hosp.match==='部分匹配'?400:300}'></i>${hosp.address}</p></section><section aria-label='挂号须知' ><details open=${i===0}class='group px-[24px] pt-[4px]' ><summary role=button tabindex=0 aria-expanded=false aria-controls=h${i}_regclassName=cursor-pointer outline-none select-none transition-all py-px focus:ring focus:ring-indigo-${hosp.match==='高度匹配'?200:hosp.match==='部分匹配'?100:50} rounded-md font-medium hover:text-indigo-${hosp.match==='高度匹配'?600:hosp.match==='部分匹配'?400:300}'>挂号方式 & 医保须知<iclass= 'ml-[6px] fas fa-chevron-down group-open:-rotate-x group-open:text-indigo-${hosp.match==='高度匹配'?600:hosp.match==='部分匹配'?400:300}' ></isummary ><ul id=h${i}_regclassName=smooth-scrollbar pl-[18px] list-disc space-y-px mt-px mb-px text-sm leading-relaxed>' + hosp.register.map(t=>`<li>${t}</li>`).join('') + `</ul><pclass=text-xs mt-px pb-px pl-px text-red-${!~(hosp.insurance||"").indexOf('无医保')?500:400}><strong>${hosp.insurance||''}</strong></p ></details ></section >${Array.isArray(hosp.doctors)&& hosp.doctors.filter(d=>d.name).length ?`<sectionaria-label ='医生推荐'><hr/><ulclass ='grid grid-cols -1 md:grid-cols -2gap -y -1gap -x -6py -3 px -6'>${ hosp.doctors.filter(d=>d.name).map(d=>`<liclass ='rounded-lg bg-blue -50borderborder-blue -100shadow-smtransition hover:bg-whitehover:border-indigo -200hover:-translate-y -0.5flexflex-colgap-y -1p -3mb -1card-hover'><divclass ='flexitems-centergap-x -2mb -1'><iclass ='fasfa-user-mdtext-indigo -500mr-px'></idiv ><strong >${ d.name }</strong ><smallclass ='ml-auto px -2py-pxbg-indigo -100text-indigo -700rounded '>${ d.title || '' }</small ></ div >${ d.desc ? `<pclass ='mt-pxtext-xsleading-snugtext-slate -600pb-px'>${ d.desc }</p >`:'' }${ d.schedule ? `<pclass ='mt-pxtinyptxt-xsleading-snug'><iclass ='farfa-calendar-altmr-px'></ i >出诊： ${ d.schedule } </ p >`:'' }${ d.fee ? `<pclass ='mt-tinyptxt-xsleading-snugtext-gray -500'><iclass ='farfa-money-bill-wave mr-px'></ i >挂号费： ${ d.fee } </ p >`:'' }</ li >`).join('') }</ul ></ section >` : '' }</article>`).join('');}renderHospitals();</script>
+
+<!-- Special Notice -->
+<section id="notice" aria-label="特别注意事项" class="mb-[38px] fade-in">
+<h2 class="text-xl md:text-xl font-semibold mb-[15px] flex items-center gap-x-[10px]"><i class="fas fa-exclamation-triangle text-orange-400"></i> 特别注意事项</h2>
+<ul class="space-y-[10px] pl-[18px] list-disc leading-relaxed text-base">
+<li>您<strong>无医保身份</strong>，所有公立三甲医疗机构均按自费标准收费，“特需”和“国际部”费用更高且无法报销，请务必提前做好经济预算。</li>
+<li>生物制剂属于特殊药品类别，用药前后均需严格随访监测，不同地区可能存在供应差异，就近复查时务必确认所选中心具备完整用药资质。</li>
+<li>跨省、市就医前，请提前联系目标中心确认是否具备所需药品库存，以及是否接受首次开方和后续随访。</li>
+</ul></section><!-- Previsit Checklist --><section id=prechecklist aria-label=“诊前准备清单”class=“mb-[44px] fade-in” >< h2class = “text-xl md:text-xl font-semibold mb–[15 px ] flex items-center gap-x –[10 px ] ” >< iclass = “fas fa-list-alt text-green–500 ” ></ i >  诊前准备清单 (Pre–Visit Checklist ) </ h2 >< divclass = “bg-white rounded-xl shadow p–5 mt–3 card-hover border border-transparent transition ” >< h3class = “font-medium mb–1 ” > 病历资料准备 </ h3 >< ulclass = “list-disc pl–5 space-y –[7 px ] leading-relaxed ” >< li > 身份证原件； </ li >< li > 所有既往检查报告单，包括血常规、生化、免疫指标、影像学检查结果等； </ li >< li > 历次住院小结、外带处方单据、生物制剂使用记录； </ li >< li > 原发性硬化性胆管炎相关资料； </ li >< li > 【特别建议】：按时间顺序整理所有资料，并制作电子扫描件以便携带和留存。</li ></ ul >< h3class = “font-medium mt–5 mb–1 ” > 医保与费用准备 </ h3 >< ulclass = “list-disc pl–5 space-y –[7 px ] leading-relaxed ” >< li > 因无医保身份，全程自费支付，请预留充足现金、银行卡或手机支付工具； </ li >< li > 特殊药品如进口类生物制剂价格较高，应提前向目标中心财务部门咨询预计花销范围，以防资金不足影响治疗进程； </ li >< li > 部分特需门急费用远超普通门急，如经济压力大可优先普通专家门急； </ li ></ ul >< h3class = “font-medium mt–5 mb–1 ” > 其他通用准备 </ h3 >< ulclass = “list-disc pl–5 space-y –[7 px ] leading-relaxed ” >< li > 列好拟向医生详细咨询的问题清单，如不同品牌 /代谢途径的生物制剂适应证、副作用监测流程等； </ li >< li > 携带充电宝、水杯等个人生活用品，就診当天穿着宽松衣服以方便体检抽血。</li ></ ul ></ div ></ section><!-- 行动指南 -->< sectionid = actionguidearia-label = 行动指南与局限性说明class = "mb – [44 px ] fade-in " >
+<h2class = "text-xlmd:text-xlfont-semiboldmb – [15 px ]flexitems-centergap-x – [10 px ] " >< iclass = "fasfa-compass-draftstext-purple –500 "></ i >&nbsp;行动指南与局限性说明 (Action Guide & Limitations ) </ h2 > 
+<divclass = "bg-white rounded-xl shadow p –5 mt –3 card-hover border border-transparent transition " style = "font-size :15 px ; line-height :1.85 ; color :#374151 ; ">
+<h3class = "font-mediummb – [9 px ] "> 优先行动建议 </ h3 > 
+<ulclass = "list-decimalpl –6space-y – [7 px ] ">
+<li>基于您的核心诉求——<strong style ='color:#2563eb;'>“克罗恩病生物制剂升级”</strong>，建议优先考虑<strong style ='color:#2563eb;'>【东部战区总医院】任建安教授团队，以及【上海交通大学医学院附属仁济医院】曹芝君主任团队</strong>，两者均为国内IBD领域权威单位，可获得最规范的新型药物管理方案和个体风险评估指导。如距离因素考虑，也可选择<strong style ='color:#2563eb;'>【南京鼓楼医院】张晓琦团队</strong>进行初步评估后再转至更高级别中心。</li>
+<li>如近期不便远行，可在合肥<strong style ='color:#2563eb;'>【安徽医大一附院】</strong>尝试普通消化内科学术带头人处初步问询，但如遇疑难问题仍建议转至上述两家区域级IBD中心进一步优化方案。</li></ul><hr/><h3class = 'font-mediummt – [13 px ] mb – [9 px ] '>二次确认清单</h3><olclass = 'list-decimalpl –6space-y – [7 px ] ' style ='margin-bottom :11 px ;'><liclass=''style=''line-height :1.75 ;'>就具体用药需求务必提前电话沟通目标中心消化内科学组，确认是否具备所需品牌及规格的最新一线或二线生物制剂，并了解首次开方流程以及后续复查安排。例如：<br/><code style ='background:#f9fafb;color:#334155;padding:.16em .34em;border-radius:.28em;font-size:.95em;'>东部战区总医院 普通外科分机：（025）80860114 或 门办80861062<br/>上海仁济东院 消化内科学组：（021）58752345 转分机 或 咨询台<br/></code></li><liclass=''style=''line-height :1.75 ;'>特殊情况下，如遇疫情防控措施变化、高峰期限流等不可抗力因素，应及时关注各大公立三甲官网公告栏动态调整行程计划；</li><liclass=''style=''line-height :1.75 ;'>若经济压力较大，可主动向接待窗口申请普通专家而非特需名家，以降低初始问询成本；
+<hr/><h3class = 'font-mediummt – [13 px ] mb – [9 px ] '>局限性声明&最终免责<h3/><olstyle ='padding-left :18 px ;margin-top :.55em;margin-bottom :.45em;'type=a start=1><liclass=''style=''line-height :1.65 ;color:#64748b;'>本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面，仅供参考。</li><liclass=''style=''line-height :1.65 ;color:#64748b;'>最终就医决策请务必以各目标医疗机构官方网站发布的信息以及实际接待临床医生意见为准。如遇紧急状况请及时拨打120寻求当地医疗救助。</li></ol></div></section></main><!-- 页脚 --><footerclass= 'w-fullpy–8mt-auto bg-gradient-to-r from-blue–50 via-white to-purple–50border-tborder-slate–200fade-in'>< divcalss= 'max-w–4xl mx-autotext-xs text-slate–400tracking-wideflexjustify-betweenitems-endgap-x–12pl—4pr—7'style= 'letter-spacing:.02em;'>&copy;2024 就医规划报告 | 本页面由AI辅助生成，仅供参考<br/>设计风格参考Linear App | 技术支持 TailwindCSS + Preline UI + FontAwesome / Material Icons<br/></footer><!-- 动画加载 --><script>// 内容块淡入 document.querySelectorAll('.fade-in').forEach((el,i)=>{el.style.animationDelay=`${90*i}ms`;}); // 平滑滚动document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',(e)=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-(window.innerWidth>=768?64:52),behavior:'smooth'});}})});// 懒加载图片// 若后续插入图片时可使用 data-src 替换 src 并监听 window scroll 实现懒加载// 页面已做性能优化，无未压缩大图资源 // 按钮微交互document.querySelectorAll('.btn-hover').forEach(btn=>{btn.addEventListener('mouseenter',()=>btn.classList.add('scale105'));btn.addEventListener('mouseleave',()=>btn.classList.remove('scale105'));});window.HSStaticMethods&&HSStaticMethods.autoInit&&HSStaticMethods.autoInit(); // Preline UI组件自动初始化 if(window.HSBase){window.HSBase.init();}</script></body></html>
