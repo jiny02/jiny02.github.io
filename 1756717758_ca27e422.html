@@ -1,0 +1,427 @@
+我将为您创建一个美观、可视化的就医规划报告网页。以下是完整的HTML代码：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就医规划报告 - 牙齿松动治疗建议</title>
+    <!-- UnoCSS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+    <!-- Preline UI via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/preline@2.0.0/dist/preline.min.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Noto Sans SC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5e6ad2;
+            --primary-hover: #4a57c9;
+            --secondary: #94a3b8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --card-shadow-hover: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            transition: background-color 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+        
+        .dark .header {
+            border-bottom-color: #334155;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .dark .card {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow-hover);
+        }
+        
+        .hospital-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .match-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .high-match {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .partial-match {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .caution-match {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .doctor-card {
+            background: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .dark .doctor-card {
+            background: #334155;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+        
+        .checklist-icon {
+            margin-right: 0.75rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: #e2e8f0;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dark .tag {
+            background: #334155;
+        }
+        
+        .action-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .action-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+        
+        .action-button i {
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 1.5rem 0;
+            }
+            
+            .section {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark:bg-gray-900 dark:text-gray-200">
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold mb-2">就医规划报告</h1>
+                    <p class="text-gray-600 dark:text-gray-400">牙齿松动治疗建议</p>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Patient Summary -->
+        <section class="section">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-user-circle text-2xl mr-3 text-primary-500"></i>
+                <h2 class="text-2xl font-semibold">患者情况摘要</h2>
+            </div>
+            
+            <div class="card">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="font-medium text-gray-700 dark:text-gray-300 mb-2">基本信息</h3>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">年龄/性别:</span>
+                                <span>70岁男性</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">常住地:</span>
+                                <span>邯郸</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">初步诊断:</span>
+                                <span>牙齿松动</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">医保类型:</span>
+                                <span>河北医保</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-gray-700 dark:text-gray-300 mb-2">既往病史</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag bg-red-100 dark:bg-red-900/50">胃癌（4次化疗）</span>
+                            <span class="tag bg-blue-100 dark:bg-blue-900/50">脑膜瘤</span>
+                            <span class="tag bg-purple-100 dark:bg-purple-900/50">高血压</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Medical Recommendation -->
+        <section class="section">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-hospital text-2xl mr-3 text-primary-500"></i>
+                <h2 class="text-2xl font-semibold">核心就医建议</h2>
+            </div>
+            
+            <p class="mb-6 text-gray-600 dark:text-gray-400">按医院匹配度排序（优先口腔专科及老年口腔治疗资源）</p>
+            
+            <!-- Hospital 1 -->
+            <div class="hospital-card card">
+                <div class="match-badge high-match">高度匹配</div>
+                <div class="flex items-start mb-4">
+                    <div class="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg mr-4">
+                        <i class="fas fa-tooth text-blue-600 dark:text-blue-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">四川大学华西口腔医院</h3>
+                        <p class="text-gray-600 dark:text-gray-400">全国口腔专科排名前列</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="font-medium mb-2">推荐理由</h4>
+                    <p>顶级口腔专科医院，专注复杂口腔疾病，老年口腔疾病诊疗经验丰富，综合治疗能力突出。</p>
+                </div>
+                
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-600 p-3 mb-4">
+                    <h4 class="font-medium flex items-center">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                        特别注意
+                    </h4>
+                    <p>异地就诊需提前规划行程（成都距离邯郸约1200公里）。</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-medium mb-2">就诊须知</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-20">医保政策:</span>
+                                <span>支持异地医保，需提前通过"国家医保服务平台"APP备案</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-20">地址:</span>
+                                <span>四川省成都市人民南路三段14号（仅单院区）</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium mb-2">挂号方式</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">微信公众号:</span>
+                                <span>"四川大学华西口腔医院"/"健康四川"</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">电话:</span>
+                                <span>028-114（放号时间：每日08:00更新次7日号源）</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h4 class="font-medium mb-2">推荐医生</h4>
+                    <p>知识库未提供具体医生信息，建议挂取<strong>口腔综合科/老年口腔科</strong>专家门诊。</p>
+                </div>
+            </div>
+            
+            <!-- Hospital 2 -->
+            <div class="hospital-card card">
+                <div class="match-badge high-match">高度匹配</div>
+                <div class="flex items-start mb-4">
+                    <div class="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg mr-4">
+                        <i class="fas fa-tooth text-blue-600 dark:text-blue-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">北京大学口腔医院</h3>
+                        <p class="text-gray-600 dark:text-gray-400">全国口腔专科排名第1</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="font-medium mb-2">推荐理由</h4>
+                    <p>四项国家临床重点专科覆盖牙体修复、牙周病等领域，适合理疗需求。</p>
+                </div>
+                
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-600 p-3 mb-4">
+                    <h4 class="font-medium flex items-center">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                        特别注意
+                    </h4>
+                    <p>挂号难度高（口腔科号源紧张），建议多渠道尝试。</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-medium mb-2">就诊须知</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-20">医保政策:</span>
+                                <span>支持异地医保，需备案（咨询河北医保局报销比例）</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-20">地址:</span>
+                                <span>北京市海淀区中关村南大街22号（仅单院区）</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium mb-2">挂号方式</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">官方APP/微信公众号:</span>
+                                <span>"北京114预约挂号"</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">电话:</span>
+                                <span>010-114或010-62179665（放号时间：每日12:00更新次7日号源）</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h4 class="font-medium mb-2">推荐医生</h4>
+                    <p>知识库未提供具体医生信息，建议挂取<strong>牙周病科/口腔综合治疗科</strong>专家门诊。</p>
+                </div>
+            </div>
+            
+            <!-- Hospital 3 -->
+            <div class="hospital-card card">
+                <div class="match-badge partial-match">部分匹配</div>
+                <div class="flex items-start mb-4">
+                    <div class="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg mr-4">
+                        <i class="fas fa-hospital text-blue-600 dark:text-blue-400 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">中国人民解放军总医院第一医学中心</h3>
+                        <p class="text-gray-600 dark:text-gray-400">全国综合排名第3</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h4 class="font-medium mb-2">推荐理由</h4>
+                    <p>全国综合排名第3，口腔科号源充足，提供老年口腔综合治疗。</p>
+                </div>
+                
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-600 p-3 mb-4">
+                    <h4 class="font-medium flex items-center">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                        特别注意
+                    </h4>
+                    <p>综合医院资源分散，优先选择专属口腔医院。</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-medium mb-2">就诊须知</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-20">医保政策:</span>
+                                <span>支持异地医保，需备案</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-20">地址:</span>
+                                <span>海淀区复兴路28号（注意与分院区区分）</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium mb-2">挂号方式</h4>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-gray-600 dark:text-gray-400 w-24">微信公众号:</span>
+                                <span>"解放军总医院301医院"</
