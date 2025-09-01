@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就医规划报告</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@preline/ui@0.4.1/dist/preline.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .dark-mode {
+            background-color: #1a202c;
+            color: #cbd5e0;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+<div class="max-w-3xl mx-auto p-8">
+    <header class="mb-10">
+        <h1 class="text-4xl font-bold mb-4">就医规划报告</h1>
+        <p class="text-lg">为70岁男性患者量身定制的综合治疗建议</p>
+    </header>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-2">一、患者情况摘要</h2>
+        <p class="mb-4">患者，70岁男性，常住河北邯郸，初步诊断为“牙齿松动”。本次核心诉求为牙齿松动综合治疗。既往病史包括胃癌（化疗4次）、脑膜瘤、高血压。医保类型为河北医保。</p>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-2">二、核心就医建议</h2>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-sm mb-4">
+            <h3 class="text-xl font-bold mb-2">推荐医院 1：北京大学口腔医院</h3>
+            <ul class="list-disc list-inside">
+                <li>匹配度评估：高度匹配（全国口腔专科排名首位）。</li>
+                <li>推荐理由：顶级技术积累，特别适合复杂口腔疾病。</li>
+                <li>特别注意：无年龄冲突，但肿瘤内科支持欠缺。</li>
+                <li>就诊须知：
+                    <ul class="list-inside list-square ml-5">
+                        <li>医保政策：支持异地医保，需提前备案。</li>
+                        <li>地址：北京市海淀区中关村南大街22号。</li>
+                        <li>挂号方式：微信公众号“北京114预约挂号”、“北京大学口腔医院”APP。</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- Repeat similar blocks for other hospitals -->
+    </section>
+
+    <!-- Add more sections for other hospitals and recommendations -->
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-2">三、诊前准备清单</h2>
+        <ul class="list-decimal list-inside">
+            <li>病历资料准备：身份证、河北医保卡原件及复印件，既往病历。</li>
+            <li>医保与费用准备：提前通过“国家医保服务平台”APP备案。</li>
+            <li>其他准备：记录问题清单，携带常用药物。</li>
+        </ul>
+    </section>
+
+    <!-- More content -->
+
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleDarkMode = () => {
+            document.body.classList.toggle('dark-mode');
+        };
+
+        // Assume a button with id "dark-mode-toggle" is available in the HTML
+        document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);
+    });
+</script>
+</body>
+</html>
