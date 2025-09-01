@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就医规划报告</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/preline/dist/preline.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.js"></script>
+    <style>
+        /* Custom styles for dark/light mode */
+        .dark-mode .dark\:bg-gray-800 { background-color: #1a202c; }
+        .dark-mode .dark\:text-gray-400 { color: #9ba3af; }
+        .dark-mode .dark\:border-gray-700 { border-color: #4a5568; }
+        .toggle-mode:hover { cursor: pointer; }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.classList.toggle('dark-mode', isDarkMode);
+
+            document.getElementById('modeToggle').addEventListener('click', function () {
+                document.documentElement.classList.toggle('dark-mode');
+            });
+        });
+    </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-800 dark:text-gray-100">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold">《就医规划报告》</h1>
+            <button id="modeToggle" class="toggle-mode px-2 py-1 border rounded dark:border-gray-700">
+                切换模式
+            </button>
+        </div>
+        <hr class="mb-6">
+        
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">一、患者情况摘要</h2>
+            <div class="mb-4 p-4 border rounded dark:border-gray-700">
+                <p>患者，<strong>70岁男性</strong>，常住邯郸，初步诊断为“<strong>牙齿松动</strong>”。本次核心诉求为综合治疗，无明确意向城市。既往病史包括胃癌（已行4次化疗）、脑膜瘤、高血压。医保类型为河北医保。</p>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">二、核心就医建议</h2>
+            <div class="mb-4">
+                <h3 class="text-lg font-medium mb-2">【推荐医院 1】 四川大学华西口腔医院</h3>
+                <div class="p-4 border rounded dark:border-gray-700">
+                    <p><strong>匹配度评估：</strong> 高度匹配<br>
+                    <strong>推荐理由：</strong> 全国口腔专科排名前列，老年口腔疾病诊疗经验丰富，综合治疗能力突出。<br>
+                    <strong>特别注意：</strong> 异地就诊需提前规划行程（成都距离邯郸约1200公里）。<br>
+                    <strong>就诊须知：</strong> 支持异地医保，需提前通过“国家医保服务平台”APP备案。<br>
+                    <strong>挂号方式：</strong> 微信公众号“四川大学华西口腔医院”/“健康四川”，电话028-114。<br>
+                    <strong>推荐医生：</strong> 建议挂取口腔综合科/老年口腔科专家门诊。</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-lg font-medium mb-2">【推荐医院 2】 北京大学口腔医院</h3>
+                <div class="p-4 border rounded dark:border-gray-700">
+                    <p><strong>匹配度评估：</strong> 高度匹配<br>
+                    <strong>推荐理由：</strong> 四项国家临床重点专科覆盖牙体修复、牙周病等领域，适合理疗需求。<br>
+                    <strong>特别注意：</strong> 挂号难度高，建议多渠道尝试。<br>
+                    <strong>就诊须知：</strong> 支持异地医保，需备案。<br>
+                    <strong>挂号方式：</strong> 官方APP/微信公众号“北京114预约挂号”，电话010-114。<br>
+                    <strong>推荐医生：</strong> 建议挂取牙周病科/口腔综合治疗科专家门诊。</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-lg font-medium mb-2">【推荐医院 3】 中国人民解放军总医院第一医学中心</h3>
+                <div class="p-4 border rounded dark:border-gray-700">
+                    <p><strong>匹配度评估：</strong> 部分匹配<br>
+                    <strong>推荐理由：</strong> 全国综合排名第3，口腔科号源充足，提供老年口腔综合治疗。<br>
+                    <strong>特别注意：</strong> 综合医院资源分散，优先选择专属口腔医院。<br>
+                    <strong>就诊须知：</strong> 支持异地医保，需备案。</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h3 class="text-lg font-medium mb-2">【推荐医院 4】 中日友好医院</h3>
+                <div class="p-4 border rounded dark:border-gray-700">
+                    <p><strong>匹配度评估：</strong> 谨慎评估<br>
+                    <strong>推荐理由：</strong> 综合医院百强，可处理基础口腔问题，但非优先选择。<br>
+                    <strong>特别注意：</strong> 无专属口腔重点科室，复杂病例建议转专科医院。<br>
+                    <strong>就诊须知：</strong> 支持异地医保备案。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">三、诊前准备清单</h2>
+            <div class="p-4 border rounded dark:border-gray-700">
+                <ul class="list-disc pl-4">
+                    <li>病历资料：胃癌化疗记录、脑膜瘤/高血压病历、近期血压监测记录、肝肾功能报告。</li>
+                    <li>异地医保：通过“国家医保服务平台”APP完成异地就医备案，咨询邯郸医保局：报销比例及纸质材料要求。</li>
+                    <li>资金准备：预估费用，挂号费+基础检查+异地食宿交通。</li>
+                    <li>通用准备：问题清单（如松牙保留可行性），备用降压药、宽松衣物。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold mb-4">四、行动指南与局限性说明</h2>
+            <div class="p-4 border rounded dark:border-gray-700">
+                <p><strong>优先行动建议：</strong><br>
+                首选方案：挂取华西口腔医院/北大口腔的老年口腔科或口腔综合科，专注老年松牙综合治疗。<br>
+                备选方案：解放军总医院储冰峰医生，出诊前致电确认时间。</p>
+                <p><strong>二次确认清单：</strong><br>
+                华西口腔：咨询异地医保材料。<br>
+                北大口腔：确认挂号渠道有效性。<br>
+                解放军总医院：储冰峰医生出诊动态。</p>
+                <p><strong>局限性声明：</strong> 知识库部分信息缺失，异地医保报销细则以医院窗口为准。</p>
+                <p><strong>最终免责：</strong> 本报告依据当前知识库生成，建议在化疗后3个月内避免侵入性牙科治疗。</p>
+                <p class="text-sm text-gray-500 mt-2">* 重要提示：70岁患者需重点关注治疗风险，建议初诊选择号源充足的解放军总医院或本地三甲口腔科评估基础状况后，再赴专科医院。</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
