@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>患者信息</title>
+    <link href="https://cdn.jsdelivr.net/npm/preline@1.0.0/dist/preline.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/preline@1.0.0/dist/preline.js"></script>
+    <style>
+        body { font-family: 'Arial', sans-serif; }
+        .card { transition: all 0.3s ease; }
+        .card:hover { transform: scale(1.02); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div class="max-w-2xl mx-auto p-6">
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-4 card">
+            <h2 class="text-2xl font-bold mb-4">患者信息概况</h2>
+            <div class="mb-4">
+                <h3 class="font-semibold">基本信息</h3>
+                <p>性别：女</p>
+                <p>年龄：31 岁</p>
+                <p>常住地：宿州</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="font-semibold">诊断详情</h3>
+                <p>当前诊断：克罗恩病</p>
+                <p>蒙特利尔分型：回结肠型</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="font-semibold">过往治疗</h3>
+                <p>曾使用糖皮质激素</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="font-semibold">既往病史</h3>
+                <p>原发性硬化性胆管炎</p>
+            </div>
+            <div class="mb-4">
+                <h3 class="font-semibold">就医需求</h3>
+                <p>核心目标：生物制剂升级</p>
+                <p>期望城市：无特定期望</p>
+                <p>医保情况：无医保</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript to handle dark mode toggle
+        const toggleDarkMode = () => {
+            document.documentElement.classList.toggle('dark', window.matchMedia('(prefers-color-scheme: dark)').matches);
+        };
+        toggleDarkMode();
+    </script>
+</body>
+</html>
