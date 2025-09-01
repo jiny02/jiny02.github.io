@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就医规划报告</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.0.0/dist/full.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/uno.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #38b2ac;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('theme-toggle');
+            toggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+            });
+
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+            if (prefersDarkScheme.matches) {
+                document.body.classList.add('dark-mode');
+            }
+        });
+    </script>
+</head>
+<body class="p-4">
+    <div class="container mx-auto">
+        <button id="theme-toggle" class="btn btn-primary mb-4"><i class="fas fa-adjust"></i> 切换主题</button>
+
+        <h1 class="text-3xl font-bold mb-6">《就医规划报告》</h1>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold">一、患者情况摘要</h2>
+            <p>患者，70岁男性，常住邯郸，初步诊断为“牙齿松动”。本次核心诉求为综合治疗，无明确意向城市。既往病史包括胃癌（已行4次化疗）、脑膜瘤、高血压。医保类型为河北医保。</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold">二、核心就医建议</h2>
+
+            <div class="card bg-white p-4 shadow-md mb-4">
+                <h3 class="text-xl font-semibold">【推荐医院 1】四川大学华西口腔医院</h3>
+                <ul class="list-disc pl-6">
+                    <li>匹配度评估：<strong>高度匹配</strong>（顶级口腔专科医院，专注复杂口腔疾病）</li>
+                    <li>推荐理由：全国口腔专科排名前列，老年口腔疾病诊疗经验丰富，综合治疗能力突出。</li>
+                    <li><strong>特别注意：</strong>异地就诊需提前规划行程（成都距离邯郸约1200公里）。</li>
+                    <li>就诊须知：支持异地医保，需提前通过“国家医保服务平台”APP备案。</li>
+                    <li>地址：四川省成都市人民南路三段14号</li>
+                    <li>挂号方式：微信公众号“四川大学华西口腔医院”或电话028-114</li>
+                    <li>推荐医生：建议挂取<strong>口腔综合科/老年口腔科</strong>专家门诊。</li>
+                </ul>
+            </div>
+
+            <!-- Similar structure for other recommended hospitals -->
+
+        </section>
+
+        <!-- Additional sections for Pre-Visit Checklist and Action Guide & Limitations -->
+
+    </div>
+</body>
+</html>
