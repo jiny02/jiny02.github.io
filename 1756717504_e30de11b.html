@@ -1,0 +1,339 @@
+<think>
+我们正在创建一个关于就医规划报告的可视化网页，将纯文本信息转化为美观的界面。
+ 设计风格：简约现代，参考Linear App，使用深色/浅色模式切换。
+ 技术：HTML5、UnoCSS（通过CDN引入，使用Tailwind兼容模式）、Preline UI（通过CDN引入）、必要的JavaScript。
+ 响应式：适配手机、平板、桌面。
+ 图标：使用Font Awesome（通过CDN引入）和必要的视觉元素。
+ 交互：按钮悬停效果、卡片悬停效果、平滑滚动、淡入动画等。
+
+ 内容结构：
+  1. 患者情况摘要
+  2. 核心就医建议（包含四个推荐医院，每个医院是一个卡片）
+  3. 诊前准备清单
+  4. 行动指南与局限性说明
+
+ 我们将使用深色/浅色模式切换，默认跟随系统。
+
+ 步骤：
+  a. 引入UnoCSS（使用Tailwind兼容模式）和Preline UI的CDN链接，以及Font Awesome图标库。
+  b. 使用Preline UI的组件来构建页面，如卡片、列表等。
+  c. 实现深色/浅色模式切换功能（使用Preline UI的模式切换组件，并使其跟随系统）。
+  d. 按部分构建内容，使用卡片展示医院信息，使用列表展示准备清单等。
+  e. 添加响应式设计，使用UnoCSS的响应式工具类。
+  f. 添加微交互效果，如卡片的悬停阴影、按钮的放大效果等。
+
+ 注意：为了确保在单一HTML文件中运行，我们将所有CSS和JS代码以内联或通过CDN引入的方式放入文件。
+
+ 由于Preline UI需要初始化，我们在文档底部添加初始化脚本。
+
+ 性能优化：图片暂时不需要，但如果有，我们会使用WebP格式。这里主要使用图标和简单的装饰。
+
+ 开始编码：
+
+</think>
+# 就医规划报告可视化界面
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>口腔诊疗规划报告 - 70岁患者就医指南</title>
+    <!-- UnoCSS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/full.uno.global.js"></script>
+    <script>
+        window.__unocss = {
+            presets: [
+                require('@unocss/preset-uno'),
+                require('@unocss/preset-icons')
+            ],
+            theme: {
+                colors: {
+                    primary: {
+                        50: '#eef2ff',
+                        100: '#e0e7ff',
+                        200: '#c7d2fe',
+                        300: '#a5b4fc',
+                        400: '#818cf8',
+                        500: '#6366f1',
+                        600: '#4f46e5',
+                        700: '#4338ca',
+                        800: '#3730a3',
+                        900: '#312e81',
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Preline UI -->
+    <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+    <!-- Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
+</head>
+<body class="font-sans bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200 min-h-screen">
+    
+    <!-- 导航 -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-primary-700 dark:text-primary-500 font-bold text-xl">
+                            <i class="fa-solid fa-tooth mr-2"></i>口腔诊疗规划报告
+                        </span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:inline-block"></i>
+                    </button>
+                    <a href="#patient-summary" class="hidden sm:inline-block text-gray-600 dark:text-gray-300 hover:text-primary-700">患者摘要</a>
+                    <a href="#recommendations" class="hidden sm:inline-block text-gray-600 dark:text-gray-300 hover:text-primary-700">医院推荐</a>
+                    <a href="#checklist" class="hidden sm:inline-block text-gray-600 dark:text-gray-300 hover:text-primary-700">准备清单</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 报告内容容器 -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- 报告标题和摘要 -->
+        <div class="text-center mb-12 animate-fade-in-down">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">口腔诊疗规划报告</h1>
+            <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">70岁男性患者（牙齿松动）异地就医综合规划指南</p>
+            
+            <!-- 重要提示横幅 -->
+            <div class="mt-6 p-4 bg-amber-50 dark:bg-amber-900/30 rounded-lg border border-amber-200 dark:border-amber-800 max-w-4xl mx-auto">
+                <div class="flex items-start">
+                    <i class="fa-solid fa-circle-exclamation text-amber-500 dark:text-amber-400 mt-1 mr-3"></i>
+                    <p class="text-amber-800 dark:text-amber-200 font-medium">
+                        <strong>重要提示：</strong>70岁患者需重点关注治疗风险，建议初诊选择号源充足的医院或本地三甲口腔科评估基础状况后，再赴专科医院。
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 患者摘要 -->
+        <section id="patient-summary" class="mb-16 animate-fade-in-down">
+            <div class="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-0.5">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8">
+                    <div class="flex items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                            <i class="fa-solid fa-user-injured mr-3 text-primary-600"></i>患者情况摘要
+                        </h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- 患者信息卡片 -->
+                        <div class="bg-gray-50 dark:bg-gray-800/50 p-5 rounded-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-primary-100 dark:bg-primary-900/30 w-12 h-12 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-user text-primary-600 dark:text-primary-400"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-semibold text-gray-900 dark:text-white">基础信息</h3>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                                <li class="flex">
+                                    <i class="fa-solid fa-mars text-primary-600 dark:text-primary-400 mr-2 mt-1"></i>
+                                    <span>70岁男性，常住邯郸</span>
+                                </li>
+                                <li class="flex">
+                                    <i class="fa-solid fa-stethoscope text-primary-600 dark:text-primary-400 mr-2 mt-1"></i>
+                                    <span>初步诊断：牙齿松动，要求综合治疗</span>
+                                </li>
+                                <li class="flex">
+                                    <i class="fa-solid fa-map-location-dot text-primary-600 dark:text-primary-400 mr-2 mt-1"></i>
+                                    <span>无明确意向城市</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 病史卡片 -->
+                        <div class="bg-gray-50 dark:bg-gray-800/50 p-5 rounded-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-md hover:border-primary-300 dark:hover:border-primary-600">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-rose-100 dark:bg-rose-900/30 w-12 h-12 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-file-medical text-rose-600 dark:text-rose-400"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="font-semibold text-gray-900 dark:text-white">既往病史</h3>
+                                </div>
+                            </div>
+                            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                                <li class="flex">
+                                    <i class="fa-solid fa-capsules text-rose-600 dark:text-rose-400 mr-2 mt-1"></i>
+                                    <span>胃癌病史 - 已完成4次化疗</span>
+                                </li>
+                                <li class="flex">
+                                    <i class="fa-solid fa-brain text-rose-600 dark:text-rose-400 mr-2 mt-1"></i>
+                                    <span>脑膜瘤</span>
+                                </li>
+                                <li class="flex">
+                                    <i class="fa-solid fa-heart-pulse text-rose-600 dark:text-rose-400 mr-2 mt-1"></i>
+                                    <span>高血压</span>
+                                </li>
+                                <li class="flex">
+                                    <i class="fa-solid fa-credit-card text-rose-600 dark:text-rose-400 mr-2 mt-1"></i>
+                                    <span>河北医保</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 医院推荐 -->
+        <section id="recommendations" class="mb-16 animate-fade-in-down">
+            <div class="flex items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                    <i class="fa-solid fa-hospital mr-3 text-primary-600"></i>核心就医建议
+                </h2>
+                <span class="ml-4 px-3 py-1 text-sm bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 rounded-full">
+                    按匹配度排序
+                </span>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- 推荐医院1 -->
+                <div data-hs-overlay="#hospital-1" class="hs-overlay cursor-pointer animate-fade-in-down bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="w-full md:w-1/3 bg-gradient-to-r from-primary-700 to-primary-800 text-white p-6">
+                            <div class="flex items-center">
+                                <div class="bg-white/20 rounded-lg p-2">
+                                    <i class="fa-solid fa-star text-xl"></i>
+                                </div>
+                                <h3 class="ml-3 font-bold text-xl">四川大学华西口腔医院</h3>
+                            </div>
+                            <div class="mt-6">
+                                <div class="inline-block px-3 py-1 bg-white/20 text-white rounded-full text-sm font-semibold">
+                                    <i class="fa-solid fa-circle-check mr-1"></i>高度匹配
+                                </div>
+                                <p class="mt-4 text-white/90">
+                                    全国顶级口腔专科医院，老年口腔疾病诊疗经验丰富
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-2/3 p-6">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+                                    口腔专科
+                                </span>
+                                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">
+                                    异地医保支持
+                                </span>
+                                <span class="px-3 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 rounded-full text-sm">
+                                    距离邯郸约1200公里
+                                </span>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white flex items-center">
+                                        <i class="fa-solid fa-map-location-dot mr-2 text-primary-600"></i>地址
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                        四川省成都市人民南路三段14号（仅单院区）
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white flex items-center">
+                                        <i class="fa-solid fa-phone-volume mr-2 text-primary-600"></i>挂号方式
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                        微信公众号"四川大学华西口腔医院"/"健康四川"
+                                        <br>电话028-114（每日08:00更新）
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white flex items-center">
+                                        <i class="fa-solid fa-user-doctor mr-2 text-primary-600"></i>推荐科室
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                        口腔综合科/老年口腔科专家门诊
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white flex items-center">
+                                        <i class="fa-solid fa-circle-info mr-2 text-primary-600"></i>注意事项
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                        异地医保需通过"国家医保服务平台"APP备案
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 其他医院推荐（为简洁起见，只显示一个完整的） -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- 医院2 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden">
+                        <div class="bg-gradient-to-r from-gray-700 to-gray-900 text-white p-4">
+                            <h3 class="font-bold text-lg">北京大学口腔医院</h3>
+                            <div class="mt-2 inline-block px-2 py-1 bg-white/20 text-white rounded-full text-xs font-semibold">
+                                <i class="fa-solid fa-circle-check mr-1"></i>高度匹配
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                                全国口腔专科排名第1，综合治疗权威，四项国家临床重点专科
+                            </p>
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="px-2 py-0.5 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-xs">
+                                    号源紧张
+                                </span>
+                                <span class="px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-xs">
+                                    异地医保
+                                </span>
+                            </div>
+                            <div class="text-sm">
+                                <p class="flex items-center text-gray-600 dark:text-gray-400 mb-1">
+                                    <i class="fa-solid fa-map-marker-alt text-gray-500 dark:text-gray-400 mr-2"></i>北京海淀区
+                                </p>
+                                <p class="flex items-center text-gray-600 dark:text-gray-400">
+                                    <i class="fa-solid fa-phone text-gray-500 dark:text-gray-400 mr-2"></i>010-114
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 医院3 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden">
+                        <div class="bg-gradient-to-r from-indigo-700 to-indigo-900 text-white p-4">
+                            <h3 class="font-bold text-lg">解放军总医院</h3>
+                            <div class="mt-2 inline-block px-2 py-1 bg-white/20 text-white rounded-full text-xs font-semibold">
+                                <i class="fa-solid fa-check mr-1"></i>部分匹配
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mb-3">
+                                全国综合排名第3，口腔科号源充足，推荐储冰峰医生（老年口腔专长）
+                            </p>
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                <span class="px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-200 rounded-full text-xs">
+                                号源充足
+                                </span>
+                            </div>
+                            <div class="text-sm">
+                                <p class="flex items-center text-gray-600 dark:text-gray-400 mb-1">
+                                    <i class="fa-solid fa-map-marker-alt text-gray-500 dark:text-gray-400 mr-2"></i>北京海淀区
+                                </p>
+                                <p class="flex items-center text-gray-600 dark:text-gray-400">
+                                    <i class="fa-solid fa-phone text-gray-500 dark:text-gray-400 mr-2"></i>010-66939344
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 医院4 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden">
+                        <div class="bg-gradient-to-r from-gray-500 to-gray-700 text-white p-4">
+                            <h3 class="font-bold
