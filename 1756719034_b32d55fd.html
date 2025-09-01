@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就医规划报告</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; }
+        .dark { background-color: #121212; color: #ffffff; transition: all 0.3s ease; }
+        .light { background-color: #ffffff; color: #000000; transition: all 0.3s ease; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        h2, h3 { margin-top: 20px; }
+    </style>
+</head>
+<body :class="theme">
+    <div class="container">
+        <h1 class="text-2xl font-bold mb-4">就医规划报告</h1>
+
+        <button class="btn btn-outline mb-4" @click="toggleTheme">切换主题</button>
+
+        <section>
+            <h2 class="text-xl font-semibold">一、患者情况摘要</h2>
+            <p>患者，70岁男性，常住邯郸，初步诊断为“牙齿松动”。本次核心诉求为综合治疗，无明确意向城市。既往病史包括胃癌（已行4次化疗）、脑膜瘤、高血压。医保类型为河北医保。</p>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold">二、核心就医建议</h2>
+            <div>
+                <h3 class="text-lg font-semibold">推荐医院 1：四川大学华西口腔医院</h3>
+                <ul>
+                    <li>匹配度评估：<strong>高度匹配</strong>（顶级口腔专科医院，专注复杂口腔疾病）</li>
+                    <li>推荐理由：全国口腔专科排名前列，老年口腔疾病诊疗经验丰富。</li>
+                    <li>异地就诊需提前规划行程（成都距离邯郸约1200公里）。</li>
+                    <li>医保政策：支持异地医保，需提前备案。</li>
+                    <li>地址：四川省成都市人民南路三段14号</li>
+                    <li>挂号方式：微信公众号“四川大学华西口腔医院”或电话028-114</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold">推荐医院 2：北京大学口腔医院</h3>
+                <ul>
+                    <li>匹配度评估：<strong>高度匹配</strong>（全国口腔专科排名第1）</li>
+                    <li>推荐理由：适合理疗需求，四项国家临床重点专科覆盖。</li>
+                    <li>挂号难度高，建议多渠道尝试。</li>
+                    <li>医保政策：支持异地医保，需备案。</li>
+                    <li>地址：北京市海淀区中关村南大街22号</li>
+                    <li>挂号方式：官方APP或电话010-114</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold">推荐医院 3：中国人民解放军总医院第一医学中心</h3>
+                <ul>
+                    <li>匹配度评估：<strong>部分匹配</strong></li>
+                    <li>推荐理由：全国综合排名第3，口腔科号源充足。</li>
+                    <li>医保政策：支持异地医保，需备案。</li>
+                    <li>地址：海淀区复兴路28号</li>
+                    <li>挂号方式：微信公众号或电话010-114</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold">推荐医院 4：中日友好医院</h3>
+                <ul>
+                    <li>匹配度评估：<strong>谨慎评估</strong></li>
+                    <li>推荐理由：可处理基础口腔问题。</li>
+                    <li>地址：北京市朝阳区樱花园东街2号</li>
+                    <li>医保政策：支持异地医保备案。</li>
+                    <li>挂号方式：微信公众号或电话010-114</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold">三、诊前准备清单</h2>
+            <ul>
+                <li>病历资料：化疗记录、近期血压监测记录。</li>
+                <li>异地医保：完成异地就医备案。</li>
+                <li>资金准备：挂号费及基础检查费用预留5000元。</li>
+                <li>通用准备：问题清单及备用降压药。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-semibold">四、行动指南与局限性说明</h2>
+            <p>优先挂取华西口腔医院或北大口腔的老年口腔科进行诊疗。</p>
+            <p>局限性声明：知识库部分信息缺失，实际就诊以医院官方信息为准。</p>
+            <p class="text-red-500">重要提示：70岁患者需重点关注治疗风险。</p>
+        </section>
+    </div>
+
+    <script>
+        new Vue({
+            el: 'body',
+            data: {
+                theme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+            },
+            methods: {
+                toggleTheme() {
+                    this.theme = this.theme === 'dark' ? 'light' : 'dark';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
