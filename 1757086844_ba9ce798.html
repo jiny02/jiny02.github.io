@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>心血管疾病北京就医综合方案报告</title>
+  <!-- UnoCSS (Tailwind 兼容预设) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- 自定义样式 -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--pl-bg-main, #f8fafc);
+      color: var(--pl-text-main, #222);
+      transition: background-color .3s, color .3s;
+    }
+    .dark body {
+      background-color: var(--pl-bg-dark, #18181b);
+      color: var(--pl-text-dark, #e5e7eb);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp .7s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .card-hover {
+      transition: box-shadow .2s, border-color .2s, transform .15s;
+    }
+    .card-hover:hover {
+      box-shadow: 0 6px 24px -4px rgba(30,41,59,.08),0 1.5px 6px -1.5px rgba(0,0,0,.03);
+      border-color: #6366f1;
+      transform: translateY(-3px) scale(1.025);
+      z-index:2;
+    }
+    .btn-hover {
+      transition: background .18s, color .18s, transform .13s;
+    }
+    .btn-hover:hover {
+      background: #6366f1;
+      color: #fff !important;
+      transform: scale(1.04);
+    }
+    /* 响应式字体 */
+    h1 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+    h2 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+    h3 { font-size: clamp(1.07rem, 1.7vw, 1.2rem); }
+    @media (max-width:600px){
+      .fade-in { animation-duration:.9s; }
+    }
+    /* 深色模式适配图标 */
+    [data-theme='dark'] .icon-dark { display:inline; }
+    [data-theme='dark'] .icon-light { display:none; }
+    [data-theme='light'] .icon-dark { display:none; }
+    [data-theme='light'] .icon-light { display:inline; }
+  </style>
+</head>
+<body class="pl-bg-main dark:pl-bg-dark min-h-screen flex flex-col">
+  <!-- 顶部栏 -->
+  <header class="w-full sticky top-0 z-30 pl-bg-main dark:pl-bg-dark/90 backdrop-blur border-b border-gray-200 dark:border-gray-700 px-4 md:px-8 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="material-icons text-indigo-600 dark:text-indigo-400 text-2xl">favorite</span>
+      <span class="font-bold text-lg tracking-tight">心血管疾病北京就医方案</span>
+    </div>
+    <button id="themeToggle" class="btn-hover rounded-full px-3 py-2 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 focus:outline-none border border-transparent hover:border-indigo-400">
+      <i class="fa-solid fa-moon icon-light"></i>
+      <i class="fa-solid fa-sun icon-dark"></i>
+    </button>
+  </header>
+
+  <!-- 主体内容 -->
+  <main class="flex-grow px-4 md:px-8 py-6 max-w-3xl mx-auto w-full fade-in">
+
+    <!-- 患者摘要卡片 -->
+    <section class="card-hover border border-gray-200 dark:border-gray-700 rounded-xl p-5 mb-7 shadow-sm bg-white dark:bg-gray-900/80">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="material-icons text-indigo-500 text-xl">person</span>
+        <h2 class="font-semibold">患者基本信息</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-8 text-sm text-gray-700 dark:text-gray-300">
+        <div><b>性别/年龄：</b>女 / 57岁</div>
+        <div><b>地区：</b>河北邯郸</div>
+        <div><b>医保类型：</b>河北医保（需异地备案）</div>
+        <div><b>核心诉求：</b>综合治疗（北京）</div>
+        <div><b>主诊断：</b>主动脉及冠状动脉硬化、二尖瓣轻度关闭不全、左室舒张功能I度</div>
+        <div><b>既往病史：</b>2型糖尿病</div>
+        <div><b>手术/治疗史：</b>无</div>
+      </div>
+    </section>
+
+    <!-- 推荐医院列表 -->
+    <section class="mb-8">
+      <h2 class="font-semibold text-lg mb-4 flex items-center gap-2"><span class="material-icons text-indigo-500">local_hospital</span>优选医院推荐</h2>
+
+      <!-- 医院卡片1 -->
+      <div class="card-hover border-l-[5px] border-indigo-500 border bg-white dark:bg-gray-900/80 rounded-xl shadow-sm p-5 mb-5 group transition-all">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="fa-solid fa-star text-yellow-400"></span>
+          <span class="font-bold text-base">中国医学科学院阜外医院</span>
+          <span class="text-xs bg-indigo-100 text-indigo-700 rounded px-2 py-[1px] ml-2">心血管专科顶尖</span>
+        </div>
+        <div class="text-sm text-gray-700 dark:text-gray-300 mb-3">全国心血管专科排名第一，擅长心脏瓣膜病、冠心病及心功能不全，糖尿病合并心血管病管理经验丰富。</div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-1 text-sm mb-3">
+          <li><i class="fa-solid fa-location-dot text-indigo-400 mr-1"></i>北京市西城区北礼士路167号</li>
+          <li><i class="fa-solid fa-id-card text-green-500 mr-1"></i>支持异地医保（需提前备案）</li>
+          <li><i class="fa-solid fa-calendar-check text-blue-400 mr-1"></i>挂号：公众号“阜外医院”/APP“掌上阜外医院”，每日7:00放号</li>
+        </ul>
+        <!-- 医生推荐 -->
+        <div class="mt-2">
+          <h3 class="font-medium mb-1 flex items-center gap-1"><span class="fa-solid fa-user-md text-indigo-500"></span>推荐医生</h3>
+          <ul class="space-y-[2px] ml-[22px]">
+            <li><b>姚焰（主任医师）</b> — 专家门诊 周二上午，100元<br><span class="text-xs text-gray-500">复杂心律失常介入权威</span></li>
+            <li><b>吴永健（主任医师）</b> — 特需门诊 周四下午，300元<br><span class="text-xs text-gray-500">冠心病微创治疗领军者</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 医院卡片2 -->
+      <div class="card-hover border-l-[5px] border-cyan-500 border bg-white dark:bg-gray-900/80 rounded-xl shadow-sm p-5 mb-5 group transition-all">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="fa-solid fa-medal text-cyan-400"></span>
+          <span class="font-bold text-base">首都医科大学附属北京安贞医院</span>
+          <span class="text-xs bg-cyan-100 text-cyan-700 rounded px-2 py-[1px] ml-2">心血管内外科均衡强项</span>
+        </div>
+        <div class="text-sm text-gray-700 dark:text-gray-300 mb-3">冠脉搭桥手术量全国第一，血管外科国家重点学科，擅主动脉硬化综合干预。</div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-1 text-sm mb-3">
+          <li><i class="fa-solid fa-location-dot text-cyan-400 mr-1"></i>北京市朝阳区安贞路2号</li>
+          <li><i class="fa-solid fa-id-card text-green-500 mr-1"></i>支持异地医保</li>
+          <li><i class="fa-solid fa-calendar-check text-blue-400 mr-1"></i>挂号：“京医通”公众号，每日7:00放号</li>
+        </ul>
+        <!-- 医生推荐 -->
+        <div class="mt-2">
+          <h3 class="font-medium mb-1 flex items-center gap-1"><span class="fa-solid fa-user-md text-cyan-500"></span>推荐医生</h3>
+          <ul class="space-y-[2px] ml-[22px]">
+            <li><b>周玉杰（主任医师）</b> — 专家门诊 周三上午，80元<br><span class="text-xs text-gray-500">冠心病介入及糖尿病心肾保护</span></li>
+            <li><b>马长生（主任医师）</b> — 特需门诊 周一全天，500元<br><span class="text-xs text-gray-500">房颤消融技术顶尖专家</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 医院卡片3 -->
+      <div class="card-hover border-l-[5px] border-orange-400 border bg-white dark:bg-gray-900/80 rounded-xl shadow-sm p-5 mb-5 group transition-all">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="fa-solid fa-hospital-user text-orange-400"></span>
+          <span class="font-bold text-base">中国医学科学院北京协和医院</span>
+          <span class="text-xs bg-orange-100 text-orange-700 rounded px-2 py-[1px] ml-2">综合实力强/多学科会诊</span>
+        </div>
+        <div class="text-sm text-gray-700 dark:text-gray-300 mb-[10px]">内分泌科全国第一（糖尿病管理优势），多学科会诊机制完善。<br><b>注意：</b>心血管内科号源紧张，建议优先国际医疗部（费用高，需自费）。</div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-[4px] text-sm mb-[10px]">
+          <li><i class="fa-solid fa-location-dot text-orange-400 mr-[4px]"></i>东城区帅府园1号（东院）</li>
+          <li><i class="fa-solid fa-id-card text-green-500 mr-[4px]"></i>国际医疗部不纳入医保报销</li>
+          <li><i class="fa-solid fa-calendar-check text-blue-400 mr-[4px]"></i>挂号：APP“北京协和医院”，每日16:00放号（提前7天预约）</li>
+        </ul>
+        <!-- 医生推荐 -->
+        <div class="mt-[6px]">
+          <h3 class="font-medium mb-[3px] flex items-center gap-[4px]"><span class="fa-solid fa-user-md text-orange-400"></span>推荐医生</h3>
+          <ul class="space-y-[2px] ml-[22px]">
+            <li><b>闫建玲（主任医师）</b> — 特需门诊 周六上午，900元<br><span class="text-xs text-gray-500">冠心病合并糖尿病综合治疗</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 就诊准备与行动指南 -->
+    <section class="mb-[42px] fade-in" style="animation-delay:.25s;">
+      <h2 class="font-semibold text-lg mb-[12px] flex items-center gap-[6px]"><span class="material-icons text-purple-600">assignment_turned_in</span>就诊准备与行动指南</h2>
+
+      <!-- 清单分栏 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-[28px] gap-y-[20px] mb-[20px]">
+        <!-- 病历资料清单 -->
+        <div class="bg-violet-50 dark:bg-violet-900/20 rounded-lg p-[18px] border border-violet-100 dark:border-violet-800">
+          <h3 class="font-medium mb-[8px] flex items-center gap-[5px]"><i class="fa-solid fa-file-medical-alt text-violet-600"></i>病历资料准备</h3>
+          <ul class="list-disc pl-[20px] space-y-[4px] text-sm">
+            <li>身份证、河北医保卡原件</li>
+            <li>近期心脏彩超、冠脉CT、血糖监测记录、糖化血红蛋白报告</li>
+            <li>既往用药清单（降压药、降糖药、抗凝药等）</li>
+          </ul>
+        </div>
+        <!-- 医保与费用清单 -->
+        <div class="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-[18px] border border-cyan-100 dark:border-cyan-800">
+          <h3 class="font-medium mb-[8px] flex items-center gap-[5px]"><i class="fa-solid fa-wallet text-cyan-600"></i>医保与费用须知</h3>
+          <ul class="list-disc pl-[20px] space-y-[4px] text-sm">
+            <li>通过“国家医保服务平台”APP办理异地就医备案</li>
+            <li>准备2~3万元备用金（检查+药费+食宿）</li>
+            <li>特需/国际部门诊费用可能无法报销</li>
+          </ul>	
+        </div>	
+        <!-- 病情管理清单 -->	
+        <div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-[18px] border border-orange-100 dark:border-orange-800">	
+          <h3 class="font-medium mb-[8px] flex items-center gap-[5px]"><i class="fa-solid fa-notes-medical text-orange-600"></i>病情管理提醒</h3>	
+          <ul class="list-disc pl-[20px] space-y-[4px] text-sm">	
+            <li>整理近三日空腹及餐后血糖记录	
+            </li><li>记录心慌/胸闷发作频率、持续时间	
+            </li></ul></div><!-- 行动指南 --><div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-[18px] border border-green-100 dark:border-green-800"><h3 class="font-medium mb-[8px] flex items-center gap-[5px]"><i class="fa-solid fa-bullseye-arrow text-green-600"></i>优先行动建议</h3><ul class="list-disc pl-[20px] space-y-[4px] text-sm"><li><b>首推阜外医院姚焰/吴永健医生：</b> 周一通过公众号抢挂周二上午专家号，同步备选安贞医院周玉杰医生周三门诊。</li><li><b>二次确认：</b> 协和医院国际部费用、胰岛素冷藏（酒店冰箱）等细节提前电话确认。</li></ul></div></div><!-- 局限性和免责声明 --><section class="mt-[22px]"><h3 class="font-medium mb-[6px] flex items-center gap-[4px]"><i class="fa-solid fa-exclamation-circle text-red-500"></i>局限性说明与免责声明</h3><ul class="list-disc pl-[20px] space-y-[4px] text-xs md:text-sm"><li>本报告依据当前知识库生成，部分医院中医调理资源信息暂缺，建议面诊时补充咨询。</li><li>最终治疗方案需以医院官方诊断为准，突发胸痛请立即就近急诊。</li></ul></section><!-- 温馨提醒 --><section class="mt-[16px]"><p class="text-purple-700 dark:text-purple-200 font-semibold flex items-center gap-x-[7px]"><i class="fa-solid fa-lightbulb"></i> 就诊当日携带硝酸甘油片备用，避免空腹候诊引发低血糖。</p></section></section></main><!-- 页脚 --><footer class="py-[16px] px-[12px] mt-auto w-full flex justify-center items-center bg-transparent"><p class="text-xs text-gray-400">©2024 专业就医可视化方案 | 本页面仅供参考，不构成医疗建议。</p></footer><!-- 深色模式切换脚本 --><script>// 深色模式切换
+const themeBtn = document.getElementById('themeToggle');
+defaultTheme();
+themeBtn.addEventListener('click',()=>{
+  const html = document.documentElement;
+  if(html.classList.contains('dark')){
+    html.classList.remove('dark');
+    localStorage.setItem('theme','light');
+    html.setAttribute('data-theme','light');
+  }else{
+    html.classList.add('dark');
+    localStorage.setItem('theme','dark');
+    html.setAttribute('data-theme','dark');
+  }
+});
+function defaultTheme(){
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const saved = localStorage.getItem('theme');
+  const html = document.documentElement;
+  if(saved==='dark'||(!saved&&prefersDark)){
+    html.classList.add('dark');html.setAttribute('data-theme','dark');
+  }else{
+    html.classList.remove('dark');html.setAttribute('data-theme','light');
+  }
+}
+// 内容区块淡入动画
+window.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.fade-in').forEach((el,i)=>{
+    el.style.animationDelay = (0.09*i)+.15+'s';
+  });
+});
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener('click',function(e){e.preventDefault();document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});});});
+// 图片懒加载支持(示例代码，实际无图片)
+// document.querySelectorAll('img[data-src]').forEach(img=>{
+//   img.setAttribute('loading','lazy');img.src=img.dataset.src;
+// });
+</script></body></html>
