@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <!-- UnoCSS（Tailwind兼容预设） -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      transition: background 0.3s, color 0.3s;
+    }
+    :root {
+      --bg: #f7f8fa;
+      --fg: #222;
+      --card-bg: #fff;
+      --border: #e5e7eb;
+      --primary: #6366f1;
+      --secondary: #64748b;
+      --accent: #22d3ee;
+      --shadow: 0 4px 24px rgba(60,60,60,0.06);
+    }
+    [data-theme="dark"] {
+      --bg: #18181b;
+      --fg: #f3f4f6;
+      --card-bg: #232329;
+      --border: #27272a;
+      --primary: #818cf8;
+      --secondary: #94a3b8;
+      --accent: #22d3ee;
+      --shadow: 0 4px 24px rgba(20,20,20,0.16);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeInUp .8s cubic-bezier(.19,1,.22,1) forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity:1; transform: none; }
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: box-shadow .18s, border-color .18s, transform .18s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(99,102,241,.10);
+      border-color: var(--primary);
+      transform: translateY(-2px) scale(1.015);
+    }
+    .icon-box {
+      width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+      border-radius:12px; background:var(--primary); color:#fff; font-size:24px;
+    }
+    .section-title {
+      font-size:1.25rem; font-weight:600; margin-bottom:.5rem; display:flex; align-items:center; gap:.5rem;
+    }
+    .hospital-card {
+      display:flex; flex-direction:column; gap:.5rem; padding:.5rem 0;
+    }
+    .hospital-card .card-header { display:flex; align-items:center; gap:.75rem; }
+    .hospital-card .card-header .material-icons { font-size:2rem; color:var(--primary); }
+    .hospital-card .tag {
+      display:inline-block; padding:.2em .7em; border-radius:.7em; font-size:.85em; background:#eef2ff; color:#6366f1; margin-right:.5em;
+    }
+    [data-theme="dark"] .hospital-card .tag { background:#232346; color:#a5b4fc; }
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .main-container { padding-left:.5rem;padding-right:.5rem; }
+      .section-title { font-size:1.08rem; }
+    }
+    /* 按钮微交互 */
+    .btn-primary {
+      background:var(--primary); color:#fff; border-radius:.7em; padding:.5em 1.4em; font-weight:500;
+      transition:.18s box-shadow,.18s transform,.18s background;
+      box-shadow:none;border:none;font-size:1rem;
+    }
+    .btn-primary:hover {
+      background:#4f46e5; transform:scale(1.05); box-shadow:0 4px 20px rgba(99,102,241,.12);
+    }
+    /* 滚动条美化 */
+    ::-webkit-scrollbar { width:8px;background:#e0e7ef;border-radius:4px;}
+    ::-webkit-scrollbar-thumb {background:#b3bcdf;border-radius:4px;}
+    [data-theme="dark"] ::-webkit-scrollbar {background:#232329;}
+    [data-theme="dark"] ::-webkit-scrollbar-thumb {background:#37376c;}
+  </style>
+</head>
+<body class="min-h-screen bg-[var(--bg)] text-[var(--fg)] transition-colors duration-300">
+
+<!-- 顶部栏 -->
+<header class="sticky top-0 z-40 bg-[var(--bg)]/80 backdrop-blur supports-backdrop-blur:border-b border-b border-[var(--border)] flex items-center justify-between px-4 sm:px-10 h-14 shadow-sm">
+  <div class="flex items-center gap-2">
+    <span class="icon-box"><span class="material-icons">medical_services</span></span>
+    <span class="font-bold text-lg tracking-tight">就医规划报告</span>
+  </div>
+  <button id="theme-toggle" class="btn-primary flex items-center gap-1" aria-label="切换深浅色模式">
+    <span class="material-icons" id="theme-icon">dark_mode</span> <span class="hidden sm:inline">模式</span>
+  </button>
+</header>
+
+<main class="main-container max-w-3xl mx-auto px-2 sm:px-6 py-8 space-y-10">
+
+<!-- 一、患者情况摘要 -->
+<section class="fade-in card p-6 space-y-3">
+  <div class="section-title"><span class="material-icons">person</span> 一、患者情况摘要</div>
+  <div class="text-base leading-relaxed">
+    <ul class="list-disc pl-6 space-y-1">
+      <li><b>性别/年龄：</b>男，70岁</li>
+      <li><b>常住地：</b>河北省邯郸市</li>
+      <li><b>核心诊断：</b>牙齿松动</li>
+      <li><b>核心诉求：</b>综合治疗（口腔相关）</li>
+      <li><b>既往病史：</b>脑膜瘤、高血压、胃癌（化疗4次）</li>
+      <li><b>医保类型：</b>河北医保</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 二、核心就医建议 -->
+<section class="fade-in card p-6 space-y-5">
+  <div class="section-title"><span class="material-icons">local_hospital</span> 二、核心就医建议</div>
+
+  <!-- 医院推荐卡片 -->
+
+  <!-- 推荐医院1 -->
+  <div class="hospital-card card p-4 mb-2">
+    <div class="card-header">
+      <span class="material-icons">star</span>
+      <span class="font-semibold text-lg">河北医科大学口腔医院</span>
+      <span class="tag">省级口腔专科</span>
+      <span class="tag bg-green-100 text-green-700">高度匹配</span>
+    </div>
+    <div class="text-sm text-[var(--secondary)] mb-1">河北省石家庄市中山东路383号</div>
+    <ul class="text-base pl-5 list-disc space-y-1">
+      <li>河北省唯一省级口腔专科医院，专设牙体牙髓、牙周病、口腔修复等科室，<b>直接匹配“牙齿松动”综合治疗需求</b>。</li>
+      <li>省内就诊医保结算便利，费用报销比例高。</li>
+      <li><b>挂号方式：</b> 微信公众号“河北医科大学口腔医院互联网医院”或“健康河北服务号”，APP“健康河北”，电话0311-12580。</li>
+      <li><b>推荐科室：</b>口腔修复科 / 牙周病科（专家门诊）。</li>
+      <li><b>特别注意：</b>建议提前电话确认高龄及合并基础病患者的接诊政策。</li>
+    </ul>
+  </div>
+
+  <!-- 推荐医院2 -->
+  <div class="hospital-card card p-4 mb-2">
+    <div class="card-header">
+      <span class="material-icons">local_hospital</span>
+      <span class="font-semibold text-lg">河北医科大学第一医院</span>
+      <span class="tag">综合三甲</span>
+      <span class="tag bg-yellow-100 text-yellow-700">部分匹配</span>
+    </div>
+    <div class="text-sm text-[var(--secondary)] mb-1">石家庄市东岗路89号</div>
+    <ul class="text-base pl-5 list-disc space-y-1">
+      <li>设有口腔科，可处理基础牙齿松动问题，同时便于管理高血压、胃癌等全身病史。</li>
+      <li><b>挂号方式：</b> 微信公众号“河北医科大学第一医院”或“健康河北服务号”，官网，电话0311-85917000。</li>
+      <li><b>推荐科室：</b>口腔科（普通/专家门诊）。</li>
+      <li><b>特别注意：</b>复杂病例建议转诊至专科医院。</li>
+    </ul>
+  </div>
+
+  <!-- 推荐医院3 -->
+  <div class="hospital-card card p-4 mb-2">
+    <div class="card-header">
+      <span class="material-icons">location_city</span>
+      <span class="font-semibold text-lg">北京大学口腔医院（北京）</span>
+      <span class="tag">全国顶尖口腔专科</span>
+      <span class="tag bg-blue-100 text-blue-700">谨慎评估</span>
+    </div>
+    <div class="text-sm text-[var(--secondary)] mb-1">北京市海淀区中关村南大街22号</div>
+    <ul class="text-base pl-5 list-disc space-y-1">
+      <li>技术全面，擅长复杂牙齿松动与修复，但跨省就医需提前办理医保异地备案。</li>
+      <li><b>挂号方式：</b> 微信公众号“北京114预约挂号”，北京市统一挂号平台，电话010-114/62179665。</li>
+      <li><b>推荐科室：</b>牙周病科 / 修复科（专家门诊）。</li>
+      <li><b>特别注意：</b>挂号难度较高，建议提前线上预约；报销比例较低，异地交通食宿成本高。</li>
+    </ul>
+  </div>
+
+  <!-- 提示 -->
+  <div class="mt-2 flex items-center gap-2 text-xs text-[var(--secondary)]"><i class="fa-solid fa-circle-info"></i><span>如需跨省就医，请务必提前通过“河北医保”平台办理异地备案。</span></div>
+
+</section>
+
+<!-- 三、诊前准备清单 -->
+<section class="fade-in card p-6 space-y-3">
+  <div class="section-title"><span class="material-icons">assignment_turned_in</span> 三、诊前准备清单</div>
+
+  <!-- 病历资料准备 -->
+  <div class="mb-2">
+    <div class="font-medium mb-1 flex items-center gap-1"><i class="fa-solid fa-folder-open text-[var(--primary)]"></i> 病历资料准备</div>
+    <ul class="list-disc pl-6 space-y-1 text-base">
+      <li>身份证、河北医保卡原件。</li>
+      <li>既往胃癌化疗记录、脑膜瘤影像报告、高血压用药清单及近期血压监测数据。</li>
+      <li>所有口腔相关检查资料（如全景X光片、既往牙科病历）。</li>
+      <li><span class="text-[var(--primary)]">建议按时间线整理病史资料，标注关键时间点。</span></li>
+    </ul>
+  </div>
+div
+  <!-- 医保与费用准备 -->
+div
+    div.font-medium.mb-1.flex.items-center.gap-1
+        i.fa-solid.fa-wallet.text-[var(--primary)] 9医保与费用准备
+    ul.list-disc.pl-6.space-y-1.text-base
+        li 如需跨省就医，提前通过“河北医保”APP办理备案。	
+        li 挂号费30~100元，基础检查200~500元，复杂治疗如种植牙5000元以上。	
+        li 保留所有发票原件以备报销。	
+        li 咨询邯郸医保局，确认跨省/省内报销比例。	
+        li 建议预留额外资金（建议1~2万元），覆盖异地食宿交通费。	
+
+<!-- 其他准备 -->
+div.mb-2
+    div.font-medium.mb-1.flex.items-center.gap-1
+        i.fa-solid.fa-notes-medical.text-[var(--primary)] 09其他准备
+    ul.list-disc.pl-6.space-y-1.text-base
+        li 提前列出关键问题（如：牙齿松动病因、胃癌病史对口腔治疗的影响）。	
+        li 高血压药物按时服用，就诊当日携带降压药。	
+        li 穿着宽松领口衣物，方便口腔检查。	
+        li 如服用抗凝药物（如阿司匹林），需提前咨询内科医生是否需要调整。	
+
+</section>
+div.fade-in.card.px-6.py-6.space-y-3
+    div.section-title.flex.items-center.gap-2
+        span.material-icons 09insights
+        | 四、行动指南与局限性说明
+
+<!-- 优先行动建议 -->
+div.font-medium.mb-1.flex.items-center.gap-1
+        i.fa-solid.fa-route.text-[var(--primary)] 09优先行动建议
+ul.list-disc.pl-6.space-y-1.text-base
+        li 首选：预约河北医科大学口腔医院口腔修复科/牙周病科门诊，优先解决牙齿松动病因评估。	
+        li 若症状复杂或省内治疗效果不佳，办理医保异地备案后，尝试北京大学口腔医院牙周病科（需提前抢号）。	
+
+<!-- 二次确认清单 -->
+div.font-medium.mb-1.flex.items-center.gap-1
+        i.fa-solid.fa-phone-volume.text-[var(--primary)] 09二次确认清单
+ul.list-disc.pl-6.space-y-1.text-base
+        li 致电河北医科大学口腔医院：0311-86265748（院办），确认高龄及基础病患者接诊政策。	
+        li 致电北京大学口腔医院：010-62179666（总机），咨询异地医保结算流程及高龄接诊政策。	
+<!-- 局限性声明 -->
+div.font-medium.mb-1.flex.items-center.gap-1
+        i.fa-solid.fa-exclamation-triangle.text-yellow-500 09局限性声明
+ul.list-disc.pl-6.space-y-1.text-base.text-yellow-800[data-theme=dark]:text-yellow-300
+        li 知识库未提供具体医生信息，实际挂号需以医院官方渠道为准。	
+        li 高龄患者口腔治疗需综合评估全身状况，最终方案以临床医生诊断为准。	
+<!-- 最终免责 -->
+div.font-medium.mb-1.flex.items-center.gap-1.mt-3
+        i.fa-solid.fa-shield-alt.text-gray-400 09最终免责
+p.text-xs.text-gray-500[data-theme=dark]:text-gray-400 本报告依据当前知识库信息生成，医疗政策及号源实时变动，请以医院官方平台信息为准。建议家属陪同就诊，确保治疗安全。
+div.text-xs.text-right.text-gray-400.mt-2[data-theme=dark]:text-gray-500  09生成日期：2025年4月11日 09|  09仅供参考，不替代专业医疗建议。 09
+<script>// 深浅色模式切换及跟随系统实现
+(function() {
+document.addEventListener('DOMContentLoaded', function() {
+defaultTheme();
+document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+systemThemeListen();
+fadeInOnLoad();
+defaultScrollSmooth();
+document.getElementById('theme-icon').innerText = isDark() ? 'light_mode' : 'dark_mode';
+document.addEventListener('scroll', () => { document.body.classList.add('scrolling'); });	// 微交互示例
+});	// 淡入动画效果实现
+function fadeInOnLoad() {
+document.querySelectorAll('.fade-in').forEach((el,i)=>{
+el.style.animationDelay = (i*0.08)+.05+'s';});}	// 跟随系统主题和本地存储切换深浅色模式
+function defaultTheme() {
+document.documentElement.setAttribute('data-theme', getSavedTheme() || getSystemTheme());}	function toggleTheme() {	const cur = isDark(); setTheme(!cur ? 'dark' : 'light'); document.getElementById('theme-icon').innerText = cur ? 'dark_mode' : 'light_mode';}	function setTheme(theme) {document.documentElement.setAttribute('data-theme', theme); localStorage.setItem('theme', theme);}	function getSavedTheme() {return localStorage.getItem('theme');}	function getSystemTheme() {return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';}	function isDark() {return document.documentElement.getAttribute('data-theme') === 'dark';}	function systemThemeListen() {window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {setTheme(e.matches ? 'dark' : 'light');document.getElementById('theme-icon').innerText = e.matches ? 'light_mode' : 'dark_mode';});}	function defaultScrollSmooth() {window.scrollTo({top:0,behavior:'smooth'});}	})();</script>
+defaultScrollSmooth() {window.scrollTo({top:0,behavior:'smooth'});}	})();</script>
