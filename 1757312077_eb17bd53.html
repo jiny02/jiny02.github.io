@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <!-- UnoCSS (Tailwind 兼容预设) -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+    .fade-in {
+      animation: fadeIn 1s cubic-bezier(.39,.575,.565,1) both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+    /* 微交互效果 */
+    .card-hover:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08),0 1.5px 6px rgba(0,0,0,0.06);
+      border-color: #6366f1;
+      transform: translateY(-4px) scale(1.025);
+      transition: all .18s cubic-bezier(.4,0,.2,1);
+    }
+    .btn-hover:hover {
+      background-color: #6366f1 !important;
+      color: #fff !important;
+      transform: scale(1.04);
+      box-shadow: 0 2px 8px rgba(99,102,241,.15);
+      transition: all .18s cubic-bezier(.4,0,.2,1);
+    }
+    .dark body {
+      background: #18181b;
+      color: #f3f4f6;
+    }
+    .dark .card-hover:hover {
+      border-color: #818cf8;
+      box-shadow: 0 8px 32px rgba(49,51,70,0.15),0 1.5px 6px rgba(99,102,241,0.13);
+    }
+    .dark .btn-hover:hover {
+      background-color: #818cf8 !important;
+      color: #18181b !important;
+    }
+    /* 响应式字体 */
+    h1 { font-size: clamp(1.7rem,4vw,2.5rem); }
+    h2 { font-size: clamp(1.3rem,3vw,1.8rem); }
+    h3 { font-size: clamp(1.12rem,2vw,1.35rem); }
+    .section-title {
+      display:flex;align-items:center;gap:.5em;margin-bottom:.8em;font-weight:600
+    }
+    .section-title i {
+      color:#6366f1;font-size:1.4em
+    }
+    /* 深色模式切换按钮样式 */
+    .theme-toggle {
+      cursor:pointer;padding:.4em;border-radius:.5em;transition:background .2s
+    }
+    .theme-toggle:hover { background:rgba(99,102,241,.07); }
+    /* 懒加载图片样式 */
+    .img-lazy { filter: blur(8px); transition: filter .5s; }
+    .img-loaded { filter: blur(0); }
+  </style>
+</head>
+<body class="bg-white dark:bg-[#18181b] text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+  <!-- 顶部栏 -->
+  <header class="w-full px-4 py-3 flex items-center justify-between bg-white/90 dark:bg-[#18181b]/90 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-30 backdrop-blur supports-backdrop-blur:bg-white/80">
+    <div class="flex items-center gap-2">
+      <span class="material-icons text-indigo-500 text-2xl">local_hospital</span>
+      <span class="font-bold text-lg tracking-tight">就医规划报告</span>
+    </div>
+    <button id="theme-toggle" class="theme-toggle" aria-label="切换深色/浅色模式">
+      <span class="material-icons" id="theme-icon">dark_mode</span>
+    </button>
+  </header>
+
+  <!-- 主体内容 -->
+  <main class="flex-1 max-w-3xl w-full mx-auto px-4 py-8 fade-in">
+
+    <!-- 一、患者情况摘要 -->
+    <section class="mb-10">
+      <div class="section-title"><i class="fa-solid fa-user-md"></i>一、患者情况摘要</div>
+      <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-5 card-hover shadow-sm fade-in">
+        <ul class="space-y-2 text-base leading-relaxed">
+          <li><b>性别/年龄：</b>男，70岁</li>
+          <li><b>常住地：</b>邯郸市</li>
+          <li><b>当前病情：</b>牙齿松动</li>
+          <li><b>核心诉求：</b>综合治疗</li>
+          <li><b>医保类型：</b>河北医保</li>
+          <li><b>既往病史：</b>脑膜瘤、高血压、胃癌（化疗4次）</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 二、核心就医建议 -->
+    <section class="mb-10">
+      <div class="section-title"><i class="fa-solid fa-hospital"></i>二、核心就医建议</div>
+      <div class="space-y-6">
+        <!-- 医院卡片：邯郸市中心医院 -->
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-6 card-hover shadow-sm fade-in">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-icons text-indigo-500">location_on</span>
+            <h3 class="font-semibold text-lg">邯郸市中心医院</h3>
+            <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded bg-indigo-100 text-indigo-600 text-xs font-medium">高度匹配</span>
+          </div>
+          <ul class="text-base space-y-1 mb-2">
+            <li><b>推荐理由：</b>本地三级甲等综合医院，覆盖肿瘤科及基础口腔诊疗，地理位置便捷，适合处理复杂病史的综合性诊疗。</li>
+            <li><b>特别注意：</b>无冲突风险。</li>
+            <li><b>医保政策：</b>支持本地医保（河北医保），异地就诊需提前通过“国家医保服务平台”APP备案。</li>
+            <li><b>地址：</b>西区：邯郸市邯山区中华南大街15号；东院区：邯郸市丛台区丛台北路59号。</li>
+            <li><b>挂号方式：</b>暂未提供具体挂号渠道，建议致电总机（0310-2118000）咨询。</li>
+            <li><b>推荐医生：</b>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。建议通过医院官方渠道挂取口腔科专家门诊。</li>
+          </ul>
+        </div>
+        <!-- 医院卡片：石家庄市人民医院 -->
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-6 card-hover shadow-sm fade-in">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-icons text-green-500">location_on</span>
+            <h3 class="font-semibold text-lg">石家庄市人民医院</h3>
+            <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded bg-green-100 text-green-600 text-xs font-medium">部分匹配</span>
+          </div>
+          <ul class="text-base space-y-1 mb-2">
+            <li><b>推荐理由：</b>省会三级甲等综合医院，设有口腔科及心血管内科，适合综合治疗需求。</li>
+            <li><b>特别注意：</b>无冲突风险。</li>
+            <li><b>医保政策：</b>支持河北医保，异地就诊需备案。</li>
+            <li><b>地址：</b>建华院区：石家庄市裕华区建华南大街365号；方北路院区：石家庄市长安区方北路1号；范西路院区：石家庄市长安区范西路36号。</li>
+            <li><b>挂号方式：</b>微信公众号“石家庄市第一医院移动服务平台”“健康河北服务号”，或APP“健康河北”挂号。</li>
+            <li><b>推荐医生：</b>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。建议通过医院官方渠道挂取口腔科专家门诊。</li>
+          </ul>
+        </div>
+        <!-- 医院卡片：河北医科大学第二医院 -->
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-6 card-hover shadow-sm fade-in">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-icons text-blue-500">location_on</span>
+            <h3 class="font-semibold text-lg">河北医科大学第二医院</h3>
+            <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded bg-blue-100 text-blue-600 text-xs font-medium">部分匹配</span>
+          </div>
+          <ul class="text-base space-y-1 mb-2">
+            <li><b>推荐理由：</b>国家重点临床专科医院，提供综合性服务，可能支持口腔诊疗。</li>
+            <li><b>特别注意：</b>无冲突风险。</li>
+            <li><b>医保政策：</b>支持河北医保，异地就诊需备案。</li>
+            <li><b>地址：</b>河北省石家庄市和平西路215号。</li>
+            <li><b>挂号方式：</b>微信公众号“河北医科大学第二医院”“健康河北服务号”，APP“健康河北”，或电话0311-66002999挂号。</li>
+            <li><b>推荐医生：</b>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。建议通过医院官方渠道挂取口腔科专家门诊。</li>
+          </ul>
+        </div>
+        <!-- 医院卡片：河北医科大学第一医院 -->
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-6 card-hover shadow-sm fade-in">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-icons text-orange-500">location_on</span>
+            <h3 class="font-semibold text-lg">河北医科大学第一医院</h3>
+            <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded bg-orange-100 text-orange-600 text-xs font-medium">部分匹配</span>
+          </div>
+          <ul class="text-base space-y-1 mb-2">
+            <li><b>推荐理由：</b>综合医院定位，涵盖多学科，包括口腔诊疗。</li>
+            <li><b>特别注意：</b>无冲突风险。</li>
+            <li><b>医保政策：</b>支持河北医保，异地就诊需备案。</li>
+            <li><b>地址：</b>河北省石家庄市东岗路89号。</li>
+            <li><b>挂号方式：</b>微信公众号“河北医科大学第一医院”“健康河北服务号”，APP“健康河北”，电话0311-85917000，或官网挂号。</li>
+            <li><b>推荐医生：</b>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。建议通过医院官方渠道挂取口腔科专家门诊。</li>
+          </ul>
+        </div>
+        <!-- 医院卡片：北京大学口腔医院 -->
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-6 card-hover shadow-sm fade-in">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-icons text-red-500">location_on</span>
+            <h3 class="font-semibold text-lg">北京大学口腔医院</h3>
+            <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded bg-red-100 text-red-600 text-xs font-medium">谨慎评估</span>
+          </div>
+          <ul class="text-base space-y-1 mb-2">
+            <li><b>推荐理由：</b>国内顶级口腔专科医院，专注牙齿问题诊疗，但为专科机构，与综合治疗诉求不符，且距离较远。</li>
+            <li><b>特别注意：</b><span class='text-red-600 font-semibold'>本院为专科口腔医院，无法处理您的胃癌、高血压等综合病史，与您的核心诉求“综合治疗”严重冲突。就诊前务必致电确认是否接诊成人复杂病史患者（010-62179666），并评估跨省风险。</span></li>
+            <li><b>医保政策：</b>跨省医保需备案，报销比例可能较低。</li>
+            <li><b>地址：</b>北京市海淀区中关村南大街22号。</li>
+            <li><b>挂号方式：</b>微信公众号“北京114预约挂号”，北京市统一挂号平台，电话010-114或010-62179665，或APP“北京大学口腔医院”挂号。</li>
+            <li><b>推荐医生：</b>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。建议通过医院官方渠道挂取口腔科专家门诊。</li>
+          </ul>
+        </div>
+        <!-- 医院卡片：天津市口腔医院 -->
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-6 card-hover shadow-sm fade-in">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="material-icons text-yellow-500">location_on</span>
+            <h3 class="font-semibold text-lg">天津市口腔医院</h3>
+            <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded bg-yellow-100 text-yellow-600 text-xs font-medium">谨慎评估</span>
+          </div>
+          <ul class="text-base space-y-1 mb-2">
+            <li><b>推荐理由：</b>天津三级甲等口腔专科医院，距离较远；专科定位可能与综合治疗诉求冲突。</li>
+            <li><b>特别注意：</b><span class='text-red-600 font-semibold'>本院为专科机构，无法全面管理您的癌症、高血压等病史；跨省就诊需承担额外费用和时间成本。</span></li>
+            <li><b>医保政策：</b>跨省医保需备案，建议先咨询本地医保局。</li>
+            <li><b>地址：</b>总院：天津市和平区大沽路75号；河西门诊部：天津市河西区黑牛城道73号。</li>
+            <li><b>挂号方式：</b>电话022-27111678（总院）或022-88357617（河西），或APP“科瑞泰Q医”挂号。</li>
+            <li><b>推荐医生：</b>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。建议通过医院官方渠道挂取口腔科专家门诊。</li>
+          </ul>
+        </div>	
+        <!-- 医院卡片：其他分支/门诊部简略 -->	
+        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-6 card-hover shadow-sm fade-in">	
+          <div class="flex items-center gap-3 mb-2">	
+            <span class="material-icons text-gray-400">location_on</span>	
+            <h3 class="font-semibold text-lg">其他分支/门诊部（如河北医科大学第二医院鹿泉院区、北京大学口腔医院门诊部）</h3>	
+            <span class="ml-auto inline-flex items-center px-2 py-0.5 rounded bg-gray-100 text-gray-600 text-xs font-medium">谨慎评估</span></div><ul class='text-base space-y-1 mb-2'><li><b>推荐理由：</b>分支院区资源或不如主院区；门诊部聚焦基础口腔服务。建议优先选择主院区综合医院。</li><li><b>特别注意：</b>门诊部可能无法处理复杂综合病史。</li><li><b>就诊须知：</b>地址与联系方式参考主院区信息。</li><li><b>推荐医生：</b>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。</li></ul></div></div></section><!-- 三、诊前准备清单 --><section class='mb-10'><div class='section-title'><i class='fa-solid fa-list-check'></i>三、诊前准备清单</div><div class='rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-5 card-hover shadow-sm fade-in'><ul class='space-y-2 text-base leading-relaxed'><li><i class='fa-solid fa-file-medical-alt mr-2 text-indigo-400'></i><strong>病历资料准备：</strong></br>- 身份证、医保卡原件<br>- 所有检查报告单（如血常规、影像学CT/MRI报告、化疗记录等）<br>- 病历本或疾病诊断证明（重点包括脑膜瘤、高血压、胃癌）<br>- 建议按时间顺序整理所有资料，便于医生高效评估</li><li><i class='fa-solid fa-money-check-alt mr-2 text-green-400'></i><strong>医保与费用准备：</strong></br>- 提前通过“国家医保服务平台”APP办理异地就医备案（如需）<br>- 咨询本地医保局确认报销比例及流程<br>- 准备充足资金，包括交通食宿费用（如需）</li><li><i class='fa-solid fa-question-circle mr-2 text-blue-400'></i><strong>其他通用准备：</strong></br>- 准备向医生咨询的问题清单<br>- 带好个人物品（充电宝、水杯等）<br>- 穿着宽松方便的衣物以便检查</li></ul></div></section><!-- 四、行动指南与局限性说明 --><section class='mb-[64px]'><div class='section-title'><i class='fa-solid fa-route'></i>四、行动指南与局限性说明</div><div class='rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#232337] p-5 card-hover shadow-sm fade-in'><ul class='space-y-[10px] text-base leading-relaxed'><li><strong style='color:#6366f1'>优先行动建议：</strong>&nbsp;建议优先考虑<strong style='color:#6366f1'>邯郸市中心医院或石家庄市人民医院</strong>，并就牙齿松动综合治疗（兼顾癌症史）进行咨询。</li><li><strong style='color:#ea580c'>二次确认清单：</strong>&nbsp;针对高风险/远程医院，就诊前务必致电确认接诊政策及报销事宜。<br>- 北京大学口腔医院：致电总机（010‑62179666）确认能否接诊复杂病史患者<br>- 跨省医院：确认医保备案状态（国家医保服务平台APP）</li><li><strong style='color:#64748B'>局限性声明：</strong>&nbsp;本报告依据当前知识库信息生成，可能存在信息更新延迟或覆盖不全。请以医院官方最新公告为准。</li><li><strong style='color:#64748B'>最终免责说明：</strong>&nbsp;最终就诊决策请以临床医生意见和官方平台为准，本报告仅供参考。</li></ul></div></section></main><!-- 页脚 --><footer class='w-full mt-auto py-[32px] px-[16px] flex flex-col items-center justify-center bg-white/90 dark:bg-[#18181c]/90 border-t border-gray‑100 dark:border-gray‑800'><p class='text-xs text-gray‑400 dark:text-gray‑500'>©2024 就医规划助手 | 本页面由AI自动生成，仅供参考，不构成医疗建议。</p></footer><!-- 深色模式切换逻辑 --><script>// 深色模式切换逻辑
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const setTheme = (dark) => {
+  if (dark) {
+    document.documentElement.classList.add('dark');
+    themeIcon.textContent = 'light_mode';
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+    themeIcon.textContent = 'dark_mode';
+    localStorage.setItem('theme', 'light');
+  }
+};
+// 跟随系统主题
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) setTheme(true);
+else setTheme(false);
+// 切换按钮
+themeToggle.onclick = () => {
+  setTheme(!document.documentElement.classList.contains('dark'));
+};
+// 内容区块加载动画
+document.querySelectorAll('.fade-in').forEach((el,i)=>{
+  el.style.animationDelay = (i*80)+'ms';
+});
+// 懒加载图片示例（如后续有图片可用此逻辑）
+function lazyLoadImgs() {
+  const imgs = document.querySelectorAll('img[data-src]');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.onload = ()=>img.classList.add('img-loaded');
+        io.unobserve(img);
+      }
+    });
+  },{threshold:.01});
+  imgs.forEach(img=>io.observe(img));
+}
+document.addEventListener('DOMContentLoaded',lazyLoadImgs);
+// 平滑滚动已在html中设置scroll-behavior:smooth
+</script></body></html>
