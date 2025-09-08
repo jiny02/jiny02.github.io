@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 牙齿松动综合治疗</title>
+  <!-- UnoCSS (Tailwind 兼容预设) -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.4/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.4/dist/preline.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--bg-main, #f7f7f9);
+      color: var(--text-main, #222);
+      transition: background-color .3s, color .3s;
+    }
+    .dark body {
+      --bg-main: #191c20;
+      --text-main: #f1f5f9;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+    }
+    /* 卡片微交互 */
+    .card {
+      transition: box-shadow .2s, border-color .2s, transform .15s;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      background: var(--card-bg, #fff);
+    }
+    .dark .card {
+      --card-bg: #23272f;
+      border-color: #31343b;
+    }
+    .card:hover {
+      box-shadow: 0 4px 24px rgba(60,60,80,.10);
+      border-color: #6366f1;
+      transform: translateY(-2px) scale(1.01);
+    }
+    /* 按钮微交互 */
+    .btn {
+      transition: background .18s, transform .13s, box-shadow .18s;
+      will-change: transform;
+    }
+    .btn:hover {
+      background: #6366f1 !important;
+      color: #fff !important;
+      transform: scale(1.04);
+      box-shadow: 0 2px 8px rgba(99,102,241,.13);
+    }
+    /* 区块淡入动画 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp .7s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: none; }
+    }
+    /* 响应式字体优化 */
+    h1 { font-size: 2rem; font-weight:700; }
+    h2 { font-size: 1.25rem; font-weight:600; }
+    @media (min-width:640px){ h1{font-size:2.5rem;} h2{font-size:1.5rem;} }
+    @media (max-width:480px){ h1{font-size:1.5rem;} h2{font-size:1.125rem;} }
+    /* 图标对齐优化 */
+    .icon { vertical-align:-0.18em; margin-right:.45em; }
+    /* 表格优化 */
+    table { width:100%; border-collapse:collapse; margin-top:.5em; }
+    th,td { padding:.5em; border-bottom:1px solid #e5e7eb; text-align:left; }
+    .dark table { border-color:#31343b; }
+    /* 悬浮提示样式 */
+    .tooltip { position:relative; cursor:pointer; }
+    .tooltip .tooltip-text {
+      visibility:hidden; opacity:0; position:absolute; left:50%; bottom:120%;
+      transform:translateX(-50%); background:#333; color:#fff; padding:.4em .8em;
+      border-radius:.5em; white-space:nowrap; font-size:.95em; z-index:9;
+      transition:.18s opacity;
+    }
+    .tooltip:hover .tooltip-text { visibility:visible; opacity:.96; }
+    /* 深色模式切换按钮定制 */
+    .theme-toggle-btn {
+      background:none; border:none; outline:none; cursor:pointer;
+      padding:.3em .6em; border-radius:.6em; font-size:1.35em;
+      transition:.18s background,color;
+      color:#6366f1;
+    }
+    .theme-toggle-btn:hover {
+      background:#eef2ff;
+      color:#3730a3;
+    }
+    .dark .theme-toggle-btn:hover {
+      background:#23272f;
+      color:#a5b4fc;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#f7f7f9] dark:bg-[#191c20]">
+  <!-- 顶部栏 -->
+  <header class="w-full sticky top-0 z-30 bg-white/90 dark:bg-[#191c20]/90 backdrop-blur flex items-center justify-between px-4 py-3 shadow-sm">
+    <div class="flex items-center gap-2">
+      <span class="material-icons text-[#6366f1] mr-2">local_hospital</span>
+      <span class="text-xl font-bold tracking-tight">就医规划报告</span>
+    </div>
+    <button id="theme-toggle" class="theme-toggle-btn" aria-label="切换深浅色模式">
+      <i id="theme-icon" class="fa-solid fa-moon"></i>
+    </button>
+  </header>
+
+  <!-- 主体内容 -->
+  <main class="flex-1 w-full max-w-3xl mx-auto px-3 sm:px-6 py-6 space-y-7">
+
+    <!-- 患者信息摘要 -->
+    <section class="card fade-in p-6">
+      <h1 class="flex items-center mb-2 text-[#6366f1]"><i class="fa-solid fa-user-injured icon"></i>患者情况摘要</h1>
+      <ul class="list-none space-y-2 text-base leading-relaxed">
+        <li><strong>性别/年龄：</strong>男，70岁</li>
+        <li><strong>常住地：</strong>邯郸市</li>
+        <li><strong>主诉：</strong>牙齿松动，需综合治疗（修复/种植等评估）</li>
+        <li><strong>医保类型：</strong>河北医保</li>
+        <li><strong>既往病史：</strong>胃癌（化疗4次）、脑膜瘤、高血压</li>
+        <li><strong>特殊需求：</strong>无</li>
+        <li><strong>意向城市：</strong>无明确意向（优先考虑河北省内）</li>
+      </ul>
+    </section>
+
+    <!-- 就医建议卡片组 -->
+    <section class="space-y-6 fade-in" style="animation-delay:.13s">
+      <h2 class="mb-3 flex items-center text-[#6366f1]"><i class="fa-solid fa-hospital-user icon"></i>核心就医建议</h2>
+
+      <!-- 医院推荐卡片列表 -->
+
+      <!-- 邯郸市中心医院 -->
+      <div class="card p-5 space-y-2">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="material-icons text-[#22c55e]">location_on</span>
+          <span class="font-semibold">推荐医院 1：邯郸市中心医院</span>
+          <span class="ml-auto text-xs rounded bg-[#ecfeff] text-[#0891b2] px-2 py-[2px]">本地便利首选</span>
+        </div>
+        <ul class="list-none space-y-1 text-base">
+          <li><strong>匹配度评估：</strong><span class="text-[#22c55e]">基础匹配</span></li>
+          <li><strong>推荐理由：</strong>邯郸唯一三级甲等综合医院，提供基础口腔治疗，便于高血压等慢病协同管理。</li>
+          <li><strong>就诊须知：</strong>河北医保本地无需备案；地址：西区（邯山区中华南大街15号）。</li>
+          <li><strong>挂号方式：</strong>电话0310-2118000或现场挂号。</li>
+          <li><strong>推荐医生：</strong><span class="text-gray-500">暂未提供具体医生信息，建议挂取口腔科专家门诊。</span></li>
+        </ul>
+      </div>
+
+      <!-- 河北医科大学第二医院 -->
+      <div class="card p-5 space-y-2">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="material-icons text-[#6366f1]">star</span>
+          <span class="font-semibold">推荐医院 2：河北医科大学第二医院（石家庄）</span>
+          <span class="ml-auto text-xs rounded bg-[#eef2ff] text-[#6366f1] px-2 py-[2px]">省级三甲/多学科协作</span>
+        </div>
+        <ul class="list-none space-y-1 text-base">
+          <li><strong>匹配度评估：</strong><span class="text-[#6366f1]">高度匹配</span></li>
+          <li><strong>推荐理由：</strong>河北省最强三甲，口腔科独立设科，可同步处理高血压及肿瘤病史。</li>
+          <li><strong>就诊须知：</strong>需提前办理河北医保异地备案（APP操作）；地址：石家庄市和平西路215号。</li>
+          <li><strong>挂号方式：</strong>微信公众号“河北医科大学第二医院”、APP“健康河北”或电话0311-66002999。</li>
+          <li><strong>推荐医生：</strong><span class="text-gray-500">暂未提供具体医生信息，建议优先挂取口腔修复/种植专科。</span></li>
+        </ul>
+      </div>
+
+      <!-- 北京大学口腔医院 -->
+      <div class="card p-5 space-y-2">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="material-icons text-[#f59e42]">workspace_premium</span>
+          <span class="font-semibold">推荐医院 3：北京大学口腔医院（北京）</span>
+          <span class="ml-auto text-xs rounded bg-[#fff7ed] text-[#ea580c] px-2 py-[2px]">专科顶尖/异地谨慎</span>
+        </div>
+        <ul class="list-none space-y-1 text-base">
+          <li><strong>匹配度评估：</strong><span class="text-[#ea580c]">谨慎评估</span></li>
+          <li><strong>推荐理由：</strong>全国第一口腔专科，擅长复杂种植及肿瘤术后口腔重建。</li>
+          <li><strong>特别注意：</strong><br/>&nbsp;&nbsp;- 挂号难度极高，需提前预约<br/>&nbsp;&nbsp;- 异地医保自费比例高（报销约30%-50%）<br/>&nbsp;&nbsp;- 高龄患者长途往返风险较大</li>
+          <li><strong>就诊须知：</strong>需通过“国家医保服务平台”APP办理跨省异地备案；地址：北京市海淀区中关村南大街22号。</li>
+          <li><strong>挂号方式：</strong>微信公众号“北京114预约挂号”或电话010-114/010-62179665。</li>
+          <li><strong>推荐医生：</strong><span class="text-gray-500">暂未提供具体医生信息，建议挂取口腔修复科或种植中心副主任以上职称。</span></li>
+        </ul>
+      </div>
+
+      <!-- 更多医院表格 -->
+      <div class="fade-in" style="animation-delay:.18s">
+        <h3 class="font-semibold mt-5 mb-2 text-base flex items-center"><i class="fa-solid fa-list icon"></i>其他匹配医院（摘要）</h3>
+        <div class="overflow-x-auto">
+        <table class="text-sm rounded shadow-sm min-w-full bg-white dark:bg-[#23272f]">
+          <thead><tr style='background:#eef2ff' class='dark:bg-[#23272f]'>
+            <th>医院名称</th><th>匹配度评估</th><th>特别注意</th></tr></thead>
+          <tbody>
+            <tr><td>河北医科大学第一医院（石家庄）</td><td>高度匹配</td><td>-</td></tr>
+            <tr><td>天津市口腔医院</td><td>部分匹配</td><td>异地医保需备案，挂号难度中等</td></tr>
+            <tr><td>北京大学口腔门诊部（北京）</td><td>谨慎评估</td><td>仅限基础治疗，复杂问题需转总院</td></tr>	
+          </tbody></table></div>	
+      </div>	
+
+    </section>	
+
+    <!-- 诊前准备清单 -->	
+    <section class="card fade-in p-6" style='animation-delay:.22s'>	
+      <h2 class='flex items-center mb-3 text-[#6366f1]'><i class='fa-solid fa-notes-medical icon'></i>诊前准备清单</h2>	
+		<ul class='list-disc pl-5 space-y-1'>	
+			<li><b>病历资料：</b>身份证、医保卡原件；胃癌化疗记录、脑膜瘤影像、高血压用药清单；建议按时间顺序整理所有资料。</li>	
+			<li><b>医保与费用：</b>异地就医备案通过“国家医保服务平台”APP操作；种植牙单颗预估费用石家庄约1~2万元，北京上浮50%（部分自费）；建议准备约1万元预缴金。</li>	
+			<li><b>其他准备：</b>家属陪同（高龄+多病史）；就诊前一天测血压，晨服降压药；携带充电宝、水杯、简易零食。</li>	
+		</ul>	
+	</section>	
+
+    <!-- 行动指南与局限说明 -->	
+	<section class='fade-in' style='animation-delay:.28s'>	
+		<div class='card p-6'>	
+			<h2 class='flex items-center mb-3 text-[#6366f1]'><i class='fa-solid fa-route icon'></i>行动指南与局限性说明</h2>	
+			<ul class='list-disc pl-5 space-y-1'>	
+				<li><b>优先行动建议：</b>第一步：就近在邯郸市中心医院口腔科初诊，明确牙齿松动病因；第二步：如需复杂修复，转诊河北医科大学第二医院口腔种植专科。</li>	
+				<li><b>二次确认清单：</b>异地报销比例：<a href='tel:031166906699' class='underline text-blue-600 dark:text-blue-400'>0311-66906699</a>; 北大口腔挂号：<a href='tel:01062179665' class='underline text-blue-600 dark:text-blue-400'>010-62179665</a></li>	
+				<li><b>局限性声明：</b>知识库无具体口腔医生信息，未覆盖邯郸其他口腔机构。</li>	
+				<li><b>最终免责：</b>本报告仅供参考，最终诊疗以医院实际为准。</li>	
+			</ul>	
+			<div class='mt-4 flex items-center gap-3 text-[#6366f1]'>	
+				<i class='fa-solid fa-circle-info'></i>	
+				<span style='font-size:.97em'>温馨提示：您的胃癌、高血压病史可能影响口腔治疗（如种植骨条件评估），初诊时务必主动告知医生。</span></div>	
+		</div>	
+	</section>	
+
+  </main>	
+
+  <!-- 页脚 -->	
+  <footer class='mt-auto py-5 text-center text-xs text-gray-400 dark:text-gray-500'>	
+    页面设计参考 Linear App | Powered by UnoCSS & Preline UI | 数据截止：2024年6月 	
+  </footer>	
+
+<script>// 深色模式切换逻辑 & 跟随系统设置
+(function(){
+document.addEventListener('DOMContentLoaded',function(){
+def isDark(){return window.matchMedia('(prefers-color-scheme: dark)').matches}
+def setTheme(dark){if(dark){document.documentElement.classList.add('dark');localStorage.setItem('theme','dark');}else{document.documentElement.classList.remove('dark');localStorage.setItem('theme','light');}}
+def syncTheme(){const local=localStorage.getItem('theme');if(local==='dark'){setTheme(true);}else if(local==='light'){setTheme(false);}else{setTheme(isDark());}}
+syncTheme();
+document.getElementById('theme-toggle').onclick=function(){const dark=document.documentElement.classList.toggle('dark');localStorage.setItem('theme',dark?'dark':'light');document.getElementById('theme-icon').className=dark?'fa-solid fa-sun':'fa-solid fa-moon';};
+document.getElementById('theme-icon').className=document.documentElement.classList.contains('dark')?'fa-solid fa-sun':'fa-solid fa-moon';
+printfLazyImages();});})();
+document.addEventListener('scroll',function(){if(window.scrollY >10){document.querySelector('header').classList.add('shadow-lg');}else{document.querySelector('header').classList.remove('shadow-lg');}});
+document.querySelectorAll('.fade-in').forEach(function(el,i){el.style.animationDelay=(.07*i+.07)+'s';});
+document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){document.querySelectorAll('.fade-in').forEach(function(el){el.style.opacity=1;el.style.transform='none';});},200);});
+def printLazyImages(){document.querySelectorAll('img[data-src]').forEach(function(img){img.setAttribute('src',img.getAttribute('data-src'));img.removeAttribute('data-src');});}	// 若有图片可扩展懒加载逻辑
+</script>	
+<!-- Preline 初始化 -->	<script>(function(){window.HSStaticMethods&&window.HSStaticMethods.autoInit&&window.HSStaticMethods.autoInit();})();</script>	
+</body></html>
