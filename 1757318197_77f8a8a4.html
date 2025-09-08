@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>牙齿松动综合就医规划报告</title>
+  <!-- UnoCSS + Tailwind 兼容预设 -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      transition: background 0.3s, color 0.3s;
+    }
+    :root {
+      --bg: #f7f8fa;
+      --fg: #1a1a1a;
+      --card-bg: #fff;
+      --card-border: #e5e7eb;
+      --accent: #2563eb;
+      --danger: #ef4444;
+      --muted: #6b7280;
+    }
+    [data-theme='dark'] {
+      --bg: #18181c;
+      --fg: #f4f4f5;
+      --card-bg: #23232b;
+      --card-border: #32323a;
+      --accent: #60a5fa;
+      --danger: #f87171;
+      --muted: #a1a1aa;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.7s ease forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 2px 12px rgba(30,41,59,0.04);
+      transition: box-shadow .2s, border-color .2s, transform .15s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 24px rgba(30,41,59,0.10);
+      border-color: var(--accent);
+      transform: translateY(-2px) scale(1.015);
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+      border-radius: .75rem;
+      padding: .5rem 1.25rem;
+      font-weight: 600;
+      transition: background .18s, transform .18s;
+    }
+    .btn-accent:hover {
+      background: #1749a7;
+      transform: scale(1.04);
+    }
+    .tag {
+      display:inline-block;padding:.18em .85em;font-size:.9em;border-radius:.7em;background:#e0e7ff;color:#3730a3;margin-right:.5em;vertical-align:middle
+    }
+    [data-theme='dark'] .tag {
+      background:#222a44;color:#b4c7f7
+    }
+    /* 响应式优化 */
+    @media (max-width: 640px) {
+      h1 { font-size:1.5rem; }
+      h2 { font-size:1.15rem; }
+      .card { padding:1rem; }
+    }
+    @media (min-width:641px) {
+      .main-wrap { max-width:700px;margin:auto; }
+    }
+    /* 图表容器样式 */
+    .hospital-compare-chart {
+      width:100%;max-width:380px;margin:auto;padding-top:.5rem;padding-bottom:.5rem
+    }
+    /* 深色模式切换按钮 */
+    .theme-toggle {
+      position:absolute;top:.75rem;right:.75rem;z-index:10;background:none;border:none;outline:none;cursor:pointer;padding:.4em;border-radius:.7em;transition:background .18s
+    }
+    .theme-toggle:hover { background:#e0e7ef;}
+    [data-theme='dark'] .theme-toggle:hover {background:#28293a;}
+  </style>
+</head>
+<body class="min-h-screen" id="root">
+
+<!-- 深色/浅色模式切换按钮 -->
+<button class="theme-toggle" id="themeToggle" aria-label="切换深浅色模式">
+  <span class="material-icons" id="themeIcon">dark_mode</span>
+</button>
+
+<div class="main-wrap px-4 pt-8 pb-16 fade-in">
+
+  <!-- 标题 -->
+  <div class="flex items-center mb-8 gap-3">
+    <span class="material-icons text-3xl text-blue-600">medical_services</span>
+    <h1 class="text-2xl font-bold tracking-tight">牙齿松动综合就医规划报告</h1>
+  </div>
+
+  <!-- 患者情况摘要 -->
+  <section class="card p-6 mb-8 fade-in" style="animation-delay:.05s">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-icons text-lg text-blue-500">person</span>
+      <h2 class="font-semibold text-lg">一、患者情况摘要</h2>
+    </div>
+    <ul class="pl-2 mt-2 space-y-1 text-base">
+      <li><span class="tag">性别</span>男 &nbsp;&nbsp;<span class="tag">年龄</span>70岁</li>
+      <li><span class="tag">常住地</span>邯郸，河北省</li>
+      <li><span class="tag">主诉</span>牙齿松动</li>
+      <li><span class="tag">核心诉求</span>综合治疗（兼顾全身基础疾病管理）</li>
+      <li><span class="tag">医保类型</span>河北医保</li>
+      <li><span class="tag">既往病史</span>胃癌（化疗4次）、脑膜瘤、高血压</li>
+    </ul>
+  </section>
+
+  <!-- 核心就医建议 -->
+  <section class="card p-6 mb-8 fade-in" style="animation-delay:.12s">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="material-icons text-lg text-green-600">local_hospital</span>
+      <h2 class="font-semibold text-lg">二、核心就医建议</h2>
+    </div>
+
+    <!-- 医院推荐对比可视化 -->
+    <div class="hospital-compare-chart mb-4">
+      <canvas id="hospitalChart" height="180"></canvas>
+    </div>
+
+    <!-- 推荐医院列表 -->
+    <ol class="space-y-6 mt-4">
+
+<li>
+  <div class="flex items-center gap-2 mb-1">
+    <span class="fa-solid fa-hospital text-blue-500"></span>
+    <strong>河北医科大学口腔医院（石家庄市）</strong>
+    <span class="tag">首选推荐</span>
+  </div>
+  <ul class="pl-4 text-base space-y-1">
+    <li><b>匹配度：</b><span class="text-green-600 font-semibold">高度匹配</span></li>
+    <li><b>推荐理由：</b>河北省唯一省级口腔专科医院，专注口腔综合诊疗，设备先进，医保定点单位。</li>
+    <li><b>特别注意：</b><span class="text-orange-500">专科医院对全身基础病管理有限，需与其他医院协同。</span></li>
+    <li><b>医保政策：</b>支持河北医保（无需异地备案），<a href="tel:0311-86265748" class="text-blue-700 underline">医保办0311-86265748</a></li>
+    <li><b>地址：</b>石家庄市中山东路383号</li>
+    <li><b>挂号方式：</b>微信公众号“河北医科大学口腔医院互联网医院”或“健康河北服务号”，APP“健康河北”，电话<a href="tel:0311-12580" class="text-blue-700 underline">0311-12580</a></li>
+    <li><b>推荐医生：</b><span class="text-gray-500">暂未检索到，建议挂取口腔修复科/牙周科专家门诊</span></li>
+  </ul>
+</li>
+<li>
+  <div class="flex items-center gap-2 mb-1">
+    <span class="fa-solid fa-hospital text-cyan-600"></span>
+    <strong>河北医科大学第一医院（石家庄市）</strong>
+    <span class="tag" style="background:#cffafe;color:#0369a1;">备选推荐</span>
+  </div>
+  <ul class="pl-4 text-base space-y-1">
+    <li><b>匹配度：</b><span class="text-yellow-600 font-semibold">部分匹配</span></li>
+    <li><b>推荐理由：</b>三甲综合医院，可兼顾口腔及基础病管理，但口腔科非重点专科。</li>
+    <li><b>特别注意：</b><span class="text-orange-500">复杂牙病诊疗能力可能受限。</span></li>
+    <li><b>医保政策：</b>河北医保定点，支持异地就医（需备案），<a href="tel:0311-85917000" class="text-blue-700 underline">电话0311-85917000</a></li>
+    <li><b>地址：</b>石家庄市东岗路89号</li>
+    <li><b>挂号方式：</b>微信公众号“河北医科大学第一医院”或“健康河北服务号”，电话<a href="tel:0311-85917000" class="text-blue-700 underline">0311-85917000</a></li>
+    <li><b>推荐医生：</b><span class="text-gray-500">暂未检索到，建议挂取口腔科专家门诊</span></li>
+  </ul>
+</li>
+<li>
+  <div class="flex items-center gap-2 mb-1">
+    <span class="fa-solid fa-hospital text-gray-600"></span>
+    <strong>北京大学口腔医院（北京市）</strong>
+    <span class="tag" style="background:#fee2e2;color:#991b1b;">谨慎评估</span>
+  </div>
+  <ul class="pl-4 text-base space-y-1">
+    <li><b>匹配度：</b><span class="text-red-600 font-semibold">谨慎评估</span></li>
+    <li><b>推荐理由：</b>全国顶尖口腔专科，技术领先。</li>
+    <li><b>特别注意：</b><span class="text-orange-500">高龄异地风险大，需异地医保备案，挂号难度高。建议提前电话咨询接诊政策。</span></li>
+    <li><b>医保政策：</b>需通过“国家医保服务平台”APP办理异地备案，<a href="tel:010-62179977" class="text-blue-700 underline">电话010-62179977</a></li>
+    <li><b>地址：</b>北京市海淀区中关村南大街22号</li>
+    <li><b>挂号方式：</b>微信公众号“北京114预约挂号”，电话<a href="tel:010-114" class="text-blue-700 underline">010-114</a></li>
+    <li><b>推荐医生：</b><span class="text-gray-500">暂未检索到，建议挂取口腔修复科门诊</span></li>
+  </ul>
+</li>	
+<li>	
+<div class='mt-3 pl-3 text-sm text-gray-500'>	
+其他医院如保定市第一医院、北京大学口腔医院第一/第二门诊部、上海市第十人民医院等因距离远或专业匹配度低，仅作备选或特殊情况参考。	
+</div></li>	
+
+   </ol>	
+
+   <!-- 匹配度说明 -->	
+   <div class='mt-5 text-sm text-gray-400'>	
+     匹配度基于专科能力、地理位置、医保适配性综合评估。部分医院如北京、上海需关注异地医保与高龄风险。	
+   </div>	
+
+  </section>	
+
+<!-- 诊前准备清单 -->	
+<section class='card p-6 mb-8 fade-in' style='animation-delay:.18s'>	
+<div class='flex items-center gap-2 mb-3'>	
+<span class='material-icons text-lg text-purple-600'>checklist_rtl</span>	
+<h2 class='font-semibold text-lg'>三、诊前准备清单</h2></div>	
+<ul class='list-disc pl-6 mt-2 space-y-[.35em] text-base'>	
+<li><strong>病历资料准备：</strong>身份证、医保卡、胃癌化疗/脑膜瘤/高血压相关证明、既往检查报告、如有牙片及历史牙科病历。<br /><span class='text-gray-500'>建议按时间顺序整理，重点标注用药史。</span></li>	
+<li><strong>医保与费用准备：</strong>本地就诊无需异地备案，异地请通过“国家医保服务平台”APP办理备案；咨询当地医保局（<a href='tel:0310-12393' class='text-blue-700 underline'>0310-12393</a>）。准备部分自费及交通食宿资金。</li>	
+<li><strong>其他通用准备：</strong>列出主诉及所有基础病用药问题清单，携带常用药品、充电宝、水杯等个人物品。</li></ul></section>	
+	
+<!-- 行动指南与局限性说明 -->	
+<section class='card p-6 fade-in' style='animation-delay:.24s'>	
+<div class='flex items-center gap-2 mb-3'>	
+<span class='material-icons text-lg text-indigo-600'>directions_run</span>	
+<h2 class='font-semibold text-lg'>四、行动指南与局限性说明</h2></div>	
+<ol class='list-decimal pl-[1.3em] space-y-[.35em] text-base mt-[.3em]'>	
+<li><strong>优先行动建议：</strong>尽快预约河北医科大学口腔医院（石家庄）口腔修复科门诊，同步携带全身病史资料评估综合治疗可行性。</li>	
+<li><strong>备选路径：</strong>如需基础疾病管理，可预约河北医科大学第一医院口腔科+老年病科联合门诊。</li></ol>	
+<ul class='list-disc pl-[1.3em] mt-[.8em] space-y-[.35em] text-base'>	
+<li><strong>二次确认清单：</strong>异地就医请务必致电医保局确认备案材料，高龄患者务必提前咨询接诊政策。</li></ul>	
+<div class='mt-[.8em] text-sm text-gray-400'>本报告基于知识库生成，部分信息缺失（如医生详情），最终决策请以医院官方信息为准。</div></section>	
+	
+<!-- 风险警示 -->	
+<div class='mt-[2.5em] mb-[.8em] flex items-center gap-x-[.6em] rounded-xl px-[1em] py-[.7em] bg-red-50 border border-red-200 dark:bg-[#261d23] dark:border-red-800 fade-in' style='animation-delay:.28s'>	
+<span class='material-icons text-red-500'>warning_amber</span><div style='line-height:1.55'><strong style='color:#ef4444'>温馨提醒：</strong>&nbsp;高龄患者就诊前请确保血压、基础病控制稳定，优先选择最小诊疗风险路径。</div></div>	
+	
+<!-- 页脚 -->	
+<footer class='mt-[3em] pt-[2em] border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-400 fade-in' style='animation-delay:.33s'>	
+页面内容仅供参考，不构成医疗建议。&copy;2024 综合就医规划助手。	
+</footer></div><!-- main-wrap end -->	
+	
+<!-- Chart.js for 可视化对比图表 -->	
+<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>	
+<script>// 深色模式自动跟随系统&切换按钮实现	
+const themeToggle = document.getElementById('themeToggle');	
+const themeIcon = document.getElementById('themeIcon');	
+const rootEl = document.documentElement;	
+function setTheme(mode) {	
+ rootEl.setAttribute('data-theme', mode);	
+ themeIcon.textContent = mode === 'dark' ? 'light_mode' : 'dark_mode';	
+ localStorage.setItem('theme', mode);	
+}	
+function getSysTheme() {	
+ return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';	
+}	
+function applyTheme() {	
+ const saved = localStorage.getItem('theme');	
+ setTheme(saved || getSysTheme());	
+}	themeToggle.onclick = () => setTheme(rootEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');	document.addEventListener('DOMContentLoaded', applyTheme);	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => { if(!localStorage.getItem('theme')) setTheme(e.matches ? 'dark' : 'light'); });	// 内容区块淡入动画延迟	setTimeout(()=>{document.querySelectorAll('.fade-in').forEach((el,i)=>{el.style.animationDelay=`${i*0.07+.12}s`;el.classList.add('animate-fadeIn')})},200);	// Chart.js 可视化对比图表	const ctx = document.getElementById('hospitalChart').getContext('2d');	const data = {	labels:['河北医大口腔','河北医大一院','北大口腔'],	datasets:[{	label:'专科能力',data:[95,65,100],backgroundColor:['#2563eb','#06b6d4','#991b1b'],borderRadius:10,maxBarThickness:32},{label:'医保适配',data:[95,85,45],backgroundColor:['#60a5fa','#38bdf8','#fca5a5'],borderRadius:10,maxBarThickness:32}]};	const options = {	scales:{y:{beginAtZero:true,max:100,ticks:{stepSize:25,font:{size:13}}},x:{ticks:{font:{size:13}}}},plugins:{legend:{display:true,labels:{font:{size:13}}}},responsive:true,maintainAspectRatio:false};	new Chart(ctx,{type:'bar',data,options});	// 懒加载图片占位（本页面无大图，仅预留）	document.querySelectorAll('img[data-src]').forEach(img=>{img.setAttribute('loading','lazy');img.src=img.dataset.src;});	// 平滑滚动优化	if ('scrollBehavior' in document.documentElement.style) {document.documentElement.style.scrollBehavior = 'smooth';}	</script>																																																	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 </body></html>
