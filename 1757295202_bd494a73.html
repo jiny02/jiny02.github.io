@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>北京7岁男童肾挫伤综合治疗就医规划报告</title>
+  <!-- UnoCSS（Tailwind 兼容预设） -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline/dist/preline.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- 自定义样式 -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    :root {
+      --bg: #f6f7f9;
+      --card-bg: #fff;
+      --text: #222;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --shadow: 0 4px 24px rgba(30,41,59,0.07);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #18181c;
+        --card-bg: #23232a;
+        --text: #f4f4f5;
+        --border: #33343a;
+        --primary: #60a5fa;
+        --primary-hover: #2563eb;
+        --shadow: 0 4px 24px rgba(30,41,59,0.15);
+      }
+    }
+    body.dark {
+      --bg: #18181c;
+      --card-bg: #23232a;
+      --text: #f4f4f5;
+      --border: #33343a;
+      --primary: #60a5fa;
+      --primary-hover: #2563eb;
+      --shadow: 0 4px 24px rgba(30,41,59,0.15);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp .7s cubic-bezier(.39,.575,.565,1) forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(37,99,235,0.10);
+      border-color: var(--primary);
+      transform: translateY(-2px) scale(1.015);
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: #fff;
+      border-radius: .75rem;
+      padding: .5rem 1.25rem;
+      font-weight: 600;
+      transition: background .2s, transform .2s;
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      transform: scale(1.04);
+    }
+    .icon-circle {
+      display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background-color:#e8edfa;color:#2563eb;font-size:24px;margin-right:.75rem
+    }
+    @media (max-width: 640px) {
+      h1 { font-size:1.5rem; }
+      h2 { font-size:1.125rem; }
+      h3 { font-size:.95rem; }
+    }
+    /* 深色模式切换按钮样式 */
+    .theme-toggle {
+      cursor:pointer;border:none;background:none;padding:.25rem;border-radius:.5rem;transition:background .2s
+    }
+    .theme-toggle:hover { background:#e0e7ef; }
+    body.dark .theme-toggle:hover { background:#33343a; }
+    /* 滚动条美化 */
+    ::-webkit-scrollbar { width:8px;background:#f1f1f1; }
+    ::-webkit-scrollbar-thumb { background:#d1d5db;border-radius:4px; }
+    body.dark ::-webkit-scrollbar { background:#222; }
+    body.dark ::-webkit-scrollbar-thumb { background:#444; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
+
+<!-- 顶部栏 -->
+<header class="w-full px-4 py-3 flex items-center justify-between border-b border-[var(--border)] bg-[var(--card-bg)] sticky top-0 z-20 shadow-sm">
+  <div class="flex items-center gap-2">
+    <span class="material-icons text-[var(--primary)]">local_hospital</span>
+    <span class="font-bold text-lg tracking-wide">北京儿童肾挫伤综合就医规划</span>
+  </div>
+  <button id="themeToggle" class="theme-toggle" aria-label="切换深浅色模式">
+    <span class="material-icons" id="themeIcon">dark_mode</span>
+  </button>
+</header>
+
+<main class="flex-1 max-w-3xl mx-auto w-full px-2 sm:px-6 pt-6 pb-16 fade-in">
+
+<!-- 患者摘要卡片 -->
+<section class="card p-6 mb-8 flex flex-col sm:flex-row gap-6 items-start">
+  <div class="icon-circle bg-blue-100 text-blue-600">
+    <span class="material-icons">child_care</span>
+  </div>
+  <div class="flex-1">
+    <h2 class="font-semibold text-xl mb-2">患者基本信息</h2>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-base">
+      <li><b>性别：</b>男</li>
+      <li><b>年龄：</b>7岁</li>
+      <li><b>居住地：</b>北京市</li>
+      <li><b>医保类型：</b>北京医保</li>
+      <li class="col-span-2"><b>主诉：</b>外伤腰部疼痛，超声提示肾部阴影，诊断为肾挫伤</li>
+      <li class="col-span-2"><b>既往史：</b>无重大疾病或手术史</li>
+      <li class="col-span-2"><b>目前治疗：</b>观察</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 就医推荐方案 -->
+<section class="mb-10 fade-in" style="animation-delay:.12s">
+  <h2 class="font-semibold text-xl mb-4 flex items-center gap-2">
+    <span class="material-icons text-blue-500">recommend</span>核心就医建议
+  </h2>
+
+  <!-- 医院推荐卡片列表 -->
+  <div class="grid gap-6">
+
+    <!-- 北大一院 -->
+    <div class="card p-5 group transition-all relative overflow-hidden">
+      <div class="flex items-center mb-3">
+        <span class="icon-circle bg-blue-50 text-blue-700"><span class="material-icons">star</span></span>
+        <h3 class="font-bold text-lg">北京大学第一医院 <span class="text-xs bg-blue-100 text-blue-600 rounded px-2 py-px ml-2 align-middle">首选推荐</span></h3>
+      </div>
+      <ul class="list-none pl-0 space-y-1 mb-3 text-base">
+        <li><b>专科优势：</b>全国百强，肾内科为国家重点学科，儿科实力雄厚，儿童肾脏病诊疗经验丰富。</li>
+        <li><b>医保支持：</b>北京医保定点，异地备案支持。</li>
+        <li><b>院区地址：</b>西城区西什库大街8号</li>
+        <li><b>挂号方式：</b>微信公众号“北京大学第一医院服务号”或“北京114预约挂号”，每日7:30放号。</li>
+        <li><b>推荐医生：</b></li>
+        <ul class="pl-6 list-disc text-base">
+          <li><b>杨莉 主任医师</b>（周一下午/周五上午专家门诊）<br><span class="text-gray-500">擅长儿童肾小管疾病、药物性肾损害，对儿童肾损伤经验丰富。</span></li>
+          <li><b>苏涛 主任医师</b>（出诊时间请院方查询）<br><span class="text-gray-500">专攻急性肾损伤、复杂重症肾病，对儿童肾脏病有深入研究。</span></li>
+        </ul>
+        <li><b>温馨提示：</b>儿童患者可直接就诊，建议提前整理病历资料。</li>
+      </ul>
+      <a href="#准备清单" class="btn-primary mt-2 inline-block">查看诊前准备清单</a>
+    </div>
+
+    <!-- 解放军总医院 -->
+    <div class="card p-5 group transition-all relative overflow-hidden">
+      <div class="flex items-center mb-3">
+        <span class="icon-circle bg-blue-50 text-blue-700"><span class="material-icons">local_hospital</span></span>
+        <h3 class="font-bold text-lg">中国人民解放军总医院第一医学中心</h3>
+      </div>
+      <ul class="list-none pl-0 space-y-1 mb-3 text-base">
+        <li><b>专科优势：</b>全国排名第3，肾内科技术全面，支持中西医结合治疗。</li>
+        <li><b>医保支持：</b>北京医保定点，异地备案支持。</li>
+        <li><b>院区地址：</b>海淀区复兴路28号</li>
+        <li><b>挂号方式：</b>APP“中国人民解放军总医院”或电话010-114，每日7:00放号。</li>
+        <li><b>推荐医生：</b></li>
+        <ul class="pl-6 list-disc text-base">
+          <li><b>王亚平 主任医师</b>（周四上午专家门诊）<br><span class="text-gray-500">擅长中西医结合治疗儿童肾病综合征、肾功能衰竭。</span></li>
+          <li><b>王晓宁 主任医师（骨科）</b>（周三上午专家门诊）<br><span class="text-gray-500">如合并腰椎外伤可联合会诊。</span></li>
+        </ul>
+        <li><b>温馨提示：</b>如北大一院挂号困难，可作为备选。</li>
+      </ul>
+    </div>
+
+    <!-- 人民医院 -->
+    <div class="card p-5 group transition-all relative overflow-hidden opacity-90 hover:opacity-100">
+      <div class="flex items-center mb-3">
+        <span class="icon-circle bg-gray-100 text-gray-600"><span class="material-icons">local_hospital</span></span>
+        <h3 class="font-bold text-lg">北京大学人民医院</h3>
+      </div>
+      <ul class="list-none pl-0 space-y-1 mb-3 text-base">
+        <li><b>专科优势：</b>综合实力强，多学科协作能力突出，但肾内科号源紧张。</li>
+        <li><b>医保支持：</b>北京医保定点，需提前备案。</li>
+        <li><b>院区地址：</b>西直门南大街11号（新院）</li>
+        <li><b>挂号方式：</b>APP“北京大学人民医院”或电话010-114，放号时间以平台为准。</li>
+        <li><b>推荐医生：</b></li>
+        <ul class="pl-6 list-disc text-base">
+          <li><span class="text-gray-500">暂无肾内科匹配专家，建议挂取肾内科专家门诊咨询。</span></li>
+        </ul>
+        <li><b>温馨提示：</b>如前两家医院挂号失败可考虑，多学科协作需求时适用。</li>
+      </ul>
+    </div>
+
+  </div><!-- grid end -->
+n</section>
+n<!-- 准备清单与行动指南 -->
+n<section id="准备清单" class="fade-in mb-10" style="animation-delay:.22s">
+n  <h2 class="font-semibold text-xl mb-4 flex items-center gap-2">
+n    <span class="material-icons text-blue-500">assignment_turned_in</span>诊前准备与行动指南
+  </h2>
+n
+  <!-- 分两栏展示 -->
+n  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+n
+    <!-- 左栏：准备清单 -->
+n    <div class="card p-5 h-full flex flex-col justify-between">
+n      <h3 class="font-semibold text-lg mb-2 flex items-center gap-x-1"><span class="material-icons text-green-500">check_circle</span>诊前准备清单</h3>
+n      <ul class="list-disc pl-5 space-y-1 text-base mb-auto">
+n        <li><b>病历资料：</b>身份证、医保卡、超声检查单、既往血/尿常规报告、外伤诊疗记录等。</li>
+n        <li><b>资料整理：</b>按时间顺序整理资料，标注关键异常指标。</li>
+n        <li><b>医保手续：</b>如需跨区就诊，提前通过“国家医保服务平台”APP办理异地就医备案。</li>
+n        <li><b>费用准备：</b>挂号费（60~300元）、基础检查费（约500元）、药费等。部分特需门诊费用需自费。</li>
+n        <li><b>生活物品：</b>水杯、备用衣物，记录患儿疼痛频率及排尿情况供医生参考。</li>
+n      </ul>
+n    </div>
+n
+    <!-- 右栏：行动指南与声明 -->
+n    <div class="card p-5 h-full flex flex-col justify-between bg-gradient-to-br from-blue-50 to-transparent dark:bg-none dark:border-blue-900/40">
+n      <h3 class="font-semibold text-lg mb-2 flex items-center gap-x-1"><span class="material-icons text-blue-400">tips_and_updates</span>行动指南与声明</h3>
+n      <ol class="list-decimal pl-5 space-y-1 text-base mb-auto">
+n        <li><b>优先预约北大一院杨莉医生（周一下午/周五上午）</b></li>
+n        <li><b>如挂号失败，优先联系解放军总医院王亚平医生（周四上午）</b></li>
+n        <li><b>就诊前一天确认院区地址及出诊时间，避免误到分院或错过门诊时间</b></li>
+n        <li><b>如遇特殊情况，请以医院官方最新公告为准，并保留全部就诊票据及报告单</b></li>
+n      </ol>
+n
+      <!-- 局限性声明 -->
+n      <p class="mt-auto pt-4 text-xs text-gray-500 leading-relaxed border-t border-dashed border-[var(--border)]">
+n        本报告依赖知识库信息（截止2025年），部分医生出诊时间/费用可能有调整，请以医院官方平台为准。治疗方案需以临床医生实时诊断为准，本报告仅作辅助参考。
+n      </p>
+n    </div><!-- card end -->
+n
+  </div><!-- grid end -->
+n
+</section><!-- 准备清单 end -->
+n
+<!-- 温馨提示 -->
+n<section class="fade-in" style="animation-delay:.28s">
+n  <div class="card p-5 flex items-center gap-x-4 bg-gradient-to-r from-blue-50 to-transparent dark:bg-none dark:border-blue-900/40">
+n    <span class="material-icons text-yellow-600 text-[32px]">info</span>
+n    <div class="flex flex-col gap-y-px">
+n     <p><strong>请务必通过官方渠道二次核实信息，如有疑问及时咨询专业医生。祝孩子早日康复！</strong></p>
+n     </div>
+n   </div>
+n</section><!-- 温馨提示 end -->
+n
+</main><!-- main end -->
+n
+<!-- 底部版权栏 -->
+n<footer class="w-full py-4 mt-auto border-t border-[var(--border)] bg-[var(--card-bg)] text-center text-xs text-gray-400 dark:text-gray-600 fade-in" style="animation-delay:.33s">
+n  ©2024 北京儿童肾挫伤就医辅助 | 信息仅供参考 | 界面设计仿Linear App风格
+</footer>
+n
+<script>// 深色/浅色模式切换逻辑
+(function(){
+type Theme = 'light'|'dark'|'auto';
+defaultTheme();
+document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+document.addEventListener('DOMContentLoaded',syncThemeIcon);
+document.addEventListener('DOMContentLoaded',function(){setTimeout(()=>{
+document.querySelectorAll('.fade-in').forEach((el,i)=>{
+el.style.animationDelay = (i*0.08+.05)+'s';});},60);});
+defaultTheme();function defaultTheme(){let theme=localStorage.getItem('theme')||'auto';applyTheme(theme);}function toggleTheme(){let theme=localStorage.getItem('theme')||'auto';if(theme==='dark'){theme='light';}else if(theme==='light'){theme='auto';}else{theme='dark';}localStorage.setItem('theme',theme);applyTheme(theme);}function applyTheme(theme){let isDark=false;if(theme==='dark'){isDark=true;}else if(theme==='light'){isDark=false;}else{isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;}document.body.classList.toggle('dark',isDark);syncThemeIcon();}function syncThemeIcon(){let theme=localStorage.getItem('theme')||'auto';let icon=document.getElementById('themeIcon');if(theme==='dark'){icon.textContent='light_mode';}else if(theme==='light'){icon.textContent='dark_mode';}else{icon.textContent=window.matchMedia('(prefers-color-scheme: dark)').matches?'light_mode':'dark_mode';}}
+defaultTheme();})();
+document.addEventListener('DOMContentLoaded',()=>{
+document.querySelectorAll('img[data-src]').forEach(img=>{
+lazyLoadImg(img);});});function lazyLoadImg(img){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){img.src=img.dataset.src;observer.disconnect();}});});observer.observe(img);}
+document.addEventListener('scroll',()=>{document.documentElement.style.scrollBehavior='smooth';});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+document.addEventListener('DOMContentLoaded',()=>{window.HSStaticMethods&&window.HSStaticMethods.autoInit&&window.HSStaticMethods.autoInit();});
+// 微交互动画：按钮、卡片已在CSS中实现
+</script>
+
+</body>
+</html>
