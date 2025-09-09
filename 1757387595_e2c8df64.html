@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 气管狭窄</title>
+  <!-- UnoCSS (Tailwind 兼容预设) -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.4/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.4/dist/preline.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      transition: background-color .3s, color .3s;
+    }
+    .fade-in {
+      animation: fadeInUp .8s cubic-bezier(.23,1.07,.32,1) both;
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    :root {
+      --bg: #f8fafc;
+      --fg: #22272e;
+      --card-bg: #fff;
+      --card-border: #e5e7eb;
+      --primary: #2d5be3;
+      --primary-hover: #1e429f;
+      --shadow: 0 2px 12px rgba(60,60,60,0.06);
+    }
+    [data-theme="dark"] {
+      --bg: #181c23;
+      --fg: #f3f4f6;
+      --card-bg: #22272e;
+      --card-border: #313a46;
+      --primary: #6a9aff;
+      --primary-hover: #3b6ed6;
+      --shadow: 0 2px 12px rgba(20,20,20,0.18);
+    }
+    .theme-btn {
+      transition: transform .18s cubic-bezier(.34,1.56,.64,1), background .18s;
+    }
+    .theme-btn:hover {
+      transform: scale(1.08);
+      background-color: var(--primary-hover) !important;
+    }
+    .report-card {
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--card-border);
+      transition: box-shadow .22s, border-color .22s;
+    }
+    .report-card:hover {
+      box-shadow: 0 6px 24px rgba(45,91,227,0.08);
+      border-color: var(--primary);
+    }
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: .7rem;
+      display:flex;align-items:center;gap:.5em;
+    }
+    .icon {
+      font-size:1.25em;color:var(--primary);
+    }
+    /* 响应式优化 */
+    @media (max-width: 640px) {
+      .report-card { padding:1rem !important; }
+      .section-title { font-size:1.07rem; }
+    }
+    /* 卡片淡入动画 */
+    .lazy-appear { opacity:0; transform:translateY(40px); transition:.8s cubic-bezier(.23,1.07,.32,1); }
+    .lazy-appear.visible { opacity:1; transform:none; }
+  </style>
+</head>
+<body class="min-h-screen bg-[var(--bg)] text-[var(--fg)] antialiased">
+
+<div class="max-w-3xl mx-auto py-8 px-4 sm:px-6 lg:px-0 fade-in">
+
+  <!-- 顶部栏 -->
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-2xl font-bold tracking-tight flex items-center gap-2">
+      <span class="material-icons icon">fact_check</span>
+      就医规划报告
+    </h1>
+    <button id="themeToggle" class="theme-btn rounded-full p-2 bg-[var(--primary)] text-white shadow hover:bg-[var(--primary-hover)] focus:outline-none transition" aria-label="切换深色/浅色模式">
+      <span class="material-icons" id="themeIcon">dark_mode</span>
+    </button>
+  </div>
+
+  <!-- 患者情况摘要 -->
+  <section class="report-card p-6 mb-7 lazy-appear" style="--delay:.05s">
+    <div class="section-title"><i class="fa-solid fa-user icon"></i>一、患者情况摘要</div>
+    <ul class="pl-3 space-y-2 text-base">
+      <li><b>基本信息：</b>65岁女性，河北邯郸人</li>
+      <li><b>诊断：</b>气管狭窄</li>
+      <li><b>既往史：</b>无相关病史及治疗记录</li>
+      <li><b>核心诉求：</b>进一步治疗（如手术、介入或药物治疗）</li>
+      <li><b>医保类型：</b>河北医保</li>
+    </ul>
+  </section>
+
+  <!-- 核心就医建议 -->
+  <section class="report-card p-6 mb-7 lazy-appear" style="--delay:.15s">
+    <div class="section-title"><i class="fa-solid fa-hospital-user icon"></i>二、核心就医建议</div>
+
+    <!-- 医院推荐列表 -->
+
+    <!-- 医院1 -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 text-lg font-semibold text-[var(--primary)]"><i class="fa-solid fa-circle-dot"></i> 河北医科大学第二医院</div>
+      <ul class="pl-5 mt-1 space-y-1 text-base">
+        <li><b>匹配度评估：</b><span class="text-green-600">高度匹配</span>，三级甲等综合医院，呼吸内科为国家重点临床专科，擅长呼吸系统疾病诊疗（包括气管狭窄），号源充足。邻近患者常住地（石家庄），便于异地医保衔接。</li>
+        <li><b>推荐理由：</b>综合实力强，呼吸内科为重点专科，提供内科及介入治疗选项。支持河北医保异地备案。</li>
+        <li><b>特别注意：</b>无重大冲突。</li>
+        <li><b>就诊须知：</b>支持河北医保异地备案（需提前办理）。<br>院区地址：河北省石家庄市和平西路215号（本部）。</li>
+        <li><b>挂号方式：</b>微信公众号“河北医科大学第二医院”或“健康河北服务号”、APP“健康河北”、电话0311-66002999。放号时间：<span class="text-gray-500">暂未提供</span>。</li>
+        <li><b>推荐医生：</b><span class="text-gray-500">暂未提供，请挂取呼吸内科专家门诊。</span></li>
+      </ul>
+    </div>
+
+    <!-- 医院2 -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 text-lg font-semibold text-[var(--primary)]"><i class="fa-solid fa-circle-dot"></i> 河北省人民医院</div>
+      <ul class="pl-5 mt-1 space-y-1 text-base">
+        <li><b>匹配度评估：</b><span class="text-green-600">高度匹配</span>，三级甲等综合医院，呼吸内科号源充足，适合气管狭窄进一步评估。</li>
+        <li><b>推荐理由：</b>呼吸内科诊疗资源丰富，医保政策明确，交通便利（石家庄）。</li>
+        <li><b>特别注意：</b>无重大冲突。</li>
+        <li><b>就诊须知：</b>支持河北医保异地备案。<br>院区地址：河北省石家庄市和平西路348号。</li>
+        <li><b>挂号方式：</b>微信公众号“河北省人民医院医疗服务平台”或“健康河北服务号”、APP“健康河北”、官网。放号时间：<span class="text-gray-500">暂未提供</span>。</li>
+        <li><b>推荐医生：</b><span class="text-gray-500">暂未提供，请挂取呼吸内科专家门诊。</span></li>
+      </ul>
+    </div>
+
+    <!-- 医院3 -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 text-lg font-semibold text-[var(--primary)]"><i class="fa-solid fa-circle-dot"></i> 首都医科大学附属北京胸科医院</div>
+      <ul class="pl-5 mt-1 space-y-1 text-base">
+        <li><b>匹配度评估：</b><span class="text-yellow-600">部分匹配</span>，三级甲等胸科专科医院，可能涉及气管狭窄相关手术，但侧重肿瘤疾病。</li>
+        <li><b>推荐理由：</b>专科医院资源，感染科号源充足，提供手术选项。</li>
+        <li><b>特别注意：</b>本院聚焦胸科疾病，气管狭窄非核心领域，诊疗可能侧重肿瘤排查。</li>
+        <li><b>就诊须知：</b>医保政策<span class="text-gray-500">暂未提供</span>（北京院区需确认异地报销）。<br>院区地址：北京市通州区北关大街9号院一区。</li>
+        <li><b>挂号方式：</b>微信公众号“北京114预约挂号”或“京医通”、官网、电话010-114。放号时间：<span class="text-gray-500">暂未提供</span>。</li>
+        <li><b>推荐医生：</b><span class="text-gray-500">暂未提供，请挂取感染科或胸外科专家门诊。</span></li>
+      </ul>
+    </div>
+
+    <!-- 医院4 -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 text-lg font-semibold text-[var(--primary)]"><i class="fa-solid fa-circle-dot"></i> 应急管理部应急总医院</div>
+      <ul class="pl-5 mt-1 space-y-1 text-base">
+        <li><b>匹配度评估：</b><span class="text-yellow-600">部分匹配</span>，三级综合医院（北京），但信息有限，气管狭窄治疗资源待确认。</li>
+        <li><b>推荐理由：</b>综合医院可能提供基础诊疗。</li>
+        <li><b>特别注意：</b>详细信息缺失，诊疗能力不明确。</li>
+        <li><b>就诊须知：</b>医保政策<span class="text-gray-500">暂未提供</span>（北京院区需确认异地报销）。<br>院区地址：<span class="text-gray-500">暂未提供</span></li>
+        <li><b>挂号方式：</b><span class="text-gray-500">暂未提供</span></li>
+        <li><b>推荐医生：</b><span class="text-gray-500">暂未提供</span></li>
+      </ul>
+    </div>
+
+    <!-- 医院5 -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 text-lg font-semibold text-[var(--primary)]"><i class="fa-solid fa-circle-dot"></i> 中国医学科学院肿瘤医院廊坊院区</div>
+      <ul class="pl-5 mt-1 space-y-1 text-base">
+        <li><b>匹配度评估：</b><span class="text-red-600">谨慎评估</span>，肿瘤专科医院，主要针对癌症患者，与气管狭窄非直接相关。</li>
+        <li><b>推荐理由：</b>若需排除肿瘤病因可考虑。</li>
+        <li><b>特别注意：</b>本院专注肿瘤诊疗，气管狭窄可能非优先处置范畴，易致无效就诊。</li>
+        <li><b>就诊须知：</b>医保政策<span class="text-gray-500">暂未提供</span>（廊坊院区需确认异地报销）。<br>院区地址：河北省廊坊市经济技术开发区花园道67号。</li>
+        <li><b>挂号方式：</b><span class="text-gray-500">暂未提供</span></li>
+        <li><b>推荐医生：</b><span class="text-gray-500">暂未提供</span></li>
+      </ul>
+    </div>
+
+    <!-- 医院6 -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 text-lg font-semibold text-[var(--primary)]"><i class="fa-solid fa-circle-dot"></i> 首都医科大学附属北京儿童医院</div>
+      <ul class="pl-5 mt-1 space-y-1 text-base">
+        <li><b>匹配度评估：</b><span class="text-red-600">谨慎评估</span>，儿童专科医院（重点收治18岁以下患者），成人患者就诊受限。</li>
+        <li><b>推荐理由：</b>虽有呼吸科及耳鼻喉科资源（如赵靖医生擅长气管狭窄），但专为儿童设计。</li>
+        <li><b>特别注意：</b><span class="font-bold text-red-600">此医院主要收治儿童患者，成人患者就诊前务必须致电儿科或门诊办公室（010-59616161）确认接诊政策，切勿直接前往以避免拒诊！</span></li>
+        <li><b>就诊须知：</b>医保政策<span class="text-gray-500">暂未提供</span>（北京院区需确认异地报销）。<br>院区地址：北京市西城区南礼士路56号。</li>
+        <li><b>挂号方式：</b>微信公众号“北京114预约挂号”、官网、电话010-114、APP“北京儿童医院”。放号时间：<span class="text-gray-500">暂未提供</span></li>
+        <li><b>推荐医生（按专业影响力排序）：</b></li>
+          <ul class="pl-7 list-disc space-y-.5 text-base">
+            <li><strong>赵顺英（主任医师）</strong>&nbsp;|&nbsp;擅长儿童哮喘、重症肺炎及疑难呼吸道疾病诊治。<br/><small class='text-gray-600'>本院 知名专家门诊 呼吸科 周四下午 挂号费800元</small></li>
+            <li><strong>耿荣（主任医师）</strong>&nbsp;|&nbsp;擅长儿童呼吸系统疾病及危重症诊疗。<br/><small class='text-gray-600'>顺义妇儿医院院区 专家门诊 儿科 周二上午及周四上午 挂号费90元</small></li>
+            <li><strong>赵靖（主任医师）</strong>&nbsp;|&nbsp;擅长儿童喉气管狭窄球囊扩张术等气道疾病治疗。<br/><small class='text-gray-600'>本院 专家门诊 耳鼻咽喉头颈外科 周二上午、周一下午、周二下午；特需门诊 周三下午 挂号费暂未提供</small></li>
+          </ul>
+      </ul>
+    </div>
+
+    <!-- 医院7 -->
+    <div >
+      <div class="flex items-center gap-2 text-lg font-semibold text-[var(--primary)]"><i class="fa-solid fa-circle-dot"></i> 上海交通大学医学院附属上海儿童医学中心</div>
+      <ul class="pl-5 mt-1 space-y-1 text-base">
+        <li><b>匹配度评估：</b><span class="text-red-600">谨慎评估</span>，儿童专科医院，成人就诊政策不明。</li>
+        <li><b>推荐理由：</b>重症医学科资源（如钱娟医生）。</li>
+        <li><b>特别注意：</b><span class="font-bold text-red-600">本院主要收治儿童患者，成人患者就诊前务必须致电儿童重症医学科（021-38626161）确认接诊政策，切勿直接前往！</span></li>
+        <li><b>就诊须知：</b>医保政策<span class="text-gray-500">暂未提供</span>（上海院区需确认异地报销）。<br/>院区地址：上海浦东新区东方路1678号（本部）；张江院区及陆家嘴院区地址详见出诊详情。</li>
+        <li><b>挂号方式：</b>电话021-38626161或021-95169、APP“上海儿童医学中心”或“上海市互联网总医院”、官网。放号时间：<span class='text-gray-500'>暂未提供</span></li>	
+        <li><b>推荐医生（按专业影响力排序）：</b></li>	
+          <ul class='pl-7 list-disc space-y-.5 text-base'>	
+            <li><strong>钱娟（主任医师）</strong>&nbsp;|&nbsp;擅长呼吸道危重症及支气管镜术。<br/><small class='text-gray-600'>张江院区 特需门诊 儿童重症医学科 周一上午；陆家嘴院区 专家门诊 周三上午 挂号费50元</small></li>	
+            <li><strong style='color:#aaa'>王雪峰（主任医师）【执业地点辽宁省中医院】</strong>&nbsp;|&nbsp;擅长中西医结合治疗呼吸疾病，但执业地点在辽宁省中医院（非本院）。<br/><small class='text-gray-600'>辽宁省中医院本部 专家门诊 儿科 周一上午、周三上午、周一下午、周二下午 挂号费96元</small></li>	
+          </ul>	
+	  </ul>	
+	</div><!-- end 医院7 -->	
+
+  </section><!-- end 核心就医建议 -->	
+
+  <!-- 诊前准备清单 -->	
+  <section class='report-card p-6 mb-7 lazy-appear' style='--delay:.25s'>	
+    <div class='section-title'><i class='fa-solid fa-list-check icon'></i>三、诊前准备清单</div>	
+	<ul class='pl-3 space-y-.5 text-base'>	
+		<li><i class='fa-solid fa-id-card icon'></i>&nbsp;<strong>病历资料准备：</strong>&nbsp;身份证、医保卡原件；既往所有检查报告（如影像学CT/MRI）；疾病诊断证明（如有）；建议按时间顺序整理资料。</li>	
+		<li><i class='fa-solid fa-file-medical icon'></i>&nbsp;<strong>医保与费用准备：</strong>&nbsp;提前通过“国家医保服务平台”APP办理异地就医备案；咨询邯郸医保局确认报销比例；准备充足资金，包括挂号费、检查费及异地食宿交通费。</li>	
+		<li><i class='fa-solid fa-notes-medical icon'></i>&nbsp;<strong>其他通用准备：</strong>&nbsp;记录向医生咨询的问题清单（如治疗方案：手术/介入/药物）；带充电宝、水杯等个人物品；就诊当天穿着宽松衣物。</li>	
+	</ul>	
+  </section><!-- end 准备清单 -->	
+
+  <!-- 行动指南与局限性说明 -->	
+  <section class='report-card p-6 mb-7 lazy-appear' style='--delay:.35s'>	
+	<div class='section-title'><i class='fa-solid fa-route icon'></i>四、行动指南与局限性说明</div>	
+	<ul class='pl-3 space-y-.5 text-base'>	
+		<li><strong style='color:var(--primary)'>优先行动建议：</strong>&nbsp;建议优先考虑<strong style='color:var(--primary)'>河北医科大学第二医院（石家庄）呼吸内科</strong>&nbsp;进行初步评估；或咨询<strong style='color:var(--primary)'>首都医科大学附属北京胸科医院</strong>&nbsp;探索手术选项。</li>	
+		<li><strong style='color:#d97706'>二次确认清单：</strong>&nbsp;针对高风险儿童医院，就诊前务必致电确认：<br/>&emsp;• 北京儿童医院：儿科门诊，010-59616161<br/>&emsp;• 上海儿童医学中心：儿童重症医学科，021-38626161</li>	
+		<li><strong style='color:#ef4444'>局限性声明：</strong>&nbsp;本报告严格依据当前知识库生成，信息可能不完整（如部分医院气管狭窄专家缺失）或更新延迟，仅供参考。</li>	
+		<li style='color:#888'><strong style='color:#888'>最终免责：</strong>&nbsp;最终就诊决策请以医院官方平台信息及临床医生诊断为准。</li>	
+	</ul>	
+  </section><!-- end 行动指南 -->	
+
+  <!-- 页脚 -->	
+  <footer class='pt-8 pb-4 text-center text-sm text-gray-400'>	
+   ©2024 就医智能助手 | 信息仅供参考，不作为医疗决策依据。	
+  </footer>	
+</div><!-- end main wrapper -->	
+<script>// 深色/浅色切换逻辑 
+document.addEventListener('DOMContentLoaded', function () {
+  // 初始主题跟随系统
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    document.getElementById('themeIcon').innerText = t === 'dark' ? 'light_mode' : 'dark_mode';
+  }
+
+  setTheme(theme);
+
+  document.getElementById('themeToggle').onclick = function () {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(theme);
+  };
+
+// 内容区块淡入动画
+function onScrollFadeIn() {
+   const cards = document.querySelectorAll('.lazy-appear');
+   const windowHeight = window.innerHeight;
+   cards.forEach((el,i)=>{
+     const rect = el.getBoundingClientRect();
+     if(rect.top<windowHeight*0.93) el.classList.add('visible');
+   });
+}
+onScrollFadeIn(); window.addEventListener('scroll',onScrollFadeIn);
+});
+// 平滑滚动体验
+document.addEventListener('wheel', function(e){if(e.ctrlKey){e.preventDefault();}}, {passive:false});
+// 图片懒加载示例 (如后续添加图片时)
+document.addEventListener('DOMContentLoaded',function(){const imgs=document.querySelectorAll('img[data-src]');if(imgs.length){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.src=e.target.dataset.src;e.target.removeAttribute('data-src');}});});imgs.forEach(img=>io.observe(img));}});
+</script>
