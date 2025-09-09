@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7岁男童肾挫伤北京就医规划报告</title>
+  <!-- UnoCSS + Tailwind 兼容预设 -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--pl-bg, #f8f9fb);
+      color: var(--pl-text, #23272f);
+      transition: background-color .3s, color .3s;
+    }
+    .dark body {
+      --pl-bg: #1a1d23;
+      --pl-text: #f3f4f6;
+    }
+    /* 卡片动画 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp .8s cubic-bezier(.33,1,.68,1) forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    /* 悬停微交互 */
+    .hoverable-card:hover {
+      box-shadow: 0 6px 24px rgba(30,41,59,0.10),0 1.5px 6px rgba(30,41,59,0.08);
+      border-color: #6366f1;
+      transform: translateY(-2px) scale(1.02);
+      transition: box-shadow .18s, border-color .18s, transform .18s;
+    }
+    /* 按钮动画 */
+    .btn-animate {
+      transition: transform .15s, background .15s, color .15s;
+    }
+    .btn-animate:hover {
+      transform: scale(1.04);
+      background-color: #6366f1 !important;
+      color: #fff !important;
+    }
+    /* 滚动条美化 */
+    ::-webkit-scrollbar {width:8px; background:transparent;}
+    ::-webkit-scrollbar-thumb {background:#e5e7eb; border-radius:4px;}
+    .dark ::-webkit-scrollbar-thumb {background:#323644;}
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50 dark:bg-neutral-900 transition-colors duration-300">
+
+<!-- 顶部栏 -->
+<header class="sticky top-0 z-30 w-full bg-white/80 dark:bg-neutral-900/90 backdrop-blur shadow-sm border-b border-gray-200 dark:border-neutral-800 flex items-center justify-between px-4 md:px-10 py-3">
+  <div class="flex items-center gap-2">
+    <span class="text-indigo-600 dark:text-indigo-400 text-xl font-bold"><i class="fa-solid fa-notes-medical mr-2"></i>就医规划报告</span>
+    <span class="hidden md:inline text-sm text-gray-500 dark:text-gray-400 ml-4">（7岁男童肾挫伤·北京）</span>
+  </div>
+  <button id="toggle-theme" class="btn-animate px-3 py-1 rounded-lg border border-gray-200 dark:border-neutral-700 bg-gray-100 dark:bg-neutral-800 text-gray-700 dark:text-gray-200 flex items-center gap-1 text-sm shadow-sm">
+    <span class="material-icons" id="theme-icon">dark_mode</span>
+    <span class="hidden md:inline">深色/浅色切换</span>
+  </button>
+</header>
+
+<main class="flex-grow max-w-3xl mx-auto px-3 md:px-0 py-8 space-y-10">
+
+<!-- 一、患者情况摘要 -->
+<section class="fade-in bg-white dark:bg-neutral-800 rounded-xl border border-gray-200 dark:border-neutral-700 shadow-sm p-6 hoverable-card transition-all duration-200">
+  <div class="flex items-center gap-3 mb-4">
+    <i class="fa-solid fa-user-injured text-indigo-500 text-xl"></i>
+    <h2 class="text-lg font-semibold tracking-tight">一、患者情况摘要</h2>
+  </div>
+  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-base text-gray-700 dark:text-gray-200">
+    <li><b>性别：</b>男</li>
+    <li><b>年龄：</b>7岁</li>
+    <li><b>居住地：</b>北京市</li>
+    <li><b>医保类型：</b>北京医保</li>
+    <li class="col-span-full"><b>主诉：</b>外伤腰部疼痛，超声提示肾部阴影，诊断为肾挫伤</li>
+    <li><b>既往史：</b>无重大疾病或手术史</li>
+    <li><b>目前治疗：</b>观察</li>
+    <li><b>核心诉求：</b>综合治疗（含明确诊断与治疗方案优化）</li>
+  </ul>
+</section>
+
+<!-- 二、核心就医建议 -->
+<section class="fade-in bg-white dark:bg-neutral-800 rounded-xl border border-gray-200 dark:border-neutral-700 shadow-sm p-6 hoverable-card transition-all duration-200">
+  <div class="flex items-center gap-3 mb-4">
+    <i class="fa-solid fa-hospital-user text-indigo-500 text-xl"></i>
+    <h2 class="text-lg font-semibold tracking-tight">二、核心就医建议</h2>
+  </div>
+
+  <!-- 推荐医院卡片列表 -->
+  <div class="space-y-6">
+
+    <!-- 医院1 -->
+    <div class="group rounded-lg border border-indigo-200 dark:border-indigo-700 bg-indigo-50/30 dark:bg-indigo-900/20 p-5 shadow-md hoverable-card transition-all duration-200 relative overflow-hidden">
+      <div class="flex items-center gap-2 mb-2">
+        <i class="fa-solid fa-star text-yellow-400"></i>
+        <span class="font-bold text-indigo-700 dark:text-indigo-300">推荐医院1：北京大学第一医院</span>
+        <span class="ml-auto px-2 py-[2px] rounded bg-green-100 text-green-700 text-xs font-semibold">高度匹配</span>
+      </div>
+      <ul class="text-gray-800 dark:text-gray-100 text-[15px] space-y-[3px] pl-[22px] list-disc">
+        <li><b>推荐理由：</b>三甲综合，国家临床重点专科（肾内科、儿科双强项），拥有小儿肾病内科，医生资源与7岁患儿高度契合，支持北京医保。</li>
+        <li><b>特别注意：</b><span class="text-indigo-600 dark:text-indigo-300">本院区（西什库）与大兴院区均设儿科，肾挫伤可直接挂小儿肾病内科，避免成人科室。</span></li>
+        <li><b>医保政策：</b>支持本地医保，跨院区报销需提前确认（<a href="tel:01083572211" class="underline hover:text-indigo-600">010-83572211</a>）。</li>
+        <li><b>院区地址：</b>西城区西什库大街8号（本部）、大兴院区（儿科诊疗中心）。</li>
+        <li><b>挂号方式：</b>微信公众号“北京大学第一医院服务号”或“北京114预约挂号”。提前7天放号，每日18:00更新。</li>
+      </ul>
+      <!-- 医生推荐 -->
+      <div class="mt-4">
+        <div class="flex items-center gap-x-2 mb-[6px] text-sm font-semibold text-indigo-700 dark:text-indigo-300"><i class="fa-solid fa-user-md"></i> 推荐医生（按专业热度排序）</div>
+        <!-- 医生列表 -->
+        <div class="grid grid-cols-[auto_1fr_auto] gap-x-[14px] gap-y-[5px] text-[15px] mt-[2px]">
+          <!-- 医生1 -->
+          <div class="flex items-center gap-x-[7px] col-span-full md:col-span-1 py-[5px] md:py-[3px]">
+            <img src="https://cdn.jsdelivr.net/gh/iconify/iconoir/icons/user-square-rounded.svg" width="28" height="28" alt="医生头像" loading="lazy" class="rounded-full bg-indigo-100 p-[3px] border border-indigo-200 mr-[5px]" style="filter: grayscale(60%) brightness(1.05);">
+            <span class="font-bold">钟旭辉</span>&nbsp;<span class="text-xs px-[6px] py-[2px] rounded bg-indigo-100 text-indigo-700 ml-[2px]">主任医师</span>
+          </div>
+          <div class="col-span-full md:col-span-auto text-gray-600 dark:text-gray-300 md:-mt-[8px] mb-[4px] md:mb-[0]">专长儿童疑难肾病、IgA肾病及慢性肾脏病管理，契合肾挫伤综合治疗需求。</div>
+          <div class="col-span-full md:col-span-auto flex items-center gap-x-[8px] md:-mt-[8px] mb-[4px] md:mb-[0]">
+            <i class="fa-solid fa-calendar-check text-green-500"></i> 出诊：大兴院区 儿童透析/肾移植门诊 周三上午（80元）；特需门诊 周五上午（500元）
+          </div>
+          <!-- 医生2 -->
+          <div class="flex items-center gap-x-[7px] col-span-full md:col-span-1 py-[5px] md:py-[3px]">
+            <img src="https://cdn.jsdelivr.net/gh/iconify/iconoir/icons/user-square-rounded.svg" width="28" height="28" alt="医生头像" loading="lazy" class="rounded-full bg-indigo-100 p-[3px] border border-indigo-200 mr-[5px]" style="filter: grayscale(60%) brightness(1.05);">
+            <span class="font-bold">张宏文</span>&nbsp;<span class="text-xs px-[6px] py-[2px] rounded bg-indigo-100 text-indigo-700 ml-[2px]">主任医师</span>
+          </div>
+          <div class="col-span-full md:col-span-auto text-gray-600 dark:text-gray-300 md:-mt-[8px] mb-[4px] md:mb-[0]">擅长儿童肾病综合征、遗传性肾病及血尿/蛋白尿诊治，精于疑难肾损伤诊断。</div>
+          <div class="col-span-full md:col-span-auto flex items-center gap-x-[8px] md:-mt-[8px] mb-[4px] md:mb-[0]">
+            <i class="fa-solid fa-calendar-check text-green-500"></i> 出诊：宁夏妇女儿童院区 专家门诊 周二/周四上午（64元）
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 医院2 -->
+    <div class="group rounded-lg border border-sky-200 dark:border-sky-700 bg-sky-50/30 dark:bg-sky-900/20 p-5 shadow-md hoverable-card transition-all duration-200 relative overflow-hidden">
+      <div class="flex items-center gap-x-[7px] mb-[4px]">
+        <i class="fa-solid fa-hospital text-sky-500"></i>
+        <span class="font-bold text-sky-700 dark:text-sky-300">推荐医院2：中国人民解放军总医院第一医学中心（301医院）</span>
+        <span class="ml-auto px-[8px] py-[2.5px] rounded bg-yellow-100 text-yellow-700 text-xs font-semibold">部分匹配</span>
+      </div>
+      <ul class="text-gray-800 dark:text-gray-100 text-[15px] space-y-[3px] pl-[22px] list-disc">
+        <li><b>推荐理由：</b>三甲顶尖，肾内科为全军重点，支持儿童就诊，北京医保定点。</li>
+        <li><b>特别注意：</b><span class="text-sky-600 dark:text-sky-300">肾内科以成人为主，儿科仅设综合科室。建议挂儿科后转诊肾内专家联合会诊。</span></li>
+        <li><b>医保政策：</b>本地医保直接结算，需持医保卡挂号。</li>
+        <li><b>院区地址：</b>海淀区复兴路28号。</li>
+        <li><b>挂号方式：</b>APP“中国人民解放军总医院”或微信公众号“解放军总医院301医院”。提前7天，每日8:00放号。</li>
+      </ul>
+      <!-- 医生推荐 -->
+      <div class="mt-[12px]">
+        <div class="flex items-center gap-x-[7px] mb-[6px] text-sm font-semibold text-sky-700 dark:text-sky-300"><i class="fa-solid fa-user-md"></i> 推荐医生</div>
+        <!-- 医生列表 -->
+        <div class="grid grid-cols-[auto_1fr_auto] gap-x-[14px] gap-y-[5px] text-[15px] mt-[2px]">
+          <!-- 医生1 -->
+          <div class="flex items-center gap-x-[7px] col-span-full md:col-span-auto py-[5px] md:py-[3px]">
+            <img src="https://cdn.jsdelivr.net/gh/iconify/iconoir/icons/user-square-rounded.svg" width="28" height="28" alt="医生头像" loading="lazy" class="rounded-full bg-sky-100 p-[3px] border border-sky-200 mr-[5px]" style="filter: grayscale(60%) brightness(1.05);">
+            <span class="font-bold">周建辉</span>&nbsp;<span class="text-xs px-[6px] py-[2px] rounded bg-sky-100 text-sky-700 ml-[2px]">主任医师</span>
+          </div>
+          <div class="col-span-full md:col-span-auto text-gray-600 dark:text-gray-300 md:-mt-[8px] mb-[4px] md:mb-[0]">擅长肾衰竭综合救治（含儿童），精通多模式血液净化技术。</div>
+          <div class="col-span-full md:col-span-auto flex items-center gap-x-[8px] md:-mt-[8px] mb-[4px] md:mb-[0]">
+            <i class="fa-solid fa-calendar-check text-green-500"></i> 出诊：肾内科专家门诊 周三上午（费用暂未提供）
+          </div>
+        </div>	
+      </div>	
+    </div>	
+
+    <!-- 医院3 -->	
+    <div class="group rounded-lg border border-orange-200 dark:border-orange-700 bg-orange-50/30 dark:bg-orange-900/20 p-5 shadow-md hoverable-card transition-all duration-200 relative overflow-hidden">	
+      <div class="flex items-center gap-x-[7px] mb-[4px]">	
+        <i class="fa-solid fa-triangle-exclamation text-orange-500"></i>	
+        <span class="font-bold text-orange-700 dark:text-orange-300">谨慎评估医院3：东部战区总医院（南京）</span>	
+        <span class="ml-auto px-[8px] py-[2.5px] rounded bg-orange-100 text-orange-700 text-xs font-semibold">谨慎评估</span>	
+      </div>	
+      <ul class="text-gray-800 dark:text-gray-100 text-[15px] space-y-[3px] pl-[22px] list-disc">	
+        <li><b>推荐理由：</b>全国顶尖肾脏病科，科研实力强。</li>	
+        <li><b>特别注意：</b><span class="text-orange-600 dark:text-orange-300">医院位于南京，与期望就诊地（北京）不符，跨省就医医保报销比例降低且需备案。未明确标注儿科肾病亚专科，需电话确认儿童接诊能力（<a href='tel:02580860114' class='underline hover:text-orange-600'>02580860114</a>）。</span></li>	
+        <li><b>医保政策：</b>异地就医需提前通过“国家医保服务平台”APP备案，报销比例约40%-50%。</li>	
+        <li><b>地址：</b>南京市玄武区中山东路305号。</li>	
+        <li><b>挂号方式：</b>微信公众号“东部战区总医院”，放号时间<span class='text-red-500'>暂未提供</span>。</li>	
+      </ul>	
+    </div>	
+		<!-- 风险提示 -->	
+		<div class='mt-[10px] flex items-center gap-x-[10px]' role='alert'>	
+			<i class='fa-solid fa-circle-exclamation text-red-600'></i><span class='font-bold text-red-600'>重要提示：</span><span>解放军总医院第七医学中心的门诊<strong>目前不接诊儿童！</strong></span></div>	
+		<div class='mt-[6px]' style='font-size:.93em;color:#666;'>其他知识库医院（航天中心医院、佑安医院等）因无匹配肾损伤专科或医生信息缺失，未列入推荐。</div>	
+	</div><!-- end 卡片列表 -->	
+</section><!-- end section 就医建议 -->	
+
+<!-- 三、诊前准备清单 -->	
+<section id='prep-list' class='fade-in bg-white dark:bg-neutral-800 rounded-xl border border-gray-200 dark:border-neutral-700 shadow-sm p-6 hoverable-card transition-all duration-200'>	
+	<div class='flex items-center gap-x-[9px] mb-[10px]'>	
+		<i class='fa-solid fa-file-medical text-teal-500'></i><h2 class='text-lg font-semibold tracking-tight'>三、诊前准备清单</h2></div>	
+	<ul class='list-decimal pl-[22px] space-y-[9px] mt[6x]' style='font-size:15.5px;'>	
+		<li><strong>病历资料：</strong><br/>&emsp;身份证、户口本（儿童）、北京医保卡原件。<br/>&emsp;<strong>肾挫伤相关检查：</strong>超声报告（含肾部阴影描述）、尿液/血液生化报告（如有）。<br/>&emsp;外伤史记录（发生时间、受力部位、症状变化）。</li>	
+		<li><strong>医保与费用：</strong><br/>&emsp;确认医保卡绑定院区（北大医院需区分本部/大兴）。<br/>&emsp;预估费用：普通号50~100元，特需号200~500元；备现金/银行卡支付可能自费部分。</li>	
+		<li><strong>其他准备：</strong><br/>&emsp;记录患儿疼痛频率、排尿情况（颜色、量）等细节。<br/>&emsp;穿着宽松衣物便于腹部触诊。</li></ul></section><!-- end section 准备清单 -->	
+
+<!-- 四、行动指南与局限性说明 -->	
+<section id='action-guide' class='fade-in bg-white dark:bg-neutral-800 rounded-xl border border-gray-200 dark:border-neutral-700 shadow-sm p-6 hoverable-card transition-all duration-200'>	
+	<div class='flex items-center gap-x-[9px] mb-[10px]'>	
+		<i class='fa-solid fa-compass-drafting text-fuchsia-500'></i><h2 class='text-lg font-semibold tracking-tight'>四、行动指南与局限性说明</h2></div>	
+	<ul style='font-size:15.5px;' class='space-y-[9px] list-decimal pl-[22px]'>	
+		<li><strong>优先行动建议：</strong><br/>&emsp;<span style='color:#4f46e5;font-weight:bold;'>首选北大医院钟旭辉医生（周三上午普通门诊），兼顾专业匹配与费用合理性。若号源紧张，可尝试张宏文医生（周二/四上午）。</span></li>	
+		<li><strong>二次确认清单：</strong><br/>&emsp;东部战区总医院：致电02580860114，确认“是否接诊7岁肾挫伤患儿及医保备案流程”。<br/>&emsp;301医院儿科：确认“肾挫伤是否需联合肾内科会诊”（电话01066937000）。</li>	
+		<li><strong>局限性声明：</strong><br/>&emsp;知识库未覆盖北京儿童医院等专科医院信息；部分医生出诊时间/费用可能动态调整。</li>	
+		<li><strong>最终免责：</strong><br/>&emsp;治疗方案需以临床医生面诊为准；挂号请以医院官方平台实时信息为唯一依据。</li></ul><!-- 执行总结块 -->	<div style='margin-top:16px;padding-top:12px;border-top:1.5px dashed #ddd;'class='text-base'><i class='fa-solid fa-circle-check mr-px text-green-500'></i><strong style='color:#16a34a;'>执行总结：</strong>7岁肾挫伤患儿在北京本地优先选择<strong style='color:#4f46e5;'>北大医院小儿肾病内科（钟旭辉/张宏文）</strong>，备选301医院儿科（需会诊）。跨省就医需充分权衡利弊。严格按清单准备材料可提升就诊效率。</div></section><!-- end section 行动指南 -->	
+
+<!-- 页底 -->	<footer class='w-full pt12 pb6 mt10 mb4 flex flex-col items-center justify-center text-xs text-gray400 opacity70 select-none'>©2024 就医规划助手 | 页面设计风格参考 Linear App | 数据仅供参考，请以实际医疗机构为准。</footer><!-- 页底end -->	
+
+<script>// 深色模式切换实现 
+document.addEventListener('DOMContentLoaded', function () {
+  // 判断系统主题
+  function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  function setTheme(theme) {
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', theme);
+    document.getElementById('theme-icon').innerText = theme === 'dark' ? 'light_mode' : 'dark_mode';
+  }
+  // 初始化
+  let userTheme = localStorage.getItem('theme');
+  if (!userTheme) userTheme = getSystemTheme();
+  setTheme(userTheme);
+
+  // 切换按钮
+  document.getElementById('toggle-theme').addEventListener('click', function () {
+    const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // 页面淡入动画
+  let els = document.querySelectorAll('.fade-in');
+  els.forEach((el, i) => {
+    setTimeout(() => el.style.opacity = '1', i * 120 + 120);
+  });
+
+  // 平滑滚动效果
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function (e) {
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth'}); }
+    });
+  });
+});</script>																												 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	   	ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt     t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t t   -->
+</main></body></html>
