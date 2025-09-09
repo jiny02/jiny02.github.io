@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5岁女童心肌炎本地就医方案（新农合）</title>
+  <!-- UnoCSS CDN（Tailwind 兼容预设）-->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--pl-bg, #f7f8fa);
+      color: var(--pl-text, #23272f);
+      transition: background-color .3s, color .3s;
+    }
+    .dark body {
+      --pl-bg: #1a1d23;
+      --pl-text: #e4e6eb;
+    }
+    .fade-in {
+      animation: fadeIn .8s cubic-bezier(.39,.575,.565,1) both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: none; }
+    }
+    /* 卡片悬停效果 */
+    .card-hover {
+      transition: box-shadow .18s cubic-bezier(.4,0,.2,1), transform .18s cubic-bezier(.4,0,.2,1), border-color .18s;
+    }
+    .card-hover:hover {
+      box-shadow: 0 6px 32px rgba(80,90,110,.12), 0 1.5px 4px rgba(60,70,90,.06);
+      border-color: #2563eb;
+      transform: translateY(-2px) scale(1.015);
+    }
+    /* 按钮微交互 */
+    .btn-hover {
+      transition: background .15s, color .15s, transform .15s;
+    }
+    .btn-hover:hover {
+      background: #2563eb !important;
+      color: #fff !important;
+      transform: scale(1.045);
+    }
+    /* 响应式字体 */
+    h1 { font-size: clamp(1.5rem, 2vw, 2.3rem); }
+    h2 { font-size: clamp(1.2rem, 1.6vw, 1.7rem); }
+    h3 { font-size: clamp(1.08rem, 1.3vw, 1.2rem); }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.25rem; }
+      h2 { font-size: 1.05rem; }
+      h3 { font-size: .95rem; }
+    }
+    /* 插图占位样式 */
+    .img-illus {
+      width:100%;max-width:380px;display:block;margin:auto;border-radius:.75rem;box-shadow:0 4px 16px rgba(60,80,120,.08);
+    }
+    /* 滚动条美化 */
+    ::-webkit-scrollbar { width:8px; background:#e5e7eb; }
+    ::-webkit-scrollbar-thumb { background:#cbd5e1; border-radius:4px; }
+    .dark ::-webkit-scrollbar { background:#22232b; }
+    .dark ::-webkit-scrollbar-thumb { background:#353743; }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+<div class="fade-in max-w-3xl mx-auto px-4 py-8">
+
+<!-- 顶部栏 -->
+<div class="flex items-center justify-between mb-8">
+  <div class="flex items-center gap-3">
+    <span class="fa-solid fa-heart-pulse text-blue-600 text-2xl"></span>
+    <h1 class="font-bold tracking-tight">5岁女童心肌炎本地就医方案</h1>
+  </div>
+  <!-- 深色模式切换按钮 -->
+  <button id="toggleDark" type="button" class="btn-hover px-3 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 text-lg shadow-sm focus:outline-none" aria-label="切换深色模式">
+    <span class="material-icons" id="themeIcon">dark_mode</span>
+  </button>
+</div>
+
+<!-- 患者摘要卡片 -->
+<section class="card-hover border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 p-6 mb-8 shadow-sm fade-in">
+  <div class="flex flex-col md:flex-row gap-4 items-start md:items-center">
+    <img src="https://img.js.design/assets/img/65fbe38f51b7b10a11f8f9b7.png#webp" width="92" height="92" alt="儿童插图" loading="lazy" class="img-illus flex-shrink-0" style="max-width:92px;min-width:64px;">
+    <div class="flex-grow">
+      <h2 class="font-semibold mb-2 flex items-center gap-2"><span class="fa-solid fa-user text-pink-500"></span> 患者信息摘要</h2>
+      <ul class="text-gray-700 dark:text-gray-200 text-base leading-relaxed grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1">
+        <li><b>年龄/性别：</b>5岁 女童</li>
+        <li><b>地区：</b>邯郸</li>
+        <li><b>初步诊断：</b>心肌炎</li>
+        <li><b>医保类型：</b>新农合</li>
+        <li><b>既往重大疾病/手术：</b>无</li>
+        <li><b>治疗目标：</b>系统治疗（本地优先）</li>
+        <li><b>病理检查/既往治疗：</b>不详</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 核心就医建议 -->
+<section class="fade-in mb-10">
+  <h2 class="font-semibold mb-4 flex items-center gap-2"><span class="fa-solid fa-stethoscope text-blue-600"></span> 核心就医建议</h2>
+
+  <!-- 提示信息 -->
+  <div class="bg-blue-50 dark:bg-blue-900/40 border-l-4 border-blue-500 rounded-lg p-4 mb-5 text-blue-800 dark:text-blue-100 flex items-start gap-3">
+    <span class="material-icons text-blue-400 mt-[2px]">info</span>
+    <div class="text-sm md:text-base leading-relaxed">
+      <p><b>邯郸本地医院信息暂未检索到，以下推荐均为外地医院（北京/西安），需异地就医备案。</b></p>
+      <ul class="list-disc pl-5 mt-1 space-y-[2px]">
+        <li>儿童心肌炎建议优先选择<strong>儿科心血管专科医院及医生</strong></li>
+        <li>新农合患者务必提前通过“国家医保服务平台”APP办理<strong>异地就医备案</strong></li>
+        <li>如需就近就诊，可同步咨询邯郸三甲医院儿科（如邯郸市中心医院）</li>
+      </ul>
+    </div>
+  </div>
+
+<!-- 推荐医院列表 -->
+<div class="space-y-7">
+
+<!-- 阜外医院 -->
+<div class="card-hover border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 p-5 shadow-sm relative overflow-hidden group">
+  <div class="flex items-center gap-3 mb-2">
+    <span class="fa-solid fa-hospital text-red-500 text-xl"></span>
+    <h3 class="font-semibold text-lg">中国医学科学院阜外医院（北京）<span class="ml-2 px-[7px] py-[2px] rounded bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-200 text-xs align-middle">推荐优先</span></h3>
+  </div>
+  <div class="text-sm md:text-base leading-relaxed mb-3">
+    全国顶尖心血管病专科医院，小儿心脏内科实力突出，专设小儿内科及心肌病病区，对儿童心肌炎诊治经验丰富。
+    <div class="mt-2 flex flex-wrap gap-x-6 gap-y-[2px] text-xs text-gray-500 dark:text-gray-400">
+      <span><i class="fa-solid fa-location-dot mr-[3px]"></i>北京市西城区北礼士路167号</span>
+      <span><i class="fa-solid fa-train-subway mr-[3px]"></i>邯郸至北京约3.5小时高铁</span>
+      <span><i class="fa-solid fa-credit-card mr-[3px]"></i>支持新农合异地结算（需备案）</span>
+    </div>
+  </div>
+
+  <!-- 医生推荐 -->
+  <div class="flex flex-col md:flex-row gap-x-8 gap-y-3 mt-[6px]">
+    <!-- 张惠丽 -->
+    <div class="flex items-start gap-x-[10px] w-full md:w-auto">
+      <img src="https://img.js.design/assets/img/65fbe4e3d9e99e31a89d9a44.png#webp" width="52" height="52" alt="张惠丽医生" loading="lazy" class="rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mt-[2px]">
+      <div>
+        <div class="font-medium">张惠丽 主任医师</div>
+        <div class="text-xs text-gray-500">专长：小儿心血管疾病（心肌炎、心肌病） | 临床30余年经验</div>
+        <div class="text-xs mt-[2px]">出诊：本部专家门诊 周三上午；特需门诊 周四上午</div>
+      </div>
+    </div>
+    <!-- 康连鸣 -->
+    <div class="flex items-start gap-x-[10px] w-full md:w-auto">
+      <img src="https://img.js.design/assets/img/65fbe522d9e99e31a89d9a51.png#webp" width="52" height="52" alt="康连鸣医生" loading="lazy" class="rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mt-[2px]">
+      <div>
+        <div class="font-medium">康连鸣 主任医师</div>
+        <div class="text-xs text-gray-500">专长：儿童心肌病/心肌炎诊治与长期管理</div>
+        <div class="text-xs mt-[2px]">出诊：特需门诊 周二全天；专科门诊 周四上午/周一下午</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 挂号方式 -->
+  <details class="mt-[10px]">
+    <summary class="cursor-pointer text-blue-600 hover:underline select-none">挂号与咨询方式<i class="fa-solid fa-chevron-down ml-[4px] text-xs"></i></summary>
+    <ul class="pl-[20px] pt-[4px] space-y-[2px] text-sm list-disc">
+      <li>微信公众号“中国医学科学院阜外医院”或APP“掌上阜外医院”每日6:30放号</li>
+      <li>电话咨询：010-88398866（小儿内科）</li>
+    </ul>
+  </details>
+
+</div>
+
+<!-- 安贞医院 -->
+<div class="card-hover border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 p-5 shadow-sm relative overflow-hidden group">
+  <div class="flex items-center gap-3 mb-2">
+    <span class="fa-solid fa-hospital-user text-pink-500 text-xl"></span>
+    <h3 class="font-semibold text-lg">首都医科大学附属北京安贞医院（北京）<span class="ml-2 px-[7px] py-[2px] rounded bg-pink-100 dark:bg-pink-800 text-pink-700 dark:text-pink-200 text-xs align-middle">小儿专长</span></h3>
+  </div>
+  <div class="text-sm md:text-base leading-relaxed mb-3">
+    小儿心脏中心为北京市重点专科，设有心脏内科，专攻小儿心肌炎、心肌病诊疗，年手术量超5000例。	
+    <div class="mt-2 flex flex-wrap gap-x-6 gap-y-[2px] text-xs text-gray-500 dark:text-gray-400">	
+      <span><i class="fa-solid fa-location-dot mr-[3px]"></i>北京市朝阳区安贞路2号</span>	
+      <span><i class="fa-solid fa-train-subway mr-[3px]"></i>邯郸至北京约3.5小时高铁</span>	
+      <span><i class="fa-solid fa-credit-card mr-[3px]"></i>支持新农合异地结算（需备案）</span>	
+    </div>	
+  </div>	
+
+  <!-- 医生推荐 -->	
+  <div class="flex items-start gap-x-[10px] mt-[6px] w-full md:w-auto">	
+    <img src="https://img.js.design/assets/img/65fbe5e051c19c10e1d42c67.png#webp" width="52" height="52" alt="焦萌医生" loading="lazy" class="rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mt-[2px]">	
+    <div>	
+      <div class="font-medium">焦萌 主任医师</div>	
+      <div class="text-xs text-gray-500">专长：小儿心肌炎诊断与远期随访，肺动脉高压管理</div>	
+      <div class="text-xs mt-[2px]">出诊：专家门诊（60元）周二上午；特需门诊（200元）周四下午</div>	
+    </div>	
+  </div>	
+
+  <!-- 挂号方式 -->	
+  <details class="mt-[10px]">	
+    <summary class="cursor-pointer text-pink-600 hover:underline select-none">挂号与咨询方式<i class="fa-solid fa-chevron-down ml-[4px] text-xs"></i></summary>	
+    <ul class="pl-[20px] pt-[4px] space-y-[2px] text-sm list-disc">	
+      <li>微信公众号“京医通”每日6:30放号</li>	
+      <li>电话咨询：010—64456300（总机）</li>	
+    </ul>	
+  </details>	
+
+</div><!-- end 安贞医院 -->	
+
+<!-- 协和医院 -->	
+<div class="card-hover border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 p-5 shadow-sm relative overflow-hidden group">	
+  <div class="flex items-center gap-3 mb-2">	
+    <span class="fa-solid fa-hospital-symbol text-green-600 text-xl"></span>	
+    <h3 class="font-semibold text-lg">中国医学科学院北京协和医院（北京）<span class="ml-2 px-[7px] py-[2px] rounded bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-200 text-xs align-middle">综合推荐</span></h3>	
+  </div>	
+  <div class="text-sm md:text-base leading-relaxed mb-3">	
+    综合实力顶尖，心内科对疑难心血管疾病经验丰富，但儿童专科资源相对有限。<br/ >	
+    儿童接诊需提前致电确认（010–69155564）。	
+    <div class="mt-2 flex flex-wrap gap-x-6 gap-y-[2px] text-xs text-gray-500 dark:text-gray-400">	
+      <span><i class="fa-solid fa-location-dot mr-[3px]"></i>东城区东单帅府园1号 / 西城区大木仓胡同41号</span> 	
+      <span><i class="fa-solid fa-credit-card mr-[3px]"></i>支持新农合异地结算（需备案）</span> 	
+    </div> 	
+  </div> 	
+																																														 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	   <!-- 医生推荐 -->
+tab     <!-- 郭潇潇 -->
+tab     <div class='flex items-start gap-x-[10px] mt-[6px] w-full md:w-auto'>
+tab       <img src='https://img.js.design/assets/img/65fbe631d9e99e31a89d9a5d.png#webp' width='52' height='52' alt='郭潇潇医生' loading='lazy' class='rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mt-[2px]'>
+tab       <div>
+tab         <div class='font-medium'>郭潇潇 主任医师</div>
+tab         <div class='text-xs text-gray-500'>专长：心肌病、心力衰竭、全身性疾病累及心脏的鉴别</div>
+tab         <div class='text-xs mt-[2px]'>出诊：普通门诊 周三/五上午；国际医疗部 周四下午</div>
+tab       </div>
+tab     </div>   <!-- 挂号方式 -->
+tab     <details class='mt-[10px]'>
+tab       <summary class='cursor-pointer text-green-600 hover:underline select-none'>挂号与咨询方式<i class='fa-solid fa-chevron-down ml-[4px] text-xs'></i></summary>
+tab       <ul class='pl-[20px] pt-[4px] space-y-[2px] text-sm list-disc'>
+tab         <li>APP“北京协和医院”或电话010–114每日6:30放号</li>
+tab         <li>电话咨询：010–69155564（儿科） / 国际部：010–69156699</li>
+tab       </ul>   </details></div><!-- end 协和医院 -->
+tab <!-- 西京医院 -->
+tab<div class='card-hover border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 p-5 shadow-sm relative overflow-hidden group'>
+tab   <div class='flex items-center gap-3 mb-2'>
+tab     <span class='fa-solid fa-hospital-alt text-indigo-600 text-xl'></span>   <h3 class='font-semibold text-lg'>西京医院（西安）<span class='ml-2 px-[7px] py-[2px] rounded bg-indigo-100 dark:bg-indigo-800 text-indigo-700 dark:text-indigo-200 text-xs align-middle'>距离较远，慎选</span></h3></div><div class='text-sm md:text-base leading-relaxed mb-3'>西北地区心血管诊疗中心，但距离邯郸较远，异地就医成本高。未明确小儿心肌炎优势，建议优先选择北京专科医院。<div class='mt-2 flex flex-wrap gap-x-6 gap-y-[2px] text-xs text-gray-500 dark:text-gray-400'><span><i class='fa-solid fa-location-dot mr-[3px]'></i>西安市新城区长乐西路15号</span><span><i class='fa-solid fa-train-subway mr-[3px]'></i>邯郸至西安约4小时高铁</span><span><i class='fa-solid fa-credit-card mr-[3px]'></i>支持新农合异地结算（需备案）</span></div></div><!-- 医生推荐 --><div class='flex items-start gap-x-[10px] mt-[6px] w-full md:w-auto'><img src='https://img.js.design/assets/img/65fbe674d9e99e31a89d9a67.png#webp' width='52' height='52' alt='陶凌医生' loading='lazy' class='rounded-full shadow-sm border border-gray-200 dark:border-gray-700 mt-[2px]'><div><div class='font-medium'>陶凌 主任医师</div><div class='text-xs text-gray-500'>专长：心血管内科主任，擅长心肌病诊疗（成人为主）</div><div class='text-xs mt-[2px]'>出诊：具体时间请电话确认</div></div></div><!-- 挂号方式 --><details class='mt-[10px]'><summary class='cursor-pointer text-indigo-600 hover:underline select-none'>挂号与咨询方式<i class='fa-solid fa-chevron-down ml-[4px] text-xs'></i></summary><ul class='pl-[20px] pt-[4px] space-y-[2px] text-sm list-disc'><li>微信公众号“西京医院”或电话029–83215321咨询挂号时间</li></ul></details></div><!-- end 西京医院 -->
+tab</div><!-- end 推荐医院列表 -->
+tab<!-- 行动与准备区块 -->
+tab<section id='action-checklist' aria-label='行动指南与准备' tabindex='0' aria-live='polite' aria-busy='false' aria-relevant='all' aria-labelby='action-title' aria-describedby='action-desc' aria-details='本区块包含详细行动清单和注意事项' aria-modal='false' aria-expanded='true' aria-hidden='false' aria-controls='' role='region' style='margin-top:40px;'>
+tab<h2 id='action-title' class='font-semibold mb-4 flex items-center gap-x-[8px]'><span class='fa-solid fa-list-check text-cyan-600'></span> 就医行动清单 &amp; 注意事项</h2><ul id='action-desc' role='list' aria-label='就医准备清单' aria-live='polite' aria-busy='false' aria-relevant='all' aria-modal='false' aria-expanded='true' aria-hidden='false' aria-controls='' style='margin-bottom:.75em;'class='list-disc pl-[22px] space-y-[7px] text-base leading-relaxed'><li><b>证件资料：</b>身份证、户口本、医保卡原件及复印件。</li><li><b>病历资料：</b>既往所有检查报告（如血常规、心电图、彩超等）、本地医院诊断证明。</li><li><b>医保备案：</b>通过“国家医保服务平台”APP办理<strong>异地就医备案</strong>，并咨询本地医保局报销细节。</li><li><b>资金准备：</b>挂号费60~500元、检查费约2000~5000元、交通食宿约1000~3000元。</li><li><b>症状记录：</b>记录近期症状及用药情况。</li><li><b>行程规划：</b>提前预订医院周边住宿，携带儿童生活用品。</li></ul><!-- 温馨提示 --><details open=''class='bg-yellow-50 dark:bg-yellow-900/40 border-l-[5.5px] border-yellow -400 rounded-lg p-[14.5px] mb-.5 mt-.5'><summary style='cursor:pointer;font-weight:bold;color:#d97706;'class='select-none'>局限性声明与紧急提醒<i style='margin-left:.35em;'class='fa-solid fa-triangle-exclamation'></i></summary><ul style='margin-top:.55em;'class='list-disc pl-[18.5px] space-y-.5em text-sm leading-relaxed'><li>本页面未覆盖邯郸本地医院信息，建议同步咨询邯郸三甲医院儿科。</li><li>部分医生出诊时间可能变动，请以官方平台为准。</li><li><strong>如患儿出现呼吸急促、持续胸痛等急症，请立即前往本地急诊！</strong></li></ul></details></section><!-- end 行动清单 --><!-- 页面结尾 LOGO & 更新时间 --><footer role='contentinfo'class='mt-[60px] pt-[16px] pb-[12px] flex flex-col items-center justify-center opacity-.75'><img src='https://img.js.design/assets/img/65fbe74ad9e99e31a89d9a74.png#webp' width='48' height='48' alt='' loading='lazy'class='mb-.5'><small style='font-size:.92em;'>最后更新：2024年6月<br/>数据来源于权威医疗机构与公开资料，仅供参考，不作为医疗决策依据。</small></footer></section></section></body><!-- 深色模式切换脚本 --><script>// 深色模式自动跟随系统 + 切换按钮实现(function(){const html=document.documentElement;const btn=document.getElementById('toggleDark');const icon=document.getElementById('themeIcon');function setTheme(dark){if(dark){html.classList.add('dark');icon.textContent = 'light_mode';}else{html.classList.remove('dark');icon.textContent = 'dark_mode';}}function getSysTheme(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}let isDark=getSysTheme();setTheme(isDark);btn&&btn.addEventListener('click',()=>{isDark=!isDark;setTheme(isDark);localStorage.setItem('darkMode',isDark?'1':'0');});window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',e=>{if(!localStorage.getItem('darkMode'))setTheme(e.matches);});const saved=localStorage.getItem('darkMode');if(saved)setTheme(saved==='1');})(); // 内容淡入动画document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.fade-in').forEach(el=>{el.style.opacity=0;setTimeout(()=>{el.style.transition='.7s cubic-bezier(.39,.575,.565,1)';el.style.opacity=1;},120);});}); // 懒加载图片if('loading'in HTMLImageElement.prototype){document.querySelectorAll('img[loading]').forEach(img=>{img.loading = 'lazy';});}</script></html>
