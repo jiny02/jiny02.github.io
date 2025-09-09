@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 气管狭窄（65岁女，河北邯郸）</title>
+  <!-- UnoCSS (Tailwind 兼容预设) -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.4/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.4/dist/preline.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--pl-bg, #f6f7f9);
+      color: var(--pl-text, #222);
+      transition: background 0.3s, color 0.3s;
+    }
+    .dark body {
+      --pl-bg: #191a1c;
+      --pl-text: #f1f3f6;
+      background-color: var(--pl-bg);
+      color: var(--pl-text);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeInUp 0.7s cubic-bezier(.39,.575,.565,1) forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .card-hover:hover {
+      box-shadow: 0 8px 32px rgba(80,90,110,0.08), 0 1.5px 4px rgba(50,60,70,0.04);
+      border-color: #3b82f6;
+      transform: translateY(-2px) scale(1.025);
+      transition: all .2s cubic-bezier(.39,.575,.565,1);
+    }
+    .btn-primary {
+      background: linear-gradient(90deg,#2563eb,#1e40af);
+      color: #fff;
+      border-radius: .5rem;
+      font-weight: 600;
+      transition: transform .12s cubic-bezier(.39,.575,.565,1), box-shadow .12s;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg,#1e40af,#2563eb);
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(37,99,235,0.10);
+    }
+    .icon {
+      vertical-align: middle;
+      margin-right: .5em;
+    }
+    /* 深色模式图标反色 */
+    .dark .icon,
+    .dark .material-icons { filter: invert(0.88) grayscale(1); }
+    /* 响应式优化 */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.125rem; }
+      .card { padding: 1rem; }
+    }
+    /* 图标大小调整 */
+    .icon-lg { font-size: 1.5em; }
+    /* 表格样式 */
+    table { width:100%; border-collapse:collapse; margin-top:.5em; }
+    th,td { padding:.5em; border-bottom:1px solid #e5e7eb; }
+    .dark th,.dark td { border-bottom:1px solid #33353b; }
+    /* 标签样式 */
+    .tag {
+      display:inline-block; padding:.15em .75em; border-radius:.75em; font-size:.85em; font-weight:500;
+      background:#e0e7ef; color:#2764c5; margin-right:.5em;
+    }
+    .dark .tag { background:#23272e; color:#7baaff; }
+    /* 匹配度标签 */
+    .tag-high { background:#dbeafe; color:#2563eb; }
+    .tag-mid { background:#fef9c3; color:#ca8a04; }
+    .tag-low { background:#fee2e2; color:#dc2626; }
+    /* 特别注意警示 */
+    .warn {
+      background:#fff7ed; color:#b45309; border-left:4px solid #f59e42; padding:.75em 1em; margin:.75em 0;
+      border-radius:.5em; font-size:.98em;
+    }
+    .dark .warn { background:#352c18; color:#ffdb99; border-color:#fbbf24; }
+    /* 行动指南卡片 */
+    .action-card {
+      background:#f8fafc; border-radius:.75em; padding:1.25em 1.5em; margin-bottom:.75em;
+      box-shadow:0 2px 8px rgba(80,90,110,.04);
+      border:1px solid #e5e7eb;
+    }
+    .dark .action-card { background:#202127; border-color:#33353b; }
+    /* 报告结束分割线 */
+    .divider {
+      border-top:2px dashed #dbeafe;
+      margin-top:2em;margin-bottom:.8em;
+    }
+    .dark .divider { border-top-color:#334155; }
+  </style>
+</head>
+<body class="pl-font-sans antialiased min-h-screen flex flex-col items-center justify-start px-2 sm:px-0">
+
+<!-- 深色/浅色模式切换按钮 -->
+<div class="w-full max-w-3xl flex justify-end pt-6 pr-2 sm:pr-0">
+  <button id="theme-toggle" class="btn-primary px-3 py-1 text-base flex items-center gap-2" aria-label="切换深色/浅色模式">
+    <span class="material-icons">dark_mode</span>
+    <span class="hidden sm:inline">夜间模式</span>
+  </button>
+</div>
+
+<main class="w-full max-w-3xl fade-in mt-2 mb-12">
+
+<!-- 标题区 -->
+<section class="mb-4">
+  <h1 class="text-2xl sm:text-3xl font-bold flex items-center gap-2 mb-2">
+    <span class="fa-solid fa-notes-medical icon icon-lg"></span>
+    就医规划报告
+  </h1>
+  <div class="text-base text-gray-500 dark:text-gray-400 mb-2">（气管狭窄 · 女 · 65岁 · 河北邯郸）</div>
+  <div class="text-sm text-gray-400 dark:text-gray-500">本报告严格基于您提供的【患者信息】和【知识库信息】生成，所有建议均源于现有数据，严禁编造。最终就医决策请以医院官方信息和临床医生诊断为准。</div>
+</section>
+
+<!-- 一、患者情况摘要 -->
+<section class="fade-in mb-8 card action-card">
+  <h2 class="text-lg font-semibold mb-2 flex items-center"><span class="material-icons icon mr-2">person</span>一、患者情况摘要</h2>
+  <ul class="pl-4 list-disc text-base leading-relaxed">
+    <li><b>性别/年龄：</b>女，65岁</li>
+    <li><b>常住地：</b>河北邯郸</li>
+    <li><b>初步诊断：</b>气管狭窄</li>
+    <li><b>治疗诉求：</b>进一步治疗（如手术或药物治疗）</li>
+    <li><b>医保类型：</b>河北医保</li>
+    <li><b>病史：</b>无相关治疗、无重大病史</li>
+    <li><b>特殊需求：</b>无</li>
+  </ul>
+</section>
+
+<!-- 二、核心就医建议 -->
+<section class="fade-in mb-8 card action-card">
+  <h2 class="text-lg font-semibold mb-3 flex items-center"><span class="fa-solid fa-hospital-user icon mr-2"></span>二、核心就医建议</h2>
+
+<!-- 医院列表 -->
+<div class="space-y-6">
+
+<!-- 医院1：北京胸科医院 -->
+<div class="border-l-4 border-blue-500 pl-4 py-3 card-hover transition-all card">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="fa-solid fa-hospital icon text-blue-500"></span>
+    <span class="font-bold text-base">首都医科大学附属北京胸科医院</span>
+    <span class="tag tag-high">高度匹配</span>
+  </div>
+  <div class="text-gray-700 dark:text-gray-300 mb-1 text-sm">三级甲等胸科专科医院 · 北京市通州区北关大街9号院一区</div>
+  <ul class="list-disc pl-6 text-base mb-2 space-y-[.25em]">
+    <li><b>推荐理由：</b>专注胸科与呼吸系统疾病（如气管狭窄），设施先进，异地医保成熟。</li>
+    <li><b>就诊须知：</b>支持异地医保，需通过“国家医保服务平台”APP提前备案。</li>
+    <li><b>挂号方式：</b>微信公众号“北京114预约挂号”或“京医通”、<br/>网络“北京市统一挂号平台”、电话010-114。</li>
+    <li><b>挂号难度：</b>感染科普通（号源较充足）。</li>
+  </ul>
+  <!-- 推荐医生 -->
+  <div class="text-sm text-gray-500 mt-1"><span class="fa-solid fa-user-md icon"></span>推荐医生：<span class="text-red-500">暂无本院相关医生信息，请通过医院官方渠道挂号呼吸内科或感染科专家门诊。</span></div>
+</div>
+
+<!-- 医院2：河北医科大学第二医院 -->
+<div class="border-l-4 border-sky-400 pl-4 py-3 card-hover transition-all card">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="fa-solid fa-hospital icon text-sky-400"></span>
+    <span class="font-bold text-base">河北医科大学第二医院</span>
+    <span class="tag tag-mid">部分匹配</span>
+  </div>
+  <div class="text-gray-700 dark:text-gray-300 mb-1 text-sm">三级甲等综合医院 · 河北省石家庄市和平西路215号（本部）</div>
+  <ul class="list-disc pl-6 text-base mb-2 space-y-[.25em]">
+    <li><b>推荐理由：</b>省级重点学科呼吸内科，地理近，河北医保报销便利。</li>
+    <li><b>就诊须知：</b>支持河北医保异地报销，需提前备案。</li>
+    <li><b>挂号方式：</b>微信公众号“河北医科大学第二医院”或“健康河北服务号”、<br/>网络“健康河北医疗惠民移动平台”、APP“健康河北”、电话0311-66002999。</li>
+    <li><b>挂号难度：</b>普通（号源较充足）。</li>
+  </ul>
+  <!-- 推荐医生 -->
+  <div class="text-sm text-gray-500 mt-1"><span class="fa-solid fa-user-md icon"></span>推荐医生：<span class="text-red-500">暂无本院相关医生信息，请通过医院官方渠道挂号呼吸内科专家门诊。</span></div>
+</div>
+
+<!-- 医院3：应急管理部应急总医院 -->
+<div class="border-l-4 border-yellow-400 pl-4 py-3 card-hover transition-all card">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="fa-solid fa-hospital icon text-yellow-400"></span>
+    <span class="font-bold text-base">应急管理部应急总医院</span>
+    <span class="tag tag-mid">谨慎评估</span>
+  </div>
+  <div class="text-gray-700 dark:text-gray-300 mb-1 text-sm">三级综合医院 · 北京市（详细地址暂未提供）</div>
+  <ul class="list-disc pl-6 text-base mb-2 space-y-[.25em]">
+    <li><b>推荐理由：</b>综合医院，可能覆盖呼吸系统疾病，但专科能力信息有限。</li>
+    <li><b>就诊须知：</b>支持异地医保，需提前备案。</li>
+    <li><b>挂号方式：</b><span class='text-gray-400'>暂未提供</span></li>
+  </ul>
+  <!-- 推荐医生 -->
+  <div class="text-sm text-gray-500 mt-1"><span class="fa-solid fa-user-md icon"></span>推荐医生：<span class='text-red-500'>暂无本院相关医生信息，请通过医院官方渠道挂号综合内科或呼吸科专家门诊。</span></div>
+</div>
+
+<!-- 医院4：上海儿童医学中心 -->
+<div class="border-l-4 border-red-400 pl-4 py-3 card-hover transition-all card">
+  <div class="flex items-center gap-2 mb-1">
+    <span class="fa-solid fa-hospital-user icon text-red-400"></span>
+    <span class="font-bold text-base">上海交通大学医学院附属上海儿童医学中心</span>
+    <span class="tag tag-low">谨慎评估</span>
+  </div>
+  <div class="text-gray-700 dark:text-gray-300 mb-1 text-sm">三级甲等儿童专科医院 · 上海浦东新区东方路1678号（陆家嘴院区）等</div>	
+   <!-- 警示 -->	
+   <div class='warn'><i class='fa-solid fa-triangle-exclamation mr-[.35em]'></i><strong>强风险警示：</strong>该院为儿童专科医院，仅收治儿童患者。成人患者（65岁）就诊前务必致电021-38626161确认接诊政策，切勿直接前往，否则可能导致拒诊或无效就医。</div>	
+   	<ul class='list-disc pl-6 text-base mb-[.35em]'>	
+     <li><b>推荐理由：</b>儿童专科实力强，但仅服务18岁以下患者，与本案例不符。</li>	
+     <li><b>就诊须知：</b>支持异地医保，需提前备案。</li>	
+     <li><b>挂号方式：</b>电话021-38626161、APP“上海儿童医学中心”或“上海市互联网总医院”、电话021-95169、网络“上海申康医联预约平台”。</li>	
+   </ul>	
+   <!-- 推荐医生 -->	
+   <div class='text-sm text-gray-500 mt-[.15em]'><span class='fa-solid fa-user-md icon'></span>推荐医生：	
+     <ul style='padding-left:.5em;'>	
+       <li><strong>钱娟（主任医师）</strong>&nbsp;&nbsp;<i class='fa-solid fa-circle-info text-yellow-500'></i>&nbsp;<br/>&nbsp;&nbsp;<span style='color:#dc2626'>主要从事儿童危重症及支气管镜术诊疗，仅适用于儿科患者，不适合成人气管狭窄治疗。</span><br/>&nbsp;&nbsp;<i class='fa-solid fa-calendar-days'></i>&nbsp;出诊：张江院区特需门诊 周一上午；陆家嘴院区专家门诊 周三上午（50元）。</li>	
+     </ul></div>	
+</div>	
+
+</div><!-- 医院列表 end -->	
+</section>	
+
+<!-- 三、诊前准备清单（知识库无相关内容，此模块省略） -->	
+
+<!-- 四、行动指南与局限性说明 -->	
+<section class='fade-in card action-card'>	
+<h2 class='text-lg font-semibold mb-[.5em] flex items-center'><span class='fa-solid fa-lightbulb icon mr-[.25em]'></span>三、行动指南与局限性说明</h2>	
+<ul class='list-disc pl-[1.25em] space-y-[.25em] mb-[.5em]'>	
+<li><strong>优先行动建议：</strong><br/>&nbsp;&nbsp;<i class='fa-solid fa-arrow-right-long'></i>&nbsp;<strong>首选首都医科大学附属北京胸科医院</strong>，建议致电010-89509000挂号感染科或呼吸内科专家门诊，咨询气管狭窄治疗方案。<br/>&nbsp;&nbsp;<i class='fa-solid fa-arrow-right-long'></i>&nbsp;<strong>备选河北医科大学第二医院呼吸内科</strong>，地理近，河北医保报销便利（电话0311-66002999）。</li>	
+<li><strong>二次确认清单：</strong><br/>&nbsp;&nbsp;<i class='fa-solid fa-phone-volume'></i>&nbsp;就诊前务必致电确认：<br/>&nbsp;&nbsp;&nbsp;&nbsp;- 上海儿童医学中心成人接诊政策（021-38626161），避免无效就医。<br/>&nbsp;&nbsp;&nbsp;&nbsp;- 所有医院异地医保报销细节（如挂号费是否报销），致电医院或本地医保局。</li>	
+<li><strong>局限性声明：</strong><br/>本报告仅依据知识库当前信息生成，部分医院专科和医生信息可能缺失或延迟更新，仅供参考。最终决策请以医院官方平台及临床医生意见为准。</li>	
+<li><strong>免责提示：</strong><br/>如有急性症状（如呼吸困难），请立即就近急诊处理！本报告不替代专业医疗建议。</li></ul></section><!-- 行动指南 end -->	
+<div class='divider'></div><!-- 分割线 -->	
+<div class='w-full text-center text-xs text-gray-400 dark:text-gray-600 mt-[.5em]'>报告结束。祝您早日康复！如有疑问欢迎随时咨询。</div><!-- end -->	
+
+<script>// 深色/浅色模式切换逻辑
+(function(){
+type Theme = 'light'|'dark';
+document.addEventListener('DOMContentLoaded', function() {
+defaultTheme();
+document.getElementById('theme-toggle').addEventListener('click', function() {
+toggleTheme();});});
+defaultTheme();function defaultTheme(){const user = localStorage.getItem('theme');if(user==='light'||user==='dark'){setTheme(user);}else{setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}}
+def setTheme(theme){if(theme==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}localStorage.setItem('theme',theme);updateBtn(theme);}
+def toggleTheme(){const isDark=document.documentElement.classList.contains('dark');setTheme(isDark?'light':'dark');}
+def updateBtn(theme){const btn=document.getElementById('theme-toggle');if(!btn)return;if(theme==='dark'){btn.querySelector('.material-icons').innerText='light_mode';btn.querySelector('span:last-child').innerText='日间模式';}else{btn.querySelector('.material-icons').innerText='dark_mode';btn.querySelector('span:last-child').innerText='夜间模式';}}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='j'){toggleTheme();}});
+def lazyFadeIn(){const els=document.querySelectorAll('.fade-in');let delay=0;els.forEach(el=>{el.style.animationDelay=(delay+=0.07)+'s';});}
+lazyFadeIn();})();</script>	
+<!-- 平滑滚动动画优化 -->	
+<script>window.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.offsetTop -16,behavior:'smooth'});}});});});</script>	
+<!-- 图片懒加载演示占位符（本页无图片） -->	
+<!-- Preline组件初始化 -->	
+<script>(function(){window.HSStaticMethods&&window.HSStaticMethods.autoInit&&window.HSStaticMethods.autoInit();})();</script>	
+</main></body></html>
