@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>就医规划报告</title>
+  <!-- UnoCSS CDN (Tailwind 兼容预设) -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--pl-bg, #f6f7f9);
+      color: var(--pl-text, #23272f);
+      transition: background-color .3s, color .3s;
+    }
+    .dark body {
+      --pl-bg: #1a1d23;
+      --pl-text: #e2e6ee;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp .8s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .card-hover {
+      transition: box-shadow .2s, border-color .2s, transform .15s;
+    }
+    .card-hover:hover {
+      box-shadow: 0 6px 32px rgba(0,0,0,.08),0 1.5px 6px rgba(0,0,0,.06);
+      border-color: #5b8bf7;
+      transform: translateY(-4px) scale(1.015);
+    }
+    .btn-hover {
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .btn-hover:hover {
+      background: #5b8bf7 !important;
+      color: #fff !important;
+      transform: scale(1.05);
+    }
+    /* 响应式字体优化 */
+    h1 { font-size: 2.2rem; }
+    @media (max-width: 640px) { h1 { font-size: 1.4rem; } }
+    @media (max-width: 480px) { h1 { font-size: 1.12rem; } }
+    /* 段落间距优化 */
+    p { margin-bottom: 0.7em; }
+    /* 滚动条美化 */
+    ::-webkit-scrollbar { width: 8px; background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #d4d8e2; border-radius: 6px; }
+    .dark ::-webkit-scrollbar-thumb { background: #333842; }
+  </style>
+</head>
+<body class="pl-bg flex flex-col min-h-screen">
+  <!-- 顶部栏 -->
+  <header class="w-full px-4 sm:px-10 py-4 flex items-center justify-between bg-white dark:bg-[#191b20] shadow-sm sticky top-0 z-30">
+    <div class="flex items-center gap-3">
+      <span class="material-icons text-blue-600 text-3xl">assignment</span>
+      <h1 class="font-bold text-xl sm:text-2xl tracking-tight">就医规划报告</h1>
+    </div>
+    <button id="toggleDark" aria-label="切换深色模式" class="rounded-full btn-hover p-2 bg-gray-100 dark:bg-[#23262d] text-gray-700 dark:text-gray-200 focus:outline-none">
+      <span class="material-icons" id="themeIcon">dark_mode</span>
+    </button>
+  </header>
+
+  <!-- 主体内容 -->
+  <main class="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-8 pt-8 pb-12 fade-in">
+
+    <!-- 一、患者情况摘要 -->
+    <section class="mb-10">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons text-blue-500">person</span>
+        <h2 class="text-lg sm:text-xl font-semibold">一、患者情况摘要</h2>
+      </div>
+      <div class="bg-white dark:bg-[#22242a] rounded-xl border border-gray-200 dark:border-[#333842] p-5 card-hover">
+        <p><strong>患者：</strong>70岁男性，常住邯郸市，初步诊断为<strong>“牙齿松动”</strong>。</p>
+        <p><strong>核心诉求：</strong>综合治疗。</p>
+        <p><strong>医保类型：</strong>河北医保。</p>
+        <p><strong>相关病史：</strong>胃癌（已行4次化疗）、脑膜瘤、高血压。</p>
+      </div>
+    </section>
+
+    <!-- 二、核心就医建议 -->
+    <section class="mb-10">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons text-blue-500">local_hospital</span>
+        <h2 class="text-lg sm:text-xl font-semibold">二、核心就医建议</h2>
+      </div>
+
+      <!-- 医院卡片列表 -->
+      <div class="space-y-6">
+        <!-- 医院1-->
+        <div class="bg-white dark:bg-[#22242a] rounded-xl border border-gray-200 dark:border-[#333842] p-6 card-hover shadow-sm">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="fa-solid fa-hospital text-blue-600 text-xl"></span>
+            <span class="font-bold text-base sm:text-lg">推荐医院 1：北京大学口腔医院（北京市）</span>
+          </div>
+          <ul class="text-[15px] leading-relaxed pl-3 space-y-1">
+            <li><strong>匹配度评估：</strong><span class="text-green-600 font-medium">高度匹配</span>。三级甲等口腔专科医院，科室全面（15个临床科室），擅长牙体牙髓、牙周、修复等综合治疗，契合“综合治疗”诉求。</li>
+            <li><strong>推荐理由：</strong>国内顶级口腔医院，年门诊量超117万人次，技术领先（如显微根管、种植修复），处理复杂病例能力强。</li>
+            <li><strong>就诊须知：</strong>医保政策：<span class="text-yellow-600">暂无信息</span>，建议提前通过“国家医保服务平台”APP办理异地就医备案，并咨询医院电话确认河北医保使用流程。<br>院区地址：北京市海淀区中关村南大街22号。</li>
+            <li><strong>挂号方式：</strong>微信公众号“北京114预约挂号”、北京市统一挂号平台、电话010-114或010-62179665、APP“北京大学口腔医院”。挂号难度：<span class="text-orange-600">口腔科困难（号源紧张）</span>。</li>
+            <li><strong>推荐医生：</strong></li>
+          </ul>
+          <!-- 医生列表 -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+            <!-- 郭玉兴 -->
+            <div class="bg-gray-50 dark:bg-[#23262d] rounded-lg p-4 border border-gray-100 dark:border-[#353942] flex flex-col gap-1 shadow-xs card-hover">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="fa-solid fa-user-md text-indigo-500"></span>
+                <span class="font-semibold">郭玉兴（主任医师）</span>
+                <span class="text-xs bg-indigo-100 text-indigo-700 rounded px-2 py-[1px] ml-auto">hot_rank 4.8</span>
+              </div>
+              <div class="text-[14px] text-gray-700 dark:text-gray-300">擅长颌面外科综合治疗、种植修复，契合牙齿松动可能的复杂修复需求。</div>
+              <div class="text-[13px] mt-[2px] text-gray-500 dark:text-gray-400 flex items-center gap-1"><i class="fa-solid fa-calendar-check"></i> 专家门诊 · 周四下午/周五上午（80元）；特需门诊 · 周五下午（900元）</div>
+            </div>
+            <!-- 刘云松 -->
+            <div class="bg-gray-50 dark:bg-[#23262d] rounded-lg p-4 border border-gray-100 dark:border-[#353942] flex flex-col gap-1 shadow-xs card-hover">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="fa-solid fa-user-md text-teal-500"></span>
+                <span class="font-semibold">刘云松（主任医师）</span>
+                <span class="text-xs bg-teal-100 text-teal-700 rounded px-2 py-[1px] ml-auto">hot_rank 3.7</span>
+              </div>
+              <div class="text-[14px] text-gray-700 dark:text-gray-300">擅长固定义齿修复、种植修复，适合牙齿松动修复治疗。</div>
+              <div class="text-[13px] mt-[2px] text-gray-500 dark:text-gray-400 flex items-center gap-1"><i class="fa-solid fa-calendar-check"></i> 专家门诊 · 周四上午（60元）</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 医院2-->
+        <div class="bg-white dark:bg-[#22242a] rounded-xl border border-gray-200 dark:border-[#333842] p-6 card-hover shadow-sm">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="fa-solid fa-hospital text-blue-600 text-xl"></span>
+            <span class="font-bold text-base sm:text-lg">推荐医院 2：天津市口腔医院（天津市）</span>
+          </div>
+          <ul class="text-[15px] leading-relaxed pl-3 space-y-1">
+            <li><strong>匹配度评估：</strong><span class="text-green-600 font-medium">高度匹配</span>。三级甲等口腔专科医院，科室齐全（23个临床科室），提供牙体牙髓、种植、修复等综合服务。</li>
+            <li><strong>推荐理由：</strong>正畸科为国家临床重点专科，治疗技术先进（如无痛拔牙、种植牙），适合老年患者综合管理。</li>
+            <li><strong>就诊须知：</strong>医保政策：<span class="text-yellow-600">暂无信息</span>，建议办理河北医保异地备案，并致电医院确认报销细节。<br>院区地址：天津市和平区大沽路75号（总院）；天津市河西区黑牛城道73号（河西门诊部）。</li>
+            <li><strong>挂号方式：</strong>电话022-27111678（总院）、APP“科瑞泰Q医”。挂号难度：口腔科中等（部分号源紧张）。</li>
+            <li><strong>推荐医生：</strong><span class="text-gray-500 ml-1">暂未检索到本院与患者疾病高度相关的推荐医生。建议挂取口腔综合科或修复科专家门诊。</span></li>
+          </ul>
+        </div>
+
+        <!-- 医院3-->
+        <div class="bg-white dark:bg-[#22242a] rounded-xl border border-gray-200 dark:border-[#333842] p-6 card-hover shadow-sm">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="fa-solid fa-hospital text-blue-600 text-xl"></span>
+            <span class="font-bold text-base sm:text-lg">推荐医院 3：北京大学口腔医院第一门诊部（北京市）</span>
+          </div>
+          <ul class="text-[15px] leading-relaxed pl-3 space-y-1">
+            <li><strong>匹配度评估：</strong><span class="text-green-600 font-medium">部分匹配</span>。门诊部规模较小（诊椅123台），提供常规口腔治疗，但综合能力弱于总院。</li>
+            <li><strong>推荐理由：</strong>总院分支，开展美学修复、显微根管等技术，适合基础牙齿松动治疗。</li>
+            <li><strong>就诊须知：</strong>医保政策：<span class="text-yellow-600">暂无信息</span>。院区地址：北京市西城区西什库大街甲37号（东门）或西黄城根北街10号（西门）。</li>
+            <li><strong>挂号方式：</strong>电话预约010-53295001。</li>
+            <li><strong>推荐医生：</strong><span class="text-gray-500 ml-1">暂未检索到本院推荐医生。建议联系医院挂取牙体牙髓科或修复科门诊。</span></li>
+          </ul>
+        </div>
+
+        <!-- 医院4-->
+        <div class="bg-white dark:bg-[#22242a] rounded-xl border border-gray-200 dark:border-[#333842] p-6 card-hover shadow-sm">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="fa-solid fa-hospital text-blue-600 text-xl"></span>
+            <span class="font-bold text-base sm:text-lg">推荐医院 4：北京大学口腔医院第二门诊部（北京市）</span>
+          </div>
+          <ul class="text-[15px] leading-relaxed pl-3 space-y-1">
+            <li><strong>匹配度评估：</strong><span class="text-green-600 font-medium">部分匹配</span>。门诊部性质，聚焦常规治疗（正畸、修复），综合能力有限。</li>
+            <li><strong>推荐理由：</strong>可电话预约，方便患者就诊（周六、日开诊）。</li>
+            <li><strong>就诊须知：</strong>医保政策：<span class="text-yellow-600">暂无信息</span>。院区地址：北京市朝阳区安立路66号安立花园。</li>
+            <li><strong>挂号方式：</strong>电话预约010-82196299。</li>
+            <li><strong>推荐医生：</strong><span class="text-gray-500 ml-1">暂未检索到本院推荐医生。建议挂取正畸科或综合科门诊咨询。</span></li>
+          </ul>
+        </div>
+      </div><!-- 医院卡片列表 end -->
+    </section>
+
+    <!-- 三、诊前准备清单 -->
+    <section class="mb-10">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-icons text-blue-500">checklist_rtl</span>
+        <h2 class="text-lg sm:text-xl font-semibold">三、诊前准备清单</h2>
+      </div>
+      <ul class="bg-white dark:bg-[#22242a] rounded-xl border border-gray-200 dark:border-[#333842] p-5 list-inside list-disc space-y-[10px] card-hover">
+        <li><b>病历资料准备：</b><br />身份证、医保卡原件；既往所有检查报告（胃癌化疗记录、脑膜瘤诊断书、高血压病史、牙齿相关X光片等）。<br /><b style='color:#5b8bf7'>【特别建议】</b> 按时间顺序整理资料，包括化疗次数及用药记录。</li>
+        <li><b>医保与费用准备：</b><br />提前通过“国家医保服务平台”APP办理<strong>异地就医备案</strong>（针对北京或天津）；咨询邯郸市医保局确认报销比例及流程；准备充足资金，预估挂号费（60~900元）、检查费、异地食宿交通费。<br /><b style='color:#5b8bf7'>【特别建议】</b> 特需门诊费用可能无法报销，需额外准备现金或银行卡。</li>
+        <li><b>其他通用准备：</b><br />记录问题清单（如牙齿松动是否与胃癌治疗相关、高血压对口腔手术影响）；携带个人物品如充电宝、水杯、备用降压药物；就诊当天穿着宽松衣物便于检查。</li>
+      </ul>
+    </section>
+
+    <!-- 四、行动指南与局限性说明 -->
+    <section id='action-guide'>
+      <div class='flex items-center gap-2 mb-4'>
+        <span class='material-icons text-blue-500'>fact_check</span>
+        <h2 class='text-lg sm:text-xl font-semibold'>四、行动指南与局限性说明</h2>
+      </div>
+      <div class='bg-white dark:bg-[#22242a] rounded-xl border border-gray-200 dark:border-[#333842] p-5 card-hover'>
+        <ul class='list-inside list-disc space-y-[10px]'>
+          <li><b>优先行动建议：</b> 优先预约<strong style='color:#396afc'>北京大学口腔医院郭玉兴医生专家门诊（周四下午/周五上午，80元）</strong>，咨询综合治疗方案。此院综合实力强，可一站式处理牙齿松动及全身健康评估。</li>
+          <li><b>二次确认清单：</b><br />致电确认医保政策与报销细节：<br />北京大学口腔医院：<a href='tel:01062179665' style='color:#5b8bf7;text-decoration:underline;'>010‑62179665</a>&nbsp;&nbsp;天津市口腔医院：<a href='tel:02227111678' style='color:#5b8bf7;text-decoration:underline;'>022‑27111678</a><br />就诊时务必强调胃癌化疗史及高血压，以规避治疗风险。</li>
+          <li><b>局限性声明：</b> 本报告严格依据知识库信息生成，部分信息如具体医保细节、新医生动态可能存在更新延迟，仅供参考。</li>
+          <li><b style='color:#e46c5c'>最终免责：</b> 最终就诊决策请以医院官方平台信息及临床医生的诊断为准。本报告仅供参考，不承担医疗责任。</li>
+        </ul>	
+      </div>	
+    </section><!-- 行动指南 end -->	
+
+  </main><!-- 主体内容 end -->	
+
+  <!-- 底部说明 -->	
+  <footer class='w-full py-[24px] px-[16px] bg-white dark:bg-[#191b20] border-t border-gray-100 dark:border-[#23262d] mt-auto'>	
+    <p class='text-xs text-gray-400 text-center'>©2024 就医规划报告 | 信息仅供参考，不构成医疗建议。	</p></footer><!-- 底部说明 end -->	
+
+<script>// 深色模式切换逻辑
+const htmlEl = document.documentElement;
+document.getElementById('toggleDark').onclick = function() {
+htmlEl.classList.toggle('dark');
+lazySaveTheme();updateThemeIcon();}
+document.addEventListener('DOMContentLoaded',function(){// 跟随系统主题
+if(localStorage.getItem('theme')==null){if(window.matchMedia('(prefers-color-scheme: dark)').matches){htmlEl.classList.add('dark');}}else{if(localStorage.getItem('theme')==='dark'){htmlEl.classList.add('dark');}else{htmlEl.classList.remove('dark');}}updateThemeIcon();setTimeout(()=>{document.querySelector('main').classList.add('fade-in');},60);});function updateThemeIcon(){const icon=document.getElementById('themeIcon');if(htmlEl.classList.contains('dark')){icon.textContent='light_mode';}else{icon.textContent='dark_mode';}}
+document.getElementById('toggleDark').addEventListener('click',function(){if(htmlEl.classList.contains('dark')){localStorage.setItem('theme','dark');}else{localStorage.setItem('theme','light');}})
+document.addEventListener('scroll',()=>{const header=document.querySelector('header');if(window.scrollY>=12){header.classList.add('shadow-md');}else{header.classList.remove('shadow-md');}})
+document.querySelectorAll('img[data-src]').forEach(img=>{img.setAttribute('loading','lazy');img.src=img.dataset.src});function lazySaveTheme(){if(htmlEl.classList.contains('dark')){localStorage.setItem('theme','dark');}else{localStorage.setItem('theme','light');}}	// 平滑滚动动画优化
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const target=document.querySelector(this.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});}})});	// 内容区块淡入动画支持
+window.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.fade-in').forEach(el=>{el.style.opacity=0;el.style.transform='translateY(20px)';setTimeout(()=>{el.style.transition='opacity .8s,transform .8s';el.style.opacity=1;el.style.transform='none';},120);});});</script></body></html>
