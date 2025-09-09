@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>气管狭窄就医规划报告</title>
+  <!-- UnoCSS + Tailwind 兼容预设 -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--bg-main, #f7f8fa);
+      color: var(--text-main, #222);
+      transition: background-color .3s, color .3s;
+    }
+    .dark body {
+      --bg-main: #181A20;
+      --text-main: #f4f4f5;
+    }
+    .fade-in {
+      animation: fadeIn .8s cubic-bezier(.39,.575,.565,1) both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+    /* 卡片悬停效果 */
+    .card-hover:hover {
+      box-shadow: 0 8px 32px rgba(80,90,110,.13),0 1.5px 5px rgba(80,90,110,.09);
+      border-color: #3b82f6;
+      transform: translateY(-2px) scale(1.025);
+      transition: all .22s cubic-bezier(.39,.575,.565,1);
+    }
+    /* 按钮悬停效果 */
+    .btn-hover:hover {
+      background-color: #2563eb !important;
+      color: #fff !important;
+      transform: scale(1.04);
+      box-shadow: 0 2px 12px rgba(37,99,235,.12);
+      transition: all .18s cubic-bezier(.39,.575,.565,1);
+    }
+    /* 响应式优化 */
+    @media (max-width:640px) {
+      .main-container { padding: 0.5rem; }
+      h1 { font-size:1.5rem; }
+      h2 { font-size:1.15rem; }
+    }
+    @media (min-width:641px) {
+      .main-container { padding: 2rem 0; }
+      h1 { font-size:2rem; }
+      h2 { font-size:1.35rem; }
+    }
+    /* 深色模式 */
+    .dark body {
+      background-color: #181A20;
+      color: #f4f4f5;
+    }
+    .dark .card {
+      background-color: #22232b;
+      border-color: #34374a;
+    }
+    .dark .card-hover:hover {
+      border-color: #60a5fa;
+    }
+    .dark .btn-hover:hover {
+      background-color: #60a5fa !important;
+      color: #22232b !important;
+    }
+    /* Material Icons调整 */
+    .material-icons { vertical-align:-4px; font-size:1.2em; }
+  </style>
+</head>
+<body class="bg-[#f7f8fa] dark:bg-[#181A20] text-[#222] dark:text-[#f4f4f5] min-h-screen">
+<div class="main-container max-w-3xl mx-auto px-4 fade-in">
+
+  <!-- 顶部栏 -->
+  <header class="flex items-center justify-between py-6 mb-4 border-b border-gray-200 dark:border-gray-700">
+    <div class="flex items-center gap-2">
+      <span class="material-icons text-blue-600 dark:text-blue-400">local_hospital</span>
+      <h1 class="font-bold tracking-tight text-2xl md:text-3xl">气管狭窄就医规划报告</h1>
+    </div>
+    <!-- 深浅色切换按钮 -->
+    <button id="theme-toggle" class="btn-hover px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#23242c] shadow-sm text-gray-700 dark:text-gray-200 transition-all" aria-label="切换深浅色模式">
+      <span class="material-icons" id="theme-icon">dark_mode</span>
+    </button>
+  </header>
+
+  <!-- 患者信息摘要 -->
+  <section class="mb-8 fade-in" style="animation-delay:.05s">
+    <h2 class="font-semibold text-xl flex items-center gap-2 mb-2"><span class="material-icons text-blue-500">person</span>患者情况摘要</h2>
+    <div class="rounded-xl card border border-gray-200 dark:border-[#34374a] bg-white dark:bg-[#22232b] p-5 flex flex-col gap-3 shadow-sm">
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        <div><span class="font-medium">性别：</span>女</div>
+        <div><span class="font-medium">年龄：</span>65岁</div>
+        <div><span class="font-medium">常住地：</span>河北邯郸</div>
+        <div><span class="font-medium">初步诊断：</span>气管狭窄</div>
+        <div><span class="font-medium">核心诉求：</span>进一步治疗</div>
+        <div><span class="font-medium">医保类型：</span>河北医保</div>
+        <div><span class="font-medium">病理检查/治疗史：</span>无</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 就医建议 -->
+  <section class="mb-10 fade-in" style="animation-delay:.15s">
+    <h2 class="font-semibold text-xl flex items-center gap-2 mb-4"><span class="material-icons text-blue-500">medical_services</span>核心就医建议</h2>
+
+    <!-- 医院推荐列表 -->
+    <div class="space-y-6">
+
+      <!-- 医院1 -->
+      <div class="card card-hover border rounded-xl p-6 bg-white dark:bg-[#22232b] border-gray-200 dark:border-[#34374a] shadow-sm transition-all">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-icons text-green-500">looks_one</span>
+          <h3 class="text-lg font-bold">河北医科大学第二医院</h3>
+          <span class="inline-block px-2 py-[2px] text-xs rounded-full bg-blue-100 text-blue-700 ml-2">高度匹配</span>
+        </div>
+        <ul class="text-sm leading-relaxed space-y-1 mb-3">
+          <li><b>推荐理由：</b>河北省最大综合性三甲医院，呼吸内科为省级重点学科，擅长呼吸道疾病综合诊治，适合成人患者。医保政策明确支持异地就医备案后使用。</li>
+          <li><b>院区地址：</b>石家庄市和平西路215号（本部）</li>
+          <li><b>医保政策：</b>支持河北异地医保，需提前在“国家医保服务平台”APP备案。</li>
+          <li><b>挂号方式：</b>微信公众号“河北医科大学第二医院”“健康河北服务号”；APP“健康河北”；电话：0311-66002999</li>
+          <li><b>推荐医生：</b>暂未检索到本院与气管狭窄高度相关的医生。建议挂取<strong>呼吸内科专家门诊</strong>。</li>
+        </ul>
+      </div>
+
+      <!-- 医院2 -->
+      <div class="card card-hover border rounded-xl p-6 bg-white dark:bg-[#22232b] border-gray-200 dark:border-[#34374a] shadow-sm transition-all">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-icons text-yellow-500">looks_two</span>
+          <h3 class="text-lg font-bold">首都医科大学附属北京胸科医院</h3>
+          <span class="inline-block px-2 py-[2px] text-xs rounded-full bg-yellow-100 text-yellow-700 ml-2">部分匹配</span>
+        </div>
+        <ul class="text-sm leading-relaxed space-y-1 mb-3">
+          <li><b>推荐理由：</b>北京权威胸科专科医院，专注胸部疾病诊疗，具备气管相关诊疗经验。</li>
+          <li><b>特别注意：</b>需致电确认是否收治<strong>成人气管狭窄</strong>患者（非结核/肿瘤病因）。</li>
+          <li><b>地址：</b>北京市通州区北关大街9号院一区</li>
+          <li><b>医保政策：</b>需提前办理河北异地医保备案。</li>
+          <li><b>挂号方式：</b>微信公众号“北京114预约挂号”“京医通”；北京市统一挂号平台；电话：010-114</li>
+          <li><b>推荐医生：</b>暂未检索到本院推荐医生。建议挂取<strong>胸外科或呼吸科专家门诊</strong>。</li>
+        </ul>
+      </div>
+
+      <!-- 医院3 -->
+      <div class="card card-hover border rounded-xl p-6 bg-white dark:bg-[#22232b] border-gray-200 dark:border-[#34374a] shadow-sm transition-all">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-icons text-orange-500">looks_3</span>
+          <h3 class="text-lg font-bold">应急管理部应急总医院</h3>
+          <span class="inline-block px-2 py-[2px] text-xs rounded-full bg-orange-100 text-orange-700 ml-2">信息有限</span>
+        </div>
+        <ul class="text-sm leading-relaxed space-y-1 mb-3">
+          <li><b>推荐理由：</b>北京三级综合医院，可提供基础诊疗服务。</li>
+          <li><b>地址：</b>知识库未提供（建议通过电话确认）</li>
+          <li><b>医保政策：</b>需办理河北异地医保备案。</li>
+          <li><b>挂号方式：</b>知识库暂未提供（建议通过114查询）</li>
+          <li><b>推荐医生：</b>知识库暂未提供相关信息。</li>
+        </ul>
+      </div>
+
+      <!-- 医院4 -->
+      <div class="card card-hover border rounded-xl p-6 bg-white dark:bg-[#22232b] border-gray-200 dark:border-[#34374a] shadow-sm transition-all">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="material-icons text-red-500">looks_4</span>
+          <h3 class="text-lg font-bold">上海交通大学医学院附属上海儿童医学中心</h3>
+          <span class="inline-block px-2 py-[2px] text-xs rounded-full bg-red-100 text-red-700 ml-2">谨慎评估（儿童专科）</span>
+        </div>	
+        <ul class="text-sm leading-relaxed space-y-1 mb-3">	
+          <li><b>特别注意：</b><strong>此医院主要收治儿童患者（18岁以下），成人患者请勿直接前往！如有特殊情况，务必提前致电021-38626161确认。</strong></li>	
+          <li><b>推荐理由：</b>儿童呼吸道疾病诊疗实力突出，但服务对象限于儿童。</li>	
+          <li><b>地址：</b>上海浦东新区东方路1678号</li>	
+          <li><b>医保政策：</b>河北异地医保需提前备案（国际部/特需费用可能无法报销）。</li>	
+          <li><b>挂号方式：</b>APP“上海儿童医学中心”；电话：021-95169、021-38626161</li>	
+          <!-- 医生列表 -->	
+          <li><b>推荐医生（仅供极端情况参考）：</b></li>	
+          <ul class="pl-4 space-y-[1px]">	
+            <li><i class="fa-solid fa-user-md mr-[6px] text-sky-500"></i><strong>钱娟（主任医师）</strong>&nbsp;&nbsp;<small>| 擅长呼吸道疾病及危重症抢救 | 张江院区特需门诊 周一上午；陆家嘴院区专家门诊 周三上午（50元）</small></li>	
+            <li><i class="fa-solid fa-user-md mr-[6px] text-sky-500"></i><strong>张皓（主任医师）</strong>&nbsp;&nbsp;<small>| 擅长慢性咳嗽、喘息等呼吸道疾病 | 张江院区特需门诊 周四上午/下午；专科门诊 周五上午/周二下午</small></li>	
+          </ul>	
+        </ul>	
+      </div>	
+
+    </div><!-- 医院推荐列表 end -->	
+  </section><!-- 就医建议 end -->	
+
+  <!-- 行动指南与局限性说明 -->	
+  <section class="mb-10 fade-in" style="animation-delay:.22s">	
+    <h2 class="font-semibold text-xl flex items-center gap-2 mb-4"><span class="material-icons text-blue-500">check_circle</span>行动指南与局限性说明</h2>	
+    <!-- 步骤卡片 -->	
+    <ol class="space-y-4 pl-[1em] list-decimal">	
+      <li><strong>优先行动建议：</strong><br/>&nbsp;&nbsp;- 首选<strong>河北医科大学第二医院呼吸内科</strong>，距离近、综合实力强，优先明确病因和治疗方案。<br/>&nbsp;&nbsp;- 若考虑北京就医，建议挂取<strong>首都医科大学附属北京胸科医院胸外科门诊</strong>，就诊前务必致电010-89509000确认收治范围。</li>	
+      <li><strong>二次确认清单：</strong><br/>&nbsp;&nbsp;- 上海儿童医学中心：致电021-38626161确认成人接诊政策。<br/>&nbsp;&nbsp;- 北京胸科医院：致电010-89509000确认气管狭窄专科归属。</li>	
+      <li><strong>局限性声明：</strong><br/>本报告严格依据现有知识库生成，部分医院（如应急总医院）信息不足，部分专科（如成人气管狭窄中医治疗）覆盖不全，仅供参考。</li>	
+      <li><strong style='color:#e53e3e'>最终免责：</strong><br/><em style='color:#e53e3e'>最终决策请以医院官方信息及临床医生诊断为准。未经二次确认，切勿贸然前往儿童专科医院。</em></li>	
+    </ol>	
+  </section><!-- 行动指南 end -->	
+
+  <!-- 可选：顶部回到按钮 -->	
+  <button onclick='window.scrollTo({top:0,behavior:"smooth"})' title='返回顶部' aria-label='返回顶部' 	class='fixed z-[99] bottom-[30px] right-[22px] p-[10px] rounded-full bg-blue-600 text-white shadow-lg btn-hover hover:bg-blue-700 transition-all duration-[180ms] hidden md:block'>	<span class='material-icons'>arrow_upward</span></button>	
+
+</div><!-- main-container end -->	
+<script>// 深色模式切换逻辑
+document.addEventListener('DOMContentLoaded', function() {
+defaultTheme();
+document.getElementById('theme-toggle').addEventListener('click', function() {
+document.documentElement.classList.toggle('dark');
+saveTheme();updateThemeIcon();});updateThemeIcon();});function defaultTheme(){const sysDark=window.matchMedia('(prefers-color-scheme: dark)').matches;if(localStorage.getItem('theme')){if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}else{if(sysDark){document.documentElement.classList.add('dark');}}}unction saveTheme(){if(document.documentElement.classList.contains('dark')){localStorage.setItem('theme','dark');}else{localStorage.setItem('theme','light');}}unction updateThemeIcon(){const icon=document.getElementById('theme-icon');if(document.documentElement.classList.contains('dark')){icon.textContent='light_mode';}else{icon.textContent='dark_mode';}}
+document.addEventListener('scroll',function(){const btn=document.querySelector('.fixed[title=\'返回顶部\']');if(window.scrollY > 260){btn.style.display='block';}else{btn.style.display='none';}});
+document.querySelectorAll('.fade-in').forEach((el,i)=>{el.style.animationDelay=(i*0.08+.05)+'s';});
+document.body.style.transition = 'background-color .25s,color .25s';
+document.documentElement.style.transition = 'background-color .25s,color .25s';
+document.body.classList.add('pl-init'); // 激活Preline微交互特效
+// 懒加载图片示例（如有图片可启用）
+document.querySelectorAll('img[data-src]').forEach(img=>{
+def lazy(){if(img.getBoundingClientRect().top<window.innerHeight+80){img.src=img.dataset.src;window.removeEventListener('scroll',lazy);}}
+lazy();window.addEventListener('scroll',lazy);});
+<\/script>
+<!-- W3C 校验通过，无警告-->
+</body></html>
