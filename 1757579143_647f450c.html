@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 原发胃癌</title>
+  <!-- Preline UI + UnoCSS (Tailwind CSS Compatible) -->
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+  <!-- Header -->
+  <header class="bg-white dark:bg-gray-800 shadow-sm py-4 sticky top-0 z-50">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-xl md:text-2xl font-bold text-primary-700 dark:text-primary-400">
+        <i class="fas fa-file-medical mr-2"></i>就医规划报告
+      </h1>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="fas fa-moon text-gray-700 dark:hidden"></i>
+          <i class="fas fa-sun text-yellow-400 hidden dark:inline"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Patient Summary -->
+    <section class="mb-10 fade-in">
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border-l-4 border-primary-500">
+        <h2 class="text-xl font-semibold mb-4 text-primary-700 dark:text-primary-400 flex items-center">
+          <i class="fas fa-user mr-2"></i>患者情况摘要
+        </h2>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+          <li><span class="font-medium">基本信息：</span>69岁男性，河北邯郸</li>
+          <li><span class="font-medium">诊断：</span>原发胃癌（中低分化腺癌，中晚期）</li>
+          <li><span class="font-medium">治疗史：</span>已完成4次化疗</li>
+          <li><span class="font-medium">既往病史：</span>脑梗塞</li>
+          <li><span class="font-medium">核心诉求：</span>外科手术切除</li>
+          <li><span class="font-medium">医保类型：</span>河北医保</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Core Recommendation -->
+    <section class="mb-10 fade-in">
+      <h2 class="text-2xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+        <i class="fas fa-stethoscope mr-2"></i>核心就医建议
+      </h2>
+      
+      <!-- Hospital Card 1 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden mb-6 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white">邯郸市中心医院</h3>
+              <span class="inline-block mt-1 px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 dark:bg-green-900 dark:text-green-200 rounded-full">就近首选</span>
+            </div>
+            <span class="text-sm font-medium text-primary-600 dark:text-primary-400">匹配度: ★★★★☆</span>
+          </div>
+          <p class="mt-3 text-gray-600 dark:text-gray-400">本地唯一的三级甲等综合医院，西区以肿瘤治疗为重心，具备高端设备。可立即进行多学科讨论并评估手术可行性。</p>
+          
+          <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <h4 class="font-medium text-gray-900 dark:text-white mb-2">就诊信息</h4>
+            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              <li><i class="fas fa-map-marker-alt mr-2 text-primary-500"></i>地址: 邯郸市邯山区中华南大街15号</li>
+              <li><i class="fas fa-phone mr-2 text-primary-500"></i>电话: 0310-2118000 / 0310-3022736</li>
+              <li><i class="fas fa-credit-card mr-2 text-primary-500"></i>医保: 河北医保本地直报</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hospital Card 2 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden mb-6 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white">河北医科大学第四医院</h3>
+              <span class="inline-block mt-1 px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-100 dark:bg-blue-900 dark:text-blue-200 rounded-full">省内权威</span>
+            </div>
+            <span class="text-sm font-medium text-primary-600 dark:text-primary-400">匹配度: ★★★★☆</span>
+          </div>
+          <p class="mt-3 text-gray-600 dark:text-gray-400">河北省唯一以肿瘤为特色的三甲综合医院，胃癌年手术量居省内前列。</p>
+          
+          <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <h4 class="font-medium text-gray-900 dark:text-white mb-2">就诊信息</h4>
+            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              <li><i class="fas fa-map-marker-alt mr-2 text-primary-500"></i>地址: 石家庄市健康路12号</li>
+              <li><i class="fas fa-mobile-alt mr-2 text-primary-500"></i>预约: 微信公众号或电话 0311-86095333</li>
+              <li><i class="fas fa-credit-card mr-2 text-primary-500"></i>医保: 河北医保省内异地可直接结算</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hospital Card 3 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden mb-6 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:shadow-lg">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white">中国医学科学院肿瘤医院（北京）</h3>
+              <span class="inline-block mt-1 px-2 py-1 text-xs font-semibold text-purple-800 bg-purple-100 dark:bg-purple-900 dark:text-purple-200 rounded-full">国家级中心</span>
+            </div>
+            <span class="text-sm font-medium text-primary-600 dark:text-primary-400">匹配度: ★★★★★</span>
+          </div>
+          <p class="mt-3 text-gray-600 dark:text-gray-400">国家肿瘤临床医学研究中心，胃癌外科年手术量>2000例，腹腔镜及机器人微创经验丰富。</p>
+          
+          <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+            <h4 class="font-medium text-gray-900 dark:text-white mb-2">就诊信息</h4>
+            <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              <li><i class="fas fa-map-marker-alt mr-2 text-primary-500"></i>地址: 北京市朝阳区潘家园南里17号</li>
+              <li><i class="fas fa-exclamation-triangle mr-2 text-yellow-500"></i>注意: 号源紧张，需提前办理北京异地就医备案</li>
+              <li><i class="fas fa-user-md mr-2 text-primary-500"></i>推荐医生: 赵东兵、邓靖宇、蔡建强</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- More Hospitals Toggle -->
+      <div class="hs-accordion-group space-y-4" data-hs-accordion-always-open>
+        <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl border border-gray-200 dark:hs-accordion-active:bg-gray-800 dark:border-gray-700" id="hs-basic-with-title-and-arrow-stretched">
+          <button class="hs-accordion-toggle hs-accordion-active:text-primary-600 py-3 px-5 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-primary-500 dark:text-gray-200 dark:hover:text-gray-400" aria-controls="hs-basic-with-title-and-arrow-stretched-heading">
+            <svg class="hs-accordion-active:hidden block flex-shrink-0 size-4 text-gray-600 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            <svg class="hs-accordion-active:block hidden flex-shrink-0 size-4 text-gray-600 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+            查看更多推荐医院
+          </button>
+          <div id="hs-basic-with-title-and-arrow-stretched-heading" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" aria-labelledby="hs-basic-with-title-and-arrow-stretched">
+            <div class="pb-4 px-5">
+              <p class="text-gray-600 dark:text-gray-400 mb-4">以下医院同样具备胃癌外科治疗能力：</p>
+              
+              <ul class="space-y-4">
+                <li class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <h4 class="font-bold text-gray-900 dark:text-white">中国医学科学院肿瘤医院廊坊院区</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">与北京总院同质医疗，专家轮岗，就医便利性优于北京。</p>
+                </li>
+                <li class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <h4 class="font-bold text-gray-900 dark:text-white">天津医科大学肿瘤医院</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">我国肿瘤学科发祥地，胃癌外科年手术量>2700例。</p>
+                </li>
+                <li class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <h4 class="font-bold text-gray-900 dark:text-white">北京大学肿瘤医院</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">北京市胃癌防治中心，微创手术经验丰富。</p>
+                </li>
+                <li class="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <h4 class="font-bold text-gray-900 dark:text-white">复旦大学附属肿瘤医院（上海）</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">国内最早肿瘤专科医院，胃癌微创及机器人手术国际领先。</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section class="mb-10 fade-in">
+      <h2 class="text-2xl font-bold mb-6 text-primary-700 dark:text-primary-400 flex items-center">
+        <i class="fas fa-list-check mr-2"></i>诊前准备清单
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Documents -->
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700">
+          <h3 class="font-semibold text-lg mb-3 flex items-center text-gray-900 dark:text-white">
+            <i class="fas fa-file-medical mr-2 text-primary-500"></i>病历资料准备
+          </h3>
+          <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>身份证、河北医保卡原件</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>胃镜、病理、CT/MRI、PET-CT报告</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>4次化疗记录（用药方案、剂量、疗效评估）</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>脑梗塞病历及用药清单</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+              <span>按时间顺序整理成册，并准备电子版</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Other Preparations -->
+        <div class="space-y-6">
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700">
+            <h3 class="font-semibold text-lg mb-3 flex items-center text-gray-900 dark:text-white">
+              <i class="fas fa-credit-card mr-2 text-primary-500"></i>医保与费用准备
+            </h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+              <li class="flex items-start">
+                <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                <span>提前办理异地就医备案（北京/天津/上海/廊坊）</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                <span>咨询邯郸市医保局确认报销比例</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-info-circle text-blue-500 mt-1 mr-2"></i>
+                <span>准备银行卡、微信/支付宝及现金</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border border-gray-200 dark:border-gray-700">
+            <h3 class="font-semibold text-lg mb-3 flex items-center text-gray-900 dark:text-white">
+              <i class="fas fa-briefcase-medical mr-2 text-primary-500"></i>其他通用准备
+            </h3>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+              <li class="flex items-start">
+                <i class="fas fa-sticky-note text-yellow-500 mt-1 mr-2"></i>
+                <span>记录并向医生咨询关键问题</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-tshirt text-yellow-500 mt-1 mr-2"></i>
+                <span>就诊当天穿宽松衣物</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-hotel text-yellow-500 mt-1 mr-2"></i>
+                <span>如选择外地就医，提前预订附近酒店</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Guide -->
+    <section class="mb-10 fade-in">
+      <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-xl p-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-800 dark:text-blue-200 flex items-center">
+          <i class="fas fa-clipboard-list mr-2"></i>行动指南
+        </h2>
+        <ol class="list-decimal pl-5 space-y-2 text-blue-700 dark:text-blue-300">
+          <li><span class="font-medium">本周内</span>携带全部资料到<strong>邯郸市中心医院西区肿瘤外科</strong>进行首次评估</li>
+          <li>如需转诊，立即办理<strong>异地就医备案</strong>并预约上级医院专家号</li>
+          <li>建议优先考虑<strong>中国医学科学院肿瘤医院廊坊院区</strong>（同质医疗且距离近）</li>
+        </ol>
+        
+        <div class="mt-6 pt-4 border-t border-blue-200 dark:border-blue-800">
+          <h3 class="font-semibold text-blue-800 dark:text-blue-200 mb-2">二次确认清单</h3>
+          <ul class="text-blue-700 dark:text-blue-300 space-y-1">
+            <li>邯郸市中心医院肿瘤外科: 0310-2118000 转肿瘤外科</li>
+            <li>中国医学科学院肿瘤医院廊坊院区: 0316-XXXXXXX</li>
+            <li>天津医科大学肿瘤医院: 022-23340123</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="fade-in">
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-6">
+        <h2 class="text-lg font-bold mb-2 text-yellow-800 dark:text-yellow-200 flex items-center">
+          <i class="fas fa-exclamation-triangle mr-2"></i>局限性声明
+        </h2>
+        <p class="text-yellow-700 dark:text-yellow-300 text-sm">
+          本报告基于当前知识库信息生成，可能存在更新延迟或覆盖不全面。
+          最终就诊决策请以医院官方平台及临床医生意见为准。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-6 text-center text-gray-600 dark:text-gray-400 text-sm border-t border-gray-200 dark:border-gray-800 mt-10">
+    <p>© 2023 就医规划助手 | 为您的健康保驾护航</p>
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme or default to system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      
+      // Toggle icon
+      const sunIcon = themeToggle.querySelector('.fa-sun');
+      const moonIcon = themeToggle.querySelector('.fa-moon');
+      if (html.classList.contains('dark')) {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
