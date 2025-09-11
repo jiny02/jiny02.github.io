@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 克罗恩病生物制剂治疗</title>
+  <!-- Tailwind CSS via CDN with UnoCSS compatibility -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI -->
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-heartbeat text-primary-600 dark:text-primary-400 text-2xl"></i>
+        <h1 class="text-xl font-bold text-gray-900 dark:text-white">就医规划报告</h1>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:block"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Patient Summary -->
+    <section class="mb-12 fade-in">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover border border-gray-100 dark:border-gray-700">
+        <div class="flex items-start mb-4">
+          <div class="mr-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+            <i class="fas fa-user-injured text-blue-600 dark:text-blue-400 text-xl"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">患者情况摘要</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-venus text-pink-500 mr-2"></i>
+                <span>女性</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-birthday-cake text-yellow-500 mr-2"></i>
+                <span>31岁</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                <span>福建莆田</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-diagnoses text-purple-500 mr-2"></i>
+                <span>克罗恩病（回结肠型）</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-procedures text-orange-500 mr-2"></i>
+                <span>原发性硬化性胆管炎</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-syringe text-green-500 mr-2"></i>
+                <span>糖皮质激素治疗史</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-dna text-indigo-500 mr-2"></i>
+                <span>生物制剂治疗史</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-id-card text-teal-500 mr-2"></i>
+                <span>福建医保</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Recommendation -->
+    <section class="mb-12 fade-in">
+      <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl shadow-lg p-6 text-white mb-6">
+        <div class="flex items-center">
+          <i class="fas fa-star text-yellow-300 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold">核心就医建议</h2>
+        </div>
+        <p class="mt-2 opacity-90">针对您的克罗恩病生物制剂治疗需求，我们为您推荐以下三家医院</p>
+      </div>
+
+      <!-- Hospital 1 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6 card-hover border border-gray-100 dark:border-gray-700">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-2/3 mb-4 md:mb-0 md:pr-6">
+            <div class="flex items-center mb-3">
+              <span class="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">推荐</span>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">东部战区总医院</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">该院在克罗恩病、肠瘘、腹腔感染等复杂消化道疾病领域具有全国领先诊疗实力，且拥有专精于炎症性肠病的专家团队。</p>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-900 dark:text-white mb-2">推荐医生</h4>
+              <div class="space-y-3">
+                <div class="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div class="font-medium text-gray-900 dark:text-white">任建安（主任医师）</div>
+                  <div class="text-sm text-gray-600 dark:text-gray-300">专长于克罗恩病、肠瘘、腹腔感染等复杂胃肠疑难杂症的诊治</div>
+                  <div class="text-sm mt-1">出诊时间：周一 [14:00-17:00] | 挂号费：100元</div>
+                </div>
+                <div class="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div class="font-medium text-gray-900 dark:text-white">黄骞（主任医师）</div>
+                  <div class="text-sm text-gray-600 dark:text-gray-300">专注于炎症性肠病（克罗恩病）、肠外瘘、严重腹腔感染的诊治</div>
+                  <div class="text-sm mt-1">出诊时间：周五 [8:00-12:00] | 挂号费：22元</div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white mb-2">就诊信息</h4>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt mt-1 mr-2 text-red-500"></i>
+                  <span>地址：江苏省南京市玄武区中山东路305号（主院区）</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-file-invoice-dollar mt-1 mr-2 text-green-500"></i>
+                  <span>医保：支持福建省异地就医备案后直接结算</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-calendar-alt mt-1 mr-2 text-blue-500"></i>
+                  <span>放号时间：通常为提前7天上午8:00起开放预约</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">1</div>
+            <div class="text-lg font-semibold text-gray-900 dark:text-white mb-1">高度匹配</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300 text-center">全国领先诊疗实力</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hospital 2 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6 card-hover border border-gray-100 dark:border-gray-700">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-2/3 mb-4 md:mb-0 md:pr-6">
+            <div class="flex items-center mb-3">
+              <span class="bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">推荐</span>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">南京鼓楼医院</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">该院消化内科在炎症性肠病（包括克罗恩病）领域有明确专长，且有高热度医生直接关联该病种。</p>
+            
+            <div class="mb-4">
+              <h4 class="font-semibold text-gray-900 dark:text-white mb-2">推荐医生</h4>
+              <div class="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div class="font-medium text-gray-900 dark:text-white">张晓琦（主任医师）</div>
+                <div class="text-sm text-gray-600 dark:text-gray-300">专长于炎症性肠病（克罗恩病，溃疡性结肠炎）的诊治</div>
+                <div class="text-sm mt-1">出诊时间：周二 [8:00-12:00] / 周三 [14:00-17:00] | 挂号费：35元</div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white mb-2">就诊信息</h4>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt mt-1 mr-2 text-red-500"></i>
+                  <span>地址：南京市中山路321号；北院：南京市中山北路53号</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-file-invoice-dollar mt-1 mr-2 text-green-500"></i>
+                  <span>医保：支持福建省异地就医备案后直接结算</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-calendar-alt mt-1 mr-2 text-blue-500"></i>
+                  <span>放号时间：通常为提前7天上午8:00起开放预约</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="text-5xl font-bold text-orange-600 dark:text-orange-400 mb-2">2</div>
+            <div class="text-lg font-semibold text-gray-900 dark:text-white mb-1">高度匹配</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300 text-center">炎症性肠病专长</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hospital 3 -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover border border-gray-100 dark:border-gray-700">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-2/3 mb-4 md:mb-0 md:pr-6">
+            <div class="flex items-center mb-3">
+              <span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">备选</span>
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">中山大学附属第六医院</h3>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">国内顶尖的胃肠肛门专科医院，设有"炎症性肠病联合诊治中心"，在克罗恩病领域有极强的专业优势。</p>
+            
+            <div class="mb-4">
+              <div class="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <div class="font-medium text-gray-900 dark:text-white">消化内科/炎症性肠病联合诊治中心</div>
+                <div class="text-sm text-gray-600 dark:text-gray-300 mt-1">建议挂取专家门诊进行咨询</div>
+              </div>
+            </div>
+            
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white mb-2">就诊信息</h4>
+              <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt mt-1 mr-2 text-red-500"></i>
+                  <span>地址：广东省广州市天河区员村二横路26号</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-exclamation-triangle mt-1 mr-2 text-yellow-500"></i>
+                  <span>注意：距离较远，异地就医需承担较高交通与住宿成本</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-file-invoice-dollar mt-1 mr-2 text-green-500"></i>
+                  <span>医保：支持福建省异地就医备案后直接结算</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <div class="text-5xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">3</div>
+            <div class="text-lg font-semibold text-gray-900 dark:text-white mb-1">部分匹配</div>
+            <div class="text-sm text-gray-600 dark:text-gray-300 text-center">顶级专业平台</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section class="mb-12 fade-in">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover border border-gray-100 dark:border-gray-700">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-clipboard-list text-green-500 text-xl mr-3"></i>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">诊前准备清单</h2>
+        </div>
+        
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <i class="fas fa-file-medical mr-2 text-blue-500"></i>
+              病历资料准备
+            </h3>
+            <ul class="list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-300">
+              <li>身份证、医保卡原件</li>
+              <li>既往所有检查报告单（腹部CT/MRI、肠镜报告、病理活检报告等）</li>
+              <li>既往病历本或疾病诊断证明</li>
+              <li>生物制剂使用记录（药物名称、剂量、疗程）</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <i class="fas fa-wallet mr-2 text-yellow-500"></i>
+              医保与费用准备
+            </h3>
+            <ul class="list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-300">
+              <li>提前通过"国家医保服务平台"APP办理异地就医备案</li>
+              <li>咨询莆田市医保局确认报销比例及流程</li>
+              <li>准备充足资金（现金、银行卡、手机支付）</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-2 flex items-center">
+              <i class="fas fa-info-circle mr-2 text-purple-500"></i>
+              其他准备
+            </h3>
+            <ul class="list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-300">
+              <li>记录并准备向医生咨询的问题清单</li>
+              <li>带好充电宝、水杯等个人物品</li>
+              <li>就诊当天穿着宽松方便的衣物</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Guide -->
+    <section class="fade-in">
+      <div class="bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl shadow-lg p-6 text-white">
+        <div class="flex items-center mb-3">
+          <i class="fas fa-directions text-yellow-300 text-2xl mr-3"></i>
+          <h2 class="text-2xl font-bold">行动指南</h2>
+        </div>
+        <p class="mb-4">基于您的核心诉求，建议优先考虑<strong>东部战区总医院</strong>的<strong>任建安</strong>或<strong>黄骞</strong>医生，他们均为克罗恩病领域的权威专家。</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 bg-white/10 rounded-lg">
+            <h4 class="font-semibold mb-2">二次确认</h4>
+            <p class="text-sm">就诊前务必致电确认：</p>
+            <p class="text-sm mt-1">东部战区总医院：025-80861062</p>
+            <p class="text-sm">南京鼓楼医院：025-83105555</p>
+          </div>
+          <div class="p-4 bg-white/10 rounded-lg">
+            <h4 class="font-semibold mb-2">重要声明</h4>
+            <p class="text-sm">本报告仅供参考，最终就诊决策请以医院官方信息及临床医生诊断为准。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-12 py-6 text-center text-gray-600 dark:text-gray-400 text-sm border-t border-gray-200 dark:border-gray-700">
+    <p>© 2023 就医规划报告. 仅供患者参考使用.</p>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or respect OS preference
+    const savedTheme = localStorage.getItem('theme');
+    const osPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && osPrefersDark)) {
+      html.classList.add('dark');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      
+      // Toggle icon
+      const moonIcon = themeToggle.querySelector('.fa-moon');
+      const sunIcon = themeToggle.querySelector('.fa-sun');
+      moonIcon.classList.toggle('hidden');
+      sunIcon.classList.toggle('hidden');
+    });
+    
+    // Fade in elements on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(element => {
+      element.style.opacity = 0;
+      element.style.transform = 'translateY(10px)';
+      element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
