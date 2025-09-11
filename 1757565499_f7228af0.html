@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 牙齿松动综合治疗建议</title>
+  <!-- 引入 Tailwind CSS 兼容的 UnoCSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime@0.59.0/umd/index.global.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/preset-tailwind@0.59.0/dist/uno.css">
+  <!-- Preline UI 依赖类，使用 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+    body { font-family: 'Noto Sans SC', sans-serif; background-color: #f9fafb; color: #1f2937; transition: background-color 0.3s ease; }
+    .dark body { background-color: #111827; color: #e5e7eb; }
+    .card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    .btn { transition: all 0.2s ease; border-radius: 0.5rem; }
+    .btn:hover { transform: scale(1.02); }
+    .header-icon { opacity: 0.8; transition: all 0.3s ease; }
+    .header-icon:hover { opacity: 1; transform: scale(1.1); }
+    .timeline-item { position: relative; padding-left: 2rem; margin-bottom: 1.5rem; }
+    .timeline-item::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 1rem; height: 1rem; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+    .timeline-item::after { content: ''; position: absolute; left: 0.5rem; top: 2.5rem; width: 2px; height: calc(100% + 1rem); background: #d1d5db; }
+    .dark .timeline-item::after { background: #4b5563; }
+    .animate-fade-in { opacity: 0; animation: fadeIn 0.6s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-5xl">
+    <!-- 深色模式切换按钮 -->
+    <div class="flex justify-end mb-6">
+      <button id="theme-toggle" class="btn p-3 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <i id="theme-icon" class="fas fa-moon header-icon"></i>
+      </button>
+    </div>
+
+    <!-- 报告标题 -->
+    <header class="text-center mb-10 animate-fade-in" style="animation-delay: 0.1s">
+      <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">就医规划报告</h1>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">牙齿松动综合治疗建议</p>
+      <div class="mt-6 w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
+    </header>
+
+    <!-- 患者情况摘要 -->
+    <section class="mb-12 card bg-white dark:bg-gray-900 p-6 shadow-lg animate-fade-in" style="animation-delay: 0.2s">
+      <h2 class="text-2xl font-semibold text-indigo-700 dark:text-indigo-400 mb-4 flex items-center">
+        <i class="fas fa-user-circle mr-2"></i> 一、患者情况摘要 (Patient Summary)
+      </h2>
+      <div class="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg leading-relaxed">
+        <p>患者，70岁男性，常住河北省邯郸市，目前诊断为“<strong class="text-red-600 dark:text-red-400">牙齿松动</strong>”。本次核心诉求为“<strong class="text-blue-600 dark:text-blue-400">综合治疗</strong>”，期望进行系统性口腔评估与干预。既往病史复杂，包括胃癌（曾接受4次化疗）、脑膜瘤、高血压。医保类型为河北医保，无药物过敏史及长期用药记录，未提供牙科专项检查资料（如X光、牙周评估等）。</p>
+      </div>
+    </section>
+
+    <!-- 核心就医建议 -->
+    <section class="mb-12 animate-fade-in" style="animation-delay: 0.3s">
+      <h2 class="text-2xl font-semibold text-indigo-700 dark:text-indigo-400 mb-6 flex items-center">
+        <i class="fas fa-stethoscope mr-2"></i> 二、核心就医建议 (Core Medical Recommendation)
+      </h2>
+
+      <!-- 推荐医院列表 -->
+      <div class="space-y-8">
+        <!-- 医院1 -->
+        <div class="card bg-white dark:bg-gray-900 overflow-hidden shadow-xl animate-fade-in" style="animation-delay: 0.4s">
+          <div class="bg-gradient-to-r from-red-500 to-pink-500 p-4">
+            <h3 class="text-xl font-bold text-white flex items-center">
+              <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">1</span>
+              北京大学口腔医院
+            </h3>
+          </div>
+          <div class="p-6">
+            <div class="mb-4">
+              <span class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">高度匹配</span>
+              <span class="text-sm text-gray-600 dark:text-gray-400">国内顶尖口腔专科医院</span>
+            </div>
+            <p class="mb-4 text-gray-700 dark:text-gray-300">三级甲等口腔专科医院，连续多年位列全国口腔专科榜首。设有牙周病科、口腔修复科、综合治疗科等多个与“牙齿松动”直接相关的重点科室，拥有先进的诊疗设备和感染控制体系，对合并慢性病的老年患者具有丰富的临床管理经验。</p>
+            
+            <div class="bg-yellow-50 dark:bg-yellow-900 dark:bg-opacity-30 p-3 rounded-md mb-4">
+              <p class="text-sm text-yellow-800 dark:text-yellow-300 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i> <strong>特别注意：</strong>该院号源紧张，挂号难度为“困难”，建议提前通过官方渠道预约，避免现场滞留。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">医保政策</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">支持河北省医保异地就医直接结算，但<strong>必须提前在参保地完成异地就医备案</strong>（可通过“国家医保服务平台”APP办理）。</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">地址</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">北京市海淀区中关村南大街22号（主院区）</p>
+              </div>
+            </div>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">挂号方式</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 mb-4 space-y-1">
+              <li>微信公众号：“北京114预约挂号”</li>
+              <li>网络平台：北京市统一挂号平台</li>
+              <li>电话：010-114 或 010-62179665</li>
+              <li>APP：“北京大学口腔医院”官方APP（推荐使用，放号时间通常为每日上午8:00）</li>
+            </ul>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-3">推荐医生</h4>
+            <div class="space-y-3">
+              <div class="border-l-4 border-blue-500 pl-4 pb-2">
+                <p class="font-medium text-gray-800 dark:text-gray-200">郭玉兴 （主任医师、副教授）</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">擅长口腔颌面部疾病的综合诊治，尤其在组织缺损修复方面经验丰富，适合高龄、有肿瘤病史患者的口腔结构稳定性评估与治疗。</p>
+                <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">[主院区] [专家门诊] [周四下午] [挂号费]80元；[周五上午] [挂号费]80元</p>
+              </div>
+              <div class="border-l-4 border-purple-500 pl-4 pb-2">
+                <p class="font-medium text-gray-800 dark:text-gray-200">刘云松 （主任医师、副教授）</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">专注于固定义齿修复与种植修复，对牙齿松动后的功能重建（如冠桥、种植）有深入研究，契合“综合治疗”目标。</p>
+                <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">[主院区] [专家门诊] [周四上午] [挂号费]60元</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 医院2 -->
+        <div class="card bg-white dark:bg-gray-900 overflow-hidden shadow-lg animate-fade-in" style="animation-delay: 0.5s">
+          <div class="bg-gradient-to-r from-blue-500 to-cyan-500 p-4">
+            <h3 class="text-xl font-bold text-white flex items-center">
+              <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">2</span>
+              北京大学口腔医院第一门诊部
+            </h3>
+          </div>
+          <div class="p-6">
+            <div class="mb-4">
+              <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">部分匹配</span>
+              <span class="text-sm text-gray-600 dark:text-gray-400">北大口腔分支机构</span>
+            </div>
+            <p class="mb-4 text-gray-700 dark:text-gray-300">隶属于北京大学口腔医院体系，执行统一医疗质量与收费标准，设有牙周、修复、综合科等，可开展显微根管、CAD/CAM修复等先进技术，适合常规综合治疗。</p>
+            
+            <div class="bg-yellow-50 dark:bg-yellow-900 dark:bg-opacity-30 p-3 rounded-md mb-4">
+              <p class="text-sm text-yellow-800 dark:text-yellow-300 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i> <strong>特别注意：</strong>该院区位于西城区，与主院区不同，挂号资源相对宽松，可作为备选。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">医保政策</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">同主院区，支持河北医保异地结算，需提前备案。</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">地址</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">北京市西城区西什库大街甲37号（东门）/ 西黄城根北街10号（西门）</p>
+              </div>
+            </div>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">挂号方式</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">电话咨询预约：010-53295001</p>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-3">推荐医生</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic">根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>口腔综合科、牙周科或修复科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+
+        <!-- 医院3 -->
+        <div class="card bg-white dark:bg-gray-900 overflow-hidden shadow-lg animate-fade-in" style="animation-delay: 0.6s">
+          <div class="bg-gradient-to-r from-teal-500 to-green-500 p-4">
+            <h3 class="text-xl font-bold text-white flex items-center">
+              <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">3</span>
+              北京大学口腔医院第二门诊部
+            </h3>
+          </div>
+          <div class="p-6">
+            <div class="mb-4">
+              <span class="inline-block bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-300 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">部分匹配</span>
+              <span class="text-sm text-gray-600 dark:text-gray-400">具备基础综合治疗能力</span>
+            </div>
+            <p class="mb-4 text-gray-700 dark:text-gray-300">位于朝阳区安立路，设有牙周科、牙体牙髓科、口腔综合治疗科等，可进行洗牙、补牙、拔牙、修复等常规项目，周末开诊，便于安排时间。</p>
+            
+            <div class="bg-red-50 dark:bg-red-900 dark:bg-opacity-30 p-3 rounded-md mb-4">
+              <p class="text-sm text-red-800 dark:text-red-300 flex items-center"><i class="fas fa-times-circle mr-2"></i> <strong>特别注意：</strong>该院联系电话“00000000”明显异常，存在信息缺失风险，建议优先通过主院区或第一门诊部就诊。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">医保政策</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">同主院区，支持河北医保异地结算，需提前备案。</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">地址</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">北京市朝阳区安立路66号安立花园B5、A2、A5</p>
+              </div>
+            </div>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">挂号方式</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">电话预约：010-82196299（建议先致电确认有效性）</p>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-3">推荐医生</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic">根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>口腔综合治疗科或牙周科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+
+        <!-- 医院4 -->
+        <div class="card bg-white dark:bg-gray-900 overflow-hidden shadow-lg animate-fade-in" style="animation-delay: 0.7s">
+          <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4">
+            <h3 class="text-xl font-bold text-white flex items-center">
+              <span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center text-sm mr-2">4</span>
+              天津市口腔医院
+            </h3>
+          </div>
+          <div class="p-6">
+            <div class="mb-4">
+              <span class="inline-block bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-300 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">部分匹配</span>
+              <span class="text-sm text-gray-600 dark:text-gray-400">区域性强院，地理位置较近</span>
+            </div>
+            <p class="mb-4 text-gray-700 dark:text-gray-300">三级甲等口腔专科医院，设有牙周病、口腔修复、综合治疗等科室，技术实力在华北地区位居前列，年门诊量大，临床经验丰富。对于邯郸患者而言，交通距离短于北京，可降低出行负担。</p>
+            
+            <div class="bg-yellow-50 dark:bg-yellow-900 dark:bg-opacity-30 p-3 rounded-md mb-4">
+              <p class="text-sm text-yellow-800 dark:text-yellow-300 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i> <strong>特别注意：</strong>非北大口腔体系，整体学术影响力稍弱，但对于常规综合治疗足够胜任。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">医保政策</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">支持河北省医保异地就医直接结算，<strong>务必提前完成备案</strong>。</p>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-800 dark:text-gray-200">地址</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">天津市和平区大沽路75号（总院）；河西区黑牛城道73号（河西门诊部）</p>
+              </div>
+            </div>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">挂号方式</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 mb-4 space-y-1">
+              <li>电话：022-27111678（总院）、022-88357617（河西）</li>
+              <li>APP：“科瑞泰Q医”</li>
+            </ul>
+
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-3">推荐医生</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 italic">根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>牙周科、口腔修复科或综合科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 诊前准备清单 -->
+    <section class="mb-12 card bg-white dark:bg-gray-900 p-6 shadow-lg animate-fade-in" style="animation-delay: 0.8s">
+      <h2 class="text-2xl font-semibold text-indigo-700 dark:text-indigo-400 mb-4 flex items-center">
+        <i class="fas fa-check-circle mr-2"></i> 三、诊前准备清单 (Pre-Visit Checklist)
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg">
+          <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-3 flex items-center"><i class="fas fa-file-medical-alt mr-2 text-blue-500"></i> 病历资料</h3>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li><i class="fas fa-id-card text-green-500 mr-2"></i> 身份证、医保卡原件</li>
+            <li><i class="fas fa-x-ray text-red-500 mr-2"></i> 所有检查报告单（CT/MRI、血压记录等）</li>
+            <li><i class="fas fa-book-medical text-purple-500 mr-2"></i> 既往病历本或重大疾病诊断证明</li>
+            <li><i class="fas fa-list-ul text-yellow-500 mr-2"></i> 按时间顺序整理好所有资料</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg">
+          <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-3 flex items-center"><i class="fas fa-wallet mr-2 text-green-500"></i> 医保与费用</h3>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li><i class="fas fa-globe-americas text-blue-500 mr-2"></i> 办理异地就医备案（国家医保服务平台APP）</li>
+            <li><i class="fas fa-percentage text-indigo-500 mr-2"></i> 咨询当地医保局报销比例</li>
+            <li><i class="fas fa-money-bill-wave text-green-500 mr-2"></i> 准备充足资金（现金/银行卡/手机支付）</li>
+            <li><i class="fas fa-times-circle text-red-500 mr-2"></i> 特需门诊通常无法使用医保</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg">
+          <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-3 flex items-center"><i class="fas fa-clipboard-list mr-2 text-purple-500"></i> 其他准备</h3>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li><i class="fas fa-question-circle text-orange-500 mr-2"></i> 准备向医生咨询的问题清单</li>
+            <li><i class="fas fa-plug text-gray-500 mr-2"></i> 充电宝、水杯、口罩</li>
+            <li><i class="fas fa-tshirt text-pink-500 mr-2"></i> 穿着宽松方便的衣物</li>
+            <li><i class="fas fa-map-marker-alt text-red-500 mr-2"></i> 提前规划交通路线</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 行动指南 -->
+    <section class="mb-12 card bg-white dark:bg-gray-900 p-6 shadow-lg animate-fade-in" style="animation-delay: 0.9s">
+      <h2 class="text-2xl font-semibold text-indigo-700 dark:text-indigo-400 mb-4 flex items-center">
+        <i class="fas fa-rocket mr-2"></i> 四、行动指南与建议
+      </h2>
+      <div class="space-y-6">
+        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900 dark:to-purple-900 p-5 rounded-lg border border-indigo-200 dark:border-indigo-700">
+          <h3 class="font-semibold text-lg text-indigo-800 dark:text-indigo-300 mb-2">优先行动建议</h3>
+          <p class="text-gray-700 dark:text-gray-300">建议优先考虑<strong>北京大学口腔医院</strong>主院区的<strong>郭玉兴</strong>医生（周四下午或周五上午专家门诊，80元）或<strong>刘云松</strong>医生（周四上午专家门诊，60元）。两位医生均具备处理复杂口腔问题的能力，且挂号费符合医保报销范围，适合您的病情与医保需求。</p>
+        </div>
+
+        <div class="bg-yellow-50 dark:bg-yellow-900 dark:bg-opacity-30 p-5 rounded-lg border border-yellow-200 dark:border-yellow-700">
+          <h3 class="font-semibold text-lg text-yellow-800 dark:text-yellow-300 mb-2">二次确认清单</h3>
+          <p class="text-gray-700 dark:text-gray-300 mb-3">就诊前务必致电确认：</p>
+          <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
+            <li>北京大学口腔医院预约咨询：010-62179665 或 使用官方APP</li>
+            <li>异地医保备案状态：通过“国家医保服务平台”APP查询</li>
+            <li>天津市口腔医院预约电话：022-27111678（总院）</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg">
+          <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-200 mb-2">局限性说明</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">本报告严格依据当前知识库信息生成，知识库中未包含部分医院（如河北本地三甲医院）的口腔专家信息，可能存在覆盖不全面的情况，仅供参考。</p>
+        </div>
+
+        <div class="bg-red-50 dark:bg-red-900 dark:bg-opacity-20 p-5 rounded-lg">
+          <h3 class="font-semibold text-lg text-red-800 dark:text-red-300 mb-2">最终免责</h3>
+          <p class="text-sm text-gray-700 dark:text-gray-300">最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="text-center text-sm text-gray-500 dark:text-gray-500 py-6 border-t border-gray-200 dark:border-gray-800">
+      <p>&copy; 2025 就医规划系统. 本报告仅供个人参考，不构成医疗建议.</p>
+    </footer>
+  </div>
+
+  <!-- 主题切换脚本 -->
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    // 检查系统偏好或本地存储
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+
+    if (isDark) {
+      html.classList.add('dark');
+      themeIcon.className = 'fas fa-sun header-icon';
+    } else {
+      html.classList.remove('dark');
+      themeIcon.className = 'fas fa-moon header-icon';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isCurrentlyDark = html.classList.contains('dark');
+      if (isCurrentlyDark) {
+        html.classList.remove('dark');
+        themeIcon.className = 'fas fa-moon header-icon';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        themeIcon.className = 'fas fa-sun header-icon';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // 监听系统主题变化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          html.classList.add('dark');
+          themeIcon.className = 'fas fa-sun header-icon';
+        } else {
+          html.classList.remove('dark');
+          themeIcon.className = 'fas fa-moon header-icon';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
