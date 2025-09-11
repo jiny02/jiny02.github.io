@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高血压患者综合治疗就医指南</title>
+  <!-- Preline UI and UnoCSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1a73e8',
+            secondary: '#f5f5f5',
+            accent: '#ff6b6b'
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/@preline/preline@1.9.0/dist/preline.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    body { font-family: 'Noto Sans SC', sans-serif; transition: background-color 0.3s ease; }
+    .hover-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .hover-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .fade-in { opacity: 0; animation: fadeIn 0.6s ease forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .theme-toggle { transition: all 0.3s ease; }
+    .theme-toggle:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen text-gray-800 dark:from-gray-900 dark:to-black dark:text-gray-100">
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <header class="text-center mb-10 relative">
+      <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600 mb-4 fade-in">高血压综合治疗就医指南</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 fade-in stagger-1">为南京31岁男性患者定制的专业化、可视化医疗建议</p>
+      <button id="themeToggle" class="theme-toggle absolute top-0 right-0 p-3 rounded-full bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300">
+        <i id="themeIcon" class="fas fa-moon text-primary dark:text-yellow-300"></i>
+      </button>
+    </header>
+
+    <!-- Patient Summary -->
+    <section class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-8 hover-card fade-in stagger-2">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-user-circle mr-3 text-primary"></i> 患者情况摘要
+      </h2>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div><strong>年龄/性别：</strong> 31岁 / 男性</div>
+        <div><strong>常住地：</strong> 南京市</div>
+        <div><strong>初步诊断：</strong> 高血压</div>
+        <div><strong>核心诉求：</strong> 综合治疗</div>
+        <div><strong>医保类型：</strong> 南京医保</div>
+        <div><strong>既往病史：</strong> 无相关记录</div>
+      </div>
+    </section>
+
+    <!-- Core Recommendations -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-6 text-center flex items-center justify-center">
+        <i class="fas fa-hospital-alt mr-3 text-primary"></i> 核心就医建议
+      </h2>
+
+      <!-- Hospital Cards -->
+      <div class="space-y-6">
+        <!-- Jiangsu Provincial Hospital -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover-card fade-in stagger-3">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <h3 class="text-xl font-bold text-primary mb-2">江苏省人民医院</h3>
+              <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 text-xs px-3 py-1 rounded-full mb-3">高度匹配 ✅</div>
+              <p class="text-gray-700 dark:text-gray-300 mb-4">该院为综合性三甲医院，心血管内科是省级重点学科，拥有多个与高血压相关的专病门诊。地理位置便利，支持南京本地医保。</p>
+              <ul class="space-y-2 text-sm">
+                <li><strong>推荐医生：</strong> 卢新政（主任医师）、李新立（主任医师）</li>
+                <li><strong>挂号方式：</strong> 微信公众号“江苏省人民医院”或电话025-12320</li>
+                <li><strong>地址：</strong> 南京市广州路300号（请勿前往河西分院）</li>
+              </ul>
+            </div>
+            <div class="md:w-1/3 bg-blue-50 dark:bg-blue-900/30 p-4 rounded-xl">
+              <h4 class="font-semibold mb-2">推荐专家</h4>
+              <ul class="space-y-2 text-sm">
+                <li><strong>卢新政</strong>: 周一下午、周四下午</li>
+                <li><strong>李新立</strong>: 周三上午</li>
+                <li><strong>徐东杰</strong>: 周三下午、周四上午</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ruijin Hospital Shanghai -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover-card fade-in">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="md:w-2/3">
+              <h3 class="text-xl font-bold text-primary mb-2">上海瑞金医院</h3>
+              <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 text-xs px-3 py-1 rounded-full mb-3">高度匹配 ✅</div>
+              <p class="text-gray-700 dark:text-gray-300 mb-4">国内顶尖的高血压专科中心，设有上海市高血压研究所，在难治性高血压领域全国领先。</p>
+              <ul class="space-y-2 text-sm">
+                <li><strong>推荐医生：</strong> 王继光（主任医师）、高平进（主任医师）</li>
+                <li><strong>重要提示：</strong> 就诊前须办理异地医保备案</li>
+                <li><strong>地址：</strong> 上海市瑞金二路197号（总院）</li>
+              </ul>
+            </div>
+            <div class="md:w-1/3 bg-blue-50 dark:bg-blue-900/30 p-4 rounded-xl">
+              <h4 class="font-semibold mb-2">推荐专家</h4>
+              <ul class="space-y-2 text-sm">
+                <li><strong>王继光</strong>: 周三下午</li>
+                <li><strong>高平进</strong>: 周五上午</li>
+                <li><strong>许建忠</strong>: 周一下午</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Hospitals -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Fuwai Hospital Beijing -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover-card fade-in">
+            <h3 class="text-lg font-bold text-primary mb-2">阜外医院（北京）</h3>
+            <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 text-xs px-3 py-1 rounded-full mb-3">高度匹配 ✅</div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">全国顶级心血管专科医院，擅长继发性高血压排查。</p>
+          </div>
+
+          <!-- Zhongshan Hospital Shanghai -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover-card fade-in">
+            <h3 class="text-lg font-bold text-primary mb-2">中山医院（上海）</h3>
+            <div class="inline-block bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 text-xs px-3 py-1 rounded-full mb-3">部分匹配 ⚠️</div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">综合实力强，可作为瑞金医院备选。</p>
+          </div>
+
+          <!-- Sixth People's Hospital Shanghai -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover-card fade-in">
+            <h3 class="text-lg font-bold text-primary mb-2">上海第六人民医院</h3>
+            <div class="inline-block bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 text-xs px-3 py-1 rounded-full mb-3">部分匹配 ⚠️</div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">代谢综合征诊疗能力强，适合合并肥胖等问题患者。</p>
+          </div>
+
+          <!-- First Affiliated Hospital of Soochow University -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 hover-card fade-in">
+            <h3 class="text-lg font-bold text-primary mb-2">苏大附一院（苏州）</h3>
+            <div class="inline-block bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-100 text-xs px-3 py-1 rounded-full mb-3">部分匹配 ⚠️</div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">苏南地区优质选择，距离南京较近。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre-Visit Checklist -->
+    <section class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-8 hover-card fade-in">
+      <h2 class="text-2xl font-semibold mb-6 flex items-center">
+        <i class="fas fa-check-circle mr-3 text-primary"></i> 诊前准备清单
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-b from-blue-50 to-blue-100 dark:from-blue-900/50 dark:to-blue-900/30 p-5 rounded-xl">
+          <h3 class="font-semibold mb-3 flex items-center"><i class="fas fa-file-medical mr-2"></i> 病历资料</h3>
+          <ul class="text-sm space-y-1">
+            <li>• 身份证、医保卡原件</li>
+            <li>• 近期血压测量记录</li>
+            <li>• 血常规、肝肾功能等检查报告</li>
+            <li>• 心电图、心脏彩超报告</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-b from-green-50 to-green-100 dark:from-green-900/50 dark:to-green-900/30 p-5 rounded-xl">
+          <h3 class="font-semibold mb-3 flex items-center"><i class="fas fa-credit-card mr-2"></i> 医保与费用</h3>
+          <ul class="text-sm space-y-1">
+            <li>• 办理异地就医备案（跨省必需）</li>
+            <li>• 准备挂号费、检查费资金</li>
+            <li>• 确认特需门诊医保报销政策</li>
+            <li>• 预估食宿交通费用</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-b from-purple-50 to-purple-100 dark:from-purple-900/50 dark:to-purple-900/30 p-5 rounded-xl">
+          <h3 class="font-semibold mb-3 flex items-center"><i class="fas fa-list-ul mr-2"></i> 其他准备</h3>
+          <ul class="text-sm space-y-1">
+            <li>• 记录咨询问题清单</li>
+            <li>• 携带充电宝、水杯</li>
+            <li>• 穿着宽松衣物</li>
+            <li>• 提前查询医生排班</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Guide -->
+    <section class="bg-gradient-to-r from-primary to-blue-600 text-white rounded-2xl shadow-xl p-8 hover-card fade-in">
+      <h2 class="text-2xl font-semibold mb-6 flex items-center">
+        <i class="fas fa-road mr-3"></i> 行动指南
+      </h2>
+      <div class="space-y-4">
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+          <h3 class="font-semibold mb-2">优先建议</h3>
+          <p>建议首选<strong>江苏省人民医院</strong>的<strong>卢新政</strong>或<strong>李新立</strong>医生进行首次评估。</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+          <h3 class="font-semibold mb-2">异地就诊提醒</h3>
+          <p>前往上海、北京等地，务必提前通过<strong>国家医保服务平台APP</strong>完成异地就医备案。</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+          <h3 class="font-semibold mb-2">最终说明</h3>
+          <p class="text-sm opacity-90">本建议仅供参考，最终诊疗决策请以医院官方信息及临床医生诊断为准。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center mt-12 text-gray-500 dark:text-gray-400 text-sm">
+      <p>&copy; 2024 高血压综合治疗指导系统 | 数据仅供参考，请遵医嘱</p>
+    </footer>
+  </div>
+
+  <!-- Preline JS for interactivity (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/@preline/preline@1.9.0/dist/preline.min.js"></script>
+  <script>
+    // Theme Toggle Functionality
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    // Check system preference or stored preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      html.classList.add('dark');
+      themeIcon.className = 'fas fa-sun text-yellow-300';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        themeIcon.className = 'fas fa-moon text-primary';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        themeIcon.className = 'fas fa-sun text-yellow-300';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Add fade-in animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeElements.forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>
