@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #059669;
+      --warning-color: #dc2626;
+      --bg-light: #f8fafc;
+      --text-light: #1e293b;
+      --bg-dark: #0f172a;
+      --text-dark: #f1f5f9;
+    }
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+      }
+    }
+  </style>
+</head>
+<body class="font-sans">
+  <div class="max-w-4xl mx-auto p-6">
+    <!-- Header -->
+    <header class="text-center mb-10">
+      <h1 class="text-3xl font-bold text-blue-600 mb-2">就医规划报告</h1>
+      <p class="text-lg text-gray-600">复杂性肛瘘手术，上海地区</p>
+      <div class="mt-4 text-sm text-gray-500" id="generate-time"></div>
+    </header>
+
+    <!-- 患者情况摘要 -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-user mr-2 text-blue-500"></i> 一、患者情况摘要
+      </h2>
+      <div class="p-4 bg-white rounded shadow">
+        <p>患者，28岁女性，常住湖南株洲，诊断为“复杂性肛瘘（经括约肌型）”。本次核心诉求为<strong>进行瘘管切开挂线术</strong>，期望就诊地为上海。医保类型为湖南医保。既往病史：溃疡性结肠炎，曾接受反复切开引流治疗。</p>
+      </div>
+    </section>
+
+    <!-- 核心就医建议 -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-hospital mr-2 text-green-500"></i> 二、核心就医建议
+      </h2>
+      <div class="space-y-6">
+        <!-- 推荐医院1 -->
+        <div class="p-4 bg-white rounded shadow">
+          <h3 class="font-bold text-lg text-blue-600 mb-2">【推荐医院1】中日友好医院（北京）</h3>
+          <p><strong>匹配度评估：</strong><span class="text-green-600">高度匹配（跨省）</span></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li><strong>推荐理由：</strong>全国知名肛肠专科，微创手术技术领先，拥有多位肛肠领域权威专家（如李辉、王晏美等）。</li>
+            <li><strong>【特别注意】：</strong>本院位于北京，跨省就医需提前确认医保异地备案政策。
+              <ul class="list-disc pl-5 mt-1">
+                <li>国际医疗部费用较高（400-600元挂号费），普通门诊报销政策需提前咨询。</li>
+              </ul>
+            </li>
+            <li><strong>就诊须知：</strong>
+              <ul class="list-disc pl-5 mt-1">
+                <li><strong>医保政策：</strong>需通过“国家医保服务平台”APP办理跨省异地就医备案。</li>
+                <li><strong>院区差异：</strong>本部（朝阳区）和西区（海淀区）地址不同，注意区分。</li>
+              </ul>
+            </li>
+            <li><strong>挂号方式：</strong>微信公众号“中日友好医院”或APP“中日医院”，放号时间需关注平台公告。</li>
+            <li><strong>推荐医生：</strong>
+              <ul class="list-disc pl-5 mt-1 space-y-1">
+                <li>李辉（主任医师）· <strong>推荐理由：</strong>擅长复杂性肛瘘微创手术，保留括约肌技术经验丰富 · <strong>出诊详情：</strong>[本部] 专家门诊 周一/三/四/五上午（60元）；[本部] 国际医疗 周二上午（400元）</li>
+                <li>王晏美（主任医师）· <strong>推荐理由：</strong>首创双向等压引流法治高位肛瘘，手术微创 · <strong>出诊详情：</strong>[西区] 专家门诊 周一/三/四上午（100元）；[本部] 国际医疗 周五下午（600元）</li>
+                <li>范学顺（主任医师）· <strong>推荐理由：</strong>微创治疗重度痔疮及复杂性肛瘘 · <strong>出诊详情：</strong>[本部] 专家门诊 周二上午/周一下午/二下午/四下午（100元）；[国际医疗] 周五下午（600元）</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 推荐医院2 -->
+        <div class="p-4 bg-white rounded shadow">
+          <h3 class="font-bold text-lg text-blue-600 mb-2">【推荐医院2】上海交通大学医学院附属仁济医院（西院）</h3>
+          <p><strong>匹配度评估：</strong><span class="text-yellow-600">部分匹配</span></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li><strong>推荐理由：</strong>综合实力强，肛肠科为医院重点科室，提供肛瘘手术治疗。</li>
+            <li><strong>【特别注意】：</strong>本院推荐资源侧重胃肠外科综合诊疗，专科手术深度需进一步确认。</li>
+            <li><strong>就诊须知：</strong>
+              <ul class="list-disc pl-5 mt-1">
+                <li><strong>医保政策：</strong>支持异地医保，需提前备案（咨询湖南医保局）。</li>
+                <li><strong>院区差异：</strong>西院地址黄浦区山东中路145号（近外滩），东院在浦东。</li>
+              </ul>
+            </li>
+            <li><strong>挂号方式：</strong>微信公众号“上海仁济医院就医服务号”或APP“上海仁济医院”，消化内科/肛肠科号源较紧张。</li>
+            <li><strong>推荐医生：</strong>
+              <ul class="list-disc pl-5 mt-1">
+                <li>徐庆（主任医师）· <strong>推荐理由：</strong>擅长结直肠肿瘤及良性肛肠疾病微创手术 · <strong>出诊详情：</strong>[东院] 专家门诊 胃肠外科 周五上午（50元）</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 推荐医院3 -->
+        <div class="p-4 bg-white rounded shadow">
+          <h3 class="font-bold text-lg text-blue-600 mb-2">【推荐医院3】上海中医药大学附属曙光医院（东院/西院）</h3>
+          <p><strong>匹配度评估：</strong><span class="text-red-600">谨慎评估</span></p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li><strong>推荐理由：</strong>国家中医药管理局重点肛肠专科（柏氏肛肠科），适合术后中医调理。</li>
+            <li><strong>【特别注意】：</strong><span class="text-red-600">诉求冲突：以中医保守治疗为主，手术能力可能弱于综合医院外科。</span></li>
+            <li><strong>就诊须知：</strong>
+              <ul class="list-disc pl-5 mt-1">
+                <li><strong>医保政策：</strong>需异地备案，中医特色项目报销比例需确认。</li>
+                <li><strong>院区差异：</strong>东院（浦东张衡路528号）、西院（黄浦区普安路185号）。</li>
+              </ul>
+            </li>
+            <li><strong>挂号方式：</strong>微信公众号“曙光医院”，肛肠科号源中等。</li>
+            <li><strong>推荐医生：</strong>
+              <ul class="list-disc pl-5 mt-1">
+                <li>根据知识库信息，<strong>暂未检索到手术专家</strong>。建议挂取<strong>[肛肠科]</strong>专家门诊咨询手术可行性。</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 诊前准备清单 -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-list mr-2 text-blue-500"></i> 三、诊前准备清单
+      </h2>
+      <div class="p-4 bg-white rounded shadow">
+        <ol class="list-decimal pl-5 space-y-2">
+          <li><strong>病历资料：</strong>
+            <ul class="list-disc pl-5 mt-1">
+              <li>身份证、湖南医保卡原件</li>
+              <li>既往肛瘘检查报告（MRI、肠镜等）、手术记录（切开引流史）</li>
+              <li>溃疡性结肠炎病历及用药记录</li>
+              <li><strong>按时间顺序整理所有资料</strong></li>
+            </ul>
+          </li>
+          <li><strong>医保与费用：</strong>
+            <ul class="list-disc pl-5 mt-1">
+              <li>通过“国家医保服务平台”APP办理<strong>跨省异地就医备案</strong></li>
+              <li>确认湖南医保报销比例（外科手术/中医项目差异）</li>
+              <li>准备3-5万元资金（预估手术费+异地食宿）</li>
+            </ul>
+          </li>
+          <li><strong>其他准备：</strong>
+            <ul class="list-disc pl-5 mt-1">
+              <li>提前列出问题清单（如手术方案、复发风险、术后康复时间）</li>
+              <li>宽松衣物（方便术后换药）</li>
+              <li>预约住宿（靠近医院）</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 行动指南与局限性说明 -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-exclamation-circle mr-2 text-yellow-500"></i> 四、行动指南与局限性说明
+      </h2>
+      <div class="p-4 bg-white rounded shadow">
+        <h3 class="font-semibold mb-2">优先行动建议</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>首选中日友好医院李辉医生：</strong>挂本部专家号（周一/三/四/五上午），重点咨询“复杂性肛瘘微创手术方案”。</li>
+          <li><strong>备选仁济医院徐庆医生：</strong>周五上午挂东院胃肠外科门诊，确认手术可行性。</li>
+        </ul>
+        <h3 class="font-semibold mt-4 mb-2">二次确认清单</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>跨省医保：</strong>致电湖南医保局（12393）确认备案流程及报销范围。</li>
+          <li><strong>费用确认：</strong>
+            <ul class="list-disc pl-5 mt-1">
+              <li>中日友好医院国际部：010-84205566（费用是否可报销）</li>
+              <li>仁济医院西院：021-53882139（手术预约流程）</li>
+            </ul>
+          </li>
+        </ul>
+        <h3 class="font-semibold mt-4 mb-2">局限性声明</h3>
+        <p>本报告严格依据当前知识库生成，存在以下局限：</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>中医医院（如曙光医院）手术专家信息缺失，实际资源可能更丰富。</li>
+          <li>异地医保政策可能实时调整，需以医院窗口为准。</li>
+        </ul>
+        <h3 class="font-semibold mt-4 mb-2 text-red-600">最终免责</h3>
+        <p class="text-red-600"><strong>所有医疗决策请以面诊医生建议为准。</strong> 务必携带完整病历资料，术后需遵医嘱定期复查。</p>
+        <div class="mt-4 text-right text-gray-600">
+          <p>生命无小事，专业守护每一步。愿您早日康复！</p>
+          <p class="mt-1">——您的AI就诊规划师</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm text-gray-500 mt-10">
+      <p>© 2025 就医规划报告。保留所有权利。</p>
+      <p>生成时间：<span id="generate-time-footer"></span></p>
+    </footer>
+  </div>
+
+  <script>
+    // 动态写入生成时间
+    const now = new Date();
+    const timeString = now.toLocaleString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    document.getElementById('generate-time').innerText = `生成时间：${timeString}`;
+    document.getElementById('generate-time-footer').innerText = timeString;
+  </script>
+</body>
+</html>
