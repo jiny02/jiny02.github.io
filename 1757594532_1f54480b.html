@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #059669;
+      --warning-color: #dc2626;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+      --text-light: #1e293b;
+      --text-dark: #f1f5f9;
+    }
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color, color 0.3s ease;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+      }
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    @media (prefers-color-scheme: dark) {
+      .card {
+        background-color: #1e293b;
+        border-color: #334155;
+      }
+    }
+    .card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-color: var(--primary-color);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <header class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center text-blue-600">就医规划报告</h1>
+    <p class="text-center mt-2 text-gray-600">为患者提供个性化就医建议与行动指南</p>
+  </header>
+
+  <main class="container mx-auto p-6 space-y-8">
+    <!-- 一、患者情况摘要 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-user-injured mr-2 text-blue-500"></i>
+        一、患者情况摘要
+      </h2>
+      <p class="mb-2">患者，45岁女性，常住浙江嘉兴，初步诊断为“重度三尖瓣关闭不全”。本次核心诉求为“行三尖瓣成形术”，期望前往省会城市就诊。既往病史：二尖瓣置换术后，超声提示瓣环重度扩张；过往治疗：利尿扩管药物。医保类型为浙江医保。</p>
+    </section>
+
+    <!-- 二、核心就医建议 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-hospital mr-2 text-blue-500"></i>
+        二、核心就医建议
+      </h2>
+      <p class="mb-4">基于知识库信息，以下为所有推荐医院列表，按与患者核心诉求的匹配度排序（匹配度高者优先）。匹配度评估标准：地理位置（杭州符合期望）、心脏外科技术实力、医生擅长度。</p>
+
+      <!-- 推荐医院 1 -->
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-blue-600 mb-2">【推荐医院 1】：浙江大学医学院附属第一医院</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>匹配度评估</strong>：高度匹配（位于杭州，三级甲等综合医院，心脏外科实力强，瓣膜手术经验丰富）。</li>
+          <li><strong>推荐理由</strong>：知识库提及“心胸外科换瓣手术国内先进”，年手术量超400例，术后恢复快、美观；擅长成人瓣膜疾病治疗。医保政策支持浙江异地医保（需提前备案），院区地址：杭州市庆春路79号。</li>
+          <li><strong>【特别注意】</strong>：无年龄或诉求冲突风险。</li>
+          <li><strong>挂号方式</strong>：微信公众号“浙江大学医学院附属第一医院”、健康浙江APP、电话114/12580/96365。放号时间：每日上午7:00开始（专家号源较紧张）。</li>
+          <li><strong>推荐医生</strong>：根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生（无心脏外科医生信息）。建议挂取<strong>心胸外科</strong>专家门诊咨询手术可行性。</li>
+        </ul>
+      </div>
+
+      <!-- 推荐医院 2 -->
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-blue-600 mb-2">【推荐医院 2】：浙江大学医学院附属第二医院</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>匹配度评估</strong>：高度匹配（位于杭州，三级甲等综合医院，心血管疾病诊疗技术先进）。</li>
+          <li><strong>推荐理由</strong>：心脏外科为国家区域医疗中心建设单位，擅长微创手术；知识库强调“效率医疗”和复杂疾病救治能力。医保支持浙江异地医保（需备案），院区地址：杭州市上城区解放路88号。</li>
+          <li><strong>【特别注意】</strong>：无年龄或诉求冲突风险。</li>
+          <li><strong>挂号方式</strong>：微信公众号“浙江大学医学院附属第二医院”、健康浙江APP、电话114/12580。放号时间：每日上午7:30开始（心外科号源中等紧张）。</li>
+          <li><strong>推荐医生</strong>：根据知识库信息，暂未检索到本院与三尖瓣成形术高度相关的推荐医生（无心脏外科医生信息）。建议挂取<strong>心外科</strong>专家门诊咨询。</li>
+        </ul>
+      </div>
+
+      <!-- 推荐医院 3 -->
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-blue-600 mb-2">【推荐医院 3】：浙江省人民医院</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>匹配度评估</strong>：部分匹配（位于杭州，三级甲等综合医院，但知识库未明确提及心脏外科专长）。</li>
+          <li><strong>推荐理由</strong>：微创外科为省级重点学科，可处理复杂手术；医保支持浙江异地医保（需备案）。院区地址：朝晖院区（杭州市上塘路158号）、望江山院区（杭州市西湖区转塘双流642号）。</li>
+          <li><strong>【特别注意】</strong>：知识库无心脏外科具体数据，建议术前致电确认手术能力。</li>
+          <li><strong>挂号方式</strong>：微信公众号“浙江省人民医院服务号”、健康浙江APP、电话114/12580。放号时间：每日上午7:00开始（心外科号源暂未提供难度信息）。</li>
+          <li><strong>推荐医生</strong>：根据知识库信息，暂未检索到本院与三尖瓣成形术相关的推荐医生。建议挂取<strong>心外科</strong>或<strong>心胸外科</strong>专家门诊。</li>
+        </ul>
+      </div>
+
+      <!-- 推荐医院 4 -->
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-blue-600 mb-2">【推荐医院 4】：复旦大学附属中山医院（上海）</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>匹配度评估</strong>：谨慎评估（技术强但非浙江）。</li>
+          <li><strong>推荐理由</strong>：知识库提到心外科擅长瓣膜病微创手术，网友推评心脏瓣膜疾病治疗。医保支持异地但需备案，院区地址：本部（上海市徐汇区枫林路180号）。</li>
+          <li><strong>【特别注意】</strong>：地点不符患者期望（非杭州）；成人手术无冲突。</li>
+          <li><strong>挂号方式</strong>：微信公众号“复旦大学附属中山医院”、上海申康医联预约平台。放号时间：每日上午7:00开始（心外科号源中等紧张）。</li>
+          <li><strong>推荐医生</strong>：周达新（主任医师）· 推荐理由：擅长瓣膜病介入治疗 · 出诊详情：东院 高级专家门诊(600元) · 心内科 · 周一上午、周四上午；过常发（副教授）· 推荐理由：擅长瓣膜病微创手术 · 出诊详情：东院 专家门诊(50元) · 心脏外科 · 周一上午、周二下午；东院 特需门诊(400元) · 周三下午、周五下午。</li>
+        </ul>
+      </div>
+
+      <!-- 推荐医院 5 -->
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-blue-600 mb-2">【推荐医院 5】：上海交通大学医学院附属瑞金医院（上海）</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>匹配度评估</strong>：谨慎评估（技术强但非浙江）。</li>
+          <li><strong>推荐理由</strong>：心脏外科实力突出，知识库提到微创瓣膜治疗技术。医保支持异地需备案，院区地址：总部（上海市瑞金二路197号）。</li>
+          <li><strong>【特别注意】</strong>：地点不符患者期望（非杭州）；成人手术无冲突。</li>
+          <li><strong>挂号方式</strong>：微信公众号“上海瑞金医院”、APP“瑞金医院移动助医系统”。放号时间：每日上午7:00开始（心外科号源普通）。</li>
+          <li><strong>推荐医生</strong>：叶晓峰（主任医师）· 推荐理由：擅长微创瓣膜修复与置换 · 出诊详情：总院 专家门诊 · 心脏外科 · 周一上午、周三下午；总院 特需门诊(800元) · 周二下午。</li>
+        </ul>
+      </div>
+
+      <!-- 推荐医院 6 -->
+      <div class="mb-6">
+        <h3 class="text-xl font-medium text-blue-600 mb-2">【推荐医院 6】：中国医学科学院阜外医院（北京）</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>匹配度评估</strong>：谨慎评估（全球顶尖心血管专科但非浙江）。</li>
+          <li><strong>推荐理由</strong>：知识库强调“成人心脏外科中心”及瓣膜手术技术（如“换瓣手术国内先进”）。医保异地需备案，院区地址：北京市西城区北礼士路167号。</li>
+          <li><strong>【特别注意】</strong>：地点严重不符（非杭州）；手术技术高度匹配但路途耗时。</li>
+          <li><strong>挂号方式</strong>：微信公众号“中国医学科学院阜外医院”、电话010-114。放号时间：每日上午7:30开始。</li>
+          <li><strong>推荐医生</strong>：侯剑峰（主任医师）· 推荐理由：擅长瓣膜病精准治疗 · 出诊详情：成人心外科三病区 专家门诊 · 周一上午、周二下午；金敬琳（主任医师）· 推荐理由：擅长瓣膜病介入治疗 · 出诊详情：结构性心脏病一病区 专家门诊 · 周二下午。</li>
+        </ul>
+      </div>
+
+      <!-- 其他医院 -->
+      <div>
+        <h3 class="text-xl font-medium text-blue-600 mb-2">其他医院（匹配度低）</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>宁波大学附属阳明医院</strong>：匹配度低（非省会，知识库未提心脏外科）。</li>
+          <li><strong>嵊州市人民医院/义乌市中心医院</strong>：匹配度低（非省会，知识库无心脏外科信息）。</li>
+          <li><strong>山东省立医院</strong>：匹配度低（非浙江，知识库心脏外科普通）。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 三、诊前准备清单 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-clipboard-list mr-2 text-blue-500"></i>
+        三、诊前准备清单
+      </h2>
+      <p class="mb-4">基于知识库通用要求整合：</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>病历资料准备</strong>：身份证、浙江医保卡原件；所有<strong>检查报告单</strong>（血常规、超声心动图、CT/MRI影像报告）；<strong>既往病历本</strong>或二尖瓣置换术诊断证明；<strong>【特别建议】</strong>：按时间顺序整理资料，重点携带超声“瓣环重度扩张”报告。</li>
+        <li><strong>医保与费用准备</strong>：通过“浙江医保服务平台”APP办理<strong>异地就医备案</strong>（杭州就诊无需）；咨询嘉兴医保局，确认报销比例（手术费预估5-10万元）；准备资金：挂号费（50-600元）、检查费、药费及异地食宿（杭州住宿约300元/日）。</li>
+        <li><strong>其他通用准备</strong>：记录问题清单（如三尖瓣成形术成功率、术后恢复周期）；穿着宽松衣物，便于检查。</li>
+      </ul>
+    </section>
+
+    <!-- 四、行动指南与局限性说明 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-info-circle mr-2 text-blue-500"></i>
+        四、行动指南与局限性说明
+      </h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>优先行动建议</strong>：基于核心诉求，建议优先预约【浙江大学医学院附属第一医院】心胸外科专家门诊，咨询三尖瓣成形术可行性（如无号源，尝试浙大二院或浙江省人民医院）。如技术需求高且可接受异地，考虑【复旦大学附属中山医院】过常发医生（心外科微创专家）。</li>
+        <li><strong>二次确认清单</strong>：致电确认：浙大一院心胸外科门诊（0571-87236309）、浙大二院心外科（0571-87783777）；上海中山医院（021-64041990）问询成人手术政策。</li>
+        <li><strong>局限性声明</strong>：本报告严格依据当前知识库生成，部分信息可能缺失（如杭州医院心脏外科医生详情）。知识库更新可能存在延迟（如挂号费、出诊时间以医院官网为准）。</li>
+        <li><strong>最终免责</strong>：最终就诊决策请以医院官方平台信息及临床医生诊断为准。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container mx-auto p-6 text-center text-gray-500 text-sm mt-8 border-t">
+    <p>© 2024 就医规划报告系统</p>
+    <p>生成时间：<span id="generateTime"></span></p>
+    <script>
+      document.getElementById('generateTime').textContent = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+    </script>
+  </footer>
+</body>
+</html>
