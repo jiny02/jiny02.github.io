@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>克罗恩病生物制剂治疗就医规划报告</title>
+  <!-- Tailwind CSS & Preline UI via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      presets: [window.tailwindcssPresets.tailwind],
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+  <!-- Header -->
+  <header class="bg-white dark:bg-gray-800 shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+    <h1 class="text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400">克罗恩病就医规划报告</h1>
+    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+      <i class="fas fa-moon dark:hidden"></i>
+      <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+  </header>
+
+  <main class="max-w-4xl mx-auto p-4 md:p-6 space-y-8 fade-in">
+    <!-- Patient Summary -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+      <div class="flex items-start mb-4">
+        <i class="fas fa-user-injured text-primary-500 text-2xl mr-3 mt-1"></i>
+        <div>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">一、患者情况摘要</h2>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Patient Summary</p>
+        </div>
+      </div>
+      <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+        <li>患者，女性，31岁，常住福建莆田。</li>
+        <li>初步诊断：克罗恩病（蒙特利尔分型：回结肠型）。</li>
+        <li>既往病史：原发性硬化性胆管炎。</li>
+        <li>治疗史：曾接受糖皮质激素治疗。</li>
+        <li class="font-medium">核心诉求：<span class="text-primary-600 dark:text-primary-400">接受生物制剂治疗</span>。</li>
+        <li>医保类型：福建医保。</li>
+      </ul>
+    </section>
+
+    <!-- Core Recommendation -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+      <div class="flex items-start mb-4">
+        <i class="fas fa-stethoscope text-primary-500 text-2xl mr-3 mt-1"></i>
+        <div>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">二、核心就医建议</h2>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Core Medical Recommendation</p>
+        </div>
+      </div>
+      <p class="mb-4 text-gray-700 dark:text-gray-300">基于您的核心诉求和地理位置，为您筛选并分析了以下医院选项。南京市和广州市为距离您较近的医疗资源集中地。</p>
+      
+      <!-- Hospital Card 1 -->
+      <div class="border-l-4 border-primary-500 pl-4 py-2 mb-6 bg-blue-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-primary-700 dark:text-primary-300">【推荐医院 1】东部战区总医院（南京大学医学院附属金陵医院）</h3>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
+          <li><span class="font-semibold">匹配度评估：</span><span class="text-green-600 dark:text-green-400 font-medium">高度匹配</span></li>
+          <li><span class="font-semibold">推荐理由：</span>该院在克罗恩病诊治方面拥有全国知名的专家团队和丰富的临床经验，尤其擅长处理复杂病例，与您的生物制剂治疗诉求高度契合。</li>
+          <li><span class="font-semibold">特别注意：</span>无。</li>
+          <li><span class="font-semibold">就诊须知：</span>医保政策请提前咨询医院医保办或您本地的医保局，确认异地就医备案流程及报销比例。地址：江苏省南京市玄武区中山东路305号。</li>
+          <li><span class="font-semibold">挂号方式：</span>可通过微信公众号“东部战区总医院”或“南京卫生12320”、电话025-12320、网络平台进行预约。消化内科挂号难度为“中等（部分医生号源较紧张）”。</li>
+        </ul>
+        <div class="mt-4 pl-2 border-l-2 border-gray-300 dark:border-gray-600">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200">推荐医生：</h4>
+          <ul class="space-y-3 mt-2">
+            <li class="p-3 bg-white dark:bg-gray-600 rounded-lg shadow-sm">
+              <p class="font-medium text-primary-600 dark:text-primary-300">任建安</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">主任医师、教授、博士生导师</p>
+              <p class="text-sm mt-1"><span class="font-semibold">推荐理由：</span>擅长肠瘘、克罗恩病、腹腔感染、胃肠肿瘤的诊治，师承黎介寿院士，临床经验极为丰富。</p>
+              <p class="text-sm mt-1"><span class="font-semibold">出诊详情：</span>本院 专家门诊 周一下午 100元</p>
+            </li>
+            <li class="p-3 bg-white dark:bg-gray-600 rounded-lg shadow-sm">
+              <p class="font-medium text-primary-600 dark:text-primary-300">任华建</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">主任医师、博士、硕士生导师</p>
+              <p class="text-sm mt-1"><span class="font-semibold">推荐理由：</span>擅长肠瘘、腹腔感染、克罗恩病、胃肠肿瘤的外科治疗及营养支持。</p>
+              <p class="text-sm mt-1"><span class="font-semibold">出诊详情：</span>本院 专家门诊 周五上午 20元</p>
+            </li>
+            <li class="p-3 bg-white dark:bg-gray-600 rounded-lg shadow-sm">
+              <p class="font-medium text-primary-600 dark:text-primary-300">黄骞</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">主任医师、博士生导师</p>
+              <p class="text-sm mt-1"><span class="font-semibold">推荐理由：</span>擅长炎症性肠病（克罗恩病）、肠外瘘、放射性肠炎、严重腹腔感染。</p>
+              <p class="text-sm mt-1"><span class="font-semibold">出诊详情：</span>本院 专家门诊 周五上午 22元</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hospital Card 2 -->
+      <div class="border-l-4 border-blue-400 pl-4 py-2 mb-6 bg-blue-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-blue-700 dark:text-blue-300">【推荐医院 2】南京鼓楼医院</h3>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
+          <li><span class="font-semibold">匹配度评估：</span><span class="text-yellow-600 dark:text-yellow-400 font-medium">部分匹配</span></li>
+          <li><span class="font-semibold">推荐理由：</span>综合实力强，科室设置齐全。张晓琦医生专门从事炎症性肠病的诊治。</li>
+          <li><span class="font-semibold">特别注意：</span>无。</li>
+          <li><span class="font-semibold">就诊须知：</span>医保政策需提前确认。请注意院区差异：本院地址为南京市中山路321号，北院地址为南京市中山北路53号。</li>
+          <li><span class="font-semibold">挂号方式：</span>可通过微信公众号“南京鼓楼医院”或“南京卫生12320”、电话025-12320、网络平台进行预约。消化内科挂号难度为“中等（部分医生号源较紧张）”。</li>
+        </ul>
+        <div class="mt-4 pl-2 border-l-2 border-gray-300 dark:border-gray-600">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200">推荐医生：</h4>
+          <ul class="space-y-3 mt-2">
+            <li class="p-3 bg-white dark:bg-gray-600 rounded-lg shadow-sm">
+              <p class="font-medium text-primary-600 dark:text-primary-300">张晓琦</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">主任医师、医学博士</p>
+              <p class="text-sm mt-1"><span class="font-semibold">推荐理由：</span>擅长炎症性肠病（克罗恩病，溃疡性结肠炎）的诊治。</p>
+              <p class="text-sm mt-1"><span class="font-semibold">出诊详情：</span>本院 专家门诊(消化内科) 周二上午 35元；本院 专科门诊(消化内科) 周三下午 35元</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hospital Card 3 -->
+      <div class="border-l-4 border-purple-500 pl-4 py-2 mb-6 bg-purple-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-purple-700 dark:text-purple-300">【推荐医院 3】中山大学附属第六医院</h3>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
+          <li><span class="font-semibold">匹配度评估：</span><span class="text-green-600 dark:text-green-400 font-medium">高度匹配</span></li>
+          <li><span class="font-semibold">推荐理由：</span>国内顶尖的胃肠肛门疾病专科医院，设有炎症性肠病联合诊治中心，对克罗恩病的诊疗，包括生物制剂的应用，处于国内领先水平。</li>
+          <li><span class="font-semibold">特别注意：</span>无。</li>
+          <li><span class="font-semibold">就诊须知：</span>医保政策需提前确认。地址：广东省广州市天河区员村二横路26号。</li>
+          <li><span class="font-semibold">挂号方式：</span>可通过微信公众号“中山大学附属第六医院”或“广州健康通”、网络平台进行预约。消化内科挂号难度为“中等（部分医生号源较紧张）”。</li>
+        </ul>
+        <div class="mt-4 pl-2 border-l-2 border-gray-300 dark:border-gray-600">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200">推荐医生：</h4>
+          <p class="text-gray-700 dark:text-gray-300 mt-2">根据知识库信息，暂未检索到本院与患者疾病高度相关的特定推荐医生。您仍可尝试通过医院官方渠道，挂取<span class="font-semibold">消化内科</span>或<span class="font-semibold">炎症性肠病专病门诊</span>的专家号进行咨询。</p>
+        </div>
+      </div>
+
+      <!-- Hospital Card 4 -->
+      <div class="border-l-4 border-amber-500 pl-4 py-2 bg-amber-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-amber-700 dark:text-amber-300">【推荐医院 4】江苏省中医院</h3>
+        <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-700 dark:text-gray-300">
+          <li><span class="font-semibold">匹配度评估：</span><span class="text-red-600 dark:text-red-400 font-medium">谨慎评估：辅助治疗</span></li>
+          <li><span class="font-semibold">推荐理由：</span>中医在调理体质、减轻西药副作用、改善生活质量方面可能起到辅助作用。</li>
+          <li><span class="font-semibold text-red-600 dark:text-red-400">特别注意：</span><span class="font-medium">本院为中医医院，您当前的核心诉求“生物制剂治疗”属于现代医学（西医）范畴，通常由综合性医院的风湿免疫科、消化内科或专科医院开展。中医治疗可作为辅助调理手段，而非生物制剂治疗的主要途径。建议优先考虑以上综合性医院。</span></li>
+          <li><span class="font-semibold">就诊须知：</span>医保政策需提前确认。地址：南京市秦淮区汉中路155号。</li>
+          <li><span class="font-semibold">挂号方式：</span>可通过微信公众号“江苏省中医院”、电话025-12580、医院官网、APP进行预约。</li>
+        </ul>
+        <div class="mt-4 pl-2 border-l-2 border-gray-300 dark:border-gray-600">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200">推荐医生：</h4>
+          <p class="text-gray-700 dark:text-gray-300 mt-2">根据知识库信息，暂未检索到本院与克罗恩病生物制剂治疗高度相关的推荐医生。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+      <div class="flex items-start mb-4">
+        <i class="fas fa-clipboard-list text-primary-500 text-2xl mr-3 mt-1"></i>
+        <div>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">三、诊前准备清单</h2>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Pre-Visit Checklist</p>
+        </div>
+      </div>
+      <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+        <li class="p-3 bg-blue-50 dark:bg-gray-700 rounded-lg">
+          <span class="font-semibold">病历资料准备：</span>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>身份证、福建医保卡原件。</li>
+            <li>既往所有检查报告单（包括但不限于血常规、肝肾功能、C反应蛋白、血沉、肠镜报告及病理活检结果、影像学CT/MRI报告等）。</li>
+            <li>既往病历本或疾病诊断证明、既往治疗记录（特别是糖皮质激素使用情况）。</li>
+            <li><span class="font-medium">特别建议：</span>按时间顺序整理好所有资料，并准备一份病情简述（包括主要症状、病程、用药史）。</li>
+          </ul>
+        </li>
+        <li class="p-3 bg-blue-50 dark:bg-gray-700 rounded-lg">
+          <span class="font-semibold">医保与费用准备：</span>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>提前通过“国家医保服务平台”APP或小程序办理<span class="font-medium">异地就医备案</span>（备案到目标城市，如南京或广州）。</li>
+            <li>咨询莆田本地医保局，确认异地报销比例及流程。</li>
+            <li>准备充足的资金，预估费用包括：挂号费、检查费（可能需复查）、药费（生物制剂费用较高）及异地食宿交通费。</li>
+          </ul>
+        </li>
+        <li class="p-3 bg-blue-50 dark:bg-gray-700 rounded-lg">
+          <span class="font-semibold">其他通用准备：</span>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>记录并准备向医生咨询的问题清单（例如：是否适合使用生物制剂？推荐哪种？疗程多久？费用如何？注意事项？）。</li>
+            <li>带好充电宝、水杯等个人物品。</li>
+            <li>就诊当天穿着宽松方便的衣物。</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Action Guide -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
+      <div class="flex items-start mb-4">
+        <i class="fas fa-map-signs text-primary-500 text-2xl mr-3 mt-1"></i>
+        <div>
+          <h2 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white">四、行动指南与局限性说明</h2>
+          <p class="text-gray-600 dark:text-gray-400 text-sm">Action Guide & Limitations</p>
+        </div>
+      </div>
+      <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+        <li><span class="font-semibold">优先行动建议：</span>基于您的核心诉求（生物制剂治疗），建议优先考虑<span class="font-medium">【东部战区总医院】的【任建安】或【任华建】教授，以及【中山大学附属第六医院】的消化内科/炎症性肠病中心</span>。前者在南京，距离更近且专家团队实力雄厚；后者在广州，是全国顶级的胃肠专科医院。</li>
+        <li><span class="font-semibold">二次确认清单：</span>就诊前务必致电目标医院确认：<br>
+          <span class="inline-block mt-1">&nbsp;&nbsp;&nbsp;&nbsp;&bull; 【东部战区总医院】，总机：025-80860114，咨询医保、预约及医生出诊详情。</span><br>
+          <span class="inline-block">&nbsp;&nbsp;&nbsp;&nbsp;&bull; 【中山大学附属第六医院】，咨询电话：020-38254000，咨询医保、预约及专病门诊详情。</span><br>
+          <span class="inline-block">&nbsp;&nbsp;&nbsp;&nbsp;&bull; 务必确认您的福建医保在目标医院的使用流程和报销政策。</span>
+        </li>
+        <li><span class="font-semibold">局限性声明：</span>本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面（如中山六院的专家信息缺失）的情况，仅供参考。</li>
+        <li class="font-medium text-red-600 dark:text-red-400"><span class="font-semibold">最终免责：</span>生物制剂为处方药，需严格遵循医嘱使用。最终诊疗方案请务必以医院官方平台信息及临床医生的专业诊断为准。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="max-w-4xl mx-auto p-4 text-center text-gray-600 dark:text-gray-400 text-sm mt-8 border-t border-gray-200 dark:border-gray-700">
+    <p>&copy; 2023 医疗规划助手. 本报告仅供参考，不构成医疗建议。</p>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Check for saved theme in localStorage or respect OS preference
+    const savedTheme = localStorage.getItem('theme');
+    const osPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (osPrefersDark ? 'dark' : 'light');
+    if (initialTheme === 'dark') {
+      html.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      // Update icon
+      const sunIcon = themeToggle.querySelector('.fa-sun');
+      const moonIcon = themeToggle.querySelector('.fa-moon');
+      if (isDark) {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    });
+
+    // Initialize Preline UI components if needed
+    document.addEventListener('DOMContentLoaded', () => {
+      HSTheme.init();
+    });
+  </script>
+</body>
+</html>
