@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高血压北京就医规划报告</title>
+  <!-- UnoCSS (Tailwind兼容预设) -->
+  <link rel="stylesheet" href="https://unpkg.com/@unocss/reset/tailwind.min.css">
+  <script src="https://unpkg.com/@unocss/runtime/uno.global.js"></script>
+  <!-- Preline UI -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/preline@2.0.3/dist/preline.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background-color: var(--bg-main, #f6f7f9);
+      color: var(--text-main, #222);
+      transition: background-color .3s, color .3s;
+    }
+    .dark body {
+      --bg-main: #181a20;
+      --text-main: #f4f5fa;
+    }
+    .fade-in {
+      animation: fadeInUp .7s cubic-bezier(.4,0,.2,1);
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform:translateY(24px); }
+      to { opacity:1; transform:none; }
+    }
+    /* 卡片悬浮效果 */
+    .card-hover:hover {
+      box-shadow:0 8px 32px rgba(60,72,88,.15);
+      border-color:#6366f1;
+      transform: translateY(-2px) scale(1.025);
+      transition:.22s cubic-bezier(.4,0,.2,1);
+    }
+    /* 按钮微交互 */
+    .btn-hover:hover {
+      background-color:#6366f1 !important;
+      color:#fff !important;
+      transform:scale(1.04);
+    }
+    /* 深色模式切换按钮样式 */
+    .theme-toggle-btn {
+      outline:none; border:none; background:none; cursor:pointer; font-size:1.25rem;
+      transition:.18s color;
+    }
+
+    /* 响应式字体优化 */
+    @media (max-width:640px) {
+      h1 { font-size:1.45rem; }
+      h2 { font-size:1.15rem; }
+      .section-title { font-size:.98rem!important; }
+      body { font-size:.98rem; }
+    }
+
+    /* 滚动条美化 */
+    ::-webkit-scrollbar { width:8px; background:#eee; border-radius:4px;}
+    ::-webkit-scrollbar-thumb { background:#cfd8dc;border-radius:4px;}
+dark ::-webkit-scrollbar-thumb {background:#333}
+dark ::-webkit-scrollbar{background:#23262b}
+dark ::-webkit-scrollbar-corner{background:#23262b}
+dark ::-webkit-scrollbar-track{background:#23262b}
+dark ::-webkit-scrollbar-track-piece{background:#23262b}
+dark ::-webkit-scrollbar-button{display:none}
+dark ::-webkit-scrollbar-thumb{background:#444}
+dark ::selection {background:#6366f1;color:#fff}
+dark *::selection{background:#6366f1;color:#fff}
+dark body{
+bg-[#181a20] text-[#f4f5fa]
+border-[#222]
+pointer-events:auto
+}
+dark .card-hover:hover{
+border-color:#6366f1;background-color:#222
+}
+dark input,bg-white{
+bg-[#21242c]
+border-[#333]
+txt-[#eee]
+pointer-events:auto
+}
+dark .preline-card{
+bg-[#20232a] border-[#333]
+txt-[#e7eaf3]
+pointer-events:auto
+}
+dark .preline-card h3{
+txt-[#e7eaf3]
+pointer-events:auto
+}
+dark .preline-card p{
+txt-[#cfd8dc]
+pointer-events:auto
+}
+dark .preline-card ul li{
+txt-[#bfc9d7]
+pointer-events:auto
+}
+dark .section-title{
+txt-[#aab5cd]
+pointer-events:auto
+}
+dark hr{border-color:#393b41!important;opacity:.38!important;pointer-events:auto}
+dark code{bg-[#222];color:#d5dbe7;border-color:#363a44;padding:.12em .35em;border-radius:.22em;font-size:.95em;font-family:'JetBrains Mono',monospace!important;} 
+dark a{color:#8baaff;text-decoration:none} 
+a:hover{text-decoration:underline} 
+a,a:visited,a:hover,a.active{transition:.16s color} 
+h2,h3,h4,h5,h6{font-weight:bold;margin-top:.8em;margin-bottom:.35em;} 
+h2.section-title,h3.section-title{margin-top:.65em;margin-bottom:.22em;} 
+ul li:not(:last-child){margin-bottom:.14em;} 
+ul.checklist li::before{content:'\2714';color:#6366f1;margin-right:.5em;font-weight:bold;} 
+ul.checklist li{list-style:none;padding-left:.5em;} 
+ul li strong,label strong{color:#6366f1;font-weight:bold;} 
+table th,table td{padding:.45em .75em;border-bottom:1px solid #ececec;} 
+table th{text-align:left;background-color:#fafbfc;color:#444;font-weight:bold;} 
+table tr:last-child td{border-bottom:none;} 
+table thead th:first-child,table tbody td:first-child{border-left:none;} 
+table thead th:last-child,table tbody td:last-child{border-right:none;} 
+table caption{text-align:left;padding-bottom:.25em;color:#888;font-size:.97em} 
+table caption::before{content:'\f02d';font-family:'Font Awesome 6 Free';font-weight:bold;margin-right:.45em;color:#6366f1;font-size:.96em} 
+h2.section-title>i,h3.section-title>i,h4.section-title>i,h5.section-title>i,h6.section-title>i{
+padding-right:.28em;color:#6366f1;font-size:.93em;font-weight:bold;text-shadow:none!important;
+bottom:-.07em!important;
+pos:absolute!important;
+align-items:center!important;
+pointer-events:none!important;
+appearance:none!important;
+overflow:hidden!important;
+opacity:.86!important;filter:none!important;background:none!important;border:none!important;margin-left:-.08em;margin-right:-.08em;text-align:center!important;width:auto;height:auto;vertical-align:-10%;display:inline-block;height:auto;width:auto;font-style:normal;text-transform:none;text-decoration:none;border-radius:none;background-image:none;background-repeat:no-repeat;background-position:center center;background-size:auto auto;-webkit-text-stroke-width:0;-webkit-text-stroke-color:white;-webkit-font-smoothing:auto;-moz-osx-font-smoothing:auto;-ms-text-size-adjust:auto;-webkit-text-size-adjust:auto;-ms-overflow-style:auto;-ms-word-break:auto;-ms-word-wrap:auto;-ms-hyphens:auto;-moz-hyphens:auto;-o-hyphens:auto;hyphens:auto;text-rendering:auto;-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text;font-family:'Material Icons','Font Awesome 6 Free','Font Awesome 5 Free','FontAwesome',sans-serif !important;font-weight:bold !important;font-style:normal !important;text-transform:none !important;text-decoration:none !important;border-radius:null !important;background-image:null !important;background-repeat:null !important;background-position:null !important;background-size:null !important;text-shadow:null !important;padding-left:null !important;padding-right:null !important;margin-left:null !important;margin-right:null !important;width:null !important;height:null !important;} </style>
+</head>
+<body class="pl-0 pr-0 min-h-screen bg-white dark:bg-[#181a20] text-base antialiased selection:bg-indigo-200 dark:selection:bg-indigo-600 selection:text-indigo-900 dark:text-gray-100 fade-in">
+<!-- 顶部栏 -->
+<header class="sticky top-0 z-30 bg-white/90 dark:bg-[#181a20]/90 backdrop-blur shadow-sm flex items-center justify-between px-5 py-3 border-b border-gray-200 dark:border-gray-700">
+  <div class="flex items-center gap-x-2">
+    <span class="material-icons text-indigo-500 text-[2rem]">local_hospital</span>
+    <span class="font-bold text-lg tracking-wide">就医规划报告</span>
+  </div>
+  <!-- 深色模式切换按钮 -->
+  <button id="themeToggleBtn" class="theme-toggle-btn ml-auto text-gray-500 hover:text-indigo-500 transition-colors duration-150" title="切换深色/浅色模式"><i id="themeIcon" class="fas fa-moon"></i></button>
+</header>
+
+<main class="max-w-[880px] mx-auto px-4 sm:px-8 py-10 fade-in">
+
+<!-- 一、患者情况摘要 -->
+<section class="mb-10 preline-card rounded-xl shadow-sm bg-white dark:bg-[#20232a] border border-gray-100 dark:border-gray-700 p-[clamp(1rem,2vw,2rem)] fade-in animate-delay-[80ms]">
+<h2 class="section-title flex items-center gap-x-[.55em] mb-[.55rem] text-xl font-semibold"><i class='fa-solid fa-user-md'></i> 一、患者情况摘要</h2>
+<p class='text-base leading-relaxed mt-.5'>患者，<strong>35岁男</strong>，常住<strong>南京</strong>，初步诊断为<strong>“高血压”</strong>。本次核心诉求为<strong>明确诊断</strong>。医保类型为<strong>南京医保</strong>。无相关病史及治疗记录。</p>
+</section>
+
+<!-- 二、核心就医建议 -->
+<section class='mb-10 preline-card rounded-xl shadow-sm bg-white dark:bg-[#20232a] border border-gray-100 dark:border-gray-700 p-[clamp(1rem,2vw,2rem)] fade-in animate-delay-[160ms]'>
+<h2 class='section-title flex items-center gap-x-[.55em] mb-[.55rem] text-xl font-semibold'><i class='fa-solid fa-stethoscope'></i> 二、核心就医建议</h2>
+<p class='mb-.5 text-base'>基于您的核心诉求（<strong>明确高血压诊断</strong>）和基本情况（35岁、南京医保），整合知识库信息，按医院与诉求的匹配度排序推荐：</p>
+<div class='space-y-[clamp(16px,3vw,32px)] mt-[18px]'>
+
+<!-- 阜外医院 -->
+<div class='border-l-[4px] border-indigo-500 pl-[18px] card-hover preline-card bg-white dark:bg-[#20232a] rounded-lg shadow transition-all duration-[220ms] mb-.5'>
+<div class='flex items-center gap-x-[10px] mb-.5'>
+<span class='material-icons text-indigo-500'>favorite</span><h3 class='text-lg font-bold'>中国医学科学院阜外医院</h3></div>
+<ul class='text-sm leading-relaxed space-y-.5 mb-.5'>
+<li><strong>匹配度评估：</strong><span class='text-green-600 dark:text-green-400 font-semibold'>高度匹配</span></li>
+<li><strong>推荐理由：</strong>心血管病专科医院，国家级高血压诊治中心，擅长复杂心血管疾病诊断。</li>
+<li><strong>就诊须知：</strong><ul class='ml-.5 list-disc list-inside'><li><span class='font-medium'>医保政策：</span>支持异地医保，需提前通过“国家医保服务平台”APP备案。</li><li><span class='font-medium'>地址：</span>北京市西城区北礼士路167号（无分院差异）。</li></ul></li>
+<li><strong>挂号方式：</strong><ul class='ml-.5 list-disc list-inside'><li><span class='font-medium'>微信公众号：</span><code>中国医学科学院阜外医院</code></li><li><span class='font-medium'>APP：</span><code>掌上阜外医院</code></li><li><span class='font-medium'>放号时间：</span>上午7:00</li></ul></li>
+<li><strong>推荐医生：</strong></li>
+<ul style='margin-left:-12px;'>
+<li>- 顼志敏（主任医师） · <span style='color:#6366F1;'>擅长高血压、高血脂综合诊治，临床药理研究深厚。</span>&nbsp;<small>(出诊详情：暂未提供)</small></li>
+<li>- 马文君（主任医师） · <span style='color:#6366F1;'>专攻高血压及继发性高血压鉴别诊断。</span>&nbsp;<small>(出诊详情：暂未提供)</small></li>
+<li>- 王静（主任医师） · <span style='color:#6366F1;'>长期从事高血压临床及科研，基础理论扎实。</span>&nbsp;<small>(出诊详情：暂未提供)</small></li>
+</ul></ul></div>
+
+<!-- 协和医院 -->
+<div class='border-l-[4px] border-indigo-400 pl-[18px] card-hover preline-card bg-white dark:bg-[#20232a] rounded-lg shadow transition-all duration-[220ms] mb-.5'>
+<div class='flex items-center gap-x-[10px] mb-.5'><span class='material-icons text-indigo-400'>local_pharmacy</span><h3 class='text-lg font-bold'>中国医学科学院北京协和医院</h3></div>
+<ul class='text-sm leading-relaxed space-y-.5 mb-.5'>
+<li><strong>匹配度评估：</strong><span class='text-green-600 dark:text-green-400 font-semibold'>高度匹配</span></li>
+<li><strong>推荐理由：</strong>综合实力顶尖，心血管内科为国家级重点学科，擅长复杂疾病诊断。</li>
+<li><strong>就诊须知：</strong><ul class='ml-.5 list-disc list-inside'><li><span class='font-medium'>医保政策：</span>支持异地医保，备案后使用；注意东院/西院地址差异（东院：东城区东单帅府园1号；西院：西城区大木仓胡同41号）。</li></ul></li>
+<li><strong>挂号方式：</strong><ul class='ml-.5 list-disc list-inside'><li><code>北京协和医院APP / 微信公众号“北京114预约挂号”</code></li><li><b style=color:black;'>放号时间:</b>&nbsp;<code style=color:black;'>上午7:00（东院）、上午6:30（西院）</code></li></ul></li>
+<li><strong>推荐医生：</strong></li>
+<ul style='margin-left:-12px;'>
+<li>- 吴炜（主任医师） · <span style=color:'#6366F1;'>擅长高血压、冠心病诊断及遗传代谢疾病研究。</span>&nbsp;<small>(出诊详情：东院普通门诊 周一下午/周四上午；特需门诊 周四下午)</small></li>
+<li>- 田庄（主任医师） · <span style=color:'#6366F1;'>专攻高血压、肺动脉高压鉴别诊断。</span>&nbsp;<small>(出诊详情：东院普通门诊 周三上午；国际医疗部 周五上午；罕见病门诊 周一下午)</small></li>
+<li>- 刘永太（主任医师） · <span style=color:'#6366F1;'>精通超声心动图和高血压常规诊疗。</span>&nbsp;<small>(出诊详情：东院普通门诊 周一上午；特需门诊 周三上午)</small></li>
+</ul></ul></div>
+
+<!-- 安贞医院 --><br />\<divclass=\'border-l-[4px]\border-indigo\'-300pl[18px]\card-hoverpreline-cardbg-whitedark-bg[#20232arounded-lgshadowtransition-allduration[220ms]\mb-.5\'><divclass=\'flexitems-centergap-x[10px]\mb-.5\'><spanc... [内容过长已截断，请下载查看完整HTML文件]
