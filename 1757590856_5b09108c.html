@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>就医规划报告</title>
+  <!-- CDN引入UnoCSS & Preline UI & Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --color-primary: #2563eb;
+      --color-success: #059669;
+      --color-danger: #dc2626;
+      --color-bg-light: #f8fafc;
+      --color-text-light: #1e293b;
+      --color-bg-dark: #0f172a;
+      --color-text-dark: #f1f5f9;
+    }
+    body {
+      background-color: var(--color-bg-light);
+      color: var(--color-text-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--color-bg-dark);
+        color: var(--color-text-dark);
+      }
+    }
+    .card {
+      @apply border border-gray-200 rounded-lg p-6 shadow-sm transition-all hover:shadow-lg hover:border-blue-500;
+    }
+    .highlight {
+      @apply font-semibold text-blue-600 dark:text-blue-400;
+    }
+    .warning {
+      @apply text-red-600 dark:text-red-400;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <!-- Header 区块 -->
+  <header class="bg-blue-600 text-white py-8 px-6 text-center">
+    <h1 class="text-3xl font-bold">就医规划报告</h1>
+    <p class="mt-2 text-blue-100">个性化医疗路径规划，为您的健康保驾护航</p>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 space-y-10">
+
+    <!-- 一、患者情况摘要 -->
+    <section class="card" data-hs-scroll-animation>
+      <h2 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-400">一、患者情况摘要</h2>
+      <p>患者，<span class="highlight">45岁女</span>，常住<span class="highlight">浙江嘉兴</span>，初步诊断为‘<span class="highlight">重度三尖瓣关闭不全</span>’。本次核心诉求为‘<span class="highlight">做三尖瓣成形术</span>’。医保类型为<span class="highlight">浙江医保</span>。既往病史包括<span class="highlight">二尖瓣置换术后</span>和<span class="highlight">利尿扩管药物治疗</span>。</p>
+    </section>
+
+    <!-- 二、核心就医建议 -->
+    <section class="card" data-hs-scroll-animation>
+      <h2 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-400">二、核心就医建议</h2>
+      <div class="space-y-4">
+        <p class="font-medium">根据知识库信息，暂未检索到与患者诉求相关的医院或医生信息。</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>医院列表与评估</strong>：知识库中未提供任何医院信息。</li>
+          <li><strong>就诊须知</strong>：浙江省医保通常支持异地就医（如前往省会城市），但需提前办理备案。具体报销比例请咨询嘉兴医保局（0573-XXXXXXX）。</li>
+          <li class="warning"><i class="fas fa-exclamation-triangle mr-2"></i>患者既往有二尖瓣置换术后病史，<strong>可能影响本次三尖瓣成形术的可行性</strong>，务必在就诊时向医生详细告知此病史。</li>
+          <li><strong>挂号方式</strong>：暂无信息。</li>
+          <li><strong>推荐医生</strong>：知识库中未提供医生信息。您可尝试通过医院官方渠道，挂取<strong>心脏外科</strong>或<strong>心血管内科</strong>的专家门诊进行咨询。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 三、诊前准备清单 -->
+    <section class="card" data-hs-scroll-animation>
+      <h2 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-400">三、诊前准备清单</h2>
+      <p class="font-medium">基于知识库信息，未检索到任何相关诊前准备要求。因此，此模块省略。</p>
+    </section>
+
+    <!-- 四、行动指南与局限性说明 -->
+    <section class="card" data-hs-scroll-animation>
+      <h2 class="text-2xl font-semibold mb-4 text-blue-700 dark:text-blue-400">四、行动指南与局限性说明</h2>
+      <div class="space-y-4">
+        <ul class="list-decimal pl-6 space-y-2">
+          <li><strong>优先行动建议</strong>：鉴于您的核心诉求（三尖瓣成形术）和期望前往省会城市（如杭州、南京或上海），建议优先联系省会大型三级医院（如浙江大学医学院附属第一医院、上海中山医院）的心脏外科，咨询该手术的可行性和治疗方案。由于既往有二尖瓣置换术后病史，<strong>手术需个性化评估风险</strong>。</li>
+          <li><strong>二次确认清单</strong>：就诊前务必致电确认选择医院是否接收成人心脏手术患者、三尖瓣成形术的适应症，以及异地医保备案流程。</li>
+          <li><strong>局限性声明</strong>：本报告严格依据当前知识库信息生成，知识库信息缺失（医院和医生数据为空），可能存在覆盖不全或延迟更新情况，仅供参考。</li>
+          <li><strong>最终免责</strong>：最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。建议使用官方渠道获取实时信息，避免盲目奔波。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer 区块 -->
+  <footer class="text-center py-6 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 mt-10">
+    <p>本报告由AI系统生成，仅供参考。最终决策请以医生建议为准。</p>
+    <p>生成时间：<span id="current-date"></span></p>
+  </footer>
+
+  <script>
+    // 动态写入当前日期
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+    // 初始化Preline UI
+    document.addEventListener('DOMContentLoaded', () => {
+      HSHoverState.init();
+      HSScrollAnimation.init();
+    });
+  </script>
+</body>
+</html>
