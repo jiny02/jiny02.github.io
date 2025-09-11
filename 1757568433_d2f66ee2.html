@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高血压患者就医指南</title>
+  <!-- 引入UnoCSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+  <!-- 引入Preline UI CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <!-- 引入Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #f3f4f6;
+      --text-color: #1f2937;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: #f9fafb;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .dark body {
+      background-color: #111827;
+      color: #d1d5db;
+    }
+    
+    .card {
+      background-color: #ffffff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 1.5rem;
+    }
+    
+    .dark .card {
+      background-color: #1f2937;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: var(--border-radius);
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-primary:hover {
+      background-color: #1d4ed8;
+      transform: scale(1.05);
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .badge-high {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+    
+    .dark .badge-high {
+      background-color: #14532d;
+      color: #bbf7d0;
+    }
+    
+    .badge-partial {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+    
+    .dark .badge-partial {
+      background-color: #78350f;
+      color: #fde68a;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Header -->
+    <header class="mb-10 text-center fade-in">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">高血压患者就医指南</h1>
+      <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">为35岁南京男性高血压患者量身定制的北京就诊方案</p>
+      
+      <!-- Dark Mode Toggle -->
+      <div class="mt-6 flex justify-center">
+        <button id="theme-toggle" class="btn-primary flex items-center gap-2">
+          <i class="fas fa-moon"></i>
+          <span>切换深色模式</span>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Patient Summary -->
+    <section class="mb-10 fade-in">
+      <div class="card">
+        <h2 class="section-title flex items-center gap-2">
+          <i class="fas fa-user-circle text-blue-500"></i>
+          患者情况摘要
+        </h2>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+          <li><strong>性别年龄：</strong>男，35岁</li>
+          <li><strong>居住地：</strong>南京</li>
+          <li><strong>当前诊断：</strong>高血压</li>
+          <li><strong>就诊目的：</strong>明确诊断</li>
+          <li><strong>期望就诊地：</strong>北京</li>
+          <li><strong>医保类型：</strong>南京医保</li>
+          <li><strong>既往病史：</strong>无</li>
+          <li><strong>治疗史：</strong>无</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Core Recommendation -->
+    <section class="mb-10 fade-in">
+      <div class="card">
+        <h2 class="section-title flex items-center gap-2">
+          <i class="fas fa-stethoscope text-blue-500"></i>
+          核心就医建议
+        </h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">根据您的情况，推荐以下北京顶尖医院进行高血压明确诊断：</p>
+        
+        <!-- Hospital 1 -->
+        <div class="mb-6 p-4 border-l-4 border-blue-500 bg-white dark:bg-gray-800 rounded-r-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">中国医学科学院阜外医院</h3>
+            <span class="badge badge-high">高度匹配</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 mb-3">国内顶尖心血管病专科医院，设有高血压中心，专家经验丰富。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">马文君 主任医师</span>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">王静 主任医师</span>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">顼志敏 主任医师</span>
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-map-marker-alt mr-1"></i>北京市西城区北礼士路167号
+          </div>
+        </div>
+        
+        <!-- Hospital 2 -->
+        <div class="mb-6 p-4 border-l-4 border-green-500 bg-white dark:bg-gray-800 rounded-r-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">首都医科大学附属北京安贞医院</h3>
+            <span class="badge badge-high">高度匹配</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 mb-3">以心血管疾病诊疗见长，高血压中心在国内享有盛誉。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">刘傲亚 主任医师</span>
+            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">李红 主任医师</span>
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-map-marker-alt mr-1"></i>北京市朝阳区安贞路2号
+          </div>
+        </div>
+        
+        <!-- Hospital 3 -->
+        <div class="p-4 border-l-4 border-purple-500 bg-white dark:bg-gray-800 rounded-r-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">中国医学科学院北京协和医院</h3>
+            <span class="badge badge-high">高度匹配</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 mb-3">国内综合实力最强医院之一，心血管内科处于领先地位。</p>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">吴炜 主任医师</span>
+            <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm">田庄 主任医师</span>
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-map-marker-alt mr-1"></i>东城区东单帅府园1号
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Additional Hospitals -->
+    <section class="mb-10 fade-in">
+      <div class="card">
+        <h2 class="section-title flex items-center gap-2">
+          <i class="fas fa-hospital text-blue-500"></i>
+          其他推荐医院
+        </h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">以下医院也可作为备选方案：</p>
+        
+        <!-- Hospital 4 -->
+        <div class="mb-4 p-4 border-l-4 border-yellow-500 bg-white dark:bg-gray-800 rounded-r-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">中国人民解放军总医院第一医学中心</h3>
+            <span class="badge badge-partial">部分匹配</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">刘宏伟 主任医师</span>
+            <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm">胡亦新 主任医师</span>
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-map-marker-alt mr-1"></i>海淀区复兴路28号
+          </div>
+        </div>
+        
+        <!-- Hospital 5 -->
+        <div class="mb-4 p-4 border-l-4 border-red-500 bg-white dark:bg-gray-800 rounded-r-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">北京大学第三医院</h3>
+            <span class="badge badge-partial">部分匹配</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm">朱丹 主任医师</span>
+            <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-sm">王新宇 主任医师</span>
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-map-marker-alt mr-1"></i>海淀区花园北路49号
+          </div>
+        </div>
+        
+        <!-- Hospital 6 -->
+        <div class="p-4 border-l-4 border-indigo-500 bg-white dark:bg-gray-800 rounded-r-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">天津市医科大学总医院</h3>
+            <span class="badge badge-partial">部分匹配</span>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm">边波 主任医师</span>
+            <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full text-sm">高玉霞 主任医师</span>
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">
+            <i class="fas fa-map-marker-alt mr-1"></i>天津市和平区鞍山道154号
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Pre-Visit Checklist -->
+    <section class="mb-10 fade-in">
+      <div class="card">
+        <h2 class="section-title flex items-center gap-2">
+          <i class="fas fa-clipboard-list text-blue-500"></i>
+          诊前准备清单
+        </h2>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300 list-disc pl-5">
+          <li><strong>病历资料：</strong>身份证、医保卡、既往检查报告单、病历本</li>
+          <li><strong>医保准备：</strong>提前办理异地就医备案，咨询报销比例</li>
+          <li><strong>其他准备：</strong>记录问题清单、带好个人物品、穿着宽松衣物</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- Action Guide -->
+    <section class="fade-in">
+      <div class="card bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-800">
+        <h2 class="section-title flex items-center gap-2 text-blue-800 dark:text-blue-200">
+          <i class="fas fa-lightbulb text-blue-500"></i>
+          行动指南
+        </h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-3">基于您的核心诉求，建议优先考虑<strong>中国医学科学院阜外医院</strong>的<strong>马文君</strong>或<strong>北京安贞医院</strong>的<strong>刘傲亚</strong>医生。</p>
+        <p class="text-gray-700 dark:text-gray-300">就诊前务必致电医院确认相关信息。</p>
+        <div class="mt-4 pt-4 border-t border-blue-200 dark:border-blue-800">
+          <p class="text-sm text-gray-600 dark:text-gray-400 italic">本报告严格依据当前信息生成，仅供参考。最终就诊决策请以医院官方信息及医生诊断为准。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Check for saved theme preference or respect OS setting
+    const savedTheme = localStorage.getItem('theme');
+    const osDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && osDarkMode)) {
+      document.documentElement.classList.add('dark');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>切换浅色模式</span>';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> <span>切换浅色模式</span>';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i> <span>切换深色模式</span>';
+      }
+    });
+    
+    // Add fade-in animation to elements when they come into view
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(element => {
+      element.style.opacity = 0;
+      element.style.transform = 'translateY(10px)';
+      element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
