@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <!-- Tailwind CSS (UnoCSS via CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+  <script>
+    window.__unocss = {
+      presets: [],
+      theme: {
+        colors: {
+          primary: '#2563eb',
+          secondary: '#059669',
+          danger: '#dc2626',
+          background: {
+            light: '#f8fafc',
+            dark: '#0f172a'
+          },
+          text: {
+            light: '#1e293b',
+            dark: '#f1f5f9'
+          }
+        }
+      }
+    };
+  </script>
+  <!-- Preline UI -->
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --color-primary: #2563eb;
+      --color-secondary: #059669;
+      --color-danger: #dc2626;
+      --color-background-light: #f8fafc;
+      --color-background-dark: #0f172a;
+      --color-text-light: #1e293b;
+      --color-text-dark: #f1f5f9;
+    }
+    body {
+      background-color: var(--color-background-light);
+      color: var(--color-text-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--color-background-dark);
+        color: var(--color-text-dark);
+      }
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    @media (prefers-color-scheme: dark) {
+      .card {
+        background-color: #1e293b;
+        border-color: #334155;
+      }
+    }
+    .card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      border-color: var(--color-primary);
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--color-primary);
+    }
+    .highlight {
+      background-color: #dbeafe;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+    }
+    @media (prefers-color-scheme: dark) {
+      .highlight {
+        background-color: #1e3a8a;
+        color: #dbeafe;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+  <header class="bg-primary text-white py-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-3xl font-bold">《就医规划报告》</h1>
+      <p class="mt-2 opacity-90">为您的就医之路提供专业、精准的规划</p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+
+    <!-- 患者情况摘要区块 -->
+    <section class="mb-12">
+      <div class="card">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center">
+          <i class="fas fa-user-injured mr-2"></i> 一、患者情况摘要
+        </h2>
+        <p class="mb-3">患者，52岁男性，常住河南新乡，初步诊断为“<span class="highlight">2 型糖尿病足溃疡（Wagner 3 级）</span>”。本次核心诉求为“<span class="highlight">保肢综合治疗</span>”。既往曾行负压封闭引流，合并高脂血症。医保类型为<span class="highlight">河南医保</span>。</p>
+      </div>
+    </section>
+
+    <!-- 核心就医建议区块 -->
+    <section class="mb-12">
+      <div class="card">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center">
+          <i class="fas fa-hospital mr-2"></i> 二、核心就医建议
+        </h2>
+
+        <!-- 推荐医院 1 -->
+        <div class="mb-8 p-4 border-l-4 border-primary bg-blue-50 dark:bg-blue-900/20 rounded-r">
+          <h3 class="text-xl font-semibold text-primary">【推荐医院 1】郑州大学第一附属医院</h3>
+          <p class="mt-2"><strong>匹配度评估：</strong><span class="text-green-600 font-bold">高度匹配</span></p>
+          <p class="mt-2"><strong>推荐理由：</strong>省内顶级三甲综合医院，内分泌与代谢病科为国家临床重点专科，拥有多学科协作（MDT）体系，可整合血管外科、烧伤整形/创面修复、骨科等团队，为Wagner 3级糖尿病足提供保肢综合治疗。</p>
+          <p class="mt-2 text-blue-700 dark:text-blue-300"><i class="fas fa-info-circle mr-1"></i> <strong>特别注意：</strong>无年龄限制，成人患者可正常就诊。</p>
+          <div class="mt-4">
+            <h4 class="font-semibold">就诊须知：</h4>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li>医保：支持河南省异地医保直报，需提前备案。</li>
+              <li>院区：河医院区（郑州市建设东路1号）与郑东院区（郑东新区龙湖中环路）均设内分泌科，建议优先选择河医院区（老院区，科室最全）。</li>
+            </ul>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-semibold">挂号方式：</h4>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li>微信公众号“郑州大学第一附属医院”/“河南预约挂号平台”</li>
+              <li>电话：0371-118114、96299、400-11-91160</li>
+              <li>网络平台：河南省预约挂号服务平台</li>
+            </ul>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-semibold">推荐医生：</h4>
+            <div class="mt-2 ml-4">
+              <p class="font-medium">- 张好好（主任医师，医学博士）</p>
+              <p class="ml-4 mt-1">• <strong>推荐理由：</strong>曾赴上海瑞金医院远洋糖尿病足中心专项进修，擅长糖尿病足及慢性创面综合诊治、保肢策略制定。</p>
+              <p class="ml-4 mt-1">• <strong>出诊详情：</strong></p>
+              <ul class="list-disc pl-8 mt-1">
+                <li>河医院区 专家门诊 内分泌与代谢病科 周一上午、周三上午、周一下午、周三下午 20.5元</li>
+                <li>河医院区 专家门诊 内分泌与代谢病科 周五下午 20.5元</li>
+              </ul>
+            </div>
+            <div class="mt-3 ml-4">
+              <p class="font-medium">- 吴文迅（主任医师，教授）</p>
+              <p class="ml-4 mt-1">• <strong>推荐理由：</strong>留法背景，对糖尿病足诊疗掌握大量国外先进经验。</p>
+              <p class="ml-4 mt-1">• <strong>出诊详情：</strong>暂未提供具体时段，建议通过官方渠道查询后预约。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 推荐医院 2 -->
+        <div class="mb-8 p-4 border-l-4 border-primary bg-blue-50 dark:bg-blue-900/20 rounded-r">
+          <h3 class="text-xl font-semibold text-primary">【推荐医院 2】华中科技大学同济医学院附属梨园医院</h3>
+          <p class="mt-2"><strong>匹配度评估：</strong><span class="text-green-600 font-bold">高度匹配</span></p>
+          <p class="mt-2"><strong>推荐理由：</strong>湖北省唯一挂牌“老年病医院”，湖北省慢性创面及糖尿病足医学临床研究中心依托单位，糖尿病足诊治与慢性创面修复处于国内领先水平，具备保肢综合治疗体系。</p>
+          <p class="mt-2 text-blue-700 dark:text-blue-300"><i class="fas fa-info-circle mr-1"></i> <strong>特别注意：</strong>位于武汉，距新乡高铁约2.5小时，需考虑异地交通及住宿成本。</p>
+          <div class="mt-4">
+            <h4 class="font-semibold">就诊须知：</h4>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li>医保：湖北省及武汉市医保定点，河南省医保需提前办理异地就医备案。</li>
+              <li>地址：武汉市东湖风景区沿湖大道39号</li>
+              <li>电话：027-86793043（院办）</li>
+            </ul>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-semibold">挂号方式：</h4>
+            <p class="mt-2">暂未提供线上渠道，建议拨打医院总机或官网查询最新预约方式。</p>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-semibold">推荐医生：</h4>
+            <p class="mt-2 ml-4">根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您可尝试挂取创面修复科/内分泌科专家门诊。</p>
+          </div>
+        </div>
+
+        <!-- 推荐医院 3 -->
+        <div class="p-4 border-l-4 border-primary bg-blue-50 dark:bg-blue-900/20 rounded-r">
+          <h3 class="text-xl font-semibold text-primary">【推荐医院 3】中国人民解放军东部战区空军医院</h3>
+          <p class="mt-2"><strong>匹配度评估：</strong><span class="text-yellow-600 font-bold">部分匹配</span></p>
+          <p class="mt-2"><strong>推荐理由：</strong>全军糖尿病足诊疗中心，创伤骨科与慢病管理为品牌学科，具备保肢综合治疗能力。</p>
+          <p class="mt-2 text-blue-700 dark:text-blue-300"><i class="fas fa-info-circle mr-1"></i> <strong>特别注意：</strong>位于南京，距新乡高铁约3.5小时，异地就诊成本较高；军队医院部分号源优先军人，需提前确认。</p>
+          <div class="mt-4">
+            <h4 class="font-semibold">就诊须知：</h4>
+            <ul class="list-disc pl-5 mt-2 space-y-1">
+              <li>医保：南京市医保定点，河南省医保需提前备案。</li>
+              <li>地址：南京市秦淮区马路街1号</li>
+              <li>电话：025-80865000（总机）、025-80865066（预约）</li>
+            </ul>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-semibold">挂号方式：</h4>
+            <p class="mt-2">暂未提供线上渠道，建议电话或医院官网查询。</p>
+          </div>
+          <div class="mt-4">
+            <h4 class="font-semibold">推荐医生：</h4>
+            <p class="mt-2 ml-4">根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您可尝试挂取内分泌科或糖尿病足诊疗中心专家门诊。</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 诊前准备清单区块 -->
+    <section class="mb-12">
+      <div class="card">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center">
+          <i class="fas fa-clipboard-list mr-2"></i> 三、诊前准备清单
+        </h2>
+
+        <div class="mt-4">
+          <h3 class="text-lg font-semibold flex items-center">
+            <i class="fas fa-file-medical mr-2 text-secondary"></i> 病历资料准备
+          </h3>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>身份证、河南医保卡原件</li>
+            <li>既往所有检查报告单（血糖、糖化血红蛋白、下肢血管CTA/ABI、创面照片、细菌培养、肝肾功能、血脂等）</li>
+            <li>既往病历本、负压封闭引流记录、出院小结</li>
+            <li class="text-blue-700 dark:text-blue-300"><i class="fas fa-lightbulb mr-1"></i> <strong>特别建议：</strong>按时间顺序整理并复印一份备用</li>
+          </ul>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold flex items-center">
+            <i class="fas fa-money-bill-wave mr-2 text-secondary"></i> 医保与费用准备
+          </h3>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>提前通过“国家医保服务平台”APP或小程序办理河南省→就诊地（郑州/武汉/南京）异地就医备案</li>
+            <li>咨询新乡医保局，确认报销比例、起付线及所需材料</li>
+            <li>预估费用：挂号费20–50元；住院押金约1–3万元；创面修复耗材、血管介入或手术费用另计；异地交通食宿每日约300–500元</li>
+            <li class="text-blue-700 dark:text-blue-300"><i class="fas fa-lightbulb mr-1"></i> <strong>特别建议：</strong>若选择国际部或特需门诊，费用可能全自费，务必提前确认</li>
+          </ul>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold flex items-center">
+            <i class="fas fa-list mr-2 text-secondary"></i> 其他通用准备
+          </h3>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>记录并打印“向医生咨询的问题清单”（示例：创面分级进展、保肢成功率、是否需要血管重建、住院周期、术后康复方案等）</li>
+            <li>携带充电宝、水杯、宽松拖鞋、便于穿脱的衣物</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 行动指南与局限性说明区块 -->
+    <section class="mb-12">
+      <div class="card">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center">
+          <i class="fas fa-tasks mr-2"></i> 四、行动指南与局限性说明
+        </h2>
+
+        <div class="mt-4">
+          <h3 class="text-lg font-semibold flex items-center text-secondary">
+            <i class="fas fa-star mr-2"></i> 优先行动建议
+          </h3>
+          <ol class="list-decimal pl-5 mt-2 space-y-2">
+            <li><strong>首选郑州大学第一附属医院河医院区张好好主任医师门诊</strong>，就近、医保便利，且其糖尿病足专病经验与患者Wagner 3级创面高度匹配。</li>
+            <li>若需第二意见，可联系武汉梨园医院创面修复科，电话027-86793043，确认床位及MDT会诊流程。</li>
+          </ol>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold flex items-center text-secondary">
+            <i class="fas fa-clipboard-check mr-2"></i> 二次确认清单
+          </h3>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>异地就医备案：拨打新乡医保服务热线 0373-12393，确认备案流程与报销比例。</li>
+            <li>床位预约：郑大一附院内分泌科病房 0371-66913114；梨园医院创面修复中心 027-86793043。</li>
+            <li>军队医院号源：东部战区空军医院预约中心 025-80865066，询问非军人号源开放情况。</li>
+          </ul>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-semibold flex items-center text-danger">
+            <i class="fas fa-exclamation-triangle mr-2"></i> 局限性声明
+          </h3>
+          <p class="mt-2">本报告基于当前知识库信息生成，可能存在更新延迟或覆盖不全面（如部分医院具体放号时间、医生最新停诊信息）的情况，仅供参考。</p>
+        </div>
+
+        <div class="mt-4">
+          <h3 class="text-lg font-semibold flex items-center text-danger">
+            <i class="fas fa-gavel mr-2"></i> 最终免责
+          </h3>
+          <p class="mt-2">最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-100 dark:bg-gray-800 py-6 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-700">
+    <div class="max-w-7xl mx-auto text-center text-gray-600 dark:text-gray-400">
+      <p>© <span id="currentYear"></span> 医疗健康信息服务平台. 保留所有权利。</p>
+      <p class="mt-1 text-sm">本报告旨在提供信息参考，不构成任何医疗建议。</p>
+    </div>
+  </footer>
+
+  <script>
+    // 动态设置年份
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 确保 Preline UI 正确初始化
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof HSPreline !== 'undefined') {
+        HSPreline.init();
+      }
+    });
+  </script>
+</body>
+</html>
