@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就医规划报告 - 性早熟治疗方案</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFFFFF;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 顶部标题栏 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #3B7EA1;
+            color: white;
+            padding: 16px 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* 左侧导航目录 */
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 250px;
+            height: calc(100vh - 60px);
+            background-color: #F5F7FA;
+            padding: 20px;
+            border-right: 1px solid #E0E0E0;
+            overflow-y: auto;
+            z-index: 999;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #3B7EA1;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #55A630;
+            text-decoration: underline;
+        }
+
+        /* 主内容区 */
+        .main-content {
+            margin-left: 250px;
+            margin-top: 60px;
+            padding: 30px;
+            max-width: 800px;
+            background-color: #FFFFFF;
+        }
+
+        /* 标题样式 */
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 24px 0;
+            color: #3B7EA1;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 18px 0;
+            padding-left: 12px;
+            border-left: 4px solid #3B7EA1;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 16px 0;
+        }
+
+        h4 {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        /* 文本样式 */
+        p {
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        strong {
+            color: #3B7EA1;
+            font-weight: bold;
+        }
+
+        /* 列表样式 */
+        ul, ol {
+            font-size: 14px;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* 分隔线 */
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #E0E0E0;
+            margin: 16px 0;
+        }
+
+        /* 医院推荐区块 */
+        .hospital-block {
+            background-color: #F5F7FA;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+
+        .hospital-block:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 注意事项区块 */
+        .note-block {
+            border-left: 4px solid #55A630;
+            padding: 10px 16px;
+            background-color: #F5F7FA;
+            margin-bottom: 16px;
+        }
+
+        /* 医生信息 */
+        .doctor-info {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #FFFFFF;
+            border: 1px dashed #E0E0E0;
+            border-radius: 4px;
+        }
+
+        /* 页脚 */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .header {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+            }
+            .sidebar {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #E0E0E0;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-top: 0;
+                padding: 20px;
+            }
+            .footer {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        就医规划报告 - 性早熟治疗方案
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#summary">一、患者情况摘要</a></li>
+                <li><a href="#recommendations">二、核心就医建议</a>
+                    <ul>
+                        <li><a href="#hospital1">推荐医院 1：北京儿童医院</a></li>
+                        <li><a href="#hospital2">推荐医院 2：首都儿童医学中心</a></li>
+                        <li><a href="#hospital3">推荐医院 3：北京协和医院</a></li>
+                        <li><a href="#hospital4">谨慎评估医院：北京积水潭医院</a></li>
+                    </ul>
+                </li>
+                <li><a href="#preparation">三、诊前准备清单</a></li>
+                <li><a href="#guidelines">四、行动指南与局限性说明</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <h1 id="summary">一、患者情况摘要</h1>
+            <p>患者，6岁女童，常住北京，初步诊断为“性早熟”（激素水平偏高）。本次核心诉求为制定性早熟治疗方案。无既往治疗史及重大疾病史。医保类型为北京医保。</p>
+            <hr>
+
+            <h1 id="recommendations">二、核心就医建议</h1>
+            <p>依据患者年龄、疾病特征及本地就诊需求，以下医院按匹配度排序（专科实力＞综合实力＞挂号难度）：</p>
+
+            <div class="hospital-block" id="hospital1">
+                <h2>【推荐医院 1】：首都医科大学附属北京儿童医院</h2>
+                <p><strong>匹配度评估</strong>：<strong>高度匹配</strong>。全国顶尖儿童专科医院，内分泌遗传代谢中心对儿童性早熟诊疗经验丰富，专业性强。</p>
+                <p><strong>推荐理由</strong>：</p>
+                <ul>
+                    <li>国家儿童医学中心，内分泌科为全国重点专科，专攻儿童生长发育疾病（含性早熟）。</li>
+                    <li>医生资源强（如梁学军、闫洁等均擅长性早熟诊治）。</li>
+                </ul>
+                <div class="note-block">
+                    <p><strong>【特别注意】</strong>：<strong>挂号难度高（儿科号源紧张）</strong>，建议优先通过特需/国际门诊挂号。</p>
+                </div>
+                <p><strong>就诊须知</strong>：</p>
+                <ul>
+                    <li><strong>医保政策</strong>：支持北京本地医保（特需门诊部分项目可能自费）。</li>
+                    <li><strong>院区地址</strong>：北京市西城区南礼士路56号（主院区）。</li>
+                </ul>
+                <p><strong>挂号方式</strong>：</p>
+                <ul>
+                    <li>官方APP“北京儿童医院挂号”</li>
+                    <li>微信公众号“北京114预约挂号”</li>
+                    <li><strong>放号时间</strong>：每日8:00更新号源（特需门诊需提前3-7天预约）。</li>
+                </ul>
+                <p><strong>推荐医生</strong>（按权威性排序）：</p>
+                <div class="doctor-info">
+                    <p><strong>梁学军</strong>（主任医师）· <strong>推荐理由</strong>：30余年儿童内分泌疾病经验，擅长性早熟、矮小症诊治 · <strong>出诊详情</strong>：本部院区 内分泌特需门诊（500元） 周三下午、周五上午</p>
+                </div>
+                <div class="doctor-info">
+                    <p><strong>闫洁</strong>（主任医师）· <strong>推荐理由</strong>：小儿内分泌领域知名专家，擅长性早熟及肥胖症营养干预 · <strong>出诊详情</strong>：本部院区 专家门诊（100元） 周一上午/下午；特需门诊 周五下午</p>
+                </div>
+                <div class="doctor-info">
+                    <p><strong>吴玉筠</strong>（主任医师）· <strong>推荐理由</strong>：35年儿科内分泌经验，专注性早熟/糖尿病 · <strong>出诊详情</strong>：本部院区 专家门诊 周四上午/下午；特需门诊 周五下午</p>
+                </div>
+            </div>
+
+            <div class="hospital-block" id="hospital2">
+                <h2>【推荐医院 2】：首都医科大学附属首都儿童医学中心</h2>
+                <p><strong>匹配度评估</strong>：<strong>高度匹配</strong>。北京权威儿童医院，内分泌科直接开展“性早熟联合治疗”课题研究。</p>
+                <p><strong>推荐理由</strong>：</p>
+                <ul>
+                    <li>三级甲等儿童专科医院，内分泌科设专项门诊，对激素异常诊疗流程成熟。</li>
+                </ul>
+                <div class="note-block">
+                    <p><strong>【特别注意】</strong>：无冲突风险，完全匹配儿童患者需求。</p>
+                </div>
+                <p><strong>就诊须知</strong>：</p>
+                <ul>
+                    <li><strong>医保政策</strong>：支持北京医保，异地备案非必需。</li>
+                    <li><strong>院区地址</strong>：北京市朝阳区雅宝路2号。</li>
+                </ul>
+                <p><strong>挂号方式</strong>：</p>
+                <ul>
+                    <li>微信公众号“首都儿科研究所附属儿童医院”</li>
+                    <li>电话010-114</li>
+                    <li><strong>放号时间</strong>：每日7:00开放预约。</li>
+                </ul>
+                <p><strong>推荐医生</strong>：</p>
+                <div class="doctor-info">
+                    <p><strong>郭育华</strong>（主任医师）· <strong>推荐理由</strong>：20余年小儿内分泌经验，擅长性早熟、甲状腺疾病 · <strong>出诊详情</strong>：特需门诊（300元） 内分泌科 周四上午</p>
+                </div>
+            </div>
+
+            <div class="hospital-block" id="hospital3">
+                <h2>【推荐医院 3】：中国医学科学院北京协和医院</h2>
+                <p><strong>匹配度评估</strong>：<strong>部分匹配</strong>。综合实力顶尖，但儿科非专科（成人占比高）。</p>
+                <p><strong>推荐理由</strong>：</p>
+                <ul>
+                    <li>儿科内分泌组在遗传代谢病方向突出，对复杂性早熟有跨学科支持。</li>
+                </ul>
+                <div class="note-block">
+                    <p><strong>【特别注意】</strong>：<strong>非儿童专科医院</strong>，优先建议挂儿科而非成人内分泌科。</p>
+                </div>
+                <p><strong>就诊须知</strong>：</p>
+                <ul>
+                    <li><strong>医保政策</strong>：支持北京医保，国际部费用高昂且医保报销受限（挂号费300-600元）。</li>
+                    <li><strong>院区地址</strong>：东城区东单帅府园1号（东院儿科）。</li>
+                </ul>
+                <p><strong>挂号方式</strong>：</p>
+                <ul>
+                    <li>APP“北京协和医院挂号”</li>
+                    <li>电话010-114</li>
+                    <li><strong>放号时间</strong>：提前7天18:00放号（儿科号源紧张）。</li>
+                </ul>
+                <p><strong>推荐医生</strong>：</p>
+                <div class="doctor-info">
+                    <p><strong>潘慧</strong>（主任医师）· <strong>推荐理由</strong>：矮小症/性早熟诊疗专家，协和垂体疾病中心核心成员 · <strong>出诊详情</strong>：东院 普通门诊 内分泌科 周三下午</p>
+                </div>
+                <div class="doctor-info">
+                    <p><strong>伍学焱</strong>（主任医师）· <strong>推荐理由</strong>：性腺及青春发育异常权威，擅长儿童性早熟鉴别 · <strong>出诊详情</strong>：东院 普通门诊 周二/四上午；特需门诊 周三上午</p>
+                </div>
+            </div>
+
+            <div class="hospital-block" id="hospital4">
+                <h2>【谨慎评估医院】：北京积水潭医院</h2>
+                <p><strong>匹配度评估</strong>：<strong>谨慎评估</strong>。骨科强势，儿科内分泌非核心方向。</p>
+                <p><strong>推荐理由</strong>：</p>
+                <ul>
+                    <li>儿科团队含内分泌方向医生（如万乃君），可作备选。</li>
+                </ul>
+                <div class="note-block">
+                    <p><strong>【特别注意】</strong>：<strong>非儿童专科医院</strong>，建议确认儿科接诊能力再前往。</p>
+                </div>
+                <p><strong>就诊须知</strong>：</p>
+                <ul>
+                    <li><strong>医保政策</strong>：支持北京医保。</li>
+                    <li><strong>院区地址</strong>：新龙泽院区（昌平区）/回龙观院区。</li>
+                </ul>
+                <p><strong>挂号方式</strong>：</p>
+                <ul>
+                    <li>微信公众号“京医通”</li>
+                    <li><strong>放号时间</strong>：每日6:30开放。</li>
+                </ul>
+                <p><strong>推荐医生</strong>：</p>
+                <div class="doctor-info">
+                    <p><strong>万乃君</strong>（主任医师）· <strong>推荐理由</strong>：小儿内分泌疾病经验丰富，主攻矮小/性早熟 · <strong>出诊详情</strong>：新龙泽院区 专家门诊 儿科 周二上午；特需门诊 周二下午</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <h1 id="preparation">三、诊前准备清单</h1>
+            <p>根据北京三甲医院儿科通用要求整合：</p>
+            <ol>
+                <li><strong>病历资料准备</strong>：
+                    <ul>
+                        <li>身份证（监护人及患儿）、医保卡原件。</li>
+                        <li>既往检查报告（<strong>骨龄片、激素水平检测、垂体MRI（如有）</strong>）。</li>
+                        <li><strong>按时间顺序整理</strong>所有病历（含初诊记录）。</li>
+                    </ul>
+                </li>
+                <li><strong>医保与费用准备</strong>：
+                    <ul>
+                        <li>确认医保卡绑定北京儿童医保账户。</li>
+                        <li>预估费用：普通门诊挂号费50-100元；特需门诊300-600元（部分自费）。</li>
+                        <li>备足资金（检查费约500-2000元）。</li>
+                    </ul>
+                </li>
+                <li><strong>其他通用准备</strong>：
+                    <ul>
+                        <li>提前列出需咨询的问题（如：是否需要激素干预？治疗周期？）。</li>
+                        <li>着宽松衣物便于检查。</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <hr>
+
+            <h1 id="guidelines">四、行动指南与局限性说明</h1>
+            <ol>
+                <li><strong>优先行动建议</strong>：
+                    <ul>
+                        <li><strong>首选北京儿童医院内分泌遗传代谢中心</strong>：挂梁学军（周三/五特需）或闫洁（周一专家号），针对性早熟制定治疗方案。</li>
+                        <li><strong>备选首都儿童医学中心</strong>：挂郭育华（周四特需），获取第二诊疗意见。</li>
+                    </ul>
+                </li>
+                <li><strong>二次确认清单</strong>：
+                    <ul>
+                        <li>特需门诊费用及医保报销范围（如北京儿童医院特需部分项目需自费）。</li>
+                        <li>预约后致电医院确认：
+                            <ul>
+                                <li>北京儿童医院：010-59616161（总机）</li>
+                                <li>首都儿童医学中心：010-85695555（公众服务热线）</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>局限性声明</strong>：
+                    <ul>
+                        <li>本报告依据当前知识库生成，部分医院（如协和）儿科专家信息较少，实际号源以官方平台为准。</li>
+                        <li>未覆盖私立医疗机构（如新世纪儿童医院），需自行评估费用。</li>
+                    </ul>
+                </li>
+                <li><strong>最终免责</strong>：
+                    <div class="note-block">
+                        <p>治疗方案需以临床医生面诊为准，本报告仅作就医路径参考。</p>
+                        <p><strong>紧急情况请立即前往急诊！</strong></p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="footer">
+        医疗建议仅供参考，具体请遵医嘱
+    </div>
+</body>
+</html>
