@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>就医规划报告</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+  <!-- Header -->
+  <header class="bg-white dark:bg-gray-800 shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+    <h1 class="text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400">就医规划报告</h1>
+    <div>
+      <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+        <i class="fas fa-moon text-gray-700 dark:hidden"></i>
+        <i class="fas fa-sun text-yellow-400 hidden dark:inline"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-8 space-y-10">
+
+    <!-- Section 1: Patient Summary -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 fade-in">
+      <h2 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400 flex items-center gap-2">
+        <i class="fas fa-user-circle"></i>
+        患者情况摘要
+      </h2>
+      <ul class="space-y-2 list-disc pl-5">
+        <li>年龄：25岁女性</li>
+        <li>常住地：湖南株洲</li>
+        <li>诊断：复杂性肛瘘（经括约肌型）</li>
+        <li>既往病史：溃疡性结肠炎</li>
+        <li>治疗经历：反复切开引流史</li>
+        <li>核心诉求：行瘘管切开挂线术</li>
+        <li>期望就诊地：上海</li>
+        <li>医保类型：湖南医保</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Core Medical Recommendation -->
+    <section class="space-y-8">
+      <h2 class="text-2xl font-bold text-center mb-6 text-primary-700 dark:text-primary-300">核心就医建议</h2>
+      
+      <!-- Hospital 1 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 fade-in hover:shadow-lg transition-shadow">
+        <div class="flex justify-between items-start">
+          <h3 class="text-lg font-bold text-green-600 dark:text-green-400">推荐医院 1：中日友好医院</h3>
+          <span class="px-3 py-1 text-xs rounded-full bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">高度匹配</span>
+        </div>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">国家临床重点专科，中医肛肠领域领先</p>
+        <div class="mt-4 space-y-3">
+          <p><strong>推荐理由：</strong></p>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>肛肠科为国家临床重点专科建设项目</li>
+            <li>拥有多位全国知名肛肠专家</li>
+            <li>在复杂性肛瘘微创治疗领域技术领先</li>
+          </ul>
+        </div>
+        <details class="mt-4 group">
+          <summary class="cursor-pointer font-medium text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+            展开详细信息
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-primary-500 space-y-3 text-sm">
+            <p><strong>特别注意：</strong>本院为综合医院，但其肛肠科在中医外科领域具有显著优势，与您的手术治疗诉求完全匹配，可放心就诊。</p>
+            <p><strong>就诊须知：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>支持异地就医备案后直接结算</li>
+              <li>地址差异：本部（北京市朝阳区樱花园东街2号）、西区（北京市朝阳区安贞路2号）</li>
+            </ul>
+            <p><strong>挂号方式：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>微信公众号“中日友好医院”</li>
+              <li>北京市统一挂号平台</li>
+              <li>APP“中日医院”</li>
+              <li>电话010-114</li>
+            </ul>
+            <p><strong>推荐医生：</strong></p>
+            <ul class="space-y-2">
+              <li class="border-b pb-2">
+                <strong>李辉（主任医师）</strong> · 推荐理由：全国中医肛肠学科名专家，擅长微创手术治疗复杂性肛瘘，保留括约肌术式，损伤小恢复快。
+                <br><span class="text-gray-600 dark:text-gray-400">出诊详情：[本部][专家门诊][周一上午][10:00-12:00][60元]</span>
+              </li>
+              <li class="border-b pb-2">
+                <strong>王晏美（主任医师）</strong> · 推荐理由：首创“双向等压引流法”治疗高位和复杂性肛瘘，疗效显著。
+                <br><span class="text-gray-600 dark:text-gray-400">出诊详情：[西区][专家门诊][周一上午][8:00-12:00][100元]</span>
+              </li>
+              <li>
+                <strong>范学顺（主任医师）</strong> · 推荐理由：擅用非挂线方法治疗高位复杂性肛瘘，术后疼痛小恢复快。
+                <br><span class="text-gray-600 dark:text-gray-400">出诊详情：[本部][专家门诊][周二上午][8:00-12:00][100元]</span>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- Hospital 2 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 fade-in hover:shadow-lg transition-shadow">
+        <div class="flex justify-between items-start">
+          <h3 class="text-lg font-bold text-yellow-600 dark:text-yellow-400">推荐医院 2：上海交通大学医学院附属仁济医院（东院）</h3>
+          <span class="px-3 py-1 text-xs rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">部分匹配</span>
+        </div>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">普外科实力雄厚，设有肛肠疾病诊疗单元</p>
+        <div class="mt-4 space-y-3">
+          <p><strong>推荐理由：</strong></p>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>百年三甲综合医院，设备先进</li>
+            <li>高钢龙、徐庆医生经验丰富</li>
+            <li>位于浦东陆家嘴，交通便利</li>
+          </ul>
+        </div>
+        <details class="mt-4 group">
+          <summary class="cursor-pointer font-medium text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+            展开详细信息
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-primary-500 space-y-3 text-sm">
+            <p><strong>特别注意：</strong>本院为综合性医院，虽有肛肠相关诊疗，但未明确提及“复杂性肛瘘”或“挂线术”的专项优势，匹配度低于中日医院。</p>
+            <p><strong>就诊须知：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>支持异地就医备案后直接结算</li>
+              <li>地址差异：东院（上海市东方路1630号）、西院（上海市山东中路145号）、南院（闵行区浦江镇联航路2627号）</li>
+            </ul>
+            <p><strong>挂号方式：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>微信公众号“上海仁济医院就医服务号”</li>
+              <li>上海申康医联预约平台</li>
+              <li>APP“上海仁济医院”</li>
+              <li>APP“上海市互联网总医院”</li>
+              <li>电话021-95169</li>
+            </ul>
+            <p><strong>推荐医生：</strong></p>
+            <ul class="space-y-2">
+              <li class="border-b pb-2">
+                <strong>高钢龙（主任医师）</strong> · 推荐理由：擅长各类痔疮、肛瘘诊治。
+                <br><span class="text-gray-600 dark:text-gray-400">出诊详情：[东院][专家门诊][周四上午][8:00-12:00][40元]</span>
+              </li>
+              <li>
+                <strong>徐庆（主任医师）</strong> · 推荐理由：擅长低位直肠癌保肛手术及良性肿瘤微创手术。
+                <br><span class="text-gray-600 dark:text-gray-400">出诊详情：[东院][专家门诊][周五上午][8:00-12:00][50元]</span>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- Hospital 3 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 fade-in hover:shadow-lg transition-shadow">
+        <div class="flex justify-between items-start">
+          <h3 class="text-lg font-bold text-orange-600 dark:text-orange-400">推荐医院 3：上海中医药大学附属曙光医院东院</h3>
+          <span class="px-3 py-1 text-xs rounded-full bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200">部分匹配</span>
+        </div>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">三级甲等中医医院，国家重点专科</p>
+        <div class="mt-4 space-y-3">
+          <p><strong>推荐理由：</strong></p>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>中医特色显著，肛肠科为国家重点专科</li>
+            <li>拥有“柏氏肛肠科”知名品牌</li>
+            <li>医院历史悠久，综合实力强</li>
+          </ul>
+        </div>
+        <details class="mt-4 group">
+          <summary class="cursor-pointer font-medium text-sm text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+            <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+            展开详细信息
+          </summary>
+          <div class="mt-3 pl-4 border-l-2 border-primary-500 space-y-3 text-sm">
+            <p><strong>特别注意：</strong>本院主要收治儿童患者，成人就诊前务必致电确认接诊政策。</p>
+            <p><strong>就诊须知：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>支持异地就医备案后直接结算</li>
+              <li>地址差异：东院（上海市浦东张江高科技园区张衡路528号）、西院（上海市黄浦区普安路185号）</li>
+            </ul>
+            <p><strong>挂号方式：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>微信公众号“曙光医院”</li>
+              <li>上海申康医联预约平台</li>
+              <li>APP“上海市互联网总医院”</li>
+              <li>电话021-95169</li>
+            </ul>
+            <p><strong>推荐医生：</strong></p>
+            <p class="text-gray-600 dark:text-gray-400">暂未检索到与疾病高度相关的推荐医生，建议通过官方渠道咨询。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 3: Pre-Visit Checklist -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 fade-in">
+      <h2 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400 flex items-center gap-2">
+        <i class="fas fa-clipboard-list"></i>
+        诊前准备清单
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-medium text-gray-700 dark:text-gray-300">病历资料准备</h3>
+          <ul class="mt-1 list-disc pl-5 text-sm">
+            <li>身份证、医保卡原件</li>
+            <li>所有检查报告单（血常规、肝肾功能、CT/MRI等）</li>
+            <li>既往病历本或疾病诊断证明</li>
+            <li class="text-red-600 dark:text-red-400">特别建议：整理“反复切开引流”记录</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-700 dark:text-gray-300">医保与费用准备</h3>
+          <ul class="mt-1 list-disc pl-5 text-sm">
+            <li>提前办理异地就医备案</li>
+            <li>咨询本地医保局报销比例</li>
+            <li>准备充足资金（现金、银行卡、手机支付）</li>
+            <li class="text-red-600 dark:text-red-400">特别建议：确认国际部/特需门诊费用无法报销</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-700 dark:text-gray-300">其他通用准备</h3>
+          <ul class="mt-1 list-disc pl-5 text-sm">
+            <li>记录咨询问题清单</li>
+            <li>带好充电宝、水杯等个人物品</li>
+            <li>穿着宽松方便的衣物</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Action Guide & Limitations -->
+    <section class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 fade-in">
+      <h2 class="text-xl font-semibold mb-4 text-primary-600 dark:text-primary-400 flex items-center gap-2">
+        <i class="fas fa-info-circle"></i>
+        行动指南与局限性说明
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-medium text-gray-700 dark:text-gray-300">优先行动建议</h3>
+          <p class="text-sm mt-1">建议优先考虑<strong>中日友好医院</strong>的<strong>李辉</strong>或<strong>王晏美</strong>医生，他们在复杂性肛瘘微创治疗领域领先，与手术目标高度一致。</p>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-700 dark:text-gray-300">二次确认清单</h3>
+          <ul class="mt-1 list-disc pl-5 text-sm">
+            <li>致电确认<strong>上海中医药大学附属曙光医院东院</strong>肛肠科：021-56601100</li>
+            <li>致电确认<strong>上海交通大学医学院附属仁济医院（东院）</strong>普外科：021-58752345</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-700 dark:text-gray-300">局限性声明</h3>
+          <p class="text-sm mt-1 text-gray-600 dark:text-gray-400">本报告严格依据当前知识库信息生成，可能存在更新延迟或覆盖不全面的情况，仅供参考。</p>
+        </div>
+        <div>
+          <h3 class="font-medium text-gray-700 dark:text-gray-300">最终免责</h3>
+          <p class="text-sm mt-1 text-gray-600 dark:text-gray-400">最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800">
+    © 2023 就医规划报告 · 数据仅供参考 · 最终以医院信息为准
+  </footer>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // 检查系统偏好
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // 监听系统主题变化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        html.classList.toggle('dark', e.matches);
+      }
+    });
+  </script>
+</body>
+</html>
