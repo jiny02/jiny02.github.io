@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <script src="https://unpkg.com/preline@1.9.0/dist/preline.js"></script>
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #059669;
+      --warning-color: #dc2626;
+      --bg-light: #f8fafc;
+      --text-light: #1e293b;
+      --bg-dark: #0f172a;
+      --text-dark: #f1f5f9;
+    }
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+      }
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    @media (prefers-color-scheme: dark) {
+      .card {
+        background-color: #1e293b;
+        border-color: #334155;
+      }
+    }
+    .card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-color: var(--primary-color);
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--primary-color);
+    }
+    .highlight {
+      background-color: #dbeafe;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 500;
+    }
+    @media (prefers-color-scheme: dark) {
+      .highlight {
+        background-color: #1e3a8a;
+      }
+    }
+    .warning {
+      color: var(--warning-color);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased leading-relaxed">
+  <header class="container mx-auto px-4 py-8 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">就医规划报告</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-300">个性化就医路径规划与准备指南</p>
+    <div class="mt-4 text-sm text-gray-500 dark:text-gray-400" id="generated-time">生成时间: </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 space-y-8">
+    <!-- 患者情况摘要区块 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-user-injured mr-2"></i>一、患者情况摘要 (Patient Summary)
+      </h2>
+      <div class="prose max-w-none dark:prose-invert">
+        <p>患者，25岁女性，常住湖南株洲，初步诊断为“<span class="highlight">复杂性肛瘘（经括约肌型）</span>”。本次核心诉求为“<span class="highlight">进行瘘管切开挂线术</span>”，期望在上海就诊。有<span class="highlight">溃疡性结肠炎</span>病史，曾接受反复切开引流治疗。医保类型为<span class="highlight">湖南医保</span>。</p>
+      </div>
+    </section>
+
+    <!-- 核心就医建议区块 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-hospital mr-2"></i>二、核心就医建议 (Core Medical Recommendation)
+      </h2>
+      <div class="space-y-6">
+        <!-- 推荐医院 1 -->
+        <div class="border-l-4 border-blue-500 pl-4 py-2">
+          <h3 class="text-xl font-semibold">【推荐医院 1】：上海交通大学医学院附属仁济医院（东院）</h3>
+          <div class="mt-2 space-y-2">
+            <p><strong>匹配度评估：</strong><span class="highlight">高度匹配</span></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>综合医院，擅长普外科及肛肠疾病手术；</li>
+              <li>肛肠科医生资源明确（见推荐医生）。</li>
+            </ul>
+            <p><strong>推荐理由：</strong>国家三级甲等综合医院，普外科实力突出，提供肛肠疾病手术服务。</p>
+            <p class="warning">【特别注意】：</p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><span class="warning">既往病史关联</span>：合并溃疡性结肠炎，手术需综合考虑肠道炎症控制情况，术前务必与医生充分沟通既往病史。</li>
+            </ul>
+            <p><strong>就诊须知：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><span class="highlight">医保政策</span>：支持异地医保（需提前备案）。</li>
+              <li><span class="highlight">院区地址</span>：东院（浦东新区东方路1630号）。</li>
+            </ul>
+            <p><strong>挂号方式：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>官方渠道：微信公众号“上海仁济医院就医服务号”、“上海申康医联预约平台”、电话021-95169。</li>
+              <li><span class="highlight">放号时间</span>：需通过平台实时查询（肛肠科号源中等紧张）。</li>
+            </ul>
+            <p><strong>推荐医生：</strong></p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>
+                <span class="highlight">徐庆 （主任医师）</span>
+                <ul class="list-circle pl-5 mt-1 space-y-1">
+                  <li><strong>推荐理由</strong>：擅长结直肠癌、肛肠良性疾病微创手术，尤其低位保肛技术。</li>
+                  <li><strong>出诊详情</strong>：东院 胃肠外科 专家门诊 周五上午 (挂号费50元)</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 推荐医院 2 -->
+        <div class="border-l-4 border-blue-500 pl-4 py-2">
+          <h3 class="text-xl font-semibold">【推荐医院 2】：上海市第一人民医院（北部）</h3>
+          <div class="mt-2 space-y-2">
+            <p><strong>匹配度评估：</strong><span class="highlight">部分匹配</span></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>普外科具备肛肠疾病诊疗能力；</li>
+              <li>中医科可辅助调理溃疡性结肠炎。</li>
+            </ul>
+            <p><strong>推荐理由：</strong>三级甲等综合医院，普外科可处理肛肠手术，中医科提供辅助治疗支持。</p>
+            <p class="warning">【特别注意】：</p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><span class="warning">专科深度</span>：肛肠专科资源相对有限，建议优先选择明确肛肠专科医生的医院。</li>
+            </ul>
+            <p><strong>就诊须知：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><span class="highlight">医保政策</span>：支持异地医保（需备案）。</li>
+              <li><span class="highlight">院区地址</span>：虹口北部（虹口区武进路85号）。</li>
+            </ul>
+            <p><strong>挂号方式：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>官方渠道：电话021-63240090（总机咨询）、上海市统一预约平台。</li>
+            </ul>
+            <p><strong>推荐医生：</strong></p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>
+                <span class="highlight">郑毅 （主任医师）</span>
+                <ul class="list-circle pl-5 mt-1 space-y-1">
+                  <li><strong>推荐理由</strong>：擅长肛肠疾病外科治疗，尤其痔疮、肛瘘手术。</li>
+                  <li><strong>出诊详情</strong>：虹口北部 普外临床医学中心 特需门诊 周三下午 (挂号费未提供)</li>
+                </ul>
+              </li>
+              <li>
+                <span class="highlight">季政一 （主任医师）</span>
+                <ul class="list-circle pl-5 mt-1 space-y-1">
+                  <li><strong>推荐理由</strong>：专注肛肠疾病外科治疗，擅长微创技术（如PPH术）。</li>
+                  <li><strong>出诊详情</strong>：虹口北部 普外临床医学中心 专家门诊 周四上午/下午 (挂号费未提供)</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 推荐医院 3 -->
+        <div class="border-l-4 border-yellow-500 pl-4 py-2">
+          <h3 class="text-xl font-semibold">【推荐医院 3】：中日友好医院（北京）</h3>
+          <div class="mt-2 space-y-2">
+            <p><strong>匹配度评估：</strong><span class="highlight">谨慎评估（地理位置）</span></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>肛肠专科全国顶尖，但位于北京（非患者期望地）。</li>
+            </ul>
+            <p><strong>推荐理由：</strong>中医肛肠科为国家重点专科，擅长复杂性肛瘘、肛周脓肿手术，尤其微创技术领先。</p>
+            <p class="warning">【特别注意】：</p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><span class="warning">地理位置</span>：医院位于北京，与您期望的“上海就诊”不符。仅作备选参考。</li>
+            </ul>
+            <p><strong>就诊须知：</strong></p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li><span class="highlight">医保政策</span>：需确认湖南省医保异地报销政策（北京为省外）。</li>
+              <li><span class="warning">费用预警</span>：国际部门诊费较高（400-600元），普通专家门诊费100元。</li>
+            </ul>
+            <p><strong>挂号方式：</strong>微信公众号“中日友好医院”、电话010-114。</p>
+            <p><strong>推荐医生：</strong></p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>
+                <span class="highlight">李辉 （主任医师）</span>
+                <ul class="list-circle pl-5 mt-1 space-y-1">
+                  <li><strong>推荐理由</strong>：全国肛肠名专家，擅长复杂性肛瘘微创治疗（保留括约肌技术）。</li>
+                  <li><strong>出诊详情</strong>：本部 肛肠科 专家门诊 周一/三/四/五上午 (挂号费60元)；国际医疗 周二上午 (400元)</li>
+                </ul>
+              </li>
+              <li>
+                <span class="highlight">王晏美 （主任医师）</span>
+                <ul class="list-circle pl-5 mt-1 space-y-1">
+                  <li><strong>推荐理由</strong>：肛肠中心主任，擅长重度痔疮、高位肛瘘手术。</li>
+                  <li><strong>出诊详情</strong>：西区 肛肠科 专家门诊 周一/三/四上午 (100元)；本部 国际医疗 周一下午 (600元)</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 其他可考虑医院 -->
+        <div class="border-l-4 border-gray-400 pl-4 py-2">
+          <h3 class="text-xl font-semibold">其他可考虑医院</h3>
+          <div class="mt-2 space-y-3">
+            <div>
+              <p><strong>1. 上海中医药大学附属曙光医院（东院/西院）</strong></p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li><strong>匹配度评估：</strong>部分匹配（中医肛肠特色）。</li>
+                <li><span class="warning">特别注意</span>：以中医保守治疗见长，手术能力需进一步确认。挂号方式：微信公众号“曙光医院”。</li>
+              </ul>
+            </div>
+            <div>
+              <p><strong>2. 上海岳阳中西医结合医院</strong></p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li><strong>匹配度评估：</strong>部分匹配（中西医结合）。</li>
+                <li><span class="warning">特别注意</span>：肛肠手术资源未明确提及。挂号方式：电话021-95169。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 诊前准备清单区块 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-clipboard-list mr-2"></i>三、诊前准备清单 (Pre-Visit Checklist)
+      </h2>
+      <div class="prose max-w-none dark:prose-invert">
+        <ol class="list-decimal pl-5 space-y-2">
+          <li><strong>病历资料准备：</strong>
+            <ul class="list-disc pl-5 mt-1 space-y-1">
+              <li>身份证、湖南医保卡原件。</li>
+              <li>既往肛瘘切开引流记录、溃疡性结肠炎诊断证明及用药记录。</li>
+              <li>近期血常规、感染指标（CRP）、盆腔MRI/肛周超声报告。</li>
+              <li><span class="warning">【特别建议】</span>：按时间顺序整理所有资料，标注溃疡性结肠炎活动情况。</li>
+            </ul>
+          </li>
+          <li><strong>医保与费用准备：</strong>
+            <ul class="list-disc pl-5 mt-1 space-y-1">
+              <li><span class="highlight">必做</span>：通过“国家医保服务平台”APP办理<span class="highlight">跨省异地就医备案</span>（选择上海）。</li>
+              <li>预估费用：手术费+住院费约1.5-3万元（仅供参考），备好银行卡/移动支付。</li>
+              <li><span class="warning">【特别注意】</span>：特需/国际部门诊费可能无法报销，提前咨询医院医保办。</li>
+            </ul>
+          </li>
+          <li><strong>其他准备：</strong>
+            <ul class="list-disc pl-5 mt-1 space-y-1">
+              <li>列出核心问题（如手术方案与溃疡性结肠炎的关联、复发风险）。</li>
+              <li>宽松衣物（便于术后换药）、个人洗漱用品。</li>
+              <li>预约住宿（推荐仁济东院/第一人民医院附近）。</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 行动指南与局限性说明区块 -->
+    <section class="card p-6">
+      <h2 class="text-2xl font-semibold mb-4 flex items-center">
+        <i class="fas fa-info-circle mr-2"></i>四、行动指南与局限性说明 (Action Guide & Limitations)
+      </h2>
+      <div class="prose max-w-none dark:prose-invert space-y-4">
+        <p><strong>优先行动建议：</strong></p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li><span class="highlight">首选方案</span>：预约仁济东院徐庆医生（周五上午专家门诊），重点咨询手术与溃疡性结肠炎的协同治疗方案。</li>
+          <li><span class="highlight">备选方案</span>：若号源紧张，考虑上海市第一人民医院郑毅特需门诊（周三下午）。</li>
+        </ol>
+
+        <p><strong>二次确认清单：</strong></p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><span class="warning">溃疡性结肠炎状态</span>：就诊时主动告知近期肠炎是否活动、用药情况。</li>
+          <li><span class="warning">手术细节</span>：向医生确认是否需术前控制肠道炎症、是否分期手术。</li>
+        </ul>
+
+        <p><strong>局限性声明：</strong></p>
+        <p>本报告依据现有知识库生成，部分医院（如曙光、岳阳）肛肠手术资源描述有限，建议通过官方渠道补充查询。</p>
+
+        <p><strong>最终免责：</strong></p>
+        <p>实际诊疗方案需以面诊医生评估为准，本规划仅作信息整合参考。</p>
+
+        <blockquote class="border-l-4 border-blue-500 pl-4 py-2 italic">
+          <p class="font-medium">就医提示：您合并溃疡性结肠炎，建议优先选择<span class="highlight">综合医院</span>（如仁济、第一人民医院），<span class="highlight">确保肛肠外科与消化内科协作诊疗</span>，降低术后复发风险。</p>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container mx-auto px-4 py-8 text-center text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 mt-8">
+    <p>© 2025 就医规划助手. 保留所有权利.</p>
+    <p>本报告仅供患者参考，不构成医疗建议。</p>
+  </footer>
+
+  <script>
+    // 动态写入生成时间
+    document.getElementById('generated-time').textContent = '生成时间: ' + new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+    
+    // 深色模式切换逻辑（如果需要按钮）
+    // 此处已通过 prefers-color-scheme 媒体查询实现自动切换
+  </script>
+</body>
+</html>
