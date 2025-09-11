@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <link href="https://cdn.jsdelivr.net/npm/@unocss/runtime">
+  <link href="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --secondary: #64748b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: all 0.3s ease;
+    }
+    .dark body {
+      background-color: #0f172a;
+      color: #f8fafc;
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .card-hover {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .btn-hover {
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .btn-hover:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+  <div class="container mx-auto px-4 py-8 max-w-4xl fade-in">
+    <!-- Header -->
+    <header class="mb-8">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-primary-600 dark:text-primary-400">就医规划报告</h1>
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:block"></i>
+        </button>
+      </div>
+      <div class="mt-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+        <div class="flex items-start">
+          <i class="fas fa-info-circle text-blue-500 dark:text-blue-400 mt-1 mr-3"></i>
+          <div>
+            <p class="font-medium text-blue-800 dark:text-blue-200">患者基本信息</p>
+            <p class="text-sm text-blue-700 dark:text-blue-300">70岁男性，常住河北邯郸，牙齿松动，既往病史：胃癌（化疗4次）、脑膜瘤、高血压，医保类型：河北医保</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Section 1 -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center">
+          <i class="fas fa-hospital-alt mr-2 text-primary-500"></i>
+          核心就医建议
+        </h2>
+        
+        <!-- Hospital 1 -->
+        <div class="mb-6 card-hover bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">北京大学口腔医院</h3>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">高度匹配</span>
+            </div>
+            
+            <div class="mb-4">
+              <p class="text-gray-700 dark:text-gray-300 mb-2">全国顶级口腔专科医院，综合治疗能力强，尤其适合复杂口腔问题。</p>
+              
+              <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg mb-3">
+                <p class="font-medium text-blue-800 dark:text-blue-200 mb-1">推荐理由</p>
+                <ul class="list-disc pl-5 text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                  <li>国家临床重点专科（牙体牙髓、牙周病、口腔颌面外科、口腔修复科），设备先进，专家团队雄厚</li>
+                  <li>设有老年口腔综合治疗科室，可兼顾患者高血压等基础疾病</li>
+                </ul>
+              </div>
+              
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg mb-3">
+                <p class="font-medium text-yellow-800 dark:text-yellow-200 mb-1">特别注意</p>
+                <ul class="list-disc pl-5 text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+                  <li><strong>医保政策</strong>：支持异地医保，需提前备案（通过"国家医保服务平台"APP）</li>
+                  <li><strong>挂号难度</strong>：口腔科号源紧张，建议优先尝试以下医生</li>
+                </ul>
+              </div>
+              
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                <p class="font-medium text-gray-800 dark:text-gray-200 mb-1">挂号方式</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300">微信公众号"北京114预约挂号"、北京市统一挂号平台、电话010-114/62179665、医院APP</p>
+              </div>
+            </div>
+            
+            <!-- Doctors -->
+            <div>
+              <h4 class="font-medium mb-2">推荐医生</h4>
+              
+              <div class="bg-gray-100 dark:bg-gray-700/50 p-4 rounded-lg mb-3">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-medium">刘云松（主任医师）</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">口腔修复科，专家门诊，周四上午，60元</p>
+                  </div>
+                  <span class="px-2 py-1 bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 rounded-full text-xs">推荐</span>
+                </div>
+                <p class="mt-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check-circle text-green-500 mr-1"></i> 擅长固定义齿修复、种植修复，适合牙齿松动综合治疗</p>
+              </div>
+              
+              <div class="bg-gray-100 dark:bg-gray-700/50 p-4 rounded-lg">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <p class="font-medium">郭玉兴（主任医师）</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">口腔颌面外科，专家门诊，周五上午/周四下午，80元；国际门诊特需（周五下午，900元，医保不报销）</p>
+                  </div>
+                </div>
+                <p class="mt-2 text-sm text-gray-700 dark:text-gray-300"><i class="fas fa-check-circle text-green-500 mr-1"></i> 颌面外科专家，可评估牙齿松动是否需外科干预</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hospital 2 -->
+        <div class="mb-6 card-hover bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">天津市口腔医院</h3>
+              <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-medium">部分匹配</span>
+            </div>
+            
+            <div class="mb-4">
+              <p class="text-gray-700 dark:text-gray-300 mb-2">三甲专科医院，综合治疗能力较强，但距离邯郸较远。</p>
+              
+              <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg mb-3">
+                <p class="font-medium text-blue-800 dark:text-blue-200 mb-1">推荐理由</p>
+                <ul class="list-disc pl-5 text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                  <li>口腔正畸科为国家临床重点专科，牙周病、种植牙技术领先</li>
+                </ul>
+              </div>
+              
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg mb-3">
+                <p class="font-medium text-yellow-800 dark:text-yellow-200 mb-1">特别注意</p>
+                <ul class="list-disc pl-5 text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+                  <li><strong>医保政策</strong>：支持异地医保，需备案</li>
+                  <li><strong>交通成本</strong>：从邯郸至天津需约3小时高铁，需规划行程</li>
+                </ul>
+              </div>
+              
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                <p class="font-medium text-gray-800 dark:text-gray-200 mb-1">挂号方式</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300">电话022-27111678/27126101（总院）、APP"科瑞泰Q医"</p>
+              </div>
+            </div>
+            
+            <!-- Doctors -->
+            <div>
+              <h4 class="font-medium mb-2">推荐医生</h4>
+              <div class="bg-gray-100 dark:bg-gray-700/50 p-4 rounded-lg">
+                <p class="text-sm text-gray-700 dark:text-gray-300">根据知识库信息，暂未检索到与牙齿松动高度相关的推荐医生。建议挂取<strong>牙周病科</strong>或<strong>口腔修复科</strong>专家门诊。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hospital 3 -->
+        <div class="mb-6 card-hover bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400">北京大学口腔医院第一门诊部</h3>
+              <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-medium">部分匹配</span>
+            </div>
+            
+            <div class="mb-4">
+              <p class="text-gray-700 dark:text-gray-300 mb-2">分院机构，诊疗水平与总院一致，但科室设置较少。</p>
+              
+              <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg mb-3">
+                <p class="font-medium text-blue-800 dark:text-blue-200 mb-1">推荐理由</p>
+                <ul class="list-disc pl-5 text-sm text-blue-700 dark:text-blue-300 space-y-1">
+                  <li>开展显微根管治疗、种植修复等项目，适合基础治疗</li>
+                </ul>
+              </div>
+              
+              <div class="bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg mb-3">
+                <p class="font-medium text-yellow-800 dark:text-yellow-200 mb-1">特别注意</p>
+                <ul class="list-disc pl-5 text-sm text-yellow-700 dark:text-yellow-300 space-y-1">
+                  <li><strong>医保政策</strong>：同总院，需异地备案</li>
+                  <li><strong>科室限制</strong>：无独立老年口腔科，需提前确认是否接诊高龄患者</li>
+                </ul>
+              </div>
+              
+              <div class="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+                <p class="font-medium text-gray-800 dark:text-gray-200 mb-1">挂号方式</p>
+                <p class="text-sm text-gray-700 dark:text-gray-300">电话010-53295001（咨询及预约）</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Section 2 -->
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-4 flex items-center">
+          <i class="fas fa-clipboard-list mr-2 text-primary-500"></i>
+          诊前准备清单
+        </h2>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
+          <div class="p-6">
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center mr-4">
+                  <i class="fas fa-file-medical text-blue-500 dark:text-blue-400"></i>
+                </div>
+                <div>
+                  <h3 class="font-medium text-gray-900 dark:text-gray-100">病历资料</h3>
+                  <ul class="mt-1 text-sm text-gray-700 dark:text-gray-300 list-disc pl-5 space-y-1">
+                    <li>身份证、医保卡原件</li>
+                    <li>既往胃癌化疗记录、脑膜瘤及高血压病历、近期血压监测数据</li>
+                    <li>牙齿相关检查（如有牙片、CT等）</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center mr-4">
+                  <i class="fas fa-money-bill-wave text-green-500 dark:text-green-400"></i>
+                </div>
+                <div>
+                  <h3 class="font-medium text-gray-900 dark:text-gray-100">医保与费用</h3>
+                  <ul class="mt-1 text-sm text-gray-700 dark:text-gray-300 list-disc pl-5 space-y-1">
+                    <li>提前通过"国家医保服务平台"APP办理<strong>异地就医备案</strong></li>
+                    <li>预估费用：挂号费60-900元，检查费500-2000元（视项目而定）</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center mr-4">
+                  <i class="fas fa-info-circle text-purple-500 dark:text-purple-400"></i>
+                </div>
+                <div>
+                  <h3 class="
