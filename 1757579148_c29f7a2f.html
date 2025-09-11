@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>胃癌患者就医规划报告</title>
+  <!-- 引入Preline UI和UnoCSS -->
+  <link href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Header -->
+    <header class="mb-10 text-center fade-in">
+      <h1 class="text-3xl md:text-4xl font-bold text-primary-700 dark:text-primary-400 mb-2">胃癌患者就医规划报告</h1>
+      <p class="text-gray-600 dark:text-gray-400">个性化医疗建议与行动指南</p>
+      <div class="w-24 h-1 bg-primary-500 mx-auto mt-4 rounded"></div>
+    </header>
+
+    <!-- Patient Summary -->
+    <section class="mb-12 fade-in">
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 card">
+        <h2 class="text-xl font-semibold text-primary-700 dark:text-primary-400 mb-4 flex items-center">
+          <i class="fas fa-user-injured mr-2"></i> 患者情况摘要
+        </h2>
+        <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+          <li><span class="font-medium">性别/年龄:</span> 男 / 69岁</li>
+          <li><span class="font-medium">常住地:</span> 河北邯郸</li>
+          <li><span class="font-medium">初步诊断:</span> 原发胃癌（中低分化腺癌，中晚期）</li>
+          <li><span class="font-medium">治疗史:</span> 已完成4次化疗</li>
+          <li><span class="font-medium">既往病史:</span> 脑梗塞</li>
+          <li><span class="font-medium">核心诉求:</span> 外科手术</li>
+          <li><span class="font-medium">医保类型:</span> 河北医保</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Core Recommendation -->
+    <section class="mb-12 fade-in">
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 card">
+        <h2 class="text-xl font-semibold text-primary-700 dark:text-primary-400 mb-4 flex items-center">
+          <i class="fas fa-stethoscope mr-2"></i> 核心就医建议
+        </h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">以下列表为您梳理了所有相关的医院选择，并依据其与您“胃癌外科手术”核心诉求的匹配度进行了排序和评估。</p>
+        
+        <!-- Hospital 1 -->
+        <div class="border-l-4 border-primary-500 pl-4 py-2 mb-6">
+          <h3 class="font-bold text-lg text-primary-600 dark:text-primary-300">推荐医院 1: 天津医科大学肿瘤医院</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">匹配度评估: <span class="font-semibold text-green-600 dark:text-green-400">高度匹配</span></p>
+          <p class="text-gray-700 dark:text-gray-300 mb-3"><span class="font-medium">推荐理由:</span> 该院是大型综合性“三级甲等”医院，其胃部肿瘤科专业实力突出，与您的手术诉求高度契合。作为河北省肿瘤医院，地理位置对您相对便利。</p>
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3 mb-3">
+            <p class="text-yellow-800 dark:text-yellow-200 flex items-start">
+              <i class="fas fa-exclamation-triangle mr-2 mt-1 flex-shrink-0"></i>
+              <span><span class="font-semibold">特别注意:</span> 河北医保患者就诊前，务必提前通过“国家医保服务平台”APP或小程序办理异地就医备案，以享受医保报销。</span>
+            </p>
+          </div>
+          <details class="mb-3">
+            <summary class="cursor-pointer text-primary-600 dark:text-primary-300 font-medium flex items-center">
+              <i class="fas fa-info-circle mr-2"></i> 就诊与挂号详情
+            </summary>
+            <div class="mt-2 pl-5 text-gray-700 dark:text-gray-300">
+              <p class="mb-2"><span class="font-medium">地址:</span> 天津市河西区体院北环湖西路</p>
+              <p class="mb-2"><span class="font-medium">挂号方式:</span> 可通过微信公众号“天津医科大学肿瘤医院”、“医指通”平台或“科瑞泰Q医”APP进行挂号。</p>
+              <p><span class="font-medium">推荐医生:</span></p>
+              <ul class="list-disc pl-5 space-y-2 mt-1">
+                <li><span class="font-medium">刘宁 (主任医师)</span> - 擅长胃癌、胃间质瘤等胃恶性肿瘤的手术治疗。出诊：本部院区 特需门诊 周一下午 (300元) | 专家门诊 周五上午、周五下午 (30元)</li>
+                <li><span class="font-medium">潘源 (主任医师)</span> - 擅长胃肠道恶性肿瘤的根治手术。出诊：本部院区 专家门诊 周三上午 | 特需门诊 周三下午</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <!-- Hospital 2 -->
+        <div class="border-l-4 border-primary-500 pl-4 py-2 mb-6">
+          <h3 class="font-bold text-lg text-primary-600 dark:text-primary-300">推荐医院 2: 中国医学科学院肿瘤医院</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">匹配度评估: <span class="font-semibold text-green-600 dark:text-green-400">高度匹配</span></p>
+          <p class="text-gray-700 dark:text-gray-300 mb-3"><span class="font-medium">推荐理由:</span> 国家癌症中心，国内顶尖的肿瘤专科医院，在胃癌外科治疗领域拥有顶级专家团队和丰富的临床经验。</p>
+          <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 mb-3">
+            <p class="text-red-800 dark:text-red-200 flex items-start">
+              <i class="fas fa-exclamation-triangle mr-2 mt-1 flex-shrink-0"></i>
+              <span><span class="font-semibold">特别注意:</span> 该院号源非常紧张。国际部/特需门诊费用可能较高且医保报销政策不同，需提前确认。</span>
+            </p>
+          </div>
+          <details class="mb-3">
+            <summary class="cursor-pointer text-primary-600 dark:text-primary-300 font-medium flex items-center">
+              <i class="fas fa-info-circle mr-2"></i> 就诊与挂号详情
+            </summary>
+            <div class="mt-2 pl-5 text-gray-700 dark:text-gray-300">
+              <p class="mb-2"><span class="font-medium">地址:</span> 北京市朝阳区潘家园南里17号</p>
+              <p class="mb-2"><span class="font-medium">挂号方式:</span> 可通过微信公众号“中国医学科学院肿瘤医院”、“北京114预约挂号”或拨打010-114电话挂号。需密切关注放号时间，拼手速抢号。</p>
+              <p><span class="font-medium">推荐医生:</span></p>
+              <ul class="list-disc pl-5 space-y-2 mt-1">
+                <li><span class="font-medium">赵东兵 (主任医师)</span> - 擅长胃癌、胃间质瘤、胰腺癌的诊治，尤其擅长腹腔镜微创治疗。出诊：本院 专家门诊 周一上午、周四上午 | 特需门诊 周六上午、周一晚上 (500元)</li>
+                <li><span class="font-medium">邓靖宇 (主任医师)</span> - 擅长胃癌外科规范化治疗。出诊：暂未提供具体时间表，可尝试挂取胰胃外科专家门诊。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <!-- Hospital 3 -->
+        <div class="border-l-4 border-primary-500 pl-4 py-2 mb-6">
+          <h3 class="font-bold text-lg text-primary-600 dark:text-primary-300">推荐医院 3: 北京大学肿瘤医院</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">匹配度评估: <span class="font-semibold text-green-600 dark:text-green-400">高度匹配</span></p>
+          <p class="text-gray-700 dark:text-gray-300 mb-3"><span class="font-medium">推荐理由:</span> 我国著名的大型现代化三级甲等肿瘤专科医院，在胃癌的诊断和综合治疗方面具有明显特色和优势。</p>
+          <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 mb-3">
+            <p class="text-red-800 dark:text-red-200 flex items-start">
+              <i class="fas fa-exclamation-triangle mr-2 mt-1 flex-shrink-0"></i>
+              <span><span class="font-semibold">特别注意:</span> 该院号源紧张。</span>
+            </p>
+          </div>
+          <details class="mb-3">
+            <summary class="cursor-pointer text-primary-600 dark:text-primary-300 font-medium flex items-center">
+              <i class="fas fa-info-circle mr-2"></i> 就诊与挂号详情
+            </summary>
+            <div class="mt-2 pl-5 text-gray-700 dark:text-gray-300">
+              <p class="mb-2"><span class="font-medium">地址:</span> 北京市海淀区阜成路52号</p>
+              <p class="mb-2"><span class="font-medium">挂号方式:</span> 可通过微信公众号“北京大学肿瘤医院”、“京医通”、“北京114预约挂号”或拨打010-114电话挂号。</p>
+              <p><span class="font-medium">推荐医生:</span></p>
+              <ul class="list-disc pl-5 space-y-2 mt-1">
+                <li><span class="font-medium">季鑫 (主任医师)</span> - 擅长胃癌、食管胃结合部癌等消化道肿瘤的外科手术治疗。出诊：本院 专家门诊 周二下午 (60元)</li>
+                <li><span class="font-medium">邢加迪 (主任医师)</span> - 擅长胃肠道肿瘤的外科治疗、微创治疗。出诊：本院 专家门诊 周二下午</li>
+                <li><span class="font-medium">彭智 (主任医师)</span> - 专业擅长消化肿瘤的化疗、靶向治疗等综合治疗（内科专家）。出诊：本院 专家门诊 周一上午、周四上午 | 北京高博医院 特需门诊 周三下午 (300元)</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <!-- Hospital 4 -->
+        <div class="border-l-4 border-primary-500 pl-4 py-2 mb-6">
+          <h3 class="font-bold text-lg text-primary-600 dark:text-primary-300">推荐医院 4: 复旦大学附属肿瘤医院</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">匹配度评估: <span class="font-semibold text-green-600 dark:text-green-400">高度匹配</span></p>
+          <p class="text-gray-700 dark:text-gray-300 mb-3"><span class="font-medium">推荐理由:</span> 中国成立最早的肿瘤专科医院，在胃癌的微创手术、机器人手术方面经验丰富。</p>
+          <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 mb-3">
+            <p class="text-red-800 dark:text-red-200 flex items-start">
+              <i class="fas fa-exclamation-triangle mr-2 mt-1 flex-shrink-0"></i>
+              <span><span class="font-semibold">特别注意:</span> 医院位于上海，距离您常住地较远，需充分考虑异地就医的交通与住宿成本。号源紧张。</span>
+            </p>
+          </div>
+          <details class="mb-3">
+            <summary class="cursor-pointer text-primary-600 dark:text-primary-300 font-medium flex items-center">
+              <i class="fas fa-info-circle mr-2"></i> 就诊与挂号详情
+            </summary>
+            <div class="mt-2 pl-5 text-gray-700 dark:text-gray-300">
+              <p class="mb-2"><span class="font-medium">地址:</span> 上海市徐汇区零陵路399号（徐汇院区）</p>
+              <p class="mb-2"><span class="font-medium">挂号方式:</span> 可通过微信公众号“复旦大学附属肿瘤医院”、医院官网“大众版”、“上海申康医联预约平台”或APP“上海市互联网总医院”挂号。</p>
+              <p><span class="font-medium">推荐医生:</span></p>
+              <ul class="list-disc pl-5 space-y-2 mt-1">
+                <li><span class="font-medium">刘晓文 (主任医师)</span> - 擅长胃部肿瘤的微创手术，包括腹腔镜手术、达芬奇机器人手术。出诊：徐汇院区 特需门诊 周一上午、周三下午 (298元) | 浦东院区 专家门诊 周五上午</li>
+                <li><span class="font-medium">黄华 (主任医师)</span> - 擅长胃癌、贲门癌的开腹手术、腹腔镜微创手术、机器人手术。出诊：徐汇院区 专家门诊 周一上午 (50元) | 特需门诊 周四上午、周五上午 (298元) | 浦东院区 特需门诊 周一下午 (298元)</li>
+                <li><span class="font-medium">刘凤林 (主任医师)</span> - 致力于以胃部肿瘤手术治疗为核心的综合治疗。出诊：徐汇院区 特需门诊 周一上午、周三下午 (298元) | 浦东院区 专家门诊 周五上午</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <!-- Hospital 5 -->
+        <div class="border-l-4 border-primary-500 pl-4 py-2 mb-6">
+          <h3 class="font-bold text-lg text-primary-600 dark:text-primary-300">推荐医院 5: 河北医科大学第四医院</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">匹配度评估: <span class="font-semibold text-green-600 dark:text-green-400">高度匹配</span></p>
+          <p class="text-gray-700 dark:text-gray-300 mb-3"><span class="font-medium">推荐理由:</span> 河北省内顶尖肿瘤专科医院，对于河北医保患者报销最为便利。在食管癌、胃癌诊治方面达到国内先进水平，是性价比极高的优质选择。</p>
+          <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3 mb-3">
+            <p class="text-blue-800 dark:text-blue-200 flex items-start">
+              <i class="fas fa-info-circle mr-2 mt-1 flex-shrink-0"></i>
+              <span><span class="font-semibold">特别注意:</span> 无。</span>
+            </p>
+          </div>
+          <details class="mb-3">
+            <summary class="cursor-pointer text-primary-600 dark:text-primary-300 font-medium flex items-center">
+              <i class="fas fa-info-circle mr-2"></i> 就诊与挂号详情
+            </summary>
+            <div class="mt-2 pl-5 text-gray-700 dark:text-gray-300">
+              <p class="mb-2"><span class="font-medium">地址:</span> 河北省石家庄市健康路12号（有东院区，注意区分）</p>
+              <p class="mb-2"><span class="font-medium">挂号方式:</span> 可通过微信公众号“河北医科大学第四医院”、“健康河北服务号”、“健康河北”APP或电话0311-86095333挂号。</p>
+              <p><span class="font-medium">推荐医生:</span> 暂未检索到本院与胃癌外科高度相关的推荐医生信息。您仍可尝试通过医院官方渠道，挂取“普外科”或“胃部肿瘤相关科室”的专家门诊进行咨询。</p>
+            </div>
+          </details>
+        </div>
+
+        <!-- Other Hospital -->
+        <div class="border-l-4 border-gray-400 pl-4 py-2">
+          <h3 class="font-bold text-lg text-gray-600 dark:text-gray-400">其他医院: 邯郸市中心医院</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">匹配度评估: <span class="font-semibold text-yellow-600 dark:text-yellow-400">部分匹配</span></p>
+          <p class="text-gray-700 dark:text-gray-300 mb-3"><span class="font-medium">推荐理由:</span> 作为您常住地的三级甲等综合医院，便于初诊和日常复查。可作为前期检查和完善资料的辅助选择。</p>
+          <div class="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg p-3 mb-3">
+            <p class="text-orange-800 dark:text-orange-200 flex items-start">
+              <i class="fas fa-exclamation-triangle mr-2 mt-1 flex-shrink-0"></i>
+              <span><span class="font-semibold">特别注意:</span> 对于“中晚期胃癌”这种复杂手术，建议优先选择上述国家级或省级肿瘤专科中心进行根治性治疗。</span>
+            </p>
+          </div>
+          <details class="mb-3">
+            <summary class="cursor-pointer text-gray-600 dark:text-gray-400 font-medium flex items-center">
+              <i class="fas fa-info-circle mr-2"></i> 就诊与挂号详情
+            </summary>
+            <div class="mt-2 pl-5 text-gray-700 dark:text-gray-300">
+              <p class="mb-2"><span class="font-medium">地址:</span> 河北省邯郸市丛台北路59号（东区）或中华南大街15号（西区）</p>
+              <p><span class="font-medium">推荐医生:</span> 暂未检索到本院与胃癌外科高度相关的推荐医生信息。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checklist -->
+    <section class="mb-12 fade-in">
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 card">
+        <h2 class="text-xl font-semibold text-primary-700 dark:text-primary-400 mb-4 flex items-center">
+          <i class="fas fa-clipboard-list mr-2"></i> 诊前准备清单
+        </h2>
+        <p class="mb-4 text-gray-700 dark:text-gray-300">为确保就诊顺利，请务必按此清单准备：</p>
+        <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+          <li class="flex items-start">
+            <i class="fas fa-file-medical text-primary-500 mt-1 mr-3 flex-shrink-0"></i>
+            <div>
+              <span class="font-medium">病历资料准备:</span>
+              <ul class="list-disc pl-5 mt-1 space-y-1">
+                <li>身份证、医保卡原件。</li>
+                <li>既往所有检查报告单（包括4次化疗记录、血常规、肝肾功能、胃镜及活检病理报告、影像学CT/MRI报告等）。</li>
+                <li>既往病历本或疾病诊断证明。</li>
+                <li><span class="font-semibold">特别建议:</span> 按时间顺序整理好所有资料，并复印一套备用。</li>
+              </ul>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-wallet text-primary-500 mt-1 mr-3 flex-shrink-0"></i>
+            <div>
+              <span class="font-medium">医保与费用准备:</span>
+              <ul class="list-disc pl-5 mt-1 space-y-1">
+                <li>提前通过“国家医保服务平台”APP或小程序办理异地就医备案（若选择省外医院）。</li>
+                <li>咨询本地医保局，确认异地报销比例及流程。</li>
+                <li>准备充足的资金，预估费用包括：挂号费、检查费、手术费、药费及异地食宿交通费。</li>
+              </ul>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-notes-medical text-primary-500 mt-1 mr-3 flex-shrink-0"></i>
+            <div>
+              <span class="font-medium">其他通用准备:</span>
+              <ul class="list-disc pl-5 mt-1 space-y-1">
+                <li>记录并准备向医生咨询的问题清单。</li>
+                <li>因有脑梗塞病史，请带齐相关治疗记录和目前所服药物清单。</li>
+                <li>带好充电宝、水杯等个人物品，就诊当天穿着宽松方便的衣物。</li>
+                <li>最好有家属陪同。</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Action Guide -->
+    <section class="mb-12 fade-in">
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 card">
+        <h2 class="text-xl font-semibold text-primary-700 dark:text-primary-400 mb-4 flex items-center">
+          <i class="fas fa-directions mr-2"></i> 行动指南与局限性说明
+        </h2>
+        <div class="space-y-4 text-gray-700 dark:text-gray-300">
+          <div>
+            <p class="font-medium mb-2">优先行动建议:</p>
+            <p>基于您的核心诉求（手术）和地理位置（河北），建议您优先考虑<span class="font-semibold text-primary-600 dark:text-primary-300">【河北医科大学第四医院（河北省肿瘤医院）】</span>和<span class="font-semibold text-primary-600 dark:text-primary-300">【天津医科大学肿瘤医院】</span>。前者距离最近，医保最方便；后者是专业的国家级肿瘤医院，距离也相对适中。可先尝试挂这两家医院的专家号，携带全部资料进行评估。</p>
+          </div>
+          <div>
+            <p class="font-medium mb-2">二次确认清单:</p>
+            <ul class="list-disc pl-5 space-y-1">
+              <li>就诊前务必致电目标医院确认：① 异地医保报销具体流程；② 特需门诊的收费标准和医保政策；③ 最新的专家出诊时间表（知识库信息可能滞后）。</li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-medium mb-2">局限性声明:</p>
+            <p>本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面的情况，仅供参考。</p>
+          </div>
+          <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+            <p class="text-red-800 dark:text-red-200 font-semibold flex items-start">
+              <i class="fas fa-exclamation-circle mr-2 mt-1 flex-shrink-0"></i>
+              最终免责: 最终就诊决策请务必以医院官方平台发布的最新信息及临床医生的专业诊断和治疗方案为准。祝您早日康复！
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-600 dark:text-gray-400 text-sm pt-8 border-t border-gray-200 dark:border-gray-700">
+      <p>© 2023 医疗咨询服务. 本报告仅供参考，请遵医嘱。</p>
+    </footer>
+  </div>
+
+  <!-- 引入图标库 -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- 初始化Preline UI -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      HSBurger.init();
+      HSCollapse.init();
+      // 可以添加更多Preline组件的初始化
+    });
+  </script>
+</body>
+</html>
