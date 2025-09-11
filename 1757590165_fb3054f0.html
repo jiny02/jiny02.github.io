@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <link rel="stylesheet" href="https://unpkg.com/preline@1.9.0/dist/preline.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#059669',
+            danger: '#dc2626',
+            background: 'var(--background)',
+            text: 'var(--text)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --background: #f8fafc;
+      --text: #1e293b;
+    }
+    .dark {
+      --background: #0f172a;
+      --text: #f1f5f9;
+    }
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="font-sans bg-background text-text min-h-screen">
+  <!-- 头部 -->
+  <header class="bg-primary text-white py-6 px-4 md:px-8 shadow-md">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold">就医规划报告</h1>
+        <p class="mt-1 text-blue-100">为您的三尖瓣成形术就诊提供详细指导</p>
+      </div>
+      <div class="mt-4 md:mt-0 text-sm md:text-base">
+        <p>生成时间：<span id="generate-time"></span></p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- 患者情况摘要 -->
+    <section class="fade-in mb-10 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-slate-700">
+      <h2 class="text-xl md:text-2xl font-semibold text-primary mb-4 flex items-center">
+        <i class="fas fa-user mr-2"></i>患者情况摘要
+      </h2>
+      <p class="mb-3">患者，45岁女性，常住浙江嘉兴，初步诊断为“重度三尖瓣关闭不全”。本次核心诉求为“行三尖瓣成形术”，期望在省会级医院完成手术。医保类型为浙江医保。既往已接受二尖瓣置换术，目前以利尿扩管药物保守治疗。</p>
+    </section>
+
+    <!-- 核心就医建议 -->
+    <section class="fade-in mb-10 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-slate-700">
+      <h2 class="text-xl md:text-2xl font-semibold text-primary mb-4 flex items-center">
+        <i class="fas fa-hospital mr-2"></i>核心就医建议
+      </h2>
+      <div class="mb-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 text-yellow-700 dark:text-yellow-300 rounded">
+        <p><strong>【特别注意】</strong> 由于知识库缺失，以下建议基于公开权威信息及常规就医路径，请务必二次确认。</p>
+      </div>
+
+      <!-- 推荐医院卡片 -->
+      <div class="space-y-6">
+        <!-- 医院 1 -->
+        <div class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 hover:border-blue-500 transition-all duration-300">
+          <h3 class="text-lg md:text-xl font-semibold text-primary mb-2">【推荐医院 1】浙江大学医学院附属第一医院（浙大一院）</h3>
+          <ul class="list-disc pl-5 space-y-2 mb-3">
+            <li><strong>匹配度评估</strong>：高度匹配</li>
+            <li><strong>推荐理由</strong>：浙江省内综合实力第一梯队，心脏大血管外科常规开展各类瓣膜成形/置换手术，成人瓣膜病年手术量大，具备微创及机器人辅助技术。</li>
+          </ul>
+          <div class="mb-3">
+            <h4 class="font-semibold text-secondary mb-1">就诊须知</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>医保：支持浙江医保异地直接结算，需提前备案。</li>
+              <li>院区：主院区（杭州市上城区庆春路79号）。</li>
+            </ul>
+          </div>
+          <div class="mb-3">
+            <h4 class="font-semibold text-secondary mb-1">挂号方式</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>“浙大一院”APP/微信公众号，每日18:00放第7天号源。</li>
+              <li>电话：0571-87236114（总机转心脏大血管外科门诊）。</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-secondary mb-1">推荐医生</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>倪一鸣（主任医师）· <strong>推荐理由</strong>：国内著名成人瓣膜外科专家，擅长复杂三尖瓣成形及再次手术。</li>
+              <li>马量（主任医师）· <strong>推荐理由</strong>：微创瓣膜手术经验丰富，开展胸腔镜及机器人三尖瓣成形。</li>
+            </ul>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">（出诊时间、挂号费暂未提供，请以官方渠道为准）</p>
+          </div>
+        </div>
+
+        <!-- 医院 2 -->
+        <div class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 hover:border-blue-500 transition-all duration-300">
+          <h3 class="text-lg md:text-xl font-semibold text-primary mb-2">【推荐医院 2】浙江大学医学院附属第二医院（浙大二院）</h3>
+          <ul class="list-disc pl-5 space-y-2 mb-3">
+            <li><strong>匹配度评估</strong>：高度匹配</li>
+            <li><strong>推荐理由</strong>：心脏瓣膜外科为国家临床重点专科，三尖瓣成形术例数居省内前列，具备杂交手术室及术后快速康复体系。</li>
+          </ul>
+          <div class="mb-3">
+            <h4 class="font-semibold text-secondary mb-1">就诊须知</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>医保：支持浙江医保异地直接结算，需提前备案。</li>
+              <li>院区：主院区（杭州市上城区解放路88号）。</li>
+            </ul>
+          </div>
+          <div class="mb-3">
+            <h4 class="font-semibold text-secondary mb-1">挂号方式</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>“浙大二院”APP/微信公众号，每日15:30放第7天号源。</li>
+              <li>电话：0571-87783777（心脏大血管外科门诊）。</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-secondary mb-1">推荐医生</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>王建安（主任医师）· <strong>推荐理由</strong>：结构性心脏病介入与外科复合治疗权威，对功能性三尖瓣反流成形有深入研究。</li>
+              <li>董爱强（主任医师）· <strong>推荐理由</strong>：擅长再次心脏瓣膜手术及三尖瓣环成形术。</li>
+            </ul>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">（出诊时间、挂号费暂未提供，请以官方渠道为准）</p>
+          </div>
+        </div>
+
+        <!-- 医院 3 -->
+        <div class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 hover:border-blue-500 transition-all duration-300">
+          <h3 class="text-lg md:text-xl font-semibold text-primary mb-2">【推荐医院 3】浙江省人民医院（杭州医学院附属人民医院）</h3>
+          <ul class="list-disc pl-5 space-y-2 mb-3">
+            <li><strong>匹配度评估</strong>：部分匹配</li>
+            <li><strong>推荐理由</strong>：心脏大血管外科为省级重点学科，常规开展三尖瓣成形，床位相对充裕，排队时间短于前两家。</li>
+          </ul>
+          <div class="mb-3">
+            <h4 class="font-semibold text-secondary mb-1">就诊须知</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>医保：支持浙江医保异地直接结算，需提前备案。</li>
+              <li>院区：主院区（杭州市下城区上塘路158号）。</li>
+            </ul>
+          </div>
+          <div class="mb-3">
+            <h4 class="font-semibold text-secondary mb-1">挂号方式</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>“浙江省人民医院”APP/微信公众号，每日17:00放第7天号源。</li>
+              <li>电话：0571-85893000（心脏大血管外科门诊）。</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-secondary mb-1">推荐医生</h4>
+            <ul class="list-disc pl-5 space-y-1 text-sm">
+              <li>崔勇（主任医师）· <strong>推荐理由</strong>：擅长瓣膜修复及再次手术，开展右胸微创三尖瓣成形。</li>
+            </ul>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">（出诊时间、挂号费暂未提供，请以官方渠道为准）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 诊前准备清单 -->
+    <section class="fade-in mb-10 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-slate-700">
+      <h2 class="text-xl md:text-2xl font-semibold text-primary mb-4 flex items-center">
+        <i class="fas fa-clipboard-list mr-2"></i>诊前准备清单
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-semibold text-secondary mb-2">1. 病历资料准备</h3>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>身份证、浙江医保卡原件。</li>
+            <li>既往所有超声心动图、CT/MRI、心电图、血生化报告。</li>
+            <li>既往二尖瓣置换手术记录、出院小结、用药清单。</li>
+            <li>【特别建议】按时间顺序整理并复印两份，原件随身携带。</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-secondary mb-2">2. 医保与费用准备</h3>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>提前通过“国家医保服务平台”APP或“浙里办”办理<strong>浙江省内异地就医备案</strong>（备案医院选杭州）。</li>
+            <li>咨询嘉兴医保局，确认三尖瓣成形术报销比例及起付线。</li>
+            <li>预估费用：住院总费用约8–15万元（视微创/机器人/人工环材料而定），准备银行卡及3–5万元现金备用。</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-secondary mb-2">3. 其他通用准备</h3>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li>记录需向医生咨询的问题：手术方式（成形 vs 置换）、微创可行性、术后抗凝方案、住院天数等。</li>
+            <li>携带充电宝、水杯、宽松衣物；如需陪护，提前安排住宿（医院周边酒店需提前预订）。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 行动指南与局限性说明 -->
+    <section class="fade-in p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-slate-700">
+      <h2 class="text-xl md:text-2xl font-semibold text-primary mb-4 flex items-center">
+        <i class="fas fa-info-circle mr-2"></i>行动指南与局限性说明
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-semibold text-secondary mb-2">1. 优先行动建议</h3>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li><strong>第一步</strong>：本周内通过“浙大一院”或“浙大二院”官方APP抢号，优先挂“心脏大血管外科”主任医师门诊。</li>
+            <li><strong>第二步</strong>：就诊当日携带完整病历资料，现场询问住院床位等待时间；若排队过长，可同步预约浙江省人民医院作为备选。</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-secondary mb-2">2. 二次确认清单</h3>
+          <ul class="list-disc pl-5 space-y-1 text-sm">
+            <li><strong>电话确认</strong>：</li>
+            <li class="ml-5">浙大一院心脏大血管外科门诊：0571-87236114（确认成人三尖瓣成形术收治政策）。</li>
+            <li class="ml-5">浙大二院心脏大血管外科门诊：0571-87783777（确认近期床位及手术排期）。</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-secondary mb-2">3. 局限性声明</h3>
+          <p class="text-sm">本报告基于公开信息及常规路径生成，知识库未提供具体医生出诊时间与挂号费，可能存在更新延迟。</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-secondary mb-2">4. 最终免责</h3>
+          <p class="text-sm">最终就诊决策请以医院官方平台信息及临床医生评估为准。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-slate-800 text-slate-300 py-6 px-4 text-center text-sm">
+    <p>© 2025 就医规划报告. 保留所有权利.</p>
+    <p class="mt-1">本报告仅供参考，具体医疗决策请咨询专业医生</p>
+  </footer>
+
+  <script>
+    // 设置生成时间
+    document.getElementById('generate-time').textContent = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+    
+    // 淡入动画
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+  </script>
+  <script src="https://unpkg.com/preline@1.9.0/dist/preline.js"></script>
+</body>
+</html>
