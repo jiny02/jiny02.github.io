@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <!-- Tailwind CSS via UnoCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preline UI -->
+  <script src="https://unpkg.com/@@preline/preline@latest/dist/preline.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #059669;
+      --warning-color: #dc2626;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+      --text-light: #1e293b;
+      --text-dark: #f1f5f9;
+    }
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+      }
+    }
+    .card {
+      @apply border rounded-lg p-6 shadow-sm transition-all;
+    }
+    .card:hover {
+      @apply shadow-lg border-blue-500;
+    }
+    .highlight {
+      @apply font-bold text-blue-600 dark:text-blue-400;
+    }
+    .warning {
+      @apply font-bold text-red-600 dark:text-red-400;
+    }
+    .footer {
+      @apply text-sm text-gray-500 dark:text-gray-400 mt-8 pt-4 border-t border-gray-200 dark:border-gray-700;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Header -->
+    <header class="mb-10 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">就医规划报告</h1>
+      <p class="text-gray-600 dark:text-gray-300">为您的健康之旅提供专业导航</p>
+    </header>
+
+    <!-- Patient Summary -->
+    <section class="card mb-8 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400 flex items-center">
+        <i class="fas fa-user-injured mr-2"></i> 一、患者情况摘要
+      </h2>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><span class="highlight">患者</span>：女，33岁，常住福建莆田</li>
+        <li><span class="highlight">初步诊断</span>：“克罗恩病（蒙特利尔分型：回结肠型）”</li>
+        <li><span class="highlight">核心诉求</span>：<span class="warning">生物制剂升级治疗</span></li>
+        <li><span class="highlight">既往病史</span>：糖皮质激素治疗史及原发性硬化性胆管炎</li>
+        <li><span class="highlight">医保类型</span>：福建医保（需异地备案）</li>
+      </ul>
+    </section>
+
+    <!-- Core Medical Recommendation -->
+    <section class="card mb-8 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400 flex items-center">
+        <i class="fas fa-hospital mr-2"></i> 二、核心就医建议
+      </h2>
+      
+      <!-- Hospital 1 -->
+      <div class="mb-6 p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-lg mb-2">1. 上海交通大学医学院附属仁济医院（东院）</h3>
+        <p class="mb-2"><span class="highlight">匹配度评估</span>：<span class="text-green-600 dark:text-green-400">高度匹配</span></p>
+        <ul class="list-disc pl-5 space-y-1 mb-3">
+          <li><span class="highlight">推荐理由</span>：消化内科为国家临床重点专科，擅长克罗恩病综合治疗；配备胃肠病学研究所，生物制剂治疗研究深入；支持福建医保异地备案。</li>
+          <li><span class="highlight">挂号方式</span>：微信公众号“上海仁济医院就医服务号”/“上海交通大学医学院附属仁济医院”</li>
+          <li><span class="highlight">放号时间</span>：每日7:30开放（消化内科号源紧张，建议提前抢号）</li>
+          <li><span class="highlight">就诊须知</span>：福建医保需通过“国家医保服务平台”APP备案。院区地址：上海市东方路1630号（东院）。</li>
+        </ul>
+        <div class="warning mb-3">【特别注意】：消化内科挂号难度标记为“困难”，<span class="font-bold">务必提前7天通过官方渠道预约</span>。</div>
+        <h4 class="font-semibold mb-2">推荐医生</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><span class="highlight">张晓琦</span>（主任医师）· <span class="highlight">推荐理由</span>：擅长炎症性肠病（克罗恩病）诊治及生物制剂升级管理· <span class="highlight">出诊详情</span>：东院 专科门诊 周三下午（挂号费35元）</li>
+        </ul>
+      </div>
+
+      <!-- Hospital 2 -->
+      <div class="mb-6 p-4 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-lg mb-2">2. 东部战区总医院（南京）</h3>
+        <p class="mb-2"><span class="highlight">匹配度评估</span>：<span class="text-yellow-600 dark:text-yellow-400">部分匹配</span></p>
+        <ul class="list-disc pl-5 space-y-1 mb-3">
+          <li><span class="highlight">推荐理由</span>：普通外科为国家临床重点专科，强项为克罗恩病并发症外科干预；设肠瘘及炎症性肠病专病门诊。</li>
+          <li><span class="highlight">挂号方式</span>：微信公众号“东部战区总医院”/电话025-12320</li>
+          <li><span class="highlight">就诊须知</span>：福建医保需异地备案；地址：南京市玄武区中山东路305号。</li>
+        </ul>
+        <h4 class="font-semibold mb-2">推荐医生</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><span class="highlight">任建安</span>（主任医师）· <span class="highlight">推荐理由</span>：克罗恩病外科治疗及术后管理专家· <span class="highlight">出诊详情</span>：专家门诊 周一下午（挂号费100元）</li>
+          <li><span class="highlight">龚剑峰</span>（主任医师）· <span class="highlight">推荐理由</span>：专攻克罗恩病外科并发症及炎症性肠病· <span class="highlight">出诊详情</span>：专家门诊 周一下午（挂号费22元）</li>
+        </ul>
+      </div>
+
+      <!-- Hospital 3 -->
+      <div class="mb-6 p-4 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-lg mb-2">3. 南京鼓楼医院</h3>
+        <p class="mb-2"><span class="highlight">匹配度评估</span>：<span class="text-yellow-600 dark:text-yellow-400">部分匹配</span></p>
+        <ul class="list-disc pl-5 space-y-1 mb-3">
+          <li><span class="highlight">推荐理由</span>：消化内科为省重点专科，设炎症性肠病联合诊治中心；支持生物制剂治疗。</li>
+          <li><span class="highlight">挂号方式</span>：微信公众号“南京鼓楼医院”/电话025-12320</li>
+          <li><span class="highlight">就诊须知</span>：福建医保需备案；本院地址：南京市中山路321号。</li>
+        </ul>
+        <h4 class="font-semibold mb-2">推荐医生</h4>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><span class="highlight">张晓琦</span>（主任医师）· <span class="highlight">推荐理由</span>：克罗恩病内镜下治疗及生物制剂应用· <span class="highlight">出诊详情</span>：本院 专家门诊 周二上午（35元）；专科门诊 周三下午（35元）</li>
+        </ul>
+      </div>
+
+      <!-- Hospital 4 -->
+      <div class="mb-6 p-4 border-l-4 border-red-500 bg-red-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-lg mb-2">4. 上海市第十人民医院</h3>
+        <p class="mb-2"><span class="highlight">匹配度评估</span>：<span class="text-red-600 dark:text-red-400">谨慎评估</span></p>
+        <ul class="list-disc pl-5 space-y-1 mb-3">
+          <li><span class="highlight">推荐理由</span>：综合医院消化内科实力中等，但无专门克罗恩病团队提及。</li>
+        </ul>
+        <div class="warning mb-3">【特别注意】：本院未检索到与克罗恩病直接相关的专家或专科，<span class="font-bold">建议优先选择前三家医院</span>。</div>
+      </div>
+
+      <!-- Other Info -->
+      <div class="p-4 border-l-4 border-gray-500 bg-gray-50 dark:bg-gray-700 rounded-r-lg">
+        <h3 class="font-bold text-lg mb-2">5. 其他医院说明</h3>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>未推荐医生如王琴（肾内科）、李继强（非仁济执业）、刘燕（感染科）等，因专业方向与克罗恩病及生物制剂升级诉求<span class="highlight">不匹配</span>。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pre-Visit Checklist -->
+    <section class="card mb-8 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400 flex items-center">
+        <i class="fas fa-clipboard-list mr-2"></i> 三、诊前准备清单
+      </h2>
+      <ol class="list-decimal pl-5 space-y-3">
+        <li><span class="highlight">病历资料准备</span>：
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>身份证、福建医保卡原件及复印件。</li>
+            <li>既往克罗恩病检查报告（肠镜、病理、CT/MRI影像）、蒙特利尔分型证明、糖皮质激素治疗记录、原发性硬化性胆管炎病历。</li>
+            <li><span class="highlight">整理要求</span>：按时间顺序排列，标注关键治疗节点。</li>
+          </ul>
+        </li>
+        <li><span class="highlight">医保与费用</span>：
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li><span class="warning">务必提前3天</span>通过“国家医保服务平台”APP办理福建→上海/南京的异地就医备案。</li>
+            <li>预估费用：挂号费50-100元，检查费800-2000元，生物制剂单次约6000-10000元（需确认医保报销比例）。</li>
+          </ul>
+        </li>
+        <li><span class="highlight">通用准备</span>：
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>准备问题清单：当前症状进展、生物制剂选择（如阿达木单抗/乌司奴单抗）、术后胆管炎管理方案。</li>
+            <li>携带水杯、充电宝，着宽松衣物便于腹部检查。</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Action Guide -->
+    <section class="card mb-8 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+      <h2 class="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400 flex items-center">
+        <i class="fas fa-tasks mr-2"></i> 四、行动指南与局限性说明
+      </h2>
+      <ol class="list-decimal pl-5 space-y-3">
+        <li><span class="highlight">优先行动建议</span>：
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li><span class="highlight">首选上海仁济医院东院</span>：预约张晓琦医生周三下午专科门诊（核心诉求高度匹配）。</li>
+            <li><span class="highlight">备选东部战区总医院</span>：若需外科评估，预约任建安医生周一下午门诊。</li>
+          </ul>
+        </li>
+        <li><span class="highlight">二次确认清单</span>：
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>异地备案状态查询：福建医保局热线0591-12393。</li>
+            <li>仁济医院消化内科挂号：致电021-95169确认预约成功。</li>
+          </ul>
+        </li>
+        <li><span class="highlight">局限性声明</span>：
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>知识库未提供仁济医院东院全部医生的生物制剂专长细节，部分医院（如江苏省中医院）中医专家信息缺失，仅供参考。</li>
+          </ul>
+        </li>
+        <li><span class="highlight">最终免责</span>：
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li><span class="warning">就诊前务必通过医院官方渠道复核医生排班</span>，最终治疗方案需以临床医生诊断为准。</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <p>您的健康是我们的首要关切，祝您就医顺利！</p>
+      <p>报告生成时间: <span id="generate-time"></span></p>
+    </footer>
+  </div>
+
+  <!-- Script for time and theme -->
+  <script>
+    document.getElementById('generate-time').textContent = new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+  </script>
+</body>
+</html>
