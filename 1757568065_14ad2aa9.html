@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>高血压患者就医指南</title>
+  <!-- 引入 UnoCSS -->
+  <script src="https://cdn.jsdelivr.net/npm/unocss@0.58.5/dist/unocss.iife.js"></script>
+  <!-- 引入 Preline UI -->
+  <link href="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.css" rel="stylesheet">
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+    .dark-mode {
+      background-color: #111827;
+      color: #f9fafb;
+    }
+    .card {
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .btn-primary {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+    }
+    .btn-primary:hover {
+      background-color: #2563eb;
+      border-color: #2563eb;
+    }
+    .section-title {
+      border-left: 4px solid #3b82f6;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    .dark-mode .section-title {
+      border-left: 4px solid #60a5fa;
+    }
+    .dark-mode .card {
+      background-color: #1f2937;
+    }
+    .dark-mode .card:hover {
+      background-color: #374151;
+    }
+    .dark-mode .btn-primary {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+    }
+    .dark-mode .btn-primary:hover {
+      background-color: #2563eb;
+      border-color: #2563eb;
+    }
+    .footer {
+      background-color: #e5e7eb;
+      color: #1f2937;
+    }
+    .dark-mode .footer {
+      background-color: #111827;
+      color: #f9fafb;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <div class="min-h-screen flex flex-col">
+    <!-- 头部导航栏 -->
+    <header class="bg-white dark:bg-gray-800 shadow-md py-4 px-6 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-blue-600 dark:text-blue-400">高血压患者就医指南</h1>
+      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
+        <i class="fas fa-moon dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block"></i>
+      </button>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+      <div class="max-w-4xl mx-auto">
+        <!-- 患者信息卡片 -->
+        <div class="mb-8 card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">患者基本情况</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex items-center">
+              <i class="fas fa-user-circle text-xl mr-2 text-blue-500"></i>
+              <span>性别：男</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-birthday-cake text-xl mr-2 text-blue-500"></i>
+              <span>年龄：35岁</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-map-marker-alt text-xl mr-2 text-blue-500"></i>
+              <span>常住地：南京</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-heartbeat text-xl mr-2 text-red-500"></i>
+              <span>诊断：高血压</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 就诊目的卡片 -->
+        <div class="mb-8 card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">就诊需求</h2>
+          <div class="flex items-center mb-4">
+            <i class="fas fa-stethoscope text-xl mr-2 text-green-500"></i>
+            <span>本次就医主要目的：明确诊断</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fas fa-city text-xl mr-2 text-purple-500"></i>
+            <span>期望就诊城市：北京</span>
+          </div>
+        </div>
+
+        <!-- 医疗建议卡片 -->
+        <div class="mb-8 card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">就医建议</h2>
+          <p class="mb-4">根据您的情况，我们为您推荐以下几家在北京的心血管专科医院：</p>
+
+          <!-- 推荐医院 1 -->
+          <div class="mb-6 border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded">
+            <h3 class="font-semibold text-lg flex items-center">
+              <i class="fas fa-hospital mr-2"></i>
+              中国医学科学院阜外医院
+            </h3>
+            <p class="mt-2 text-sm">作为心血管病专科医院，阜外医院在高血压的诊治方面具有丰富的经验和强大的专家团队。</p>
+            <div class="mt-3">
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">高度匹配</span>
+              <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">挂号较难</span>
+            </div>
+            <ul class="mt-2 text-sm list-disc pl-5">
+              <li>地址：北京市西城区北礼士路167号</li>
+              <li>医保政策：支持异地医保，需提前备案</li>
+            </ul>
+            <div class="mt-3">
+              <h4 class="font-medium text-sm">推荐医生：</h4>
+              <ul class="text-sm list-disc pl-5 mt-1">
+                <li><strong>马文君</strong>（主任医师）- 擅长高血压诊治及继发性高血压鉴别诊断</li>
+                <li><strong>王静</strong>（主任医师、教授）- 长期从事高血压临床研究</li>
+                <li><strong>顼志敏</strong>（主任医师、教授）- 专注冠心病、高血压等疾病的综合管理</li>
+              </ul>
+            </div>
+            <p class="mt-2 text-xs">挂号方式：<a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">微信公众号</a>, <a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">北京市统一挂号平台</a>, <a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">电话 010-114</a></p>
+          </div>
+
+          <!-- 推荐医院 2 -->
+          <div class="mb-6 border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded">
+            <h3 class="font-semibold text-lg flex items-center">
+              <i class="fas fa-hospital mr-2"></i>
+              首都医科大学附属北京安贞医院
+            </h3>
+            <p class="mt-2 text-sm">医院在心血管疾病的诊治方面处于国内领先地位，高血压中心具备高水平的诊疗能力。</p>
+            <div class="mt-3">
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">高度匹配</span>
+              <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">挂号难度适中</span>
+            </div>
+            <ul class="mt-2 text-sm list-disc pl-5">
+              <li>地址：北京市朝阳区安贞路2号</li>
+              <li>医保政策：支持异地医保，需提前备案</li>
+            </ul>
+            <div class="mt-3">
+              <h4 class="font-medium text-sm">推荐医生：</h4>
+              <ul class="text-sm list-disc pl-5 mt-1">
+                <li><strong>刘傲亚</strong>（主任医师）- 擅长原发性及继发性高血压的诊断与治疗</li>
+                <li><strong>李红</strong>（主任医师）- 专注于高血压及相关并发症的长期管理</li>
+              </ul>
+            </div>
+            <p class="mt-2 text-xs">挂号方式：<a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">微信公众号</a>, <a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">北京市统一挂号平台</a>, <a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">电话 010-114</a></p>
+          </div>
+
+          <!-- 推荐医院 3 -->
+          <div class="mb-6 border-l-4 border-blue-500 pl-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded">
+            <h3 class="font-semibold text-lg flex items-center">
+              <i class="fas fa-hospital mr-2"></i>
+              中国人民解放军总医院第一医学中心
+            </h3>
+            <p class="mt-2 text-sm">心血管内科在老年高血压及合并症管理方面尤为擅长，整体医疗资源丰富。</p>
+            <div class="mt-3">
+              <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded mr-2">高度匹配</span>
+              <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">挂号难度中等</span>
+            </div>
+            <ul class="mt-2 text-sm list-disc pl-5">
+              <li>地址：北京市海淀区复兴路28号</li>
+              <li>医保政策：支持异地医保，需提前备案</li>
+            </ul>
+            <div class="mt-3">
+              <h4 class="font-medium text-sm">推荐医生：</h4>
+              <ul class="text-sm list-disc pl-5 mt-1">
+                <li><strong>胡亦新</strong>（主任医师、副教授）- 擅长老年高血压合并冠心病、糖尿病等并发症的综合管理</li>
+                <li><strong>刘宏伟</strong>（主任医师）- 在高血压防治及冠心病介入治疗方面造诣深厚</li>
+              </ul>
+            </div>
+            <p class="mt-2 text-xs">挂号方式：<a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">微信公众号</a>, <a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">北京市统一挂号平台</a>, <a href="https://www.baidu.com" target="_blank" class="text-blue-600 hover:underline">电话 010-114</a></p>
+          </div>
+        </div>
+
+        <!-- 诊前准备清单 -->
+        <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-8">
+          <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">诊前准备清单</h2>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>身份证、医保卡原件</li>
+            <li>既往所有检查报告单（如血常规、肝肾功能、心电图、动态血压监测等）</li>
+            <li>既往病历本或疾病诊断证明</li>
+            <li>提前办理异地就医备案（国家医保服务平台APP）</li>
+            <li>准备充足资金（现金、银行卡、手机支付）</li>
+            <li>记录向医生咨询的问题清单</li>
+            <li>带好充电宝、水杯等个人物品</li>
+          </ul>
+        </div>
+
+        <!-- 行动指南与注意事项 -->
+        <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">行动指南与注意事项</h2>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>优先考虑中国医学科学院阜外医院的马文君医生</li>
+            <li>就诊前务必致电确认医院信息</li>
+            <li>挂号难度较高的医院建议提前预约</li>
+            <li>部分医院特需门诊费用可能无法医保报销</li>
+            <li>如需进一步确诊，请携带所有相关病历资料</li>
+          </ol>
+          <div class="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded border border-yellow-200 dark:border-yellow-700">
+            <p class="font-semibold"><i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>特别提醒：</p>
+            <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer py-6 px-4 text-center text-sm">
+      <p>© 2023 高血压患者就医指南 | 数据仅供参考，请以实际就诊为准</p>
+    </footer>
+  </div>
+
+  <!-- 引入 Preline UI JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+  <script>
+    // 初始化 Preline UI 组件
+    window.addEventListener('DOMContentLoaded', () => {
+      initPreline();
+    });
+
+    // 切换深色/浅色模式
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    // 检查系统偏好设置
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      htmlElement.classList.add('dark-mode');
+    }
+
+    // 监听切换按钮
+    themeToggle.addEventListener('click', () => {
+      htmlElement.classList.toggle('dark-mode');
+
+      // 更新图标
+      const icon = themeToggle.querySelector('i');
+      if (htmlElement.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+    // 修复页面渲染问题
+    function initPreline() {
+      if (typeof Preline === 'undefined') return;
+      const preline = new Preline();
+    }
+  </script>
+</body>
+</html>
