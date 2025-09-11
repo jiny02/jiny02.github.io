@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <!-- Tailwind CSS & Preline UI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Theme Variables -->
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #059669;
+      --danger-color: #dc2626;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+      --text-light: #1e293b;
+      --text-dark: #f1f5f9;
+    }
+    .theme-light {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+    .theme-dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    .card {
+      @apply p-6 rounded-xl shadow-md transition-all hover:shadow-lg;
+    }
+    .section-title {
+      @apply text-xl font-bold mb-4 border-l-4 pl-2;
+      border-color: var(--primary-color);
+    }
+    .highlight {
+      @apply font-semibold text-blue-600;
+    }
+  </style>
+</head>
+<body class="theme-light">
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Header -->
+    <header class="mb-10 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">就医规划报告</h1>
+      <p class="text-gray-500">生成时间：<span id="generate-time"></span></p>
+    </header>
+
+    <!-- 患者情况摘要 -->
+    <section class="card mb-8">
+      <h2 class="section-title">一、患者情况摘要</h2>
+      <p>患者，45岁女性，常住浙江嘉兴，初步诊断为“<span class="highlight">重度三尖瓣关闭不全</span>”。本次核心诉求为<span class="highlight">进行三尖瓣成形术</span>。医保类型为<span class="highlight">浙江医保</span>。既往有<span class="highlight">二尖瓣置换术后</span>病史，曾接受<span class="highlight">利尿扩管药物</span>治疗，超声显示<span class="highlight">瓣环重度扩张</span>。</p>
+    </section>
+
+    <!-- 核心就医建议 -->
+    <section class="card mb-8">
+      <h2 class="section-title">二、核心就医建议</h2>
+      <p>当前知识库中未检索到与患者疾病及诉求匹配的医院和医生信息。建议您通过以下途径自行获取资源：</p>
+      <ol class="list-decimal pl-5 mt-2 space-y-2">
+        <li><strong>目标医院定位：</strong>优先选择<span class="highlight">心血管外科实力强劲的三甲医院</span>（如上海中山医院、浙大二院、北京阜外医院）。重点科室：<span class="highlight">心脏大血管外科</span>或<span class="highlight">成人心脏外科</span>。</li>
+        <li><strong>挂号建议：</strong>通过医院官方APP（如“浙里办”关联医院）、微信公众号或电话预约。专家门诊通常提前7-14天放号，建议每日8:00-9:00关注。</li>
+        <li><strong>关键风险警示：</strong>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li><span class="highlight">既往手术史风险</span>：由于患者曾接受二尖瓣置换术，本次为二次心脏手术，务必选择具有<span class="highlight">复杂心脏手术经验</span>的团队。</li>
+            <li><span class="highlight">医保异地备案</span>：浙江省内参保需提前通过“浙里办”APP办理<span class="highlight">异地就医备案</span>（尤其选择上海/北京医院时）。</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 诊前准备清单 -->
+    <section class="card mb-8">
+      <h2 class="section-title">三、诊前准备清单</h2>
+      <p class="text-sm italic mb-3">(基于心脏手术通用要求)</p>
+      <ul class="space-y-3">
+        <li><strong>病历资料：</strong>
+          <ol class="list-decimal pl-5 mt-1 space-y-1">
+            <li>身份证、浙江医保卡原件及复印件；</li>
+            <li>二尖瓣置换术的<span class="highlight">完整手术记录、出院小结</span>；</li>
+            <li>近期心脏超声（含瓣环数据）、心电图、胸部CT报告（按时间顺序整理）。</li>
+          </ol>
+        </li>
+        <li><strong>医保与费用：</strong>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>通过“国家医保服务平台”APP办理<span class="highlight">异地备案</span>，备案地选择目标城市（如上海/杭州）；</li>
+            <li>预估费用：三尖瓣成形术约10-15万元（需备足押金及食宿交通费）。</li>
+          </ul>
+        </li>
+        <li><strong>其他准备：</strong>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>准备含利尿剂等药物的<span class="highlight">完整用药清单</span>；</li>
+            <li>宽松衣物（便于术后检查）、口罩及消毒用品（降低感染风险）。</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 行动指南与局限性说明 -->
+    <section class="card mb-8">
+      <h2 class="section-title">四、行动指南与局限性说明</h2>
+      <ul class="space-y-3">
+        <li><strong>优先行动：</strong>
+          <ol class="list-decimal pl-5 mt-1 space-y-1">
+            <li>立即锁定<span class="highlight">上海/杭州的三甲医院心脏外科</span>（如复旦大学附属中山医院、浙江大学医学院附属第二医院）。</li>
+            <li>挂号目标：<span class="highlight">主任医师级专家</span>（职称过滤可降低经验风险）。</li>
+          </ol>
+        </li>
+        <li><strong>二次确认清单：</strong>
+          <ul class="list-disc pl-5 mt-1 space-y-1">
+            <li>致电目标医院确认：<br>
+              <code class="bg-gray-100 p-2 rounded text-sm">
+                ① 能否接诊二次心脏手术患者？<br>
+                ② 异地医保结算流程（如：是否需要预缴全额费用）？
+              </code>
+            </li>
+          </ul>
+        </li>
+        <li><strong>局限性声明：</strong>本报告因知识库信息缺失，未提供具体医院/医生信息，请以医院官网及临床评估为准。</li>
+        <li><strong>最终免责：</strong>心脏手术存在较高风险，最终术式需由心外科专家根据实时检查结果确定。</li>
+      </ul>
+      <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+        <p class="font-semibold">行动提示：</p>
+        <p>请优先通过权威渠道（如浙江省卫健委官网“三甲医院专科排名”）核实医院资质，确保诊疗安全。</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 text-sm mt-10">
+      <p>© 2025 就医规划系统 | 生成时间：<span id="footer-time"></span></p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // 时间动态生成
+    const now = new Date();
+    const timeString = now.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+    document.getElementById('generate-time').textContent = timeString;
+    document.getElementById('footer-time').textContent = timeString;
+
+    // 主题切换（跟随系统）
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    function setTheme(isDark) {
+      document.body.classList.toggle('theme-dark', isDark);
+      document.body.classList.toggle('theme-light', !isDark);
+    }
+    setTheme(darkModeMediaQuery.matches);
+    darkModeMediaQuery.addEventListener('change', e => setTheme(e.matches));
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.min.js"></script>
+</body>
+</html>
