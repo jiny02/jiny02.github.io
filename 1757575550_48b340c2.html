@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --animate-duration: 0.5s;
+    }
+    
+    .fade-in {
+      animation: fadeIn var(--animate-duration) ease-out forwards;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .btn-hover:hover {
+      transform: scale(1.05);
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .section-divider {
+        background: linear-gradient(to right, transparent, #374151, transparent);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div>
+        <h1 class="text-2xl font-bold text-primary-700 dark:text-primary-400">就医规划报告</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">复杂性肛瘘患者就医指南</p>
+      </div>
+      <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+        <i class="bi bi-moon-fill hidden dark:block"></i>
+        <i class="bi bi-sun-fill block dark:hidden"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- Patient Summary -->
+    <section class="mb-12 fade-in" style="animation-delay: 0.1s">
+      <div class="flex items-start mb-4">
+        <i class="bi bi-person-badge text-primary-600 dark:text-primary-400 text-2xl mr-3 mt-1"></i>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">患者情况摘要</h2>
+      </div>
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 card-hover transition-all duration-300 border border-gray-200 dark:border-gray-700">
+        <ul class="space-y-3">
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">患者年龄：</span>
+            <span>25岁女性</span>
+          </li>
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">常住地：</span>
+            <span>湖南株洲</span>
+          </li>
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">初步诊断：</span>
+            <span class="font-semibold text-red-600 dark:text-red-400">复杂性肛瘘</span>
+          </li>
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">瘘管分型：</span>
+            <span>经括约肌型</span>
+          </li>
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">既往病史：</span>
+            <span>溃疡性结肠炎</span>
+          </li>
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">治疗史：</span>
+            <span>反复切开引流</span>
+          </li>
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">医保类型：</span>
+            <span>湖南医保</span>
+          </li>
+          <li class="flex">
+            <span class="font-medium w-24 text-gray-700 dark:text-gray-300">核心诉求：</span>
+            <span class="font-semibold">瘘管切开挂线术</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="section-divider my-8"></div>
+
+    <!-- Core Medical Recommendation -->
+    <section class="mb-12 fade-in" style="animation-delay: 0.2s">
+      <div class="flex items-start mb-4">
+        <i class="bi bi-hospital text-primary-600 dark:text-primary-400 text-2xl mr-3 mt-1"></i>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">核心就医建议</h2>
+      </div>
+      
+      <!-- Hospital 1 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-6 card-hover transition-all duration-300 border border-green-200 dark:border-green-900 border-l-4 border-l-green-500 dark:border-l-green-400">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">推荐医院 1：上海交通大学医学院附属仁济医院（东院）</h3>
+          <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">高度匹配</span>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">推荐理由：</h4>
+          <p class="text-gray-700 dark:text-gray-300">仁济医院是上海历史悠久的综合性三甲医院，其胃肠外科在结直肠疾病领域具有极高的临床和科研水平。医生徐庆长期从事结直肠癌及炎症性肠病相关外科研究，对复杂肛瘘的保肛手术有深入经验，与您的病情高度契合。</p>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">推荐医生：</h4>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+            <div class="flex items-center mb-2">
+              <i class="bi bi-person-circle text-primary-600 dark:text-primary-400 mr-2"></i>
+              <span class="font-medium">徐庆（主任医师）</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">擅长结直肠良恶性肿瘤、炎症性肠病（含溃疡性结肠炎）及复杂肛瘘的微创手术，尤其注重保肛功能，符合年轻患者需求。</p>
+            <p class="text-sm"><span class="font-medium">出诊详情：</span>东院 专家门诊 周五上午 (50元)</p>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
+            <h5 class="font-semibold text-blue-800 dark:text-blue-200 mb-2">医保政策</h5>
+            <p class="text-sm text-blue-700 dark:text-blue-300">支持湖南省医保异地就医。务必提前通过"国家医保服务平台"APP办理异地就医备案，否则将无法直接结算。</p>
+          </div>
+          <div class="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4">
+            <h5 class="font-semibold text-purple-800 dark:text-purple-200 mb-2">院区地址</h5>
+            <p class="text-sm text-purple-700 dark:text-purple-300">东院位于上海市浦东新区东方路1630号（主要出诊院区）</p>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+          <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">挂号方式</h5>
+          <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+            <li>• 微信公众号"上海仁济医院就医服务号"或"上海交通大学医学院附属仁济医院"</li>
+            <li>• APP"上海仁济医院"</li>
+            <li>• 电话021-95169</li>
+            <li>• 放号时间通常为提前7天上午8:00</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Hospital 2 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-6 card-hover transition-all duration-300 border border-yellow-200 dark:border-yellow-900 border-l-4 border-l-yellow-500 dark:border-l-yellow-400">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">推荐医院 2：上海市第一人民医院（北部）</h3>
+          <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-medium">部分匹配</span>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">推荐理由：</h4>
+          <p class="text-gray-700 dark:text-gray-300">作为老牌三甲综合医院，普外临床医学中心技术全面，郑毅、季政一等主任医师均擅长肛直肠疾病的外科治疗，可提供可靠的手术选择。</p>
+        </div>
+        
+        <div class="mb-4 bg-red-50 dark:bg-red-900/20 border-l-4 border-l-red-500 dark:border-l-red-400 p-4 rounded">
+          <div class="flex items-start">
+            <i class="bi bi-exclamation-triangle-fill text-red-500 dark:text-red-400 mr-2 mt-0.5"></i>
+            <div>
+              <h5 class="font-semibold text-red-800 dark:text-red-200">特别注意</h5>
+              <p class="text-sm text-red-700 dark:text-red-300">该院中医科王松坡教授虽擅长治疗溃疡性结肠炎，但其专业方向为内科中医药治疗，不进行肛瘘手术，请勿误挂。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">推荐医生：</h4>
+          <div class="space-y-4">
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <div class="flex items-center mb-2">
+                <i class="bi bi-person-circle text-primary-600 dark:text-primary-400 mr-2"></i>
+                <span class="font-medium">郑毅（主任医师）</span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">对复杂、危重病人抢救及肛直肠疾病的诊断和外科治疗有丰富经验。</p>
+              <p class="text-sm"><span class="font-medium">出诊详情：</span>虹口北部 特需门诊 周三下午 (暂未提供)</p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+              <div class="flex items-center mb-2">
+                <i class="bi bi-person-circle text-primary-600 dark:text-primary-400 mr-2"></i>
+                <span class="font-medium">季政一（主任医师）</span>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">长期从事普外科临床工作，对肛门疾病有深入研究，采用PPH等微创技术治疗痔疮及肛瘘。</p>
+              <p class="text-sm"><span class="font-medium">出诊详情：</span>虹口北部 专家门诊 周四上午/下午 (暂未提供)</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
+            <h5 class="font-semibold text-blue-800 dark:text-blue-200 mb-2">医保政策</h5>
+            <p class="text-sm text-blue-700 dark:text-blue-300">支持湖南省医保异地就医。必须提前完成异地就医备案。</p>
+          </div>
+          <div class="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4">
+            <h5 class="font-semibold text-purple-800 dark:text-purple-200 mb-2">院区地址</h5>
+            <p class="text-sm text-purple-700 dark:text-purple-300">北部院区位于上海市虹口区武进路85号。请注意区分南部院区。</p>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+          <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">挂号方式</h5>
+          <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+            <li>• 微信公众号"上海市第一人民医院"</li>
+            <li>• 电话021-95169</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Hospital 3 -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 mb-6 card-hover transition-all duration-300 border border-orange-200 dark:border-orange-900 border-l-4 border-l-orange-500 dark:border-l-orange-400">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">推荐医院 3：上海中医药大学附属曙光医院东院</h3>
+          <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-full text-sm font-medium">谨慎评估</span>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">推荐理由：</h4>
+          <p class="text-gray-700 dark:text-gray-300">"柏氏肛肠科"是其传统特色品牌，在中医治疗肛肠疾病方面享有盛誉，对于术后恢复、控制炎症可能有辅助作用。</p>
+        </div>
+        
+        <div class="mb-4 bg-red-50 dark:bg-red-900/20 border-l-4 border-l-red-500 dark:border-l-red-400 p-4 rounded">
+          <div class="flex items-start">
+            <i class="bi bi-exclamation-triangle-fill text-red-500 dark:text-red-400 mr-2 mt-0.5"></i>
+            <div>
+              <h5 class="font-semibold text-red-800 dark:text-red-200">特别注意</h5>
+              <p class="text-sm text-red-700 dark:text-red-300">本院为中医医院，手术资源和现代外科技术实力可能弱于大型综合医院。若您核心诉求是明确的外科手术，建议优先考虑前两家综合医院。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-4">
+          <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">推荐医生：</h4>
+          <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+            <p class="text-gray-700 dark:text-gray-300">根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取肛肠科的专家门诊进行咨询。</p>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-4">
+            <h5 class="font-semibold text-blue-800 dark:text-blue-200 mb-2">医保政策</h5>
+            <p class="text-sm text-blue-700 dark:text-blue-300">支持湖南省医保异地就医。必须提前完成异地就医备案。</p>
+          </div>
+          <div class="bg-purple-50 dark:bg-purple-900/30 rounded-lg p-4">
+            <h5 class="font-semibold text-purple-800 dark:text-purple-200 mb-2">院区地址</h5>
+            <p class="text-sm text-purple-700 dark:text-purple-300">东院位于上海市浦东新区张衡路528号；西院位于黄浦区普安路185号，请根据挂号信息确认院区。</p>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+          <h5 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">挂号方式</h5>
+          <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+            <li>• 微信公众号"曙光医院挂号"</li>
+            <li>• APP"上海市互联网总医院"</li>
+            <li>• 电话021-95169</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider my-8"></div>
+
+    <!-- Pre-Visit Checklist -->
+    <section class="mb-12 fade-in" style="animation-delay: 0.3s">
+      <div class="flex items-start mb-4">
+        <i class="bi bi-clipboard-check text-primary-600 dark:text-primary-400 text-2xl mr-3 mt-1"></i>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">诊前准备清单</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 card-hover transition-all duration-300 border border-gray-200 dark:border-gray-700">
+          <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4 flex items-center">
+            <i class="bi bi-file-earmark-medical text-primary-600 dark:text-primary-400 mr-2"></i>
+            病历资料准备
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+              <span>身份证、医保卡原件</span>
+            </li>
+            <li class="flex items-start">
+              <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+              <span>既往所有检查报告单（如肛周MRI、超声、肠镜报告、病理报告、血常规、肝肾功能、炎症指标等）</span>
+            </li>
+            <li class="flex items-start">
+              <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+              <span>既往病历本或住院记录、手术记录（如有）</span>
+            </li>
+            <li class="flex items-start bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
+              <i class="bi bi-info-circle-fill text-blue-500 dark:text-blue-400 mr-2 mt-1"></i>
+              <span class="text-blue-700 dark:text-blue-300">按时间顺序整理好所有资料，并复印一份备用</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 card-hover transition-all duration-300 border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4 flex items-center">
+              <i class="bi bi-credit-card text-primary-600 dark:text-primary-400 mr-2"></i>
+              医保与费用准备
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+                <span>提前通过"国家医保服务平台"APP或小程序办理异地就医备案</span>
+              </li>
+              <li class="flex items-start">
+                <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+                <span>咨询本地医保局，确认报销比例及流程</span>
+              </li>
+              <li class="flex items-start">
+                <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+                <span>准备充足的资金（现金、银行卡、手机支付）</span>
+              </li>
+              <li class="flex items-start bg-yellow-50 dark:bg-yellow-900/20 p-3 rounded-lg">
+                <i class="bi bi-exclamation-triangle-fill text-yellow-500 dark:text-yellow-400 mr-2 mt-1"></i>
+                <span class="text-yellow-700 dark:text-yellow-300">特需门诊、国际医疗部费用通常较高且可能无法医保报销，普通专家门诊为首选</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 card-hover transition-all duration-300 border border-gray-200 dark:border-gray-700">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4 flex items-center">
+              <i class="bi bi-list-check text-primary-600 dark:text-primary-400 mr-2"></i>
+              其他通用准备
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+                <span>记录并准备向医生咨询的问题清单（如手术方案、风险、术后恢复时间、对生育影响等）</span>
+              </li>
+              <li class="flex items-start">
+                <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+                <span>带好充电宝、水杯、笔记本等个人物品</span>
+              </li>
+              <li class="flex items-start">
+                <i class="bi bi-check-circle-fill text-green-500 dark:text-green-400 mr-2 mt-1"></i>
+                <span>就诊当天穿着宽松方便的衣物，便于检查</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider my-8"></div>
+
+    <!-- Action Guide & Limitations -->
+    <section class="mb-12 fade-in" style="animation-delay: 0.4s">
+      <div class="flex items-start mb-4">
+        <i class="bi bi-info-circle text-primary-600 dark:text-primary-400 text-2xl mr-3 mt-1"></i>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">行动指南与局限性说明</h2>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 card-hover transition-all duration-300 border border-green-200 dark:border-green-900">
+          <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4 flex items-center">
+            <i class="bi bi-rocket-takeoff text-green-500 dark:text-green-400 mr-2"></i>
+            优先行动建议
+          </h3>
+          <p class="text-gray-700 dark:text-gray-300">基于您的核心诉求，建议优先考虑<strong class="text-green-600 dark:text-green-400">上海交通大学医学院附属仁济医院（东院）的徐庆医生</strong>，就经括约肌型复杂性肛瘘的手术治疗方案进行详细咨询。</p>
+        </div>
+        
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 card-hover transition-all duration-300 border border-blue-200 dark:border-blue-900">
+          <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4 flex items-center">
+            <i class="bi bi-telephone text-blue-500 dark:text-blue-400 mr-2"></i>
+            二次确认清单
+          </h3>
+          <div class="space-y-4">
+            <div>
+              <p class="font-medium text-gray-800 dark:text-gray-200 mb-2">就诊前务必致电确认：</p>
+              <ul class="space-y-2">
+                <li class="flex items-start bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
+                  <i class="bi bi-hospital text-primary-600 dark:text-primary-400 mr-2 mt-1"></i>
+                  <div>
+                    <p class="font-medium">上海仁济医院</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">胃肠外科门诊咨询：021-58752345 或 021-68383204</p>
+                  </div>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
+                  <i class="bi bi-hospital text-primary-600 dark:text-primary-400 mr-2 mt-1"></i>
+                  <div>
+                    <p class="font-medium">上海市第一人民医院</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">普外科门诊咨询：021-63240090</p>
+                  </div>
+                </li>
+                <li class="flex items-start bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
+                  <i class="bi bi-hospital text-primary-600 dark:text-primary-400 mr-2 mt-1"></i>
+                  <div>
+                    <p class="font-medium">上海中医药大学附属曙光医院</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">肛肠科咨询：021-56601100</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-xl p-6 border border-yellow-200 dark:border-yellow-800">
+            <h3 class="font-bold text-lg text-yellow-800 dark:text-yellow-200 mb-3 flex items-center">
+              <i class="bi bi-exclamation-triangle-fill text-yellow-500 dark:text-yellow-400 mr-2"></i>
+              局限性声明
+            </h3>
+            <p class="text-yellow-700 dark:text-yellow-300 text-sm">本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面的情况，仅供参考。</p>
+          </div>
+          
+          <div class="bg-red-50 dark:bg-red-900/20 rounded-xl p-6 border border-red-200 dark:border-red-800">
+            <h3 class="font-bold text-lg text-red-800 dark:text-red-200 mb-3 flex items-center">
+              <i class="bi bi-shield-exclamation text-red-500 dark:text-red-400 mr-2"></i>
+              最终免责
+            </h3>
+            <p class="text-red-700 dark:text-red-300 text-sm">最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-600 dark:text-gray-400">© 2023 就医规划报告. 仅供患者参考使用.</p>
+      <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">请以医院官方信息为准，本报告不构成医疗建议</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = themeToggle.querySelector('.bi-sun-fill');
+    const moonIcon = themeToggle.querySelector('.bi-moon-fill');
+    
+    // Check for saved theme or respect OS preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      document.documentElement.classList.add('dark');
+      sunIcon.classList.remove('block');
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+      moonIcon.classList.add('block');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        sunIcon.classList.remove('block');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+        moonIcon.classList.add('block');
+      } else {
+        localStorage.setItem('theme', 'light');
+        sunIcon.classList.remove('hidden');
+        sunIcon.classList.add('block');
+        moonIcon.classList.remove('block');
+        moonIcon.classList.add('hidden');
+      }
+    });
+    
+    // Fade-in animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = '0s'; // Remove delay for elements already in viewport
+            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
+</body>
+</html>
