@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>胃癌患者就医指南</title>
+  <meta name="description" content="为69岁河北邯郸原发胃癌患者提供的个性化就医建议报告">
+  <!-- 引入UnoCSS (Tailwind兼容) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- 引入Preline UI -->
+  <script src="https://cdn.jsdelivr.net/npm/preline@1.9.0/dist/preline.js"></script>
+  <!-- 引入图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --animate-duration: 300ms;
+    }
+    
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .btn-primary {
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .btn-primary:hover {
+      transform: scale(1.05);
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .section-divider {
+        background: linear-gradient(to right, transparent, #374151, transparent);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+  <!-- 导航栏 -->
+  <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-heartbeat text-primary-600 dark:text-primary-400 text-xl"></i>
+        <span class="font-bold text-lg">胃癌就医指南</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <i class="fas fa-moon hidden dark:block"></i>
+          <i class="fas fa-sun block dark:hidden"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主要内容 -->
+  <main class="container mx-auto px-4 py-8 max-w-4xl">
+    <!-- 患者信息卡片 -->
+    <section class="mb-12 fade-in-up">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 card-hover border border-gray-100 dark:border-gray-700">
+        <div class="flex items-start">
+          <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900/30 p-3 rounded-lg mr-4">
+            <i class="fas fa-user-injured text-primary-600 dark:text-primary-400 text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold mb-2">患者情况摘要</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+              <div class="flex items-center">
+                <i class="fas fa-venus-mars text-primary-500 mr-2"></i>
+                <span>性别：男</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-calendar-alt text-primary-500 mr-2"></i>
+                <span>年龄：69岁</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-map-marker-alt text-primary-500 mr-2"></i>
+                <span>常住地：河北邯郸</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-diagnoses text-primary-500 mr-2"></i>
+                <span>诊断：原发胃癌</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-dna text-primary-500 mr-2"></i>
+                <span>病理：中低分化腺癌</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-procedures text-primary-500 mr-2"></i>
+                <span>分期：中晚期</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-history text-primary-500 mr-2"></i>
+                <span>既往治疗：4次化疗</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-notes-medical text-primary-500 mr-2"></i>
+                <span>既往病史：脑梗塞</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-bullseye text-primary-500 mr-2"></i>
+                <span>就医目标：外科手术</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心就医建议 -->
+    <section class="mb-12 fade-in-up">
+      <div class="flex items-center mb-6">
+        <i class="fas fa-hospital text-primary-600 dark:text-primary-400 text-2xl mr-3"></i>
+        <h2 class="text-2xl font-bold">核心就医建议</h2>
+      </div>
+      
+      <!-- 推荐医院列表 -->
+      <div class="space-y-6">
+        <!-- 医院1 -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 dark:border-gray-700 fade-in-up">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">1. 中国医学科学院肿瘤医院</h3>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 rounded-full text-sm font-medium">高度匹配</span>
+            </div>
+            <p class="mb-4 text-gray-600 dark:text-gray-300">国内顶尖的三级甲等肿瘤专科医院，在胃癌外科治疗领域具有丰富的临床经验和先进的诊疗设备。</p>
+            
+            <div class="mb-4">
+              <h4 class="font-bold mb-2 flex items-center">
+                <i class="fas fa-user-md text-primary-500 mr-2"></i>推荐医生
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">赵东兵（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">擅长胃癌微创治疗及结直肠癌腹腔镜切除，经验丰富。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>特需门诊(500元)、周四上午</p>
+                </div>
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">蔡建强（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">专注于胃癌以外科治疗为主的综合治疗，尤其在晚期胃癌转化治疗方面有显著成果。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>特需门诊、周四上午</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">地址: 北京市朝阳区潘家园南里17号</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">医保: 支持河北医保</span>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+              <button class="btn-primary px-4 py-2 bg-primary-600 text-white rounded-lg text-sm flex items-center">
+                <i class="fas fa-phone mr-2"></i>电话咨询
+              </button>
+              <button class="btn-primary px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg text-sm flex items-center">
+                <i class="fas fa-calendar-check mr-2"></i>预约挂号
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 医院2 -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 dark:border-gray-700 fade-in-up">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">2. 复旦大学附属肿瘤医院</h3>
+              <span class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 rounded-full text-sm font-medium">高度匹配</span>
+            </div>
+            <p class="mb-4 text-gray-600 dark:text-gray-300">国内领先的肿瘤专科医院，其胃外科在胃癌微创手术及晚期胃癌转化治疗方面处于国际领先水平。</p>
+            
+            <div class="mb-4">
+              <h4 class="font-bold mb-2 flex items-center">
+                <i class="fas fa-user-md text-primary-500 mr-2"></i>推荐医生
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">刘晓文（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">擅长胃癌微创手术及晚期胃癌转化治疗，年手术量超过400例。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>专家门诊(40元)、周二上午；周四上午</p>
+                </div>
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">黄华（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">专注于印戒细胞癌及晚期胃癌转化治疗，手术水平国际领先。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>特需门诊(298元)、周一上午；周四上午；周五上午</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">地址: 上海市徐汇区零陵路399号</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">医保: 支持河北医保</span>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+              <button class="btn-primary px-4 py-2 bg-primary-600 text-white rounded-lg text-sm flex items-center">
+                <i class="fas fa-phone mr-2"></i>电话咨询
+              </button>
+              <button class="btn-primary px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg text-sm flex items-center">
+                <i class="fas fa-calendar-check mr-2"></i>预约挂号
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 医院3 -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 dark:border-gray-700 fade-in-up">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">3. 天津医科大学肿瘤医院</h3>
+              <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-medium">部分匹配</span>
+            </div>
+            <p class="mb-4 text-gray-600 dark:text-gray-300">作为河北省邻近的大型肿瘤专科医院，在胃癌外科治疗方面具有较强实力，适合希望就近就医的患者。</p>
+            
+            <div class="mb-4">
+              <h4 class="font-bold mb-2 flex items-center">
+                <i class="fas fa-user-md text-primary-500 mr-2"></i>推荐医生
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">刘宁（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">精通胃癌规范化手术及综合治疗，尤其擅长术前新辅助化疗。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>特需门诊(300元)、周一上午</p>
+                </div>
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">潘源（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">擅长胃癌腹腔镜下根治手术及全胃切除术后消化道重建。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>专家门诊、周三上午</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">地址: 天津市河西区体院北环湖西路</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">医保: 支持河北医保</span>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+              <button class="btn-primary px-4 py-2 bg-primary-600 text-white rounded-lg text-sm flex items-center">
+                <i class="fas fa-phone mr-2"></i>电话咨询
+              </button>
+              <button class="btn-primary px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg text-sm flex items-center">
+                <i class="fas fa-calendar-check mr-2"></i>预约挂号
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 医院4 -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100 dark:border-gray-700 fade-in-up">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-xl font-bold">4. 北京大学肿瘤医院</h3>
+              <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-medium">部分匹配</span>
+            </div>
+            <p class="mb-4 text-gray-600 dark:text-gray-300">在胃肠肿瘤治疗领域享有盛誉，但挂号难度较大，适合愿意等待优质资源的患者。</p>
+            
+            <div class="mb-4">
+              <h4 class="font-bold mb-2 flex items-center">
+                <i class="fas fa-user-md text-primary-500 mr-2"></i>推荐医生
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">季鑫（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">擅长胃癌微创手术及早期胃癌缩小手术。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>专家门诊(60元)、周二下午</p>
+                </div>
+                <div class="border-l-4 border-primary-500 pl-4 py-2 bg-gray-50 dark:bg-gray-700/50 rounded-r">
+                  <p class="font-medium">邢加迪（主任医师）</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">专注于胃癌标准化手术及腹腔镜微创治疗。</p>
+                  <p class="text-sm mt-2"><span class="font-medium">出诊：</span>专家门诊、周二下午</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">地址: 北京市海淀区阜成路52号</span>
+              <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm">医保: 支持河北医保</span>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+              <button class="btn-primary px-4 py-2 bg-primary-600 text-white rounded-lg text-sm flex items-center">
+                <i class="fas fa-phone mr-2"></i>电话咨询
+              </button>
+              <button class="btn-primary px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg text-sm flex items-center">
+                <i class="fas fa-calendar-check mr-2"></i>预约挂号
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 诊前准备清单 -->
+    <section class="mb-12 fade-in-up">
+      <div class="flex items-center mb-6">
+        <i class="fas fa-clipboard-list text-primary-600 dark:text-primary-400 text-2xl mr-3"></i>
+        <h2 class="text-2xl font-bold">诊前准备清单</h2>
+      </div>
+      
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-700">
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fas fa-file-medical text-primary-500 mr-2"></i>病历资料准备
+            </h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+              <li>身份证、医保卡原件</li>
+              <li>既往所有检查报告单（如血常规、肝肾功能、影像学CT/MRI报告、基因检测报告等）</li>
+              <li>既往病历本或疾病诊断证明</li>
+              <li class="font-medium text-primary-600 dark:text-primary-400">特别建议：按时间顺序整理好所有资料</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fas fa-money-check-alt text-primary-500 mr-2"></i>医保与费用准备
+            </h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+              <li>提前通过"国家医保服务平台"APP或小程序办理异地就医备案</li>
+              <li>咨询本地医保局，确认报销比例及流程</li>
+              <li>准备充足的资金（现金、银行卡、手机支付），预估费用包括：挂号费、检查费、药费及异地食宿交通费</li>
+              <li class="font-medium text-primary-600 dark:text-primary-400">特别建议：部分医院特需门诊费用可能无法医保报销，需提前确认</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fas fa-info-circle text-primary-500 mr-2"></i>其他通用准备
+            </h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+              <li>记录并准备向医生咨询的问题清单</li>
+              <li>带好充电宝、水杯等个人物品</li>
+              <li>就诊当天穿着宽松方便的衣物</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 行动指南 -->
+    <section class="fade-in-up">
+      <div class="flex items-center mb-6">
+        <i class="fas fa-route text-primary-600 dark:text-primary-400 text-2xl mr-3"></i>
+        <h2 class="text-2xl font-bold">行动指南与局限性说明</h2>
+      </div>
+      
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-100 dark:border-gray-700">
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fas fa-star text-yellow-500 mr-2"></i>优先行动建议
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">基于您的核心诉求，建议优先考虑<strong class="text-primary-600 dark:text-primary-400">中国医学科学院肿瘤医院的赵东兵医生</strong>，并就胃癌微创手术及转化治疗可行性进行咨询。</p>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>二次确认清单
+            </h3>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+              <li>就诊前务必致电确认：<strong>中国医学科学院肿瘤医院，胰胃外科：010-87788899</strong></li>
+              <li>就诊前务必致电确认：<strong>复旦大学附属肿瘤医院，胃外科：021-64175590</strong></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fas fa-exclamation-circle text-gray-500 mr-2"></i>局限性声明
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面（如部分医院的中医专家信息缺失）的情况，仅供参考。</p>
+          </div>
+          
+          <div>
+            <h3 class="font-bold text-lg mb-3 flex items-center">
+              <i class="fas fa-gavel text-gray-500 mr-2"></i>最终免责
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-8 mt-12">
+    <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
+      <p>© 2023 胃癌患者就医指南 · 为患者提供专业就医建议</p>
+      <p class="mt-2 text-sm">本报告仅供参考，具体诊疗请遵医嘱</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 主题切换
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    
+    // 检查系统主题偏好
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.classList.add('dark');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      // 保存用户偏好到localStorage
+      localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+    });
+    
+    // 检查localStorage中的主题设置
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    } else {
+      html.classList.remove('dark');
+    }
+    
+    // 滚动动画
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // 初始化Preline UI组件
+    document.addEventListener('DOMContentLoaded', function() {
+      HSStaticMethods.autoInit();
+    });
+  </script>
+</body>
+</html>
