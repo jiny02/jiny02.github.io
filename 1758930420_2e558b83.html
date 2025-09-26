@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>就医规划报告</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --white: #FFFFFF;
+      --light-gray: #F3F4F6;
+      --gray: #6B7280;
+      --dark-gray: #1F2937;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--dark-gray);
+      background-color: var(--white);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 24px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .header-subtitle {
+      font-size: 16px;
+      margin-top: 8px;
+    }
+
+    .header-buttons {
+      margin-top: 16px;
+    }
+
+    .header-buttons button {
+      background-color: var(--white);
+      color: var(--primary);
+      border: none;
+      padding: 10px 20px;
+      margin: 0 8px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .header-buttons button:hover {
+      background-color: #e0e0e0;
+    }
+
+    nav {
+      background-color: var(--light-gray);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark-gray);
+      margin: 0 12px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 32px auto;
+      padding: 0 24px;
+    }
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 16px 0;
+    }
+
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .hospital-card {
+      background-color: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .hospital-card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .hospital-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .hospital-number {
+      font-size: 18px;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .hospital-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .match-tag {
+      margin-left: auto;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .match-high {
+      background-color: var(--success);
+      color: var(--white);
+    }
+
+    .match-medium {
+      background-color: var(--warning);
+      color: var(--white);
+    }
+
+    .match-caution {
+      background-color: var(--danger);
+      color: var(--white);
+    }
+
+    .hospital-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .hospital-left, .hospital-right {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .note-box {
+      display: flex;
+      align-items: flex-start;
+      background-color: var(--light-gray);
+      padding: 16px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .note-icon {
+      font-size: 20px;
+      margin-right: 12px;
+    }
+
+    .note-text {
+      flex: 1;
+    }
+
+    .doctor-item {
+      margin-bottom: 16px;
+    }
+
+    .doctor-name {
+      font-weight: bold;
+    }
+
+    .doctor-reason {
+      margin: 4px 0;
+    }
+
+    .doctor-details {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .footer {
+      background-color: var(--light-gray);
+      padding: 24px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 4px 0;
+      }
+
+      .hospital-content {
+        flex-direction: column;
+      }
+
+      .hospital-left, .hospital-right {
+        min-width: 100%;
+      }
+
+      .header-buttons button {
+        width: 100%;
+        margin: 8px 0;
+      }
+
+      .hospital-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .match-tag {
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }
+
+    @media print {
+      nav, .header-buttons, .back-to-top {
+        display: none !important;
+      }
+
+      body {
+        background-color: var(--white);
+        color: black;
+      }
+
+      header {
+        background-color: var(--white);
+        color: black;
+        border-bottom: 1px solid black;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <h1>就医规划报告</h1>
+    <div class="header-subtitle">为您的健康保驾护航</div>
+    <div class="header-buttons">
+      <button onclick="window.print()">🖨️ 打印报告</button>
+      <button onclick="downloadHTML()">💾 下载报告</button>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#summary">患者摘要</a>
+    <a href="#recommendations">医院推荐</a>
+n    <a href="#preparation">诊前准备</a>
+    <a href="#guide">行动指南</a>
+    <a href="#disclaimer">局限/免责</a>
+  </nav>
+
+  <main>
+    <section id="summary">
+      <h2>一、患者情况摘要 (Patient Summary)</h2>
+      <p>患者，40岁男性，常住邯郸，初步诊断为“勃起功能障碍”，有二型糖尿病病史。本次核心诉求为整体治疗。医保类型为河北医保。既往治疗史为口服西药。</p>
+    </section>
+
+    <section id="recommendations">
+      <h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+      
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 1】：</span>
+          <span class="hospital-name">北京大学第一医院</span>
+          <span class="match-tag match-high">高度匹配</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：全国知名综合医院，泌尿外科为国家重点临床专科，设有独立男科中心，擅长勃起功能障碍、男性不育等疾病诊治。医院在男性性功能障碍领域科研实力雄厚，专家参与制定多项国家级诊疗指南。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，需提前办理异地就医备案。医院本部位于北京市西城区西什库大街8号，男科中心位于西城区地安门西大街59号（北海公园北门）。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：微信公众号“北京大学第一医院服务号”、“北京114预约挂号”，网络平台“北京市统一挂号平台”，电话010-114。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <div class="doctor-item">
+              <div class="doctor-name">彭靖（主任医师）</div>
+              <div class="doctor-reason">· <strong>推荐理由</strong>：擅长男性性功能障碍诊断与治疗，尤其在男性不育症显微外科手术领域经验丰富</div>
+              <div class="doctor-details">· <strong>出诊详情</strong>：西城厂桥院区 专家门诊（100元）、男科中心，周一上午/下午、周三上午/下午；周五上午专家门诊（男科中心）。</div>
+            </div>
+            <div class="doctor-item">
+              <div class="doctor-name">张志超（主任医师）</div>
+              <div class="doctor-reason">· <strong>推荐理由</strong>：专注男科疾病临床与基础研究，擅长勃起功能障碍、早泄等疾病诊治，提出认知行为疗法结合物理治疗方案</div>
+              <div class="doctor-details">· <strong>出诊详情</strong>：专家门诊（男科中心）周一上午/下午；西城厂桥院区 专家门诊（100元）、男科中心周三上午/下午；特需门诊（500元）、男科中心周日上午/下午。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 2】：</span>
+          <span class="hospital-name">河北省中医院</span>
+          <span class="match-tag match-medium">部分匹配</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：三级甲等中医医院，中医男科为特色专科，号源较充足。医院擅长通过中药、针灸等传统疗法结合现代医学手段，对勃起功能障碍（尤其合并糖尿病等慢性病）进行整体调理。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，无需异地备案（同省就医）。地址为石家庄市中山东路389号，交通便利（乘5、28、41等路公交至省中医院站）。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：微信公众号“河北省中医院”、“健康河北服务号”，网络平台“健康河北医疗惠民移动平台”、医院官网，电话0311-69095114、12580、116114。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>中医男科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 3】：</span>
+          <span class="hospital-name">河北医科大学第二医院</span>
+          <span class="match-tag match-medium">部分匹配</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：河北省规模最大的综合性三级甲等医院，泌尿外科为省级医学重点学科，技术力量雄厚。医院擅长处理合并糖尿病等基础疾病的泌尿外科疾病，可提供药物、手术等综合治疗手段。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，无需异地备案。本部位于石家庄市和平西路215号，东院区、北院区为分院区，就诊前需确认科室位置。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：微信公众号“河北医科大学第二医院”、“健康河北服务号”，网络平台“健康河北医疗惠民移动平台”，APP“健康河北”，电话0311-66002999。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>泌尿外科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 4】：</span>
+          <span class="hospital-name">北京大学人民医院</span>
+          <span class="match-tag match-medium">部分匹配</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：三级甲等综合医院，泌尿外科为教育部重点学科，专家王晓峰、赵永平擅长男性性功能障碍、前列腺疾病等诊治，可结合糖尿病病史制定个性化方案。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，需提前办理异地就医备案。地址为北京市西城区西直门南大街11号（新院）。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：微信公众号“北京114预约挂号”，网络平台“北京市统一挂号平台”，电话010-114，APP“北京大学人民医院”。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <div class="doctor-item">
+              <div class="doctor-name">王晓峰（主任医师）</div>
+              <div class="doctor-reason">· <strong>推荐理由</strong>：擅长疑难复杂男性勃起功能障碍诊断与治疗，从事临床工作30余年，手术经验丰富</div>
+              <div class="doctor-details">· <strong>出诊详情</strong>：西直门院区 特需门诊（男科）周六上午。</div>
+            </div>
+            <div class="doctor-item">
+              <div class="doctor-name">赵永平（主任医师）</div>
+              <div class="doctor-reason">· <strong>推荐理由</strong>：专注性功能异常（含勃起功能障碍）、前列腺疾病诊治，对男性性心理障碍有深入研究</div>
+              <div class="doctor-details">· <strong>出诊详情</strong>：西直门院区 专家门诊（计划生育与生殖医学科）周一上午、周二上午/下午、周三上午、周四上午/下午；特需门诊周五上午。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 5】：</span>
+          <span class="hospital-name">沧州市人民医院</span>
+          <span class="match-tag match-medium">部分匹配</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：三级甲等综合医院，泌尿外科为沧州市医学重点学科，可开展男性性功能障碍基础诊疗，适合作为本地初步就诊选择。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，无需异地备案。地址为沧州市维明路20号，乘4、12、13等路公交至市医院站。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：微信公众号“沧州市人民医院”、“健康河北服务号”，网络平台“健康河北医疗惠民移动平台”，APP“健康河北”，电话3521183、12580。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>泌尿外科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 6】：</span>
+          <span class="hospital-name">衡水市人民医院（哈励逊国际和平医院）</span>
+          <span class="match-tag match-medium">部分匹配</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：冀东南地区三级甲等综合医院，泌尿外科可开展男性常见疾病诊疗，适合作为本地初步检查或基础治疗选择。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，无需异地备案。地址为衡水市人民东路180号，乘1、3、7等路公交至哈励逊国际和平医院站。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：暂未提供。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>泌尿外科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 7】：</span>
+          <span class="hospital-name">北京中医药大学东直门医院</span>
+          <span class="match-tag match-medium">部分匹配</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：三级甲等中医医院，中医男科为特色专科，擅长通过中医药整体调理男性性功能障碍，尤其适合合并慢性病患者的长期管理。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，需提前办理异地就医备案。本部位于北京市东城区海运仓5号，号源紧张（中医男科挂号难度“困难”）。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：微信公众号“北京中医药大学东直门医院”、“京医通”、“北京114预约挂号”，网络平台“北京市统一挂号平台”，电话010-114。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>中医男科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 8】：</span>
+          <span class="hospital-name">复旦大学附属华山医院</span>
+          <span class="match-tag match-caution">谨慎评估</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：全国知名综合医院，泌尿外科为重点学科，专家方祖军擅长泌尿系统常见病诊疗，但主要研究方向为尿失禁、神经原性下尿路功能障碍，对勃起功能障碍专科针对性较弱。</p>
+            <div class="note-box">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text">就诊须知：医保类型为河北医保，需提前办理异地就医备案。地址为上海市静安区乌鲁木齐中路12号，距离邯郸较远，交通成本较高。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：微信公众号“复旦大学附属华山医院门诊服务号”，网络平台“上海申康医联预约平台”，APP“复旦大学附属华山医院”、“上海市互联网总医院”，电话021-95169。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <div class="doctor-item">
+              <div class="doctor-name">方祖军（主任医师）</div>
+              <div class="doctor-reason">· <strong>推荐理由</strong>：擅长泌尿外科常见病诊疗，对前列腺增生、尿失禁等疾病经验丰富</div>
+              <div class="doctor-details">· <strong>出诊详情</strong>：总院 专家门诊（50元）、泌尿外科周二上午；特需门诊（398元）、泌尿外科周四上午。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-number">【推荐医院 9】：</span>
+          <span class="hospital-name">邯郸市妇幼保健院</span>
+          <span class="match-tag match-caution">谨慎评估</span>
+        </div>
+        <div class="hospital-content">
+          <div class="hospital-left">
+            <p><strong>推荐理由</strong>：三级甲等妇幼保健院，核心科室为妇产科、儿科，男性专科诊疗能力有限，勃起功能障碍相关专科资源匮乏。</p>
+            <div class="note-box" style="background-color: #fff3cd; border-color: #ffeeba;">
+              <span class="note-icon">⚠️</span>
+              <div class="note-text"><strong>注意事项</strong>：专科不符。医院主要服务妇女儿童，男性专科诊疗能力有限，专科不符。</div>
+            </div>
+          </div>
+          <div class="hospital-right">
+            <p><strong>挂号方式</strong>：暂未提供。</p>
+            <p><strong>推荐医生</strong>：</p>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。因医院专科定位，不建议作为首选就诊机构。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preparation">
+      <h2>三、诊前准备清单 (Pre-Visit Checklist)</h2>
+      <h3><strong>病历资料准备</strong>：</h3>
+      <ul>
+        <li>身份证、医保卡原件及复印件。</li>
+        <li>既往糖尿病相关检查资料（如血糖监测记录、糖化血红蛋白报告、肝肾功能检查等）。</li>
+        <li>勃起功能障碍治疗史记录（包括服用过的西药名称、剂量及疗效反馈）。</li>
+        <li><strong>【特别建议】</strong>：按时间顺序整理资料，标注关键指标（如血糖波动范围、药物不良反应等）。</li>
+      </ul>
+
+      <h3><strong>医保与费用准备</strong>：</h3>
+      <ul>
+        <li>提前通过“国家医保服务平台”APP或小程序办理<strong>异地就医备案</strong>（前往北京、上海等外地医院时需办理）。</li>
+        <li>咨询邯郸医保局（电话0310-12393），确认异地就医报销比例（河北医保异地住院报销比例通常为60%-70%，门诊需确认是否纳入统筹）。</li>
+        <li>准备充足资金：北京、上海等外地医院专家门诊挂号费100-500元，特需门诊300-400元；检查费用（如性激素六项、阴茎血管超声等）约1000-2000元；异地交通食宿费用预估2000-5000元（按3-5天计算）。</li>
+        <li><strong>【特别建议】</strong>：特需门诊、国际部费用通常无法医保报销，挂号前确认门诊类型。</li>
+      </ul>
+
+      <h3><strong>其他通用准备</strong>：</h3>
+      <ul>
+        <li>提前通过医院官方渠道查询专家出诊时间，避开节假日（如周末部分专家门诊停诊）。</li>
+        <li>记录就诊时需咨询医生的问题（如“糖尿病对勃起功能的影响机制”“中西医结合治疗方案”等）。</li>
+        <li>就诊当天穿着宽松衣物，便于检查（如超声检查需暴露下腹部）。</li>
+      </ul>
+    </section>
+
+    <section id="guide">
+      <h2>四、行动指南与局限性说明</h2>
+      <h3><strong>优先行动建议</strong>：</h3>
+      <p><strong>基于您的核心诉求（整体治疗）及实际情况，建议优先选择：</strong></p>
+      <ol>
+        <li><strong>河北省中医院（中医男科）</strong>：本地三级甲等中医院，中医特色突出，适合结合糖尿病进行中西医整体调理，无需异地奔波，医保报销便捷。</li>
+        <li><strong>北京大学第一医院（男科中心）</strong>：若追求更高诊疗水平，可前往北京，优先挂<strong>彭靖主任医师</strong>的专家门诊（周一/周三上下午，挂号费100元），其在男性性功能障碍诊疗领域经验丰富，且出诊时间灵活。</li>
+      </ol>
+
+      <h3><strong>二次确认清单</strong>：</h3>
+      <ul>
+        <li>前往<strong>邯郸市妇幼保健院</strong>就诊前，务必电话确认是否开设男性专科门诊（电话0310-2116065），避免徒劳往返。</li>
+        <li>北京、上海医院就诊前，通过医院官网或客服电话确认专家实际出诊情况（如北大一院服务台010-83572211），部分专家可能临时停诊。</li>
+      </ul>
+    </section>
+
+    <section id="disclaimer">
+      <h2>局限性与免责声明</h2>
+      <div class="note-box" style="background-color: #fff3cd; border-color: #ffeeba;">
+        <span class="note-icon">⚠️</span>
+        <div class="note-text">
+          <p><strong>局限性声明</strong>：本报告严格依据当前知识库信息生成，可能存在信息更新延迟（如医生出诊时间调整、挂号难度变化）或覆盖不全面（如河北省内其他三甲医院男科信息缺失）的情况，仅供参考。</p>
+          <p><strong>最终免责</strong>：最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。祝您就医顺利！</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer">
+    <p>© 2023 就医规划报告. 保留所有权利.</p>
+  </div>
+
+  <button class="back-to-top" onclick="scrollToTop()">↑ 回顶部</button>
+
+  <script>
+    function downloadHTML() {
+      const htmlContent = `<!DOCTYPE html><html lang="zh-CN">${document.documentElement.innerHTML}</html>`;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '就医规划报告.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', () => {
+      const backToTopButton = document.querySelector('.back-to-top');
+      if (window.scrollY > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
