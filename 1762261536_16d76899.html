@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>就医规划报告</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-color: #165DFF;
+      --success-color: #36D399;
+      --warning-color: #FF9F43;
+      --danger-color: #F87272;
+      --background-color: #FFFFFF;
+      --light-gray: #F3F4F6;
+      --medium-gray: #6B7280;
+      --dark-gray: #1F2937;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--dark-gray);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--dark-gray);
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 32px;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 24px;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      text-align: center;
+      padding: 24px 0;
+      background-color: var(--light-gray);
+      border-bottom: 1px solid #ddd;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      .actions button {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0d4bdf;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-menu li {
+      margin: 0;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 16px 24px;
+      text-decoration: none;
+      color: var(--dark-gray);
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a:focus {
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-menu a {
+        padding: 12px 24px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    main {
+      padding: 32px 0;
+    }
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    .hospital-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      background-color: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .hospital-card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-number {
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: 16px;
+      color: var(--primary-color);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-right: 16px;
+    }
+
+    .match-tag {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .match-high {
+      background-color: var(--success-color);
+    }
+
+    .match-medium {
+      background-color: var(--warning-color);
+    }
+
+    .match-low {
+      background-color: var(--danger-color);
+    }
+
+    .card-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .card-content {
+        flex-direction: column;
+      }
+    }
+
+    .card-column {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-column h4 {
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+
+    .doctor-info {
+      margin-bottom: 16px;
+      padding-left: 16px;
+      border-left: 3px solid var(--light-gray);
+    }
+
+    .doctor-name {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .notice-box {
+      display: flex;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    .notice-icon {
+      font-size: 20px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .notice-text {
+      flex-grow: 1;
+    }
+
+    .notice-warning {
+      background-color: #FFF3E0;
+      border-left: 4px solid var(--warning-color);
+    }
+
+    .notice-danger {
+      background-color: #FEE;
+      border-left: 4px solid var(--danger-color);
+    }
+
+    .footer-statement {
+      background-color: var(--light-gray);
+      padding: 24px;
+      border-radius: 8px;
+      margin-top: 32px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-size: 20px;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    @media print {
+      nav, .actions, .back-to-top {
+        display: none !important;
+      }
+      body {
+        background-color: white;
+        color: black;
+      }
+      .hospital-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+      .notice-box {
+        border: 1px solid #ccc;
+        background-color: transparent !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>就医规划报告</h1>
+      <p>为您量身定制的就医路径与建议</p>
+      <div class="actions">
+        <button onclick="window.print()">🖨️ 打印报告</button>
+        <button onclick="downloadReport()">💾 下载报告</button>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="#summary">患者摘要</a></li>
+      <li><a href="#recommendations">医院推荐</a></li>
+      <li><a href="#preparation">诊前准备</a></li>
+      <li><a href="#guide">行动指南</a></li>
+      <li><a href="#disclaimer">免责声明</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="summary">
+      <h2>一、患者情况摘要 (Patient Summary)</h2>
+      <p>患者，30岁男性，常住杭州，初步诊断为“反流性食管炎”。本次核心诉求为系统治疗。医保类型为浙江医保。无相关病史及治疗记录。</p>
+    </section>
+
+    <section id="recommendations">
+      <h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">1</div>
+          <div class="card-title">浙江大学医学院附属第一医院</div>
+          <div class="match-tag match-high">高度匹配</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>浙江省医疗、教学、科研指导中心之一，三级甲等综合性医院。消化内科为其重点科室，擅长内窥镜诊治消化系统疾病、胃癌早期诊断等，胶囊内镜检查项目属省内率先开展。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>消化内科号源较紧张，需提前规划挂号。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>支持浙江医保，无需异地备案。<br>
+            <strong>医院地址：</strong>杭州市庆春路79号。<br>
+            <strong>挂号方式：</strong>微信公众号（浙江大学医学院附属第一医院、健康浙江）、电话（114、12580、96365、0571-87236309（专家））、网络平台（浙江省预约就诊服务平台）、APP（掌上浙一）</p>
+            <h4>推荐医生</h4>
+            <div class="doctor-info">
+              <div class="doctor-name">姜玲玲 （主任医师）</div>
+              <p><strong>推荐理由：</strong>擅长胃食管反流病等功能性胃肠病的诊治及胃镜肠镜检查</p>
+              <p><strong>出诊详情：</strong>庆春院区 特需门诊 周一上午/周一下午 (150元)；余杭院区 特需门诊 周六上午/周四下午/周五下午 (150元)</p>
+            </div>
+            <div class="doctor-info">
+              <div class="doctor-name">沈哲 （主任医师）</div>
+              <p><strong>推荐理由：</strong>擅长胃食管反流病的诊断与治疗，以及胃食管反流病贲门缩窄术（PECC）等内镜技术</p>
+              <p><strong>出诊详情：</strong>庆春院区 特需门诊 周四上午 (100元)；余杭院区 特需门诊 周二下午 (100元)；余杭院区 名医门诊 周三下午 (暂无信息)</p>
+            </div>
+            <div class="doctor-info">
+              <div class="doctor-name">杜娟 （主任医师）</div>
+              <p><strong>推荐理由：</strong>擅长反流性食管炎等消化内科疾病的诊治，熟练掌握各种消化道内镜诊治技术</p>
+              <p><strong>出诊详情：</strong>余杭院区 特需门诊 周二上午/周二下午 (150元)；庆春院区 专家门诊 周五上午 (暂无信息)；庆春院区 特需门诊 周日上午/周四下午/周日下午 (150元)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">2</div>
+          <div class="card-title">杭州市第一人民医院</div>
+          <div class="match-tag match-medium">部分匹配</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>杭州地区市属最大的综合性三级甲等医院，消化内科学为省级重点学科、浙北区域专病中心。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>消化内科部分医生号源较紧张。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>支持浙江医保，无需异地备案。<br>
+            <strong>医院地址：</strong>总院地址：杭州市浣纱路261号；钱江新城院区：杭州市上城区鲲鹏路369号。<br>
+            <strong>挂号方式：</strong>微信公众号（杭州市第一人民医院、健康浙江）、电话（114、12580、116114、96365）、网络平台（浙江省预约诊疗服务平台、杭州市第一人民医院官网）</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">3</div>
+          <div class="card-title">浙江省立同德医院</div>
+          <div class="match-tag match-medium">部分匹配</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>浙江省卫生厅直属的三级甲等中西医结合医院，全国重点中西医结合医院。拥有国家中医药重点专科（消化科），擅长中西医结合治疗消化系统疾病。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>医院以中西医结合为特色，若您倾向纯西医治疗，可优先考虑其他综合医院。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>支持浙江医保，无需异地备案。<br>
+            <strong>医院地址：</strong>医院本部：杭州市古翠路234号；天目山路院区:杭州市天目山路132号；闲林院区:杭州市余杭区闲林东路1号。<br>
+            <strong>挂号方式：</strong>微信公众号（浙江省立同德医院、健康浙江）、电话（114、12580、116114、96365）、网络平台（浙江省预约诊疗服务平台）、APP（智慧同德）</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">4</div>
+          <div class="card-title">杭州市中医院</div>
+          <div class="match-tag match-low">谨慎评估</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>三级甲等中医院，全国示范中医院，脾胃病科为国家中医药管理局重点专科。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>医院以中医特色为主，若您需要系统西医治疗（如抑酸药物规范治疗、内镜检查等），建议优先考虑综合医院消化内科。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>支持浙江医保，无需异地备案。<br>
+            <strong>医院地址：</strong>杭州市体育场路453号。<br>
+            <strong>挂号方式：</strong>微信公众号（杭州市中医院、健康浙江）、电话（114、12580、116114、96365）、网络平台（浙江省预约诊疗服务平台）</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>脾胃病科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">5</div>
+          <div class="card-title">温州医科大学附属第一医院</div>
+          <div class="match-tag match-low">谨慎评估</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>浙江省首批通过三甲医院评审的综合性医院，综合实力较强。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>医院位于温州市，与您期望在杭州就诊的需求不符，建议优先考虑杭州本地医院。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>支持浙江医保，无需异地备案。<br>
+            <strong>医院地址：</strong>浙江省温州市府学巷2号。<br>
+            <strong>挂号方式：</strong>暂无信息</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">6</div>
+          <div class="card-title">宁波市杭州湾医院</div>
+          <div class="match-tag match-low">谨慎评估</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>三级甲等综合性医院，由上海交通大学医学院附属仁济医院等合作打造，设有10个国家临床重点专科分中心。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>医院位于宁波市杭州湾新区，与您期望在杭州就诊的需求不符，建议优先考虑杭州本地医院。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>支持浙江医保，无需异地备案。<br>
+            <strong>医院地址：</strong>宁波杭州湾新区滨海二路1155号。<br>
+            <strong>挂号方式：</strong>暂无信息</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">7</div>
+          <div class="card-title">上海交通大学医学院附属仁济医院（东院）</div>
+          <div class="match-tag match-low">谨慎评估</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>三级甲等综合性医院，消化内科是国家临床重点专科和上海市消化内科临床医学中心，总体处于国内领先地位。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>医院位于上海市，与您期望在杭州就诊的需求不符。若杭州本地治疗效果不佳，可考虑作为后续转诊选项。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>需办理异地就医备案（浙江医保）。<br>
+            <strong>医院地址：</strong>东院地址:上海市东方路1630号。<br>
+            <strong>挂号方式：</strong>微信公众号（上海仁济医院就医服务号、上海交通大学医学院附属仁济医院）、网络平台（上海申康医联预约平台）、APP（上海仁济医院、上海市互联网总医院）、电话（021-95169）</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">8</div>
+          <div class="card-title">山东中医药大学附属医院</div>
+          <div class="match-tag match-low">谨慎评估</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>三级甲等中医医院，中医科实力较强。</p>
+            <div class="notice-box notice-danger">
+              <div class="notice-icon" aria-label="危险">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>医院位于山东省济南市，与您期望在杭州就诊的需求不符，且以中医为特色，与您系统治疗的核心诉求匹配度较低。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>需办理异地就医备案（浙江医保）。<br>
+            <strong>医院地址：</strong>西院:山东省济南市文化西路42号,东院:历下区经十路16369号。<br>
+            <strong>挂号方式：</strong>微信公众号（山东中医药大学附属医院）、电话（0531-58675126、0531-96717120）</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="card-header">
+          <div class="card-number">9</div>
+          <div class="card-title">火箭军特色医学中心</div>
+          <div class="match-tag match-low">谨慎评估</div>
+        </div>
+        <div class="card-content">
+          <div class="card-column">
+            <h4>推荐理由</h4>
+            <p>三级甲等综合医院，胃食管反流病治疗在军内外有一定优势。</p>
+            <div class="notice-box notice-danger">
+              <div class="notice-icon" aria-label="危险">⚠️</div>
+              <div class="notice-text"><strong>特别注意：</strong>医院位于北京市，与您期望在杭州就诊的需求不符，异地就医成本较高，建议优先考虑本地医院。</div>
+            </div>
+          </div>
+          <div class="card-column">
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>需办理异地就医备案（浙江医保）。<br>
+            <strong>医院地址：</strong>北京市西城区新外大街16号。<br>
+            <strong>挂号方式：</strong>暂无信息</p>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>胃食管反流病专科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preparation">
+      <h2>三、诊前准备清单 (Pre-Visit Checklist)</h2>
+      <ul>
+        <li><strong>病历资料准备：</strong>
+          <ul>
+            <li>身份证、医保卡原件。</li>
+            <li>既往所有<strong>检查报告单</strong>（如暂无，可忽略）。</li>
+            <li><div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别建议：</strong>就诊时向医生详细描述症状（如反酸、烧心的频率、时间、诱发因素等），以便医生准确判断病情。</div>
+            </div></li>
+          </ul>
+        </li>
+        <li><strong>医保与费用准备：</strong>
+          <ul>
+            <li>无需办理异地就医备案（在杭州市内就诊）。</li>
+            <li>咨询医院医保办，确认浙江医保在本院的报销比例及流程。</li>
+            <li>准备充足的资金（现金、银行卡、手机支付），预估费用包括：挂号费（专家门诊50-150元，特需门诊100-150元）、检查费（胃镜约300-800元）、药费等。</li>
+            <li><div class="notice-box notice-warning">
+              <div class="notice-icon" aria-label="警告">⚠️</div>
+              <div class="notice-text"><strong>特别建议：</strong>特需门诊费用可能无法全额医保报销，具体请提前通过医院电话确认。</div>
+            </div></li>
+          </ul>
+        </li>
+        <li><strong>挂号准备：</strong>
+          <ul>
+            <li>提前通过医院官方微信公众号（如“浙江大学医学院附属第一医院”）或“健康浙江”微信公众号预约挂号，消化内科号源较紧张，建议至少提前1-2周预约。</li>
+            <li>记录好预约成功的就诊时间、院区及科室信息，提前30分钟到达医院取号。</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="guide">
+      <h2>四、行动指南与局限性说明 (Action Guide & Limitations)</h2>
+      <ul>
+        <li><strong>优先行动建议：</strong>基于您的核心诉求，建议优先考虑【浙江大学医学院附属第一医院】的<strong>姜玲玲主任医师</strong>或<strong>沈哲主任医师</strong>的门诊。姜玲玲医生专长胃食管反流病等功能性胃肠病，出诊时间较为灵活（周一、周四、周五、周六均有出诊）；沈哲医生擅长胃食管反流病的内镜治疗，可根据您是否需要内镜干预选择。</li>
+        <li><strong>二次确认清单：</strong>就诊前务必致电确认：  
+          <ul>
+            <li>浙江大学医学院附属第一医院消化内科门诊办公室：0571-87236336（确认专家出诊时间及挂号事宜）  </li>
+            <li>杭州市医保局：12393（确认反流性食管炎相关检查及药物的报销政策）</li>
+          </ul>
+        </li>
+        <li><strong>局限性声明：</strong>本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面（如部分医院的消化内科专家详细信息缺失）的情况，仅供参考。</li>
+        <li><strong>最终免责：</strong>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</li>
+      </ul>
+    </section>
+
+    <section id="disclaimer">
+      <div class="footer-statement">
+        <h3>免责声明</h3>
+        <p>本报告旨在提供就医参考信息，并非医疗诊断或治疗建议。所有信息均基于现有公开数据及知识库生成，可能存在更新滞后或误差。最终的医疗决策应由患者与主治医生共同商议决定。使用本报告所产生的一切后果，开发者不承担任何法律责任。</p>
+      </div>
+    </section>
+  </main>
+
+  <button class="back-to-top" id="backToTop" title="回到顶部" aria-label="回到顶部">↑</button>
+
+  <script>
+    // 返回顶部按钮逻辑
+    const backToTopButton = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 平滑滚动锚点链接
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Offset for fixed nav
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // 下载报告功能
+    function downloadReport() {
+      const htmlContent = `<!DOCTYPE html>${document.documentElement.outerHTML}`;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '就医规划报告.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // 键盘访问性增强 (Tabindex for interactive elements)
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const modal = document.querySelector('.modal'); // If you add a modal later
+    if (modal) {
+      const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
+      const focusableContent = modal.querySelectorAll(focusableElements);
+      const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+      document.addEventListener('keydown', function(e) {
+        let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+        if (!isTabPressed) {
+          return;
+        }
+
+        if (e.shiftKey) { // if shift key pressed for shift + tab combination
+          if (document.activeElement === firstFocusableElement) {
+            lastFocusableElement.focus();
+            e.preventDefault();
+          }
+        } else { // if tab key is pressed
+          if (document.activeElement === lastFocusableElement) {
+            firstFocusableElement.focus();
+            e.preventDefault();
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
