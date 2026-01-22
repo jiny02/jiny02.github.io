@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 中期鼻咽癌治疗方案</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --bg-white: #FFFFFF;
+      --bg-light: #F3F4F6;
+      --text-gray: #6B7280;
+      --text-dark: #1F2937;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      padding-top: 80px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 15px 20px;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .report-title {
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-outline {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    nav {
+      background: white;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--bg-light);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+    
+    main {
+      padding: 40px 0;
+    }
+    
+    section {
+      margin-bottom: 32px;
+      background: white;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 16px 0 8px;
+    }
+    
+    p {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    
+    strong {
+      font-weight: bold;
+    }
+    
+    .highlight {
+      color: var(--success);
+    }
+    
+    .warning-box {
+      background-color: #FFFBEB;
+      border-left: 4px solid var(--warning);
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .warning-box.danger {
+      background-color: #FEF2F2;
+      border-left-color: var(--danger);
+    }
+    
+    .warning-icon {
+      margin-right: 8px;
+    }
+    
+    ul {
+      padding-left: 20px;
+      margin: 16px 0;
+    }
+    
+    li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    
+    footer {
+      background: white;
+      padding: 32px 0;
+      margin-top: 40px;
+      border-top: 1px solid var(--bg-light);
+    }
+    
+    .disclaimer {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .nav-buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      body {
+        padding-top: 140px;
+      }
+    }
+    
+    @media print {
+      header,
+      .back-to-top,
+      nav {
+        display: none;
+      }
+      body {
+        padding-top: 0;
+      }
+      section {
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1 class="report-title">就医规划报告</h1>
+        <div class="nav-buttons">
+          <button class="btn btn-primary" onclick="window.print()">📄 打印报告</button>
+          <button class="btn btn-outline" onclick="downloadHTML()">💾 下载报告</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <nav>
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="#summary" class="nav-link active">患者摘要</a></li>
+        <li><a href="#recommendation" class="nav-link">就医建议</a></li>
+        <li><a href="#guide" class="nav-link">行动指南</a></li>
+        <li><a href="#disclaimer" class="nav-link">免责声明</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main class="container">
+    <section id="summary">
+      <h2>📋 患者情况摘要 (Patient Summary)</h2>
+      <p>患者，<strong>52岁男性</strong>，常住湖南长沙，初步诊断为<strong>“中期鼻咽癌（低分化鳞癌）”</strong>。本次核心诉求为<strong>同步放化疗</strong>。医保类型为<strong>湖南医保</strong>。既往有<strong>鼻窦炎病史</strong>，未开始规范治疗。</p>
+    </section>
+    
+    <section id="recommendation">
+      <h2>🏥 核心就医建议 (Core Medical Recommendation)</h2>
+      <div class="warning-box danger">
+        <span class="warning-icon">⚠️</span>
+        <strong>信息缺失提醒：</strong>根据当前知识库信息，暂未检索到与您的核心诉求（同步放化疗）及病情（中期鼻咽癌低分化鳞癌）相关的外省知名医院及推荐医生信息。
+      </div>
+    </section>
+    
+    <section id="checklist">
+      <h2>✅ 诊前准备清单 (Pre-Visit Checklist)</h2>
+      <div class="warning-box">
+        <span class="warning-icon">ℹ️</span>
+        <strong>信息说明：</strong>（因知识库无相关信息，本模块省略）
+      </div>
+    </section>
+    
+    <section id="guide">
+      <h2>🎯 行动指南与局限性说明 (Action Guide & Limitations)</h2>
+      
+      <h3>💡 优先行动建议</h3>
+      <p>建议您通过以下正规渠道获取外省知名肿瘤专科医院的鼻咽癌专科信息：</p>
+      <ol>
+        <li>国家卫生健康委员会公布的全国肿瘤医院排名</li>
+        <li>中国医学科学院肿瘤医院、复旦大学附属肿瘤医院、中山大学肿瘤防治中心等权威肿瘤中心的官方网站，查询鼻咽癌专科的放化疗团队及就诊流程</li>
+      </ol>
+      
+      <h3>🔍 二次确认清单</h3>
+      <p>在确定目标医院后，务必提前确认：</p>
+      <ul>
+        <li><strong>①</strong> 医院是否接收湖南异地医保，是否需要办理异地就医备案手续</li>
+        <li><strong>②</strong> 鼻咽癌专科是否提供同步放化疗服务，以及就诊所需的前期检查资料要求</li>
+      </ul>
+      
+      <h3>⚠️ 局限性声明</h3>
+      <p>本报告严格依据当前知识库信息生成，知识库存在与您病情及诉求相关的医院、医生信息缺失的情况，仅供参考。</p>
+      
+      <h3>⚖️ 最终免责</h3>
+      <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+    </section>
+    
+    <footer id="disclaimer">
+      <div class="container">
+        <div class="disclaimer">
+          <h2>⚠️ 局限性声明与免责声明</h2>
+          <p>1. 本报告基于当前可用信息生成，可能存在信息不完整、不准确的情况，仅供患者参考，不构成医疗建议。</p>
+          <p>2. 报告中的医院、医生信息可能随时发生变化，建议患者在就医前通过官方渠道核实最新信息。</p>
+          <p>3. 异地就医政策复杂多变，请务必提前咨询当地医保部门及目标医院的具体要求。</p>
+          <p>4. 患者应结合自身病情和经济条件，理性选择就医机构，并遵循专业医生的诊疗建议。</p>
+          <p>5. 报告内容不得用于商业用途，使用本报告产生的风险由使用者自行承担。</p>
+          <p>6. 本报告最终解释权归系统所有，如有疑问请通过正规渠道寻求专业医疗服务。</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+  
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+  
+  <script>
+    // 平滑滚动到指定ID
+    function smoothScroll(target) {
+      const element = document.querySelector(target);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+    
+    // 导航链接点击事件
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        smoothScroll(targetId);
+        
+        // 更新活动状态
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    
+    // 显示/隐藏返回顶部按钮
+    window.addEventListener('scroll', function() {
+      const backToTop = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+    
+    // 返回顶部功能
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // 下载HTML文件
+    function downloadHTML() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '就医规划报告.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+    
+    // 初始化页面滚动监听
+    function initPage() {
+      // 默认激活第一个导航项
+      document.querySelector('.nav-link').classList.add('active');
+    }
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>
