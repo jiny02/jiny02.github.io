@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>就医规划报告 - 胆结石明确诊断</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --background: #FFFFFF;
+      --surface: #F3F4F6;
+      --text-secondary: #6B7280;
+      --text-primary: #1F2937;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--surface);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    header {
+      background-color: var(--background);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #0d4fc2;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    nav {
+      background-color: var(--background);
+      padding: 1rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      padding: 2rem 0;
+    }
+
+    section {
+      background-color: var(--background);
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text-primary);
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 1rem;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    ul, ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .admonition {
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .admonition-icon {
+      font-size: 1.5rem;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .admonition-content {
+      flex-grow: 1;
+    }
+
+    .admonition-warning {
+      background-color: #fffbeb;
+      border-left: 4px solid var(--warning);
+    }
+
+    .admonition-danger {
+      background-color: #fee;
+      border-left: 4px solid var(--danger);
+    }
+
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    footer {
+      background-color: var(--background);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .btn-group {
+        width: 100%;
+      }
+
+      button {
+        flex: 1;
+      }
+
+      nav {
+        padding: 0.75rem 0;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+      }
+
+      section {
+        padding: 1.5rem;
+      }
+
+      .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+      }
+    }
+
+    @media print {
+      button, nav, .back-to-top {
+        display: none !important;
+      }
+
+      body {
+        background-color: white;
+        color: black;
+      }
+
+      section {
+        box-shadow: none;
+        border: 1px solid #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div>
+          <h1>就医规划报告</h1>
+          <p class="subtitle">为您量身定制的胆结石明确诊断就医指南</p>
+        </div>
+        <div class="btn-group">
+          <button onclick="window.print()">🖨️ 打印报告</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <div class="nav-links">
+        <a href="#summary">患者摘要</a>
+        <a href="#recommendation">就医建议</a>
+        <a href="#guide">行动指南</a>
+        <a href="#disclaimer">局限与免责</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="summary">
+      <h2>一、患者情况摘要 (Patient Summary)</h2>
+      <p>患者，30岁男性，常住南京，初步诊断为“胆结石”。本次核心诉求为明确诊断。医保类型为南京医保。无相关病史及治疗记录。</p>
+    </section>
+
+    <section id="recommendation">
+      <h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+      <div class="admonition admonition-warning">
+        <div class="admonition-icon">⚠️</div>
+        <div class="admonition-content">
+          <p>根据当前知识库信息，暂未检索到与您的病情及诉求相关的医院或医生推荐信息。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="guide">
+      <h2>三、行动指南 (Action Guide)</h2>
+      <h3>优先行动建议</h3>
+      <p>基于您的核心诉求（明确诊断胆结石），建议优先选择南京当地的三甲综合医院或专科医院的<strong>肝胆外科</strong>或<strong>消化内科</strong>门诊进行就诊，通过腹部B超等检查明确结石大小、数量及胆囊壁情况。</p>
+
+      <h3>二次确认清单</h3>
+      <p>就诊前请务必通过目标医院的官方APP、微信公众号或电话咨询以下事项：</p>
+      <ol>
+        <li>科室出诊时间及专家信息；</li>
+        <li>挂号流程及南京医保结算方式；</li>
+        <li>就诊所需携带的资料（如无既往检查报告，可仅携带身份证、医保卡原件）。</li>
+      </ol>
+    </section>
+
+    <section id="disclaimer">
+      <h2>四、局限性说明与免责 (Limitations & Disclaimer)</h2>
+      <div class="admonition admonition-danger">
+        <div class="admonition-icon">⚠️</div>
+        <div class="admonition-content">
+          <p><strong>局限性声明</strong>：本报告严格依据当前知识库信息生成，当前知识库未包含与您病情相关的医院及医生推荐信息，可能存在信息覆盖不全面的情况，仅供参考。</p>
+        </div>
+      </div>
+      <p><strong>最终免责</strong>：最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p style="text-align: center; color: var(--text-secondary); font-size: 14px;">
+      本报告由AI系统生成，旨在提供就医方向参考，不构成任何医疗建议。
+    </p>
+  </footer>
+
+  <button class="back-to-top" id="backToTopBtn">↑</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const backToTopBtn = document.getElementById('backToTopBtn');
+
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
