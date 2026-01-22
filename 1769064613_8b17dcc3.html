@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>就医规划报告 - 克罗恩病生物制剂升级</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --background: #FFFFFF;
+      --surface: #F3F4F6;
+      --text-secondary: #6B7280;
+      --text-primary: #1F2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--surface);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background-color: var(--background);
+      padding: 24px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: var(--background);
+      padding: 12px 0;
+      margin-bottom: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      margin-bottom: 48px;
+    }
+
+    section {
+      margin-bottom: 32px;
+      background-color: var(--background);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--surface);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .section-content {
+      padding: 24px;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 16px 0 8px 0;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    .note-box {
+      border-left: 4px solid var(--warning);
+      background-color: #FFFBEB;
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .note-icon {
+      margin-right: 12px;
+      font-size: 20px;
+    }
+
+    .disclaimer {
+      background-color: #FEF2F2;
+      border-left: 4px solid var(--danger);
+      padding: 16px 20px;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    footer {
+      background-color: var(--background);
+      padding: 32px 0;
+      border-top: 1px solid var(--surface);
+    }
+
+    .footer-content {
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .actions {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    @media print {
+      .header-content, nav, .actions, footer {
+        display: none;
+      }
+      body {
+        background-color: white;
+        color: black;
+      }
+      section {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>就医规划报告</h1>
+        <div class="actions">
+          <button onclick="window.print()">📄 打印报告</button>
+          <button onclick="downloadHTML()">💾 下载报告</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="#summary">患者摘要</a></li>
+        <li><a href="#recommendation">就医建议</a></li>
+        <li><a href="#guide">行动指南</a></li>
+        <li><a href="#disclaimer">免责声明</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="summary">
+      <div class="section-header">
+        <h2>一、患者情况摘要 (Patient Summary)</h2>
+      </div>
+      <div class="section-content">
+        <p>患者，31岁女性，常住福建莆田，初步诊断为“克罗恩病（回结肠型）”。本次核心诉求为“生物制剂升级”。医保类型为福建医保。既往病史：原发性硬化性胆管炎；过往治疗：使用过糖皮质激素。</p>
+      </div>
+    </section>
+
+    <section id="recommendation">
+      <div class="section-header">
+        <h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+      </div>
+      <div class="section-content">
+        <p>根据当前知识库信息，<strong>暂未检索到与您“生物制剂升级”核心诉求匹配的外省知名医院及推荐医生信息</strong>。</p>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="section-header">
+        <h2>三、诊前准备清单 (Pre-Visit Checklist)</h2>
+      </div>
+      <div class="section-content">
+        <p>（因知识库无相关资讯，本模块省略）</p>
+      </div>
+    </section>
+
+    <section id="guide">
+      <div class="section-header">
+        <h2>四、行动指南与局限性说明 (Action Guide & Limitations)</h2>
+      </div>
+      <div class="section-content">
+        <h3>优先行动建议</h3>
+        <ol>
+          <li>建议您参考国家卫生健康委公布的<strong>国家临床重点专科建设项目（消化内科）名单</strong>，筛选外省知名医院（如北京协和医院、上海瑞金医院、中山大学附属第六医院等，需自行核实专科方向是否匹配）；</li>
+          <li>咨询当地三甲医院消化内科医生，获取针对“生物制剂升级”的转诊推荐意见；</li>
+          <li>通过正规医疗平台（如好大夫在线、微医）查询外省炎症性肠病专科专家的出诊信息及患者评价。</li>
+        </ol>
+
+        <h3>二次确认清单</h3>
+        <p>（因知识库信息缺失，暂未提供具体确认渠道）</p>
+
+        <h3>局限性声明</h3>
+        <div class="disclaimer">
+          <div class="note-icon">⚠️</div>
+          <div>
+            <p>本报告严格依据当前知识库信息生成，知识库存在<strong>信息覆盖不全面</strong>（未包含与您核心诉求匹配的外省医院及医生信息）的情况，仅供参考。</p>
+          </div>
+        </div>
+
+        <h3>最终免责</h3>
+        <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+
+        <div class="note-box">
+          <div class="note-icon">ℹ️</div>
+          <div>
+            <p><strong>说明</strong>：本报告严格遵循您提供的信息生成，因知识库信息缺失，核心就医建议部分未呈现具体医院/医生选项，请您通过补充渠道获取匹配资源。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <h3>局限性声明与免责声明</h3>
+        <p>本报告基于当前可用数据生成，可能存在信息滞后或不完整之处。最终医疗决策应结合专业医生意见和官方权威信息。本报告不构成直接医疗建议，患者需对自身就医选择承担完全责任。</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function downloadHTML() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = '就医规划报告.html';
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
