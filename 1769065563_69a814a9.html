@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 克罗恩病生物制剂升级</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --health-green: #36D399;
+      --warning-orange: #FF9F43;
+      --danger-red: #F87272;
+      --bg-white: #FFFFFF;
+      --bg-light-gray: #F3F4F6;
+      --text-gray: #6B7280;
+      --text-dark: #1F2937;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-light-gray);
+      color: var(--text-dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: var(--bg-white);
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .summary {
+      font-size: 16px;
+      color: var(--text-gray);
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0d4db8;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: var(--bg-white);
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 32px;
+      z-index: 100;
+    }
+
+    ul.nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    li.nav-item {
+      display: inline-block;
+    }
+
+    a.nav-link {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    a.nav-link:hover,
+    a.nav-link.active {
+      color: var(--primary);
+    }
+
+    section {
+      background-color: var(--bg-white);
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .hospital-card {
+      background-color: var(--bg-white);
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      transition: box-shadow 0.3s;
+    }
+
+    .hospital-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .hospital-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hospital-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .match-badge.high {
+      background-color: var(--health-green);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .match-badge.partial {
+      background-color: var(--warning-orange);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .match-badge.cautious {
+      background-color: var(--danger-red);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .info-section {
+      padding: 16px 0;
+    }
+
+    .info-section h4 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .doctor-item {
+      margin-bottom: 16px;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .doctor-item::before {
+      content: "📋";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .note-box {
+      border-left: 4px solid var(--warning-orange);
+      background-color: #fffbeb;
+      padding: 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .note-box.danger {
+      border-left-color: var(--danger-red);
+      background-color: #fef2f2;
+    }
+
+    .note-icon {
+      font-size: 20px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .note-content {
+      flex-grow: 1;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      margin-bottom: 12px;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--health-green);
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: var(--bg-white);
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-top: 32px;
+    }
+
+    .disclaimer {
+      border-left: 4px solid var(--danger-red);
+      padding: 16px;
+      background-color: #fef2f2;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media print {
+      nav, button, .back-to-top {
+        display: none !important;
+      }
+      body {
+        background-color: white;
+        color: black;
+      }
+      section, header, footer {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>就医规划报告</h1>
+      <p class="summary">针对31岁女性克罗恩病患者寻求生物制剂升级治疗的外省就医规划</p>
+      <div class="actions">
+        <button onclick="window.print()">🖨️ 打印报告</button>
+        <button onclick="downloadReport()">💾 下载HTML</button>
+      </div>
+    </header>
+
+    <nav id="navigation">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#section1" class="nav-link active">患者摘要</a></li>
+        <li class="nav-item"><a href="#section2" class="nav-link">医院推荐</a></li>
+        <li class="nav-item"><a href="#section3" class="nav-link">诊前准备</a></li>
+        <li class="nav-item"><a href="#section4" class="nav-link">行动指南</a></li>
+      </ul>
+    </nav>
+
+    <section id="section1">
+      <h2>一、患者情况摘要</h2>
+      <p>患者，31岁女性，常住福建莆田，初步诊断为“克罗恩病（蒙特利尔分型回结肠型）”，合并原发性硬化性胆管炎，既往接受糖皮质激素治疗。本次核心诉求为寻求生物制剂升级治疗。医保类型为福建医保。</p>
+    </section>
+
+    <section id="section2">
+      <h2>二、核心就医建议</h2>
+      
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院1】东部战区总医院</div>
+          <div class="match-badge high">高度匹配</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-section">
+            <h4>推荐理由</h4>
+            <p>医院普通外科在克罗恩病诊治领域具有深厚积累，拥有任建安、龚剑峰等专家团队，擅长克罗恩病及相关并发症的综合治疗，包括生物制剂治疗方案的制定与调整。</p>
+            <h4>特别注意</h4>
+            <p>暂无</p>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>暂无信息</p>
+            <p><strong>地址：</strong>江苏省南京市玄武区中山东路305号</p>
+          </div>
+          <div class="info-section">
+            <h4>挂号方式</h4>
+            <ul>
+              <li>微信公众号：东部战区总医院/南京卫生12320</li>
+              <li>电话：025-12320</li>
+              <li>网络平台：南京市预约挂号服务平台/江苏卫生集约式预约诊疗服务平台</li>
+              <li>APP：健康格子</li>
+            </ul>
+            <h4>推荐医生</h4>
+            <div class="doctor-item">
+              <strong>龚剑峰（主任医师、教授、博士生导师）</strong><br>
+              <em>推荐理由：</em>擅长炎症性肠病（克罗恩病）的外科治疗及并发症处理，参与制定克罗恩病诊疗策略<br>
+              <em>出诊详情：</em>东部战区总医院 普通外科 专家门诊 周一上午（22元）、周二下午（暂无费用信息）
+            </div>
+            <div class="doctor-item">
+              <strong>任华建（主任医师）</strong><br>
+              <em>推荐理由：</em>擅长克罗恩病、腹腔感染等疾病的诊治及营养支持<br>
+              <em>出诊详情：</em>东部战区总医院 普通外科 专家门诊 周五上午（20元）
+            </div>
+            <div class="doctor-item">
+              <strong>任建安（主任医师、教授、博士生导师）</strong><br>
+              <em>推荐理由：</em>擅长克罗恩病、肠瘘等胃肠疑难杂症诊治，在炎症性肠病综合治疗方面经验丰富<br>
+              <em>出诊详情：</em>东部战区总医院 普通外科 专家门诊 周一下午（100元）
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院2】南京鼓楼医院</div>
+          <div class="match-badge high">高度匹配</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-section">
+            <h4>推荐理由</h4>
+            <p>消化内科在炎症性肠病诊治领域具有优势，张晓琦、曹俊等医生为炎症性肠病学组委员，擅长克罗恩病的规范治疗，包括生物制剂的应用与调整。</p>
+            <h4>特别注意</h4>
+            <p>暂无</p>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>暂无信息</p>
+            <p><strong>地址：</strong>本院：南京市中山路321号；北院：南京市中山北路53号</p>
+          </div>
+          <div class="info-section">
+            <h4>挂号方式</h4>
+            <ul>
+              <li>微信公众号：南京鼓楼医院/南京卫生12320</li>
+              <li>电话：025-12320</li>
+              <li>网络平台：南京市预约挂号服务平台/江苏卫生集约式预约诊疗服务平台</li>
+              <li>APP：鼓楼医院-官方版</li>
+            </ul>
+            <h4>推荐医生</h4>
+            <div class="doctor-item">
+              <strong>张晓琦（主任医师）</strong><br>
+              <em>推荐理由：</em>中华医学会消化病学分会炎症性肠病学组委员，擅长克罗恩病的诊治<br>
+              <em>出诊详情：</em>南京鼓楼医院 本院 专家门诊 周二上午（35元）、专科门诊 周三下午（35元）；南京市中心医院 专家门诊 周四下午（暂无费用信息）
+            </div>
+            <div class="doctor-item">
+              <strong>曹俊（主任医师、副教授、硕士生导师）</strong><br>
+              <em>推荐理由：</em>擅长炎症性肠病（克罗恩病）的内镜下诊疗及生物制剂治疗<br>
+              <em>出诊详情：</em>南京鼓楼医院 本院 专家门诊 周一上午、周三下午（35元）；南部院区 专家门诊 周一下午（35元）
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院3】上海交通大学医学院附属仁济医院（东院）</div>
+          <div class="match-badge high">高度匹配</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-section">
+            <h4>推荐理由</h4>
+            <p>消化内科为国家临床重点专科，在炎症性肠病诊治方面处于国内领先地位，李继强医生专注于克罗恩病等疑难消化疾病的诊断与治疗，可提供生物制剂治疗方案的专业评估。</p>
+            <h4>特别注意</h4>
+            <p>暂无</p>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>暂无信息</p>
+            <p><strong>地址：</strong>上海市东方路1630号</p>
+          </div>
+          <div class="info-section">
+            <h4>挂号方式</h4>
+            <ul>
+              <li>微信公众号：上海仁济医院就医服务号/上海交通大学医学院附属仁济医院</li>
+              <li>网络平台：上海申康医联预约平台</li>
+              <li>APP：上海仁济医院/上海市互联网总医院</li>
+              <li>电话：021-95169</li>
+            </ul>
+            <h4>推荐医生</h4>
+            <div class="doctor-item">
+              <strong>李继强（主任医师、教授、博士生导师）</strong><br>
+              <em>推荐理由：</em>擅长克罗恩病、慢性溃疡性结肠炎等炎症性肠病的诊断与治疗<br>
+              <em>出诊详情：</em>上海德馨医院 专家门诊 周一上午、周三上午、周四上午、周五上午、周六上午（150元）
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院4】中山大学附属第六医院</div>
+          <div class="match-badge high">高度匹配</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-section">
+            <h4>推荐理由</h4>
+            <p>医院设有炎症性肠病联合诊治中心，是国内知名的胃肠肛门专科医院，在克罗恩病等炎症性肠病的规范诊疗方面具有丰富经验，可提供生物制剂升级治疗方案。</p>
+            <h4>特别注意</h4>
+            <p>暂无</p>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>暂无信息</p>
+            <p><strong>地址：</strong>广东省广州市天河区员村二横路26号</p>
+          </div>
+          <div class="info-section">
+            <h4>挂号方式</h4>
+            <ul>
+              <li>微信公众号：中山大学附属第六医院/广州健康通</li>
+              <li>网络平台：广州市统一预约挂号系统</li>
+              <li>APP：广州健康通</li>
+            </ul>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科或炎症性肠病联合诊治中心</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院5】江苏省中医院</div>
+          <div class="match-badge partial">部分匹配</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-section">
+            <h4>推荐理由</h4>
+            <p>医院为三级甲等中医医院，在炎症性肠病的中西医结合治疗方面有一定经验，但生物制剂升级治疗属于西医范畴，需结合患者需求综合考虑。</p>
+            <h4>特别注意</h4>
+            <div class="note-box">
+              <div class="note-icon">⚠️</div>
+              <div class="note-content">
+                <p>本院以中医诊疗为特色，与您的生物制剂升级治疗核心诉求可能不完全匹配，建议就诊前确认是否提供相关西医治疗服务。</p>
+              </div>
+            </div>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>暂无信息</p>
+            <p><strong>地址：</strong>南京市秦淮区汉中路155号</p>
+          </div>
+          <div class="info-section">
+            <h4>挂号方式</h4>
+            <ul>
+              <li>微信公众号：江苏省中医院</li>
+              <li>电话：025-12580</li>
+              <li>网络平台：江苏省中医院官网</li>
+              <li>APP：江苏省中医院</li>
+            </ul>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科或中医内科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院6】上海市第十人民医院</div>
+          <div class="match-badge partial">部分匹配</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-section">
+            <h4>推荐理由</h4>
+            <p>医院提及炎症性肠病的诊治，但知识库中未提供相关专家信息及生物制剂治疗的具体内容。</p>
+            <h4>特别注意</h4>
+            <p>暂无</p>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>暂无信息</p>
+            <p><strong>地址：</strong>上海市延长中路301号</p>
+          </div>
+          <div class="info-section">
+            <h4>挂号方式</h4>
+            <ul>
+              <li>微信公众号：上海市第十人民医院</li>
+              <li>电话：021-66301371</li>
+              <li>网络平台：上海申康医联预约平台</li>
+              <li>APP：掌上十院/上海市互联网总医院</li>
+              <li>电话：021-95169</li>
+            </ul>
+            <h4>推荐医生</h4>
+            <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>消化内科</strong>的专家门诊进行咨询。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section3">
+      <h2>三、诊前准备清单</h2>
+      <h3>病历资料准备</h3>
+      <ul class="checklist">
+        <li>身份证、医保卡原件</li>
+        <li>克罗恩病相关检查资料（肠镜报告、病理报告、炎症指标检测报告）</li>
+        <li>原发性硬化性胆管炎检查资料（肝功能、胆管影像学报告）</li>
+        <li>既往糖皮质激素治疗记录</li>
+      </ul>
+
+      <h3>医保与费用准备</h3>
+      <ul class="checklist">
+        <li>提前办理福建医保异地就医备案</li>
+        <li>咨询本地医保局确认生物制剂报销比例及流程</li>
+        <li>准备充足资金（挂号费、检查费、药费等）</li>
+      </ul>
+
+      <h3>其他准备</h3>
+      <ul class="checklist">
+        <li>记录咨询问题（如生物制剂种类选择、副作用管理、与胆管炎的相互影响）</li>
+        <li>携带个人常用物品</li>
+        <li>就诊当天穿着宽松衣物</li>
+      </ul>
+    </section>
+
+    <section id="section4">
+      <h2>四、行动指南与局限性说明</h2>
+      <h3>优先行动建议</h3>
+      <p>基于核心诉求，建议优先考虑<strong>南京鼓楼医院张晓琦医生</strong>（周二上午专家门诊）或<strong>东部战区总医院龚剑峰医生</strong>（周一上午专家门诊），就生物制剂升级方案进行咨询。</p>
+
+      <h3>二次确认清单</h3>
+      <p>就诊前务必致电确认：</p>
+      <ol>
+        <li>福建医保异地报销政策（各医院医保办）</li>
+        <li>医生生物制剂治疗经验（如南京鼓楼医院：025-83105555；东部战区总医院：025-80861062）</li>
+      </ol>
+
+      <h3>局限性声明</h3>
+      <div class="note-box danger">
+        <div class="note-icon">⚠️</div>
+        <div class="note-content">
+          <p>本报告严格依据当前知识库信息生成，可能存在信息更新延迟或覆盖不全面（如部分医生生物制剂治疗经验未明确提及）的情况，仅供参考。</p>
+        </div>
+      </div>
+
+      <h3>最终免责</h3>
+      <div class="note-box danger">
+        <div class="note-icon">⚠️</div>
+        <div class="note-content">
+          <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+        </div>
+      </div>
+
+      <p><strong>报告生成时间</strong>：2024年</p>
+      <p><strong>数据来源</strong>：用户提供的患者信息及知识库信息</p>
+      <p><strong>声明</strong>：本报告仅供参考，不构成医疗决策依据。</p>
+    </section>
+
+    <footer>
+      <div class="disclaimer">
+        <h3>重要声明与免责</h3>
+        <p>本报告基于当前可获取的信息生成，旨在为患者提供就医方向参考。医疗信息具有时效性，建议在就诊前再次核实医院、医生信息及医保政策。本报告不构成任何形式的医疗建议或承诺，最终诊疗方案需以医生面诊结果为准。</p>
+      </div>
+    </footer>
+  </div>
+
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+          // 更新活动状态
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // 返回顶部按钮
+    window.onscroll = function() {
+      const backToTopButton = document.querySelector('.back-to-top');
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // 下载HTML报告
+    function downloadReport() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = '就医规划报告.html';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    // 更新导航栏活动状态
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const scrollPos = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+        if (scrollPos >= top && scrollPos <= bottom) {
+          const navLink = document.querySelector(`a[href="#${section.id}"]`);
+          if (navLink) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+              link.classList.remove('active');
+            });
+            navLink.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
