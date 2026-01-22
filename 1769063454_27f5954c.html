@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 克罗恩病生物制剂升级</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --bg-white: #FFFFFF;
+      --bg-light: #F3F4F6;
+      --text-gray: #6B7280;
+      --text-dark: #1F2937;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    h1 { font-size: 30px; font-weight: bold; line-height: 1.2; }
+    h2 { font-size: 20px; font-weight: bold; line-height: 1.2; margin: 32px 0 16px; }
+    h3 { font-size: 18px; font-weight: bold; line-height: 1.2; margin: 24px 0 12px; }
+    p, li { font-size: 16px; }
+    small { font-size: 14px; color: var(--text-gray); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: var(--shadow);
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .section {
+      background: var(--bg-white);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .hospital-card {
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      margin-bottom: 16px;
+      background-color: var(--bg-light);
+      transition: box-shadow 0.3s;
+    }
+
+    .hospital-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .match-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: 8px;
+    }
+
+    .match-high { background-color: var(--success); color: white; }
+    .match-medium { background-color: var(--warning); color: white; }
+    .match-low { background-color: var(--danger); color: white; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .notice-box {
+      display: flex;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 6px;
+      margin: 16px 0;
+    }
+
+    .notice-warning { background-color: #FFFBEB; border-left: 4px solid var(--warning); }
+    .notice-danger { background-color: #FEF2F2; border-left: 4px solid var(--danger); }
+
+    .notice-icon {
+      font-size: 20px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      padding: 8px 0;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .checklist li::before {
+      content: '📋';
+      position: absolute;
+      left: 0;
+    }
+
+    .doctor-item {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .doctor-name {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .footer {
+      background-color: var(--bg-white);
+      padding: 32px;
+      margin-top: 32px;
+      border-top: 2px solid var(--bg-light);
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .nav-links {
+        order: 2;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .action-buttons {
+        order: 1;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .btn {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+    }
+
+    @media print {
+      .header, .back-to-top {
+        display: none;
+      }
+      body {
+        padding-top: 0;
+        color: black;
+        background: white;
+      }
+      .section {
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="nav-links">
+        <a href="#summary">患者摘要</a>
+        <a href="#recommendation">就医建议</a>
+        <a href="#preparation">诊前准备</a>
+        <a href="#guidelines">行动指南</a>
+      </div>
+      <div class="action-buttons">
+        <button class="btn btn-outline" onclick="window.print()">📄 打印报告</button>
+        <button class="btn btn-primary" onclick="downloadHTML()">💾 下载报告</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>就医规划报告</h1>
+    <p>针对克罗恩病生物制剂升级的专业就医指导</p>
+    <br />
+
+    <div id="summary" class="section">
+      <h2>一、患者情况摘要 (Patient Summary)</h2>
+      <p>患者，31岁女性，常住福建莆田，初步诊断为“克罗恩病（回结肠型）”。本次核心诉求为寻求生物制剂升级治疗。医保类型为福建医保。既往病史为原发性硬化性胆管炎，过往治疗使用过糖皮质激素。</p>
+    </div>
+
+    <div id="recommendation" class="section">
+      <h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+      <div class="notice-box notice-warning">
+        <span class="notice-icon">⚠️</span>
+        <div>
+          <strong>信息缺失提醒：</strong>由于当前知识库中暂无相关医院及医生信息，无法提供具体的医院推荐及医生建议。
+        </div>
+      </div>
+    </div>
+
+    <div id="preparation" class="section">
+      <h2>三、诊前准备清单 (Pre-Visit Preparation)</h2>
+      <p>（注：因知识库无相关信息，诊前准备清单模块省略）</p>
+    </div>
+
+    <div id="guidelines" class="section">
+      <h2>四、行动指南与局限性说明 (Action Guide & Limitations)</h2>
+      
+      <h3>优先行动建议</h3>
+      <p>基于您的核心诉求，建议优先考虑前往外省知名的炎症性肠病专科就诊，但当前知识库信息缺失，具体医院及医生需通过医院官方网站、卫健委官网或正规医疗咨询平台进一步查询确认。</p>
+      
+      <h3>局限性声明</h3>
+      <p>本报告严格依据当前知识库信息生成，知识库存在信息覆盖不全面（如无相关医院及医生信息）的情况，仅供参考。</p>
+      
+      <h3>最终免责</h3>
+      <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+    </div>
+
+    <div class="footer">
+      <h3>重要声明</h3>
+      <p>本报告严格遵循知识库信息生成原则，确保内容真实性。所有医疗决策应以专业医生的临床判断为准。报告生成时间为当前系统时间。</p>
+      <small>报告编码：MTP-31Y-FJPT-CROHN-UPG-2024 | 版本：v1.0</small>
+    </div>
+  </div>
+
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    function downloadHTML() {
+      const htmlContent = `<!DOCTYPE html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '就医规划报告.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.onscroll = function() {
+      const backToTopButton = document.querySelector('.back-to-top');
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    };
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
