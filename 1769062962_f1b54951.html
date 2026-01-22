@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 右肾结石治疗方案</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --bg-white: #FFFFFF;
+      --bg-light: #F3F4F6;
+      --text-dark: #1F2937;
+      --text-gray: #6B7280;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      padding-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-top: 120px;
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 16px;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: var(--text-gray);
+      margin-bottom: 24px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-white);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .section {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .subsection-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text-dark);
+      margin: 16px 0 12px 0;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    ul, ol {
+      margin: 16px 0;
+    }
+
+    li {
+      font-size: 16px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .no-data {
+      background-color: var(--bg-light);
+      border-left: 4px solid var(--warning);
+      padding: 16px;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .attention-box {
+      border-left: 4px solid var(--warning);
+      background-color: #fffbeb;
+      padding: 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+    }
+
+    .limitation-box {
+      border-left: 4px solid var(--danger);
+      background-color: #fef2f2;
+      padding: 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+    }
+
+    footer {
+      background: white;
+      padding: 24px;
+      margin-top: 32px;
+      border-radius: 12px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+
+    .disclaimer {
+      font-size: 14px;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .actions {
+        flex-direction: column;
+      }
+      
+      button {
+        width: 100%;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .section-title {
+        font-size: 18px;
+      }
+      
+      .subsection-title {
+        font-size: 16px;
+      }
+    }
+
+    @media print {
+      header, .print-hide {
+        display: none;
+      }
+      body {
+        padding-top: 0;
+        background: white;
+        color: black;
+      }
+      .section {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div>
+        <h1>就医规划报告</h1>
+        <p class="subtitle">右肾结石（2.5cm，鹿角形）经皮肾镜碎石治疗方案</p>
+      </div>
+      <div class="actions">
+        <button class="btn-primary" onclick="window.print()">📄 打印报告</button>
+        <button class="btn-secondary" onclick="downloadReport()">📥 下载报告</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="section">
+      <h2 class="section-title">📋 患者情况摘要</h2>
+      <p><strong>基本信息：</strong>患者33岁男性，常住广东汕头</p>
+      <p><strong>核心诊断：</strong>右肾结石（2.5cm，鹿角形）</p>
+      <p><strong>核心诉求：</strong>经皮肾镜碎石治疗</p>
+      <p><strong>医保类型：</strong>广东医保</p>
+      <p><strong>既往病史：</strong>高尿酸血症</p>
+      <p><strong>过往治疗：</strong>体外冲击波治疗史</p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🏥 核心就医建议</h2>
+      <div class="no-data">
+        <p>🔍 <strong>暂无匹配数据：</strong>根据当前知识库信息，暂未检索到与您的核心诉求及病情匹配的医院及医生推荐。</p>
+      </div>
+      <p>💡 <strong>补充说明：</strong>由于知识库中缺少具体的医院和医生信息，系统暂时无法提供个性化推荐。建议您通过其他官方渠道获取相关医疗资源信息。</p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🎯 行动指南与局限性说明</h2>
+      
+      <h3 class="subsection-title">⚡ 优先行动建议</h3>
+      <p>建议您优先通过以下官方渠道查询合适的医疗机构：</p>
+      <ul>
+        <li>广东省卫生健康委员会官网</li>
+        <li>“粤省事”小程序</li>
+        <li>广州本地三甲医院（如中山大学附属第一医院、广东省人民医院等）官方平台</li>
+        <li>重点关注：<strong>能开展“经皮肾镜碎石术”的泌尿外科/碎石中心</strong></li>
+        <li>特别留意：<strong>医院的医保异地结算政策</strong></li>
+      </ul>
+
+      <h3 class="subsection-title">⚠️ 局限性声明</h3>
+      <div class="limitation-box">
+        <p>本报告严格依据当前知识库信息生成，<strong>知识库存在医院、医生及就诊相关信息缺失的情况</strong>，仅供参考。</p>
+      </div>
+
+      <h3 class="subsection-title">⚖️ 最终免责</h3>
+      <p>最终就诊决策请务必以<strong>医院官方平台信息及临床医生的诊断为准</strong>。本报告仅供您参考，不构成医疗建议。</p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="disclaimer">
+        <p><strong>重要提醒：</strong>本报告是基于您提供的信息和现有知识库生成的参考性文件。医疗决策具有专业性和复杂性，实际就诊时请以医院和医生的专业判断为准。</p>
+        <p><strong>免责声明：</strong>我们不对因使用本报告而产生的任何后果承担责任。如有疑问，请咨询专业医疗人员。</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function downloadReport() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '就医规划报告.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // 添加平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // 添加页面加载完成提示
+    window.addEventListener('load', function() {
+      console.log('就医规划报告已加载完成');
+    });
+  </script>
+</body>
+</html>
