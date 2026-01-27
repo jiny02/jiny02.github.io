@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>就医规划报告</title>
+    <style>
+        :root {
+            --primary: #165DFF;
+            --success: #36D399;
+            --warning: #FF9F43;
+            --danger: #F87272;
+            --white: #FFFFFF;
+            --light-gray: #F3F4F6;
+            --gray: #6B7280;
+            --dark-gray: #1F2937;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--light-gray);
+            padding-top: 80px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 30px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        
+        .intro {
+            font-size: 16px;
+            color: var(--dark-gray);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        
+        .nav-item a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-item a:hover,
+        .nav-item a.active {
+            color: var(--primary);
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0d4bc2;
+        }
+        
+        .section {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--dark-gray);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--dark-gray);
+            margin: 20px 0 16px 0;
+            line-height: 1.2;
+        }
+        
+        p {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        
+        ul, ol {
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+        
+        li {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            font-weight: bold;
+        }
+        
+        .hospital-card {
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s;
+        }
+        
+        .hospital-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .hospital-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .hospital-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+        
+        .match-tag {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .match-high {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .match-medium {
+            background-color: var(--warning);
+            color: white;
+        }
+        
+        .match-low {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .hospital-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .hospital-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .btn-group {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            body {
+                padding-top: 140px;
+            }
+        }
+        
+        .note-box {
+            border-left: 4px solid var(--warning);
+            background-color: #fffbeb;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning-box {
+            border-left: 4px solid var(--danger);
+            background-color: #fef2f2;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .info-icon {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 32px 0;
+            margin-top: 48px;
+        }
+        
+        .footer h3 {
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .footer p {
+            color: #d1d5db;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        @media print {
+            header, .back-to-top {
+                display: none;
+            }
+            body {
+                padding-top: 0;
+            }
+            .section {
+                box-shadow: none;
+                margin-bottom: 0;
+                page-break-inside: avoid;
+            }
+            footer {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div>
+                <h1>就医规划报告</h1>
+                <p class="intro">基于您的病情描述和就医需求，为您量身定制的专业就医指导方案</p>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="window.print()">📄 打印报告</button>
+                <button class="btn btn-primary" onclick="downloadHTML()">💾 下载报告</button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section id="summary" class="section">
+            <h2>一、患者情况摘要</h2>
+            <p>患者71岁女性，常住河北，初步诊断为“肝内胆管细胞癌（中低分化腺癌）”。本次核心诉求为拟介入治疗+靶向药物。医保类型为河北医保。有乙肝肝硬化病史及胆道支架植入史。</p>
+        </section>
+        
+        <section id="recommendations" class="section">
+            <h2>二、核心就医建议</h2>
+            
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-name">中国医学科学院肿瘤医院</div>
+                    <span class="match-tag match-high">高度匹配</span>
+                </div>
+                <div class="hospital-content">
+                    <div>
+                        <h3>推荐理由</h3>
+                        <p>国家肿瘤临床医学研究中心，在肝胆胰肿瘤放疗及综合治疗领域处于国内领先水平，拥有国际首创肝胆胰肿瘤放疗技术的专家团队。</p>
+                        
+                        <h3>特别注意</h3>
+                        <div class="note-box">
+                            <span class="info-icon">✅</span> 无冲突信息
+                        </div>
+                        
+                        <h3>就诊须知</h3>
+                        <p><strong>医保政策：</strong>暂无信息</p>
+                        <p><strong>地址：</strong>朝阳区潘家园南里17号</p>
+                        <p><strong>挂号方式：</strong>微信公众号（中国医学科学院肿瘤医院/北京114预约挂号）、北京市统一挂号平台、电话010-114</p>
+                    </div>
+                    <div>
+                        <h3>推荐医生</h3>
+                        <ul>
+                            <li>
+                                <strong>陈波（主任医师）</strong><br>
+                                推荐理由：擅长肝内胆管细胞癌等腹部肿瘤放疗及综合治疗，国际首创肝胆胰肿瘤多项放疗技术，显著提高局部有效率<br>
+                                出诊详情：医科院肿瘤医院 特需门诊（300元）放射治疗科 周二晚上
+                            </li>
+                            <li>
+                                <strong>杨林（主任医师）</strong><br>
+                                推荐理由：专长消化系统肿瘤（含胆道肿瘤）内科治疗及靶向治疗<br>
+                                出诊详情：医科院肿瘤医院 特需门诊（500元）肿瘤内科 周二下午；周四下午；周四晚上
+                            </li>
+                            <li>
+                                <strong>杨渤彦（主任医师）</strong><br>
+                                推荐理由：擅长肺癌、乳腺癌等常见肿瘤化疗、靶向及免疫治疗，对肿瘤并发症有丰富经验<br>
+                                出诊详情：暂无信息
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-name">北京大学肿瘤医院</div>
+                    <span class="match-tag match-high">高度匹配</span>
+                </div>
+                <div class="hospital-content">
+                    <div>
+                        <h3>推荐理由</h3>
+                        <p>国家肿瘤学重点学科，倡导多学科协作，在肝胆胰肿瘤手术、介入及综合治疗方面有丰富经验。</p>
+                        
+                        <h3>特别注意</h3>
+                        <div class="note-box">
+                            <span class="info-icon">✅</span> 无冲突信息
+                        </div>
+                        
+                        <h3>就诊须知</h3>
+                        <p><strong>医保政策：</strong>暂无信息</p>
+                        <p><strong>地址：</strong>北京市海淀区阜成路52号</p>
+                        <p><strong>挂号方式：</strong>微信公众号（北京大学肿瘤医院/京医通/北京114预约挂号）、北京市统一挂号平台、电话010-114</p>
+                    </div>
+                    <div>
+                        <h3>推荐医生</h3>
+                        <ul>
+                            <li>
+                                <strong>刘伟（主任医师）</strong><br>
+                                推荐理由：擅长肝内胆管细胞癌诊疗，从事肝胆胰肿瘤临床及基础研究<br>
+                                出诊详情：北京肿瘤医院 本院专家门诊 肝胆胰外科 周二上午
+                            </li>
+                            <li>
+                                <strong>钱红纲（主任医师）</strong><br>
+                                推荐理由：擅长肝脏微创治疗及肿瘤晚期分子治疗<br>
+                                出诊详情：北京肿瘤医院 本院专家门诊 肝胆胰外科 周一下午
+                            </li>
+                            <li>
+                                <strong>郭建海（主任医师）</strong><br>
+                                推荐理由：擅长肿瘤微创介入治疗（含胆管癌化疗栓塞、消融等）<br>
+                                出诊详情：北京肿瘤医院 本院专家门诊 介入治疗科 周五上午
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-name">北京大学人民医院</div>
+                    <span class="match-tag match-high">高度匹配</span>
+                </div>
+                <div class="hospital-content">
+                    <div>
+                        <h3>推荐理由</h3>
+                        <p>三级甲等综合医院，肝胆外科技术全面，介入放射科在肿瘤介入治疗方面有丰富经验。</p>
+                        
+                        <h3>特别注意</h3>
+                        <div class="note-box">
+                            <span class="info-icon">✅</span> 无冲突信息
+                        </div>
+                        
+                        <h3>就诊须知</h3>
+                        <p><strong>医保政策：</strong>暂无信息</p>
+                        <p><strong>地址：</strong>新院（西城区西直门南大街11号）、老院（西城区阜内大街133号）</p>
+                        <p><strong>挂号方式：</strong>微信公众号（北京114预约挂号）、北京市统一挂号平台、电话010-114、APP北京大学人民医院</p>
+                    </div>
+                    <div>
+                        <h3>推荐医生</h3>
+                        <ul>
+                            <li>
+                                <strong>李新宇（主任医师）</strong><br>
+                                推荐理由：擅长原发性肝癌及胆管癌手术、射频消融等综合治疗，肝脏移植技术精湛<br>
+                                出诊详情：北京大学人民医院 西直门院区专家门诊 肝胆外科 周一上午；周四上午；西直门院区特需门诊（600元）肝胆外科 周日上午
+                            </li>
+                            <li>
+                                <strong>高健（主任医师）</strong><br>
+                                推荐理由：擅长胆管癌等恶性肿瘤介入治疗<br>
+                                出诊详情：暂无信息
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-name">中国人民解放军总医院第一医学中心（301医院）</div>
+                    <span class="match-tag match-medium">部分匹配</span>
+                </div>
+                <div class="hospital-content">
+                    <div>
+                        <h3>推荐理由</h3>
+                        <p>全军规模最大综合医院，肿瘤内科在消化肿瘤靶向治疗方面有丰富经验。</p>
+                        
+                        <h3>特别注意</h3>
+                        <div class="warning-box">
+                            <span class="info-icon">⚠️</span> 本院肿瘤内科侧重消化系统肿瘤内科治疗，介入治疗相关资源未明确提及，需提前确认介入治疗可行性。
+                        </div>
+                        
+                        <h3>就诊须知</h3>
+                        <p><strong>医保政策：</strong>暂无信息</p>
+                        <p><strong>地址：</strong>海淀区复兴路28号</p>
+                        <p><strong>挂号方式：</strong>微信公众号（解放军总医院301医院/北京114预约挂号）、北京市统一挂号平台、电话010-114、APP中国人民解放军总医院</p>
+                    </div>
+                    <div>
+                        <h3>推荐医生</h3>
+                        <ul>
+                            <li>
+                                <strong>白莉（主任医师）</strong><br>
+                                推荐理由：擅长消化系统肿瘤（含肝癌、胆道肿瘤）综合治疗及靶向治疗<br>
+                                出诊详情：第一医学中心 专家门诊 肿瘤内科 周一上午；特需门诊 肿瘤内科 周二上午；周五上午
+                            </li>
+                            <li>
+                                <strong>赵卫红（主任医师）</strong><br>
+                                推荐理由：擅长恶性肿瘤化疗、靶向及免疫治疗<br>
+                                出诊详情：第一医学中心 专家门诊 肿瘤内科 周二上午；周四下午
+                            </li>
+                            <li>
+                                <strong>钱远宇（主任医师）</strong><br>
+                                推荐理由：擅长消化道肿瘤靶向和免疫治疗<br>
+                                出诊详情：第一医学中心 专家门诊 肿瘤内科 周三上午；周二下午
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-name">天津医科大学肿瘤医院</div>
+                    <span class="match-tag match-low">谨慎评估</span>
+                </div>
+                <div class="hospital-content">
+                    <div>
+                        <h3>推荐理由</h3>
+                        <p>国内规模最大的肿瘤防治研究基地之一，擅长肿瘤介入及综合治疗。</p>
+                        
+                        <h3>特别注意</h3>
+                        <div class="warning-box">
+                            <span class="info-icon">⚠️</span> 本院位于天津市，与患者期望北京就诊的诉求不符，需权衡异地就医便利性。
+                        </div>
+                        
+                        <h3>就诊须知</h3>
+                        <p><strong>医保政策：</strong>暂无信息</p>
+                        <p><strong>地址：</strong>天津市河西区体院北环湖西路</p>
+                        <p><strong>挂号方式：</strong>微信公众号（天津医科大学肿瘤医院）、医指通平台、APP科瑞泰Q医</p>
+                    </div>
+                    <div>
+                        <h3>推荐医生</h3>
+                        <ul>
+                            <li>
+                                <strong>倪虹（主任医师）</strong><br>
+                                推荐理由：擅长肿瘤微创介入治疗（含肝癌、胆管癌）<br>
+                                出诊详情：天津医科大学肿瘤医院 本部院区专家门诊（30元）介入治疗科 周三上午
+                            </li>
+                            <li>
+                                <strong>朱晓琳（主任医师）</strong><br>
+                                推荐理由：擅长肝癌射频热消融治疗<br>
+                                出诊详情：暂无信息
+                            </li>
+                            <li>
+                                <strong>兰岚（主任医师）</strong><br>
+                                推荐理由：擅长中晚期肿瘤内科综合治疗及放化疗毒副作用管理<br>
+                                出诊详情：天津医科大学肿瘤医院 本部院区专家门诊 中西医结合科 周四上午；周五下午
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hospital-card">
+                <div class="hospital-header">
+                    <div class="hospital-name">其他医院</div>
+                    <span class="match-tag match-low">谨慎评估</span>
+                </div>
+                <div>
+                    <h3>医院列表</h3>
+                    <ul>
+                        <li><strong>中国人民解放军总医院第五医学中心</strong>：匹配度部分匹配，暂无相关推荐医生，需通过官方渠道确认肿瘤介入资源。</li>
+                        <li><strong>首都医科大学附属北京地坛医院</strong>：匹配度谨慎评估，侧重传染病及肝病，肿瘤介入资源有限。</li>
+                        <li><strong>天津市肿瘤医院空港医院/海军军医大学第三附属医院</strong>：匹配度谨慎评估，位于天津/上海，与患者北京就诊诉求不符。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="preparation" class="section">
+            <h2>三、诊前准备清单</h2>
+            
+            <h3>病历资料准备</h3>
+            <ul>
+                <li>身份证、医保卡原件（提前办理异地就医备案）</li>
+                <li>肝内胆管细胞癌病理报告、影像学检查报告（CT/MRI）</li>
+                <li>乙肝肝硬化相关检测报告、肝功能化验单</li>
+                <li>胆道支架植入手术记录及随访资料</li>
+                <li>近期血常规、生化等检查报告</li>
+            </ul>
+            
+            <h3>医保与费用准备</h3>
+            <ul>
+                <li>通过“国家医保服务平台”APP办理异地就医备案</li>
+                <li>咨询河北医保局确认北京就医报销比例及流程</li>
+                <li>准备充足资金（特需门诊费用可能无法医保报销）</li>
+            </ul>
+            
+            <h3>其他通用准备</h3>
+            <ul>
+                <li>记录咨询问题清单（如介入方案、靶向药物选择、副作用管理）</li>
+                <li>带好充电宝、水杯等个人物品</li>
+                <li>就诊当天穿着宽松衣物</li>
+            </ul>
+        </section>
+        
+        <section id="action" class="section">
+            <h2>四、行动指南与局限性说明</h2>
+            
+            <h3>优先行动建议</h3>
+            <p>建议优先考虑<strong>中国医学科学院肿瘤医院</strong>的<strong>陈波医生</strong>（介入放疗）及<strong>北京大学肿瘤医院</strong>的<strong>刘伟医生</strong>（肝胆胰外科），就肝内胆管细胞癌介入+靶向综合方案咨询。</p>
+            
+            <h3>二次确认清单</h3>
+            <ul>
+                <li>中国医学科学院肿瘤医院号源：010-87788899</li>
+                <li>北京大学肿瘤医院号源：010-88121122</li>
+                <li>河北医保异地备案流程：需自行联系河北医保局</li>
+            </ul>
+            
+            <h3>局限性声明</h3>
+            <p>本报告基于当前知识库生成，可能存在信息更新延迟（如号源、医保政策细节缺失），仅供参考。</p>
+            
+            <h3>最终免责</h3>
+            <p>最终就诊决策请以医院官方信息及临床医生诊断为准。</p>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <h3>报告生成时间</h3>
+            <p>2024年12月</p>
+            
+            <h3>报告依据</h3>
+            <p>患者提供信息及知识库检索结果</p>
+            
+            <h3>声明</h3>
+            <p>本报告不构成医疗建议，仅为就医规划参考。</p>
+            
+            <h3>局限性与免责声明</h3>
+            <p>本报告严格依据当前知识库信息生成，知识库可能存在信息更新延迟或覆盖不全面（如部分医院介入治疗具体流程、异地医保政策细节缺失）的情况，仅供参考。</p>
+            <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+        </div>
+    </footer>
+    
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+    
+    <script>
+        function downloadHTML() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '就医规划报告.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 监听滚动事件显示返回顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
