@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>就医规划报告</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --bg-white: #FFFFFF;
+      --bg-light: #F3F4F6;
+      --text-gray: #6B7280;
+      --text-dark: #1F2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      padding-top: 80px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0d4dbb;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    section {
+      margin-bottom: 32px;
+      background-color: var(--bg-white);
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      font-size: 30px;
+      color: var(--primary);
+      font-weight: bold;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 20px;
+      color: var(--text-dark);
+      font-weight: bold;
+      line-height: 1.2;
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+
+    h4 {
+      font-size: 18px;
+      color: var(--text-dark);
+      font-weight: bold;
+      line-height: 1.2;
+      margin-top: 16px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    strong {
+      color: var(--text-dark);
+      font-weight: bold;
+    }
+
+    ul, ol {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    li {
+      font-size: 16px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .hospital-card {
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      transition: box-shadow 0.3s;
+    }
+
+    .hospital-card:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .hospital-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .hospital-name {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .match-badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .match-high {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .match-medium {
+      background-color: var(--warning);
+      color: white;
+    }
+
+    .match-low {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .hospital-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .hospital-info {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+
+    .alert-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    .alert-warning {
+      background-color: rgba(255, 159, 67, 0.1);
+      border-left: 4px solid var(--warning);
+    }
+
+    .alert-danger {
+      background-color: rgba(248, 114, 114, 0.1);
+      border-left: 4px solid var(--danger);
+    }
+
+    .alert-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 24px;
+      background-color: var(--text-dark);
+      color: white;
+      font-size: 14px;
+    }
+
+    .top-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>就医规划报告</h1>
+    <nav class="nav-menu">
+      <a href="#summary">患者摘要</a>
+      <a href="#recommendation">医院推荐</a>
+      <a href="#preparation">诊前准备</a>
+      <a href="#guide">行动指南</a>
+    </nav>
+    <div class="btn-group">
+      <button class="btn btn-outline" onclick="window.print()">打印报告</button>
+      <button class="btn btn-primary" onclick="downloadReport()">下载报告</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="summary">
+      <h2>一、患者情况摘要 (Patient Summary)</h2>
+      <p>患者，68岁男性，常住北京市，初步诊断为“前列腺癌（高分化腺癌）”。本次核心诉求为<strong>寻求内分泌联合新型抗雄治疗</strong>。医保类型为北京医保。有睾丸切除史及前列腺增生病史。</p>
+    </section>
+
+    <section id="recommendation">
+      <h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+      
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院1】复旦大学附属肿瘤医院</div>
+          <span class="match-badge match-high">高度匹配</span>
+        </div>
+        <div class="hospital-info">
+          <div>
+            <h4>推荐理由</h4>
+            <p>国内顶尖肿瘤专科医院，泌尿外科为重点学科。戴波医生团队在前列腺癌综合治疗（含新型抗雄、去势抵抗性前列腺癌管理）领域权威，与患者诉求完全契合。</p>
+            <div class="alert-box alert-warning">
+              <span class="alert-icon">⚠️</span>
+              <div>
+                <strong>【特别注意】</strong> 本院位于上海市，需提前办理<strong>北京医保异地备案</strong>；特需门诊费用较高，部分项目可能无法医保报销，请提前确认。
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>需办理异地备案；</p>
+            <p><strong>地址：</strong>上海市徐汇区零陵路399号（徐汇院区）、浦东院区（具体地址暂未提供）。</p>
+            <h4>挂号方式</h4>
+            <p>微信公众号“复旦大学附属肿瘤医院”、官网大众版、上海申康医联预约平台、APP“上海市互联网总医院”、电话021-95169。</p>
+          </div>
+        </div>
+        <h4>推荐医生</h4>
+        <ul>
+          <li><strong>戴波（主任医师）</strong> ·推荐理由：擅长前列腺癌综合治疗（含新型抗雄、晚期/复发前列腺癌管理）·出诊详情：徐汇院区特需门诊（298元）周三上午；徐汇院区专家门诊（50元）周五上午；浦东院区特需门诊（298元）周一下午</li>
+          <li><strong>秦晓健（主任医师）</strong> ·推荐理由：擅长晚期前列腺癌综合治疗·出诊详情：徐汇院区专家门诊（40元）周二上午；浦东院区专家门诊（40元）周三上午；徐汇院区特需门诊（198元）周二下午；浦东院区特需门诊（198元）周四下午</li>
+          <li><strong>王奇峰（主任医师）</strong> ·推荐理由：擅长泌尿系统肿瘤病理诊断（辅助精准治疗）·出诊详情：暂未提供</li>
+        </ul>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院2】中国医学科学院肿瘤医院</div>
+          <span class="match-badge match-high">高度匹配</span>
+        </div>
+        <div class="hospital-info">
+          <div>
+            <h4>推荐理由</h4>
+            <p>国家肿瘤临床医学研究中心，泌尿外科擅长前列腺癌微创+综合治疗，放疗科可提供联合方案，完全覆盖患者诉求。</p>
+            <div class="alert-box alert-warning">
+              <span class="alert-icon">⚠️</span>
+              <div>
+                <strong>【特别注意】</strong> 暂无冲突，优先选择泌尿外科或放疗科专家。
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>北京医保定点，无需备案；</p>
+            <p><strong>地址：</strong>朝阳区潘家园南里17号。</p>
+            <h4>挂号方式</h4>
+            <p>微信公众号“中国医学科学院肿瘤医院”、北京114预约挂号、北京市统一挂号平台、电话010-114。</p>
+          </div>
+        </div>
+        <h4>推荐医生</h4>
+        <ul>
+          <li><strong>肖泽均（主任医师）</strong> ·推荐理由：擅长前列腺癌微创及综合治疗·出诊详情：专家门诊周二上午/周一下午（挂号费暂未提供）</li>
+          <li><strong>毕新刚（主任医师）</strong> ·推荐理由：擅长前列腺癌诊断与治疗·出诊详情：专家门诊周一上午/周五下午；早间特需门诊（6:30-7:30）周三上午（挂号费暂未提供）</li>
+          <li><strong>卢宁宁（主任医师）</strong> ·推荐理由：擅长前列腺癌放疗及综合治疗·出诊详情：特需门诊（200元）周三晚上</li>
+        </ul>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院3】北京协和医院</div>
+          <span class="match-badge match-high">高度匹配</span>
+        </div>
+        <div class="hospital-info">
+          <div>
+            <h4>推荐理由</h4>
+            <p>国内综合医院标杆，泌尿外科范欣荣医生专注晚期前列腺癌新型内分泌治疗，可提供个性化联合方案。</p>
+            <div class="alert-box alert-warning">
+              <span class="alert-icon">⚠️</span>
+              <div>
+                <strong>【特别注意】</strong> 国际医疗部费用极高且需自费，请谨慎选择。
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>北京医保定点；</p>
+            <p><strong>地址：</strong>东城区东单帅府园1号（东院）、西城区大木仓胡同41号（西院）。</p>
+            <h4>挂号方式</h4>
+            <p>微信公众号“北京114预约挂号”、北京市统一挂号平台、电话010-114/116114、APP“北京协和医院”。</p>
+          </div>
+        </div>
+        <h4>推荐医生</h4>
+        <ul>
+          <li><strong>范欣荣（主任医师）</strong> ·推荐理由：擅长晚期前列腺癌新型内分泌治疗·出诊详情：东院普通门诊周二上午；东院特需门诊周四下午；东院国际医疗部门诊周五下午（挂号费暂未提供）</li>
+          <li><strong>毛全宗（主任医师）</strong> ·推荐理由：擅长前列腺癌微创及靶向治疗·出诊详情：东院特需门诊周一上午；东院普通门诊周二/周四上午；东院国际医疗部门诊周一下午（挂号费暂未提供）</li>
+          <li><strong>徐维锋（主任医师）</strong> ·推荐理由：擅长前列腺癌微创手术·出诊详情：东院普通门诊周四上午；东院特需门诊周二下午（挂号费暂未提供）</li>
+        </ul>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院4】北京大学第一医院</div>
+          <span class="match-badge match-high">高度匹配</span>
+        </div>
+        <div class="hospital-info">
+          <div>
+            <h4>推荐理由</h4>
+            <p>泌尿外科为国家级重点学科，张争/虞巍医生擅长前列腺癌微创+晚期综合治疗，符合患者诉求。</p>
+            <div class="alert-box alert-warning">
+              <span class="alert-icon">⚠️</span>
+              <div>
+                <strong>【特别注意】</strong> 暂无冲突。
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>北京医保定点；</p>
+            <p><strong>地址：</strong>西城区西什库大街8号（本部）、西城区地安门西大街59号（男科中心）。</p>
+            <h4>挂号方式</h4>
+            <p>微信公众号“北京大学第一医院服务号”/“北京114预约挂号”、北京市统一挂号平台、电话010-114。</p>
+          </div>
+        </div>
+        <h4>推荐医生</h4>
+        <ul>
+          <li><strong>虞巍（主任医师）</strong> ·推荐理由：擅长前列腺癌及前列腺增生治疗·出诊详情：西城厂桥院区专家门诊（80元）周一上午；特需门诊（300元）周五下午</li>
+          <li><strong>张争（主任医师）</strong> ·推荐理由：擅长前列腺癌微创手术及晚期综合治疗·出诊详情：西城厂桥院区特需门诊周三上午（挂号费暂未提供）</li>
+          <li><strong>朱希山（主任医师）</strong> ·推荐理由：擅长前列腺癌综合治疗·出诊详情：西城厂桥院区专家门诊（60元）周一下午</li>
+        </ul>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院5】北京大学人民医院</div>
+          <span class="match-badge match-high">高度匹配</span>
+        </div>
+        <div class="hospital-info">
+          <div>
+            <h4>推荐理由</h4>
+            <p>泌尿外科胡浩医生擅长前列腺癌微创+综合治疗，团队经验丰富。</p>
+            <div class="alert-box alert-warning">
+              <span class="alert-icon">⚠️</span>
+              <div>
+                <strong>【特别注意】</strong> 暂无冲突。
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>北京医保定点；</p>
+            <p><strong>地址：</strong>西城区西直门南大街11号（新院）、西城区阜内大街133号（老院）。</p>
+            <h4>挂号方式</h4>
+            <p>微信公众号“北京114预约挂号”、北京市统一挂号平台、电话010-114、APP“北京大学人民医院”。</p>
+          </div>
+        </div>
+        <h4>推荐医生</h4>
+        <ul>
+          <li><strong>胡浩（主任医师）</strong> ·推荐理由：擅长前列腺癌微创及综合治疗·出诊详情：西直门院区专家门诊（100元）周二上午；通州院区专家门诊（100元）周三上午；西直门院区特需门诊（200元）周五上午；西直门院区国际部（1200元）周二下午</li>
+          <li><strong>李清（主任医师）</strong> ·推荐理由：擅长前列腺癌诊断与微创治疗·出诊详情：西直门院区专家门诊周一上午/下午；特需门诊周三上午（挂号费暂未提供）</li>
+          <li><strong>王晓峰（主任医师）</strong> ·推荐理由：擅长前列腺癌复杂病例治疗·出诊详情：暂未提供</li>
+        </ul>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <div class="hospital-name">【推荐医院6】天津医科大学第二医院</div>
+          <span class="match-badge match-low">谨慎评估</span>
+        </div>
+        <div class="hospital-info">
+          <div>
+            <h4>推荐理由</h4>
+            <p>三级甲等综合医院，泌尿外科为重点学科，但知识库中暂未检索到与患者诉求高度相关的推荐医生。</p>
+            <div class="alert-box alert-warning">
+              <span class="alert-icon">⚠️</span>
+              <div>
+                <strong>【特别注意】</strong> 需提前确认本院是否开展新型抗雄治疗方案。
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4>就诊须知</h4>
+            <p><strong>医保政策：</strong>需办理北京医保异地备案；</p>
+            <p><strong>地址：</strong>天津市河西区平江道23号。</p>
+            <h4>挂号方式</h4>
+            <p>电话022-88329027/88328237、官网、APP“科瑞泰Q医”。</p>
+          </div>
+        </div>
+        <h4>推荐医生</h4>
+        <p>根据知识库信息，暂未检索到本院与患者疾病高度相关的推荐医生。您仍可尝试通过医院官方渠道，挂取<strong>泌尿外科</strong>专家门诊咨询。</p>
+      </div>
+
+    </section>
+
+    <section id="preparation">
+      <h2>三、诊前准备清单 (Pre-Visit Checklist)</h2>
+      
+      <h3>病历资料准备</h3>
+      <ul>
+        <li>身份证、北京医保卡原件；</li>
+        <li>前列腺癌病理报告（高分化腺癌）、睾丸切除手术记录；</li>
+        <li>前列腺增生相关检查报告（如超声、PSA检测结果）；</li>
+        <li>近期血常规、肝肾功能、电解质等实验室检查报告；</li>
+        <li><strong>按时间顺序整理所有资料</strong>，便于医生快速了解病史。</li>
+      </ul>
+
+      <h3>医保与费用准备</h3>
+      <ul>
+        <li>若前往异地医院（上海、天津），提前通过<strong>“国家医保服务平台”APP</strong>办理异地就医备案；</li>
+        <li>确认北京医保对新型抗雄药物（如阿比特龙、恩扎卢胺等）的报销范围；</li>
+        <li>准备充足资金：含特需挂号费（200-300元）、检查费、药费等，特需/国际部费用需全额自费；</li>
+      </ul>
+
+      <h3>其他准备</h3>
+      <ul>
+        <li>记录咨询问题：如新型抗雄药物选择、联合内分泌方案细节、副作用管理等；</li>
+        <li>穿着宽松衣物，便于体格检查；</li>
+        <li>携带充电宝、水杯等个人物品。</li>
+      </ul>
+    </section>
+
+    <section id="guide">
+      <h2>四、行动指南与局限性说明 (Action Guide & Limitations)</h2>
+      
+      <h3>优先行动建议</h3>
+      <ol>
+        <li><strong>优先选择复旦大学附属肿瘤医院戴波医生特需门诊</strong>：戴波医生为前列腺癌领域权威，可提供最精准的新型抗雄联合方案；</li>
+        <li><strong>备选中国医学科学院肿瘤医院肖泽均医生专家门诊</strong>：肿瘤专科医院优势明显，便于后续放疗联合治疗。</li>
+      </ol>
+
+      <h3>二次确认清单</h3>
+      <ul>
+        <li>异地就医备案：通过国家医保服务平台APP确认备案状态；</li>
+        <li>医生出诊时间：提前1-2天通过医院官方渠道核对出诊信息（避免临时调整）；</li>
+        <li>新型抗雄药物报销：致电北京医保局（12393）确认目标药物报销政策。</li>
+      </ul>
+
+      <h3>局限性声明</h3>
+      <p>本报告严格依据当前知识库信息生成，可能存在<strong>医生出诊时间更新延迟、异地医保政策调整</strong>等情况，仅供参考。</p>
+
+      <h3>最终免责</h3>
+      <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+      
+      <p><strong>报告生成时间</strong>：2024年XX月XX日</p>
+      <p><strong>报告依据</strong>：患者提供信息及知识库检索结果</p>
+      <p><strong>声明</strong>：本报告为智能规划建议，不构成医疗诊断或治疗方案。</p>
+    </section>
+  </main>
+
+  <button class="top-btn" onclick="scrollToTop()">↑</button>
+
+  <footer class="footer">
+    <p>此报告为AI规划建议，仅供参考。最终诊疗方案请以医院及医生意见为准。</p>
+    <p>就医有风险，决策需谨慎。</p>
+  </footer>
+
+  <script>
+    function downloadReport() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '就医规划报告.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#\"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
