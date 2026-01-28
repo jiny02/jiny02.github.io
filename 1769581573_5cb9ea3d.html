@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --health-green: #36D399;
+      --warning-orange: #FF9F43;
+      --alert-red: #F87272;
+      --bg-white: #FFFFFF;
+      --bg-light-gray: #F3F4F6;
+      --text-gray: #6B7280;
+      --text-dark: #1F2937;
+      --shadow: 0 4px 6px rgba(0,0,0,0.1);
+      --border-radius: 8px;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light-gray);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    header {
+      background-color: var(--bg-white);
+      padding: 20px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 0;
+      color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: 500;
+      transition: box-shadow 0.2s;
+    }
+
+    #printBtn {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    #downloadBtn {
+      background-color: var(--bg-light-gray);
+      color: var(--text-dark);
+    }
+
+    nav {
+      background-color: var(--bg-white);
+      padding: 12px 0;
+      margin-bottom: 32px;
+      display: none;
+    }
+
+    @media (min-width: 769px) {
+      nav {
+        display: block;
+      }
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      padding: 8px 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      margin-bottom: 32px;
+    }
+
+    section {
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .summary-card {
+      background-color: var(--bg-white);
+      padding: 24px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hospital-card {
+      background-color: var(--bg-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: box-shadow 0.2s;
+    }
+
+    .hospital-card:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .hospital-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hospital-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .match-tag {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .high-match {
+      background-color: var(--health-green);
+      color: white;
+    }
+
+    .caution-match {
+      background-color: var(--warning-orange);
+      color: white;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 769px) {
+      .details-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .detail-section {
+      display: flex;
+      gap: 16px;
+    }
+
+    .detail-icon {
+      font-size: 20px;
+      min-width: 24px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .checklist-item::before {
+      content: '📋';
+      margin-right: 12px;
+      font-size: 18px;
+    }
+
+    .notice-box {
+      padding: 16px;
+      border-radius: var(--border-radius);
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .notice-warning {
+      background-color: #FFFBEB;
+      border-left: 4px solid var(--warning-orange);
+    }
+
+    .notice-alert {
+      background-color: #FEF2F2;
+      border-left: 4px solid var(--alert-red);
+    }
+
+    .notice-icon {
+      font-size: 20px;
+      margin-right: 12px;
+    }
+
+    footer {
+      background-color: var(--bg-white);
+      padding: 24px;
+      border-top: 2px solid var(--bg-light-gray);
+    }
+
+    .disclaimer-title {
+      color: var(--alert-red);
+      font-weight: bold;
+      margin-top: 0;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .scroll-to-top:hover {
+      opacity: 1;
+    }
+
+    @media print {
+      header, nav, .scroll-to-top, button {
+        display: none !important;
+      }
+      body {
+        background-color: white;
+        color: black;
+      }
+      .hospital-card, .summary-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>就医规划报告</h1>
+        <div class="actions">
+          <button id="printBtn">🖨️ 打印报告</button>
+          <button id="downloadBtn">💾 下载HTML</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="#summary">患者摘要</a></li>
+        <li><a href="#recommendation">医院推荐</a></li>
+        <li><a href="#preparation">诊前准备</a></li>
+        <li><a href="#action">行动指南</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="summary">
+      <h2>一、患者情况摘要 (Patient Summary)</h2>
+      <div class="summary-card">
+        <p>患者，年龄未公开女性，常住廊坊市，初步诊断为“心肌酶升高”。本次核心诉求为明确诊断并一次性找到最优医院与医生。医保类型为暂未提供。无相关病史及治疗记录。</p>
+      </div>
+    </section>
+
+    <section id="recommendation">
+      <h2>二、核心就医建议 (Core Medical Recommendation)</h2>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <h3 class="hospital-name">中国医学科学院阜外医院</h3>
+          <span class="match-tag high-match">高度匹配</span>
+        </div>
+        <div class="details-grid">
+          <div>
+            <p><strong>推荐理由：</strong>国内顶尖心血管病专科医院，心内科实力全国领先，是心肌酶升高相关疾病（如冠心病、心肌病等）诊断与治疗的权威机构。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon">⚠️</div>
+              <div><strong>特别注意：</strong>无冲突信息</div>
+            </div>
+            <h4>就诊须知</h4>
+            <ul>
+              <li><strong>医保政策：</strong>暂未提供</li>
+              <li><strong>地址：</strong>北京市西城区北礼士路167号</li>
+            </ul>
+          </div>
+          <div>
+            <h4>挂号方式</h4>
+            <ol>
+              <li>微信公众号“中国医学科学院阜外医院”</li>
+              <li>微信公众号“北京114预约挂号”</li>
+              <li>北京市统一挂号平台</li>
+              <li>电话：010-114</li>
+              <li>APP“掌上阜外医院”</li>
+            </ol>
+            <h4>推荐医生</h4>
+            <ul>
+              <li><strong>高莹（主任医师）</strong> · 推荐理由：擅长冠心病、心肌梗塞救治及肺血管病处理，临床经验近30年 · <strong>出诊详情</strong>：暂未提供</li>
+              <li><strong>蒋文（主任医师）</strong> · 推荐理由：擅长冠心病、心肌病等心内科常见病诊断治疗，具备丰富临床经验 · <strong>出诊详情</strong>：阜外医院 专家门诊、心血管内科、周二上午；周三上午；周四上午；周一下午；周二下午 · 挂号费：暂未提供</li>
+              <li><strong>卿平（主任医师）</strong> · 推荐理由：擅长心力衰竭、心肌病、心肌炎等心血管危重症诊治 · <strong>出诊详情</strong>：阜外医院 心衰（EF小于35%）门诊（80元）、心衰重症监护病房HFCU、周一上午；EF＜35%心衰/人工心脏咨询门诊（50元）、心衰重症监护病房HFCU、周三上午</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <h3 class="hospital-name">首都医科大学附属北京安贞医院</h3>
+          <span class="match-tag high-match">高度匹配</span>
+        </div>
+        <div class="details-grid">
+          <div>
+            <p><strong>推荐理由：</strong>以心肺血管疾病为重点的三级甲等综合医院，心内科冠脉介入治疗病例数及成功率居国内前列，适合心肌酶升高的进一步检查与诊断。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon">⚠️</div>
+              <div><strong>特别注意：</strong>无冲突信息</div>
+            </div>
+            <h4>就诊须知</h4>
+            <ul>
+              <li><strong>医保政策：</strong>暂未提供</li>
+              <li><strong>地址：</strong>北京市朝阳区安贞路2号</li>
+            </ul>
+          </div>
+          <div>
+            <h4>挂号方式</h4>
+            <ol>
+              <li>微信公众号“京医通”</li>
+              <li>微信公众号“北京114预约挂号”</li>
+              <li>北京市统一挂号平台</li>
+              <li>电话：010-114</li>
+            </ol>
+            <h4>推荐医生</h4>
+            <ul>
+              <li><strong>李红（主任医师）</strong> · 推荐理由：擅长高血压、冠心病、心力衰竭及心血管急危重症监护治疗 · <strong>出诊详情</strong>：朝阳院区 专家门诊、急诊危重症中心、周一上午；朝阳院区 特需门诊（500元）、急诊危重症中心、周二下午</li>
+              <li><strong>王阳（主任医师）</strong> · 推荐理由：擅长冠心病、心肌梗死、心律失常等心内科疾病诊断治疗 · <strong>出诊详情</strong>：朝阳院区 特需门诊（500元）、心内综合科、周三下午</li>
+              <li><strong>柴萌（主任医师）</strong> · 推荐理由：擅长高危复杂冠心病、难治性高血压等疾病诊疗 · <strong>出诊详情</strong>：朝阳院区 专家门诊、干部保健科、周二下午；朝阳院区 特需门诊（200元）、干部保健科、周四下午</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <h3 class="hospital-name">中国医学科学院北京协和医院</h3>
+          <span class="match-tag high-match">高度匹配</span>
+        </div>
+        <div class="details-grid">
+          <div>
+            <p><strong>推荐理由：</strong>综合实力全国顶尖，心内科对疑难心血管疾病诊断水平领先，游凯医生专注于心肌酶指标在急性心肌梗死的应用研究，适合不明原因心肌酶升高的精准诊断。</p>
+            <div class="notice-box notice-warning">
+              <div class="notice-icon">⚠️</div>
+              <div><strong>特别注意：</strong>无冲突信息</div>
+            </div>
+            <h4>就诊须知</h4>
+            <ul>
+              <li><strong>医保政策：</strong>暂未提供</li>
+              <li><strong>地址：</strong>东城区东单帅府园1号（东院）；西城区大木仓胡同41号（西院）</li>
+            </ul>
+          </div>
+          <div>
+            <h4>挂号方式</h4>
+            <ol>
+              <li>微信公众号“北京114预约挂号”</li>
+              <li>北京市统一挂号平台</li>
+              <li>电话：010-114</li>
+            </ol>
+            <h4>推荐医生</h4>
+            <ul>
+              <li><strong>游凯（主任医师）</strong> · 推荐理由：擅长冠心病、血脂异常诊断治疗，对心肌酶指标有深入研究 · <strong>出诊详情</strong>：暂未提供</li>
+              <li><strong>闫建玲（主任医师）</strong> · 推荐理由：擅长冠心病精准诊断、心内科疑难疾病综合防治 · <strong>出诊详情</strong>：东院 特需门诊、心内科、周六上午；周日上午；周六下午；周日下午</li>
+              <li><strong>李玲（主任医师）</strong> · 推荐理由：擅长高血压、冠心病及心血管危急重症处理 · <strong>出诊详情</strong>：东院 国际医疗部门诊、心内科、周五下午</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <h3 class="hospital-name">西京医院</h3>
+          <span class="match-tag caution-match">谨慎评估</span>
+        </div>
+        <div class="details-grid">
+          <div>
+            <p><strong>推荐理由：</strong>西北地区心血管疾病诊疗中心，心内科实力强劲，但地理位置与患者期望不符。</p>
+            <div class="notice-box notice-alert">
+              <div class="notice-icon">⚠️</div>
+              <div><strong>特别注意：</strong>此医院位于西安市，与您期望的廊坊或北京就诊地不符，就诊前需确认是否接受跨城市就医。</div>
+            </div>
+            <h4>就诊须知</h4>
+            <ul>
+              <li><strong>医保政策：</strong>暂未提供</li>
+              <li><strong>地址：</strong>陕西省西安市新城区长乐西路15号</li>
+            </ul>
+          </div>
+          <div>
+            <h4>挂号方式</h4>
+            <ol>
+              <li>微信公众号“西京医院”</li>
+              <li>电话：029-83215321</li>
+            </ol>
+            <h4>推荐医生</h4>
+            <ul>
+              <li><strong>刘兵（主任医师）</strong> · 推荐理由：擅长冠心病、心律失常、心肌病等疾病诊疗，介入治疗经验丰富 · <strong>出诊详情</strong>：暂未提供</li>
+              <li><strong>李兰荪（主任医师）</strong> · 推荐理由：擅长心内科疑难病诊治、冠心病诊断与治疗 · <strong>出诊详情</strong>：暂未提供</li>
+              <li><strong>葛伟（主任医师）</strong> · 推荐理由：擅长老年冠心病、高血压等疾病诊治 · <strong>出诊详情</strong>：专家门诊、综合诊疗科、周二上午；周三上午；周四上午</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="preparation">
+      <h2>三、诊前准备清单 (Pre-Visit Checklist)</h2>
+      
+      <h3>病历资料准备</h3>
+      <div class="checklist-item">
+        <div>身份证、医保卡原件</div>
+      </div>
+      <div class="checklist-item">
+        <div>本次体检心肌酶检测报告及其他相关检查结果</div>
+      </div>
+      <div class="checklist-item">
+        <div>按时间顺序整理所有医疗资料（若有）</div>
+      </div>
+      
+      <h3>医保与费用准备</h3>
+      <div class="checklist-item">
+        <div>提前咨询本地医保局，确认异地就医备案流程及报销比例</div>
+      </div>
+      <div class="checklist-item">
+        <div>准备充足资金（含挂号费、检查费、药费等），特需/国际部费用可能无法医保报销，需提前确认</div>
+      </div>
+      <div class="checklist-item">
+        <div>携带银行卡、手机支付工具</div>
+      </div>
+      
+      <h3>其他通用准备</h3>
+      <div class="checklist-item">
+        <div>记录需向医生咨询的问题清单（如心肌酶升高原因、进一步检查项目等）</div>
+      </div>
+      <div class="checklist-item">
+        <div>带好充电宝、水杯等个人物品</div>
+      </div>
+      <div class="checklist-item">
+        <div>就诊当天穿着宽松方便的衣物</div>
+      </div>
+    </section>
+
+    <section id="action">
+      <h2>四、行动指南与局限性说明 (Action Guide & Limitations)</h2>
+      
+      <h3>优先行动建议</h3>
+      <p>基于您的核心诉求，<strong>建议优先选择中国医学科学院阜外医院心血管内科（高莹医生）或中国医学科学院北京协和医院心内科（游凯医生）</strong>，两者均为国内心血管领域权威机构，游凯医生对心肌酶指标的研究更贴合您的情况。</p>
+      
+      <h3>二次确认清单</h3>
+      <ol>
+        <li>若考虑西京医院，需确认是否接受跨城市就医</li>
+        <li>阜外、协和心内科号源紧张，建议提前7-14天通过官方渠道预约</li>
+        <li>特需/国际部费用报销情况需提前联系医院医保办确认</li>
+      </ol>
+      
+      <h3>局限性声明</h3>
+      <p>本报告严格依据当前知识库信息生成，可能存在部分医生出诊详情缺失、医保政策未更新等情况，仅供参考。</p>
+      
+      <h3>最终免责</h3>
+      <p>最终就诊决策请务必以医院官方平台信息及临床医生的诊断为准。</p>
+      
+      <p><strong>报告生成时间</strong>：2024年XX月XX日</p>
+      <p><strong>报告依据</strong>：患者提供信息及知识库检索结果</p>
+      <p><strong>风险提示</strong>：心肌酶升高可能提示心脏疾病，建议尽快就医明确诊断。</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <h3 class="disclaimer-title">⚠️ 局限性声明与免责声明</h3>
+      <p>本报告基于当前知识库生成，可能存在信息滞后或缺失。最终决策请以医院官方信息为准，报告仅供就医参考，不构成医疗建议。</p>
+    </div>
+  </footer>
+
+  <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 平滑滚动
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // 打印功能
+      document.getElementById('printBtn').addEventListener('click', function() {
+        window.print();
+      });
+
+      // 下载HTML功能
+      document.getElementById('downloadBtn').addEventListener('click', function() {
+        const htmlContent = `<!DOCTYPE html>\n${document.documentElement.outerHTML}`;
+        const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '就医规划报告.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+      // 返回顶部按钮显示/隐藏
+      window.onscroll = function() {
+        const scrollTopButton = document.querySelector('.scroll-to-top');
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          scrollTopButton.style.display = 'flex';
+        } else {
+          scrollTopButton.style.display = 'none';
+        }
+      };
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
