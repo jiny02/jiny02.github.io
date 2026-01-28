@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>就医规划报告 - 36岁男性 反流性食管炎 食管裂孔疝手术</title>
+  <style>
+    :root {
+      --primary: #165DFF;
+      --success: #36D399;
+      --warning: #FF9F43;
+      --danger: #F87272;
+      --bg-white: #FFFFFF;
+      --bg-light: #F3F4F6;
+      --text-gray: #6B7280;
+      --text-dark: #1F2937;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      padding-top: 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 15px 20px;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    nav {
+      margin: 20px 0;
+    }
+
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      overflow-x: auto;
+    }
+
+    .nav-item {
+      white-space: nowrap;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-dark);
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: var(--bg-light);
+      color: var(--primary);
+    }
+
+    section {
+      margin-bottom: 32px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 24px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 16px 0 8px 0;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    .hospital-card {
+      border: 1px solid var(--bg-light);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: box-shadow 0.2s;
+    }
+
+    .hospital-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .hospital-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .hospital-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .match-badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .match-high {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .match-part {
+      background-color: var(--warning);
+      color: white;
+    }
+
+    .match-caution {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .hospital-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hospital-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .btn-group {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .nav-list {
+        flex-wrap: wrap;
+      }
+    }
+
+    .alert {
+      padding: 12px;
+      border-radius: 4px;
+      margin: 12px 0;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .alert-warning {
+      background-color: #FFFBEB;
+      border-left: 4px solid var(--warning);
+      color: var(--warning);
+    }
+
+    .alert-danger {
+      background-color: #FEF2F2;
+      border-left: 4px solid var(--danger);
+      color: var(--danger);
+    }
+
+    .doctor-item {
+      margin-bottom: 8px;
+      padding-left: 20px;
+    }
+
+    .doctor-name {
+      font-weight: bold;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    footer {
+      background: white;
+      padding: 24px;
+      margin-top: 32px;
+      border-top: 2px solid var(--danger);
+    }
+
+    @media print {
+      header, nav, .back-to-top, button {
+        display: none !important;
+      }
+      body {
+        padding-top: 0;
+      }
+      section {
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>就医规划报告</h1>
+        <div class="btn-group">
+          <button class="btn-outline" onclick="window.print()">📄 打印报告</button>
+          <button class="btn-primary" onclick="downloadReport()">💾 下载报告</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#summary" class="nav-link active">患者摘要</a></li>
+        <li class="nav-item"><a href="#recommendations" class="nav-link">医院推荐</a></li>
+        <li class="nav-item"><a href="#preparation" class="nav-link">诊前准备</a></li>
+        <li class="nav-item"><a href="#guidelines" class="nav-link">行动指南</a></li>
+        <li class="nav-item"><a href="#disclaimer" class="nav-link">免责声明</a></li>
+      </ul>
+    </nav>
+
+    <section id="summary">
+      <h2>一、患者情况摘要</h2>
+      <p>患者，<strong>36岁男性</strong>，常住<strong>南京</strong>，初步诊断为“<strong>反流性食管炎（LA-B级）</strong>”。本次核心诉求为<strong>食管裂孔疝手术治疗</strong>。医保类型为<strong>北京医保</strong>。无其他重大疾病史及手术史。</p>
+    </section>
+
+    <section id="recommendations">
+      <h2>二、核心就医建议</h2>
+      
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-name">首都医科大学附属北京朝阳医院</span>
+          <span class="match-badge match-high">高度匹配</span>
+        </div>
+        <div class="hospital-grid">
+          <div>
+            <h3>推荐理由</h3>
+            <p>三级甲等综合医院，设有疝与腹壁外科，赵凤林医生擅长食管裂孔疝腹腔镜微创手术，技术精湛（完成近6500例手术）；尚占民医生专注胃食管反流病诊疗，经验丰富。</p>
+            <h3>特别注意</h3>
+            <p>无</p>
+          </div>
+          <div>
+            <h3>就诊须知</h3>
+            <p>北京市医保A类定点医院，北京医保直接报销无需备案；院本部（朝阳区工人体育场南路8号）、西院（石景山区京原路5号）。</p>
+            <h3>挂号方式</h3>
+            <p>微信公众号“京医通”/“北京114预约挂号”、北京市统一挂号平台、电话010-114。</p>
+          </div>
+        </div>
+        <h3>推荐医生</h3>
+        <div class="doctor-item">
+          <div class="doctor-name">赵凤林（主任医师）</div>
+          <div>· 推荐理由：擅长食管裂孔疝腹腔镜微创手术，主攻复杂疝、复发疝治疗</div>
+          <div>· 出诊详情：暂无公开出诊信息</div>
+        </div>
+        <div class="doctor-item">
+          <div class="doctor-name">尚占民（主任医师）</div>
+          <div>· 推荐理由：专注胃食管反流病诊治，国内率先开展高分辨食管压力测定</div>
+          <div>· 出诊详情：石景山院区 专家门诊（100元）周一/三上午；院本部 特需门诊（300元）周五上午</div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-name">首都医科大学宣武医院</span>
+          <span class="match-badge match-high">高度匹配</span>
+        </div>
+        <div class="hospital-grid">
+          <div>
+            <h3>推荐理由</h3>
+            <p>三级甲等综合医院，刘殿刚医生擅长微创治疗食管裂孔疝及胃食管反流病；李昂医生专注胃肠外科疾病，手术经验丰富。</p>
+            <h3>特别注意</h3>
+            <p>无</p>
+          </div>
+          <div>
+            <h3>就诊须知</h3>
+            <p>北京医保定点医院；地址西城区长椿街45号。</p>
+            <h3>挂号方式</h3>
+            <p>微信公众号“首都医科大学宣武医院”/“北京114预约挂号”、APP“掌上宣武医院”。</p>
+          </div>
+        </div>
+        <h3>推荐医生</h3>
+        <div class="doctor-item">
+          <div class="doctor-name">李昂（主任医师）</div>
+          <div>· 推荐理由：擅长胃肠外科疾病，包括食管裂孔疝相关手术</div>
+          <div>· 出诊详情：专家门诊（80元）周三上午/下午</div>
+        </div>
+        <div class="doctor-item">
+          <div class="doctor-name">刘殿刚（主任医师）</div>
+          <div>· 推荐理由：微创治疗食管裂孔疝、胃食管反流病</div>
+          <div>· 出诊详情：专家门诊（80元）周四上午/下午</div>
+        </div>
+        <div class="doctor-item">
+          <div class="doctor-name">朱美中（主任医师）</div>
+          <div>· 推荐理由：消化内科专家，擅长反流性食管炎诊治</div>
+          <div>· 出诊详情：暂无公开出诊信息</div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-name">北京大学人民医院</span>
+          <span class="match-badge match-part">部分匹配</span>
+        </div>
+        <div class="hospital-grid">
+          <div>
+            <h3>推荐理由</h3>
+            <p>三级甲等综合医院，冯桂建医生开展内镜下抗反流手术（ESD-G/ARMS）；尹慕军医生擅长腹壁疝微创手术，包括食管裂孔疝。</p>
+            <h3>特别注意</h3>
+            <p>无</p>
+          </div>
+          <div>
+            <h3>就诊须知</h3>
+            <p>北京医保定点医院；新院（西城区西直门南大街11号）、老院（西城区阜内大街133号）。</p>
+            <h3>挂号方式</h3>
+            <p>微信公众号“北京114预约挂号”、APP“北京大学人民医院”。</p>
+          </div>
+        </div>
+        <h3>推荐医生</h3>
+        <div class="doctor-item">
+          <div class="doctor-name">冯桂建（主任医师）</div>
+          <div>· 推荐理由：内镜下治疗胃食管反流病，率先开展POEM/STER等技术</div>
+          <div>· 出诊详情：西直门院区 特需门诊（300元）周三上午/周六上午；专家门诊周四上午/下午</div>
+        </div>
+        <div class="doctor-item">
+          <div class="doctor-name">尹慕军（主任医师）</div>
+          <div>· 推荐理由：腹壁疝微创手术专家，包括食管裂孔疝修补</div>
+          <div>· 出诊详情：西直门院区 专家门诊（100元）周一上午；特需门诊周五上午</div>
+        </div>
+        <div class="doctor-item">
+          <div class="doctor-name">屈汉廷（主任医师）</div>
+          <div>· 推荐理由：消化内科专家，擅长胃肠动力疾病诊治</div>
+          <div>· 出诊详情：暂无公开出诊信息</div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-name">首都医科大学附属北京同仁医院</span>
+          <span class="match-badge match-part">部分匹配</span>
+        </div>
+        <div class="hospital-grid">
+          <div>
+            <h3>推荐理由</h3>
+            <p>三级甲等综合医院，李建业医生专注食管良性疾病及抗反流手术研究，开展抗反流手术疗效观察。</p>
+            <h3>特别注意</h3>
+            <p>无</p>
+          </div>
+          <div>
+            <h3>就诊须知</h3>
+            <p>北京医保定点医院；东区（东城区崇文门内大街8号）、西区（东城区东交民巷1号）。</p>
+            <h3>挂号方式</h3>
+            <p>微信公众号“京医通”/“北京114预约挂号”。</p>
+          </div>
+        </div>
+        <h3>推荐医生</h3>
+        <div class="doctor-item">
+          <div class="doctor-name">王虹（主任医师）</div>
+          <div>· 推荐理由：专注胃食管反流病诊治</div>
+          <div>· 出诊详情：东区 专家门诊（100元）周五上午/周二下午</div>
+        </div>
+        <div class="doctor-item">
+          <div class="doctor-name">李建业（主任医师）</div>
+          <div>· 推荐理由：研究胃食管反流病抗反流手术</div>
+          <div>· 出诊详情：南区 专家门诊周一上午；西区 专家门诊周五上午</div>
+        </div>
+        <div class="doctor-item">
+          <div class="doctor-name">张川（主任医师）</div>
+          <div>· 推荐理由：消化内镜专家，擅长胃食管反流病内镜治疗</div>
+          <div>· 出诊详情：西区 专家门诊周三上午</div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-name">火箭军特色医学中心</span>
+          <span class="match-badge match-part">部分匹配</span>
+        </div>
+        <div class="hospital-grid">
+          <div>
+            <h3>推荐理由</h3>
+            <p>三级甲等综合医院，胃食管反流病治疗在军内外优势突出，技术成熟。</p>
+            <h3>特别注意</h3>
+            <p>无</p>
+          </div>
+          <div>
+            <h3>就诊须知</h3>
+            <p>北京医保定点医院；地址西城区新外大街16号。</p>
+            <h3>挂号方式</h3>
+            <p>暂无公开信息（建议致电总机010-66343114咨询）。</p>
+          </div>
+        </div>
+        <h3>推荐医生</h3>
+        <p>根据知识库信息，暂未检索到本院与食管裂孔疝手术高度相关的推荐医生。您可尝试挂<strong>普外科/疝与腹壁外科</strong>专家门诊咨询。</p>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-name">首都医科大学附属首都儿童医学中心</span>
+          <span class="match-badge match-caution">谨慎评估</span>
+        </div>
+        <div class="hospital-grid">
+          <div>
+            <h3>推荐理由</h3>
+            <p>三级甲等儿科专科医院，黄金狮医生擅长儿童食管裂孔疝微创手术，但成人患者需确认接诊政策。</p>
+            <h3>特别注意</h3>
+            <div class="alert alert-danger">
+              <div>⚠️ 此医院主要收治儿童患者，成人就诊前务必致电010-85695555确认接诊政策，切勿直接前往。</div>
+            </div>
+          </div>
+          <div>
+            <h3>就诊须知</h3>
+            <p>北京医保定点医院；地址朝阳区雅宝路2号。</p>
+            <h3>挂号方式</h3>
+            <p>微信公众号“首都儿科研究所附属儿童医院”/“京医通”。</p>
+          </div>
+        </div>
+        <h3>推荐医生</h3>
+        <div class="doctor-item">
+          <div class="doctor-name">黄金狮（主任医师）</div>
+          <div>· 推荐理由：儿童食管裂孔疝微创手术专家</div>
+          <div>· 出诊详情：特需门诊周三上午（仅收治儿童）</div>
+        </div>
+      </div>
+
+      <div class="hospital-card">
+        <div class="hospital-header">
+          <span class="hospital-name">首都医科大学附属北京儿童医院</span>
+          <span class="match-badge match-caution">谨慎评估</span>
+        </div>
+        <div class="hospital-grid">
+          <div>
+            <h3>推荐理由</h3>
+            <p>三级甲等儿科专科医院，专注儿童疾病诊治，成人患者不适用。</p>
+            <h3>特别注意</h3>
+            <div class="alert alert-danger">
+              <div>⚠️ 此医院为儿科专科医院，成人患者请勿前往就诊。</div>
+            </div>
+          </div>
+          <div>
+            <h3>就诊须知</h3>
+            <p>北京医保定点医院；地址西城区南礼士路56号。</p>
+          </div>
+        </div>
+        <h3>推荐医生</h3>
+        <p>暂无适合成人的相关医生。</p>
+      </div>
+    </section>
+
+    <section id="preparation">
+      <h2>三、诊前准备清单</h2>
+      <h3>病历资料准备</h3>
+      <ol>
+        <li>身份证、北京医保卡原件；</li>
+        <li>既往胃镜报告（LA-B级反流性食管炎）、奥美拉唑治疗记录；</li>
+        <li>近期胸部CT/上消化道造影报告（如有）；</li>
+      </ol>
+      <h3>医保与费用准备</h3>
+      <ol>
+        <li>北京医保直接报销，无需异地备案；</li>
+        <li>准备手术押金（预估2-3万元，具体以医院通知为准）；</li>
+      </ol>
+      <h3>其他准备</h3>
+      <ol>
+        <li>记录手术相关疑问（如术后恢复时间、复发率等）；</li>
+        <li>穿着宽松衣物，便于检查；</li>
+        <li>提前联系医院确认手术前检查项目（如血常规、凝血功能等）。</li>
+      </ol>
+    </section>
+
+    <section id="guidelines">
+      <h2>四、行动指南与局限性说明</h2>
+      <h3>优先行动建议</h3>
+      <ol>
+        <li><strong>首选首都医科大学附属北京朝阳医院赵凤林医生</strong>：直接联系医院疝与腹壁外科（010-51718999）确认出诊时间，优先预约腹腔镜手术；</li>
+        <li><strong>备选首都医科大学宣武医院刘殿刚医生</strong>：通过“掌上宣武医院”APP预约专家门诊，咨询微创治疗方案。</li>
+      </ol>
+      <h3>二次确认清单</h3>
+      <ol>
+        <li>首都儿童医学中心成人接诊政策：致电010-85695555；</li>
+        <li>朝阳医院赵凤林医生出诊时间：致电010-51718135（西院咨询台）；</li>
+      </ol>
+      <h3>局限性声明</h3>
+      <p>本报告基于现有知识库信息生成，可能存在医生出诊时间更新延迟、部分医院手术排期未公开等情况，仅供参考。</p>
+    </section>
+
+    <footer id="disclaimer">
+      <h2>最终免责</h2>
+      <p>最终就诊决策请以医院官方平台信息及临床医生诊断为准。</p>
+      <p><strong>报告生成时间</strong>：2024年X月X日</p>
+      <p><strong>信息来源</strong>：用户提供的患者信息及知识库数据</p>
+      <p><strong>声明</strong>：本报告不构成医疗诊断，仅为就医路径规划建议。</p>
+    </footer>
+  </div>
+
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+          
+          // 更新活动导航项
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // 显示/隐藏返回顶部按钮
+    window.onscroll = function() {
+      const backToTop = document.querySelector('.back-to-top');
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTop.style.display = 'flex';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // 下载报告功能
+    function downloadReport() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '就医规划报告.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // 监听滚动事件以高亮当前部分的导航链接
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 60) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
